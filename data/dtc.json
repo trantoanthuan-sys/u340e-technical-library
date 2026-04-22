@@ -1,0 +1,393 @@
+{
+  "meta": {
+    "title": "Danh Mục Mã Lỗi DTC",
+    "transmission": "U340E",
+    "total": 12,
+    "groups": [
+      { "id": "P07", "label": "Tốc Độ & Cảm Biến" },
+      { "id": "P08", "label": "Áp Suất Thủy Lực" },
+      { "id": "P17", "label": "Chuyển Số" },
+      { "id": "P27", "label": "Solenoid" }
+    ]
+  },
+  "codes": [
+    {
+      "code": "P0715",
+      "group": "P07",
+      "title": "Lỗi Cảm Biến Tốc Độ Đầu Vào (NT Sensor)",
+      "severity": "high",
+      "symptom": "Hộp số vào chế độ Fail-Safe, không chuyển số, kẹt ở số 3. Đèn CHECK ENGINE sáng.",
+      "possibleCauses": [
+        "Đứt hoặc chập mạch dây dẫn đến cảm biến NT",
+        "Cảm biến NT bị hỏng (điện trở ngoài tiêu chuẩn)",
+        "Rotor cảm biến bị mòn hoặc vỡ răng",
+        "Giắc kết nối bị lỏng, oxy hóa hoặc tiếp xúc kém",
+        "TCM bị lỗi (ít gặp)"
+      ],
+      "diagnosis": [
+        {
+          "step": 1,
+          "action": "Đọc freeze frame data bằng Scan Tool, ghi lại tốc độ xe và rpm khi lỗi xuất hiện",
+          "tool": "Scan Tool",
+          "expected": "Ghi nhận điều kiện lỗi"
+        },
+        {
+          "step": 2,
+          "action": "Kiểm tra điện trở cảm biến NT tại giắc TCM (pin NT+ và NT-)",
+          "tool": "VOM (Đồng hồ vạn năng)",
+          "expected": "985 ~ 1615 Ω"
+        },
+        {
+          "step": 3,
+          "action": "Kiểm tra thông mạch dây từ giắc cảm biến NT đến giắc TCM",
+          "tool": "VOM",
+          "expected": "< 1 Ω (thông mạch)"
+        },
+        {
+          "step": 4,
+          "action": "Kiểm tra tín hiệu xung tại cảm biến NT khi cho xe chạy tốc độ thấp",
+          "tool": "Oscilloscope",
+          "expected": "Xung AC dạng sin, biên độ tăng theo tốc độ"
+        }
+      ],
+      "relatedCodes": ["P0716", "P0717", "P0720"],
+      "relatedSections": ["1.2", "2.2"],
+      "qrUrl": "https://yourdomain.com/#/dtc/P0715"
+    },
+    {
+      "code": "P0720",
+      "group": "P07",
+      "title": "Lỗi Cảm Biến Tốc Độ Đầu Ra (SP2 Sensor)",
+      "severity": "high",
+      "symptom": "Đồng hồ tốc độ không hoạt động, hộp số vào Fail-Safe. Đèn CHECK ENGINE sáng.",
+      "possibleCauses": [
+        "Cảm biến SP2 bị hỏng",
+        "Hở mạch hoặc ngắn mạch dây tín hiệu SP2",
+        "Răng rotor bị vỡ hoặc dị vật bám vào cảm biến",
+        "Điện áp nguồn cấp 12V bị mất"
+      ],
+      "diagnosis": [
+        {
+          "step": 1,
+          "action": "Kiểm tra điện áp nguồn cấp 12V tại giắc cảm biến SP2 (pin nguồn và mass)",
+          "tool": "VOM",
+          "expected": "10 ~ 14V"
+        },
+        {
+          "step": 2,
+          "action": "Nâng xe, cho bánh sau quay, kiểm tra tín hiệu xung tốc độ tại pin tín hiệu SP2",
+          "tool": "Scan Tool / Oscilloscope",
+          "expected": "Xung điện áp thay đổi 0V ~ 5V"
+        },
+        {
+          "step": 3,
+          "action": "Kiểm tra giá trị tốc độ xe trên Scan Tool khi xe chạy",
+          "tool": "Scan Tool",
+          "expected": "Giá trị thay đổi tỉ lệ với tốc độ thực"
+        }
+      ],
+      "relatedCodes": ["P0715", "P0500"],
+      "relatedSections": ["2.2"],
+      "qrUrl": "https://yourdomain.com/#/dtc/P0720"
+    },
+    {
+      "code": "P0731",
+      "group": "P17",
+      "title": "Tỉ Số Truyền Số 1 Không Đúng",
+      "severity": "high",
+      "symptom": "Cảm giác giật khi vào số 1, hộp số vào Fail-Safe. Có thể kèm trượt số.",
+      "possibleCauses": [
+        "Ly hợp C1 (Forward Clutch) bị mòn hoặc hỏng",
+        "Khớp một chiều F2 bị hỏng",
+        "Áp suất thủy lực số 1 không đủ",
+        "Solenoid SL1 bị hỏng hoặc nghẹt bụi"
+      ],
+      "diagnosis": [
+        {
+          "step": 1,
+          "action": "Kiểm tra áp suất thủy lực số 1 tại cổng đo áp suất C1",
+          "tool": "Đồng hồ đo áp suất",
+          "expected": "490 ~ 590 kPa"
+        },
+        {
+          "step": 2,
+          "action": "Thực hiện Stall Test để đánh giá mức độ trượt",
+          "tool": "Tachometer",
+          "expected": "2200 ~ 2600 rpm (bình thường)"
+        },
+        {
+          "step": 3,
+          "action": "Kiểm tra điện trở solenoid SL1",
+          "tool": "VOM",
+          "expected": "5 ~ 7 Ω"
+        }
+      ],
+      "relatedCodes": ["P0732", "P0733", "P0734"],
+      "relatedSections": ["1.5", "3.1"],
+      "qrUrl": "https://yourdomain.com/#/dtc/P0731"
+    },
+    {
+      "code": "P0732",
+      "group": "P17",
+      "title": "Tỉ Số Truyền Số 2 Không Đúng",
+      "severity": "medium",
+      "symptom": "Giật hoặc trượt khi chuyển lên số 2. Đèn OD OFF có thể nháy.",
+      "possibleCauses": [
+        "Phanh B2 (2nd Brake) bị mòn",
+        "Khớp một chiều F1 bị hỏng",
+        "Van solenoid SL2 bị kẹt hoặc rò rỉ",
+        "Đường dầu số 2 bị tắc nghẽn"
+      ],
+      "diagnosis": [
+        {
+          "step": 1,
+          "action": "Kiểm tra áp suất thủy lực tại cổng B2 khi ở số 2",
+          "tool": "Đồng hồ đo áp suất",
+          "expected": "390 ~ 490 kPa"
+        },
+        {
+          "step": 2,
+          "action": "Kiểm tra hoạt động solenoid SL2 bằng Scan Tool (active test)",
+          "tool": "Scan Tool",
+          "expected": "Solenoid đóng/mở theo lệnh"
+        }
+      ],
+      "relatedCodes": ["P0731", "P0733"],
+      "relatedSections": ["1.5", "3.2"],
+      "qrUrl": "https://yourdomain.com/#/dtc/P0732"
+    },
+    {
+      "code": "P0733",
+      "group": "P17",
+      "title": "Tỉ Số Truyền Số 3 Không Đúng",
+      "severity": "medium",
+      "symptom": "Trượt hoặc không vào được số 3. Xe mất công suất ở tốc độ trung bình.",
+      "possibleCauses": [
+        "Ly hợp C2 (Direct Clutch) bị mòn hoặc hỏng",
+        "Áp suất dầu C2 không đủ",
+        "Cụm Valve Body bị mòn tại mạch số 3"
+      ],
+      "diagnosis": [
+        {
+          "step": 1,
+          "action": "Kiểm tra áp suất tại cổng C2 khi hộp số ở số 3",
+          "tool": "Đồng hồ đo áp suất",
+          "expected": "490 ~ 590 kPa"
+        },
+        {
+          "step": 2,
+          "action": "Kiểm tra tình trạng đĩa ma sát C2 qua cửa quan sát",
+          "tool": "Kiểm tra trực quan",
+          "expected": "Đĩa ma sát không bị cháy, dày ≥ tiêu chuẩn"
+        }
+      ],
+      "relatedCodes": ["P0731", "P0734"],
+      "relatedSections": ["1.5", "3.3"],
+      "qrUrl": "https://yourdomain.com/#/dtc/P0733"
+    },
+    {
+      "code": "P0734",
+      "group": "P17",
+      "title": "Tỉ Số Truyền Số 4 (OD) Không Đúng",
+      "severity": "medium",
+      "symptom": "Hộp số không vào được OD, đèn OD OFF sáng cố định. Xe không đạt tốc độ tối đa.",
+      "possibleCauses": [
+        "Phanh B2 hỏng (dùng cả số 2 và số 4)",
+        "Solenoid SLT hoạt động không đúng",
+        "OD bị tắt bởi lệnh từ TCM do nhiệt độ ATF cao"
+      ],
+      "diagnosis": [
+        {
+          "step": 1,
+          "action": "Kiểm tra nhiệt độ ATF trên Scan Tool",
+          "tool": "Scan Tool",
+          "expected": "< 135°C (bình thường)"
+        },
+        {
+          "step": 2,
+          "action": "Kiểm tra nút OD OFF trên cần số, bật công tắc và đọc trạng thái",
+          "tool": "Quan sát đèn báo",
+          "expected": "Đèn tắt khi OD được cho phép"
+        }
+      ],
+      "relatedCodes": ["P0733", "P0741"],
+      "relatedSections": ["1.5", "3.4"],
+      "qrUrl": "https://yourdomain.com/#/dtc/P0734"
+    },
+    {
+      "code": "P0741",
+      "group": "P07",
+      "title": "Mạch Khóa Biến Mô - Kẹt Ở Trạng Thái Mở",
+      "severity": "medium",
+      "symptom": "Tiêu hao nhiên liệu tăng, động cơ tăng tốc nhưng xe không tăng tốc tương ứng ở tốc độ cao.",
+      "possibleCauses": [
+        "Solenoid SLU bị hỏng hoặc kẹt ở trạng thái mở",
+        "Đĩa ma sát Lock-Up bị mòn quá mức",
+        "Áp suất dầu Lock-Up không đủ"
+      ],
+      "diagnosis": [
+        {
+          "step": 1,
+          "action": "Chạy xe ở tốc độ 60 km/h, kiểm tra xem Lock-Up có kích hoạt không qua Scan Tool",
+          "tool": "Scan Tool",
+          "expected": "Tốc độ NT = tốc độ NC khi Lock-Up ON"
+        },
+        {
+          "step": 2,
+          "action": "Kiểm tra điện trở solenoid SLU tại giắc TCM",
+          "tool": "VOM",
+          "expected": "5.0 ~ 5.6 Ω"
+        }
+      ],
+      "relatedCodes": ["P0742", "P2757"],
+      "relatedSections": ["1.2", "2.1"],
+      "qrUrl": "https://yourdomain.com/#/dtc/P0741"
+    },
+    {
+      "code": "P0748",
+      "group": "P08",
+      "title": "Lỗi Mạch Điều Áp Thủy Lực (SLT Solenoid)",
+      "severity": "high",
+      "symptom": "Chuyển số giật mạnh, áp suất thủy lực không ổn định. Fail-Safe mode.",
+      "possibleCauses": [
+        "Solenoid SLT bị hỏng (hở mạch hoặc ngắn mạch)",
+        "Đường dây điện từ TCM đến SLT bị hỏng",
+        "Valve body bị mài mòn tại mạch SLT"
+      ],
+      "diagnosis": [
+        {
+          "step": 1,
+          "action": "Kiểm tra điện trở solenoid SLT",
+          "tool": "VOM",
+          "expected": "5 ~ 7 Ω (ở 20°C)"
+        },
+        {
+          "step": 2,
+          "action": "Kiểm tra áp suất đường dầu chính (Line Pressure) ở N range và D range",
+          "tool": "Đồng hồ đo áp suất",
+          "expected": "N: 380 kPa | D (ga bằng): 420 ~ 520 kPa"
+        }
+      ],
+      "relatedCodes": ["P0731", "P0732", "P0733"],
+      "relatedSections": ["2.1"],
+      "qrUrl": "https://yourdomain.com/#/dtc/P0748"
+    },
+    {
+      "code": "P2716",
+      "group": "P27",
+      "title": "Lỗi Mạch Solenoid Áp Suất D (SL2)",
+      "severity": "medium",
+      "symptom": "Chuyển số không êm, giật mạnh hoặc không thể vào số 2.",
+      "possibleCauses": [
+        "Solenoid SL2 bị hỏng hoặc có bụi bẩn bít",
+        "Hở mạch hoặc chập mạch tại dây dẫn SL2",
+        "Nguồn cấp 12V cho solenoid bị mất"
+      ],
+      "diagnosis": [
+        {
+          "step": 1,
+          "action": "Kiểm tra điện trở solenoid SL2",
+          "tool": "VOM",
+          "expected": "5.0 ~ 5.6 Ω"
+        },
+        {
+          "step": 2,
+          "action": "Thực hiện active test solenoid SL2 bằng Scan Tool",
+          "tool": "Scan Tool",
+          "expected": "Nghe tiếng click khi solenoid kích hoạt"
+        }
+      ],
+      "relatedCodes": ["P2714", "P2718"],
+      "relatedSections": ["2.1", "2.2"],
+      "qrUrl": "https://yourdomain.com/#/dtc/P2716"
+    },
+    {
+      "code": "P0710",
+      "group": "P07",
+      "title": "Lỗi Cảm Biến Nhiệt Độ ATF",
+      "severity": "low",
+      "symptom": "Hộp số không kích hoạt OD ở nhiệt độ thấp, tiêu thụ nhiên liệu tăng.",
+      "possibleCauses": [
+        "Cảm biến nhiệt độ ATF bị hỏng",
+        "Hở mạch hoặc ngắn mạch tại mạch cảm biến",
+        "Dầu ATF bị nhiễm bẩn ảnh hưởng đến cảm biến"
+      ],
+      "diagnosis": [
+        {
+          "step": 1,
+          "action": "Đo điện trở cảm biến nhiệt độ ATF ở nhiệt độ phòng (20°C)",
+          "tool": "VOM",
+          "expected": "2.0 ~ 2.5 kΩ ở 20°C"
+        },
+        {
+          "step": 2,
+          "action": "Kiểm tra giá trị nhiệt độ ATF trên Scan Tool khi động cơ nguội và nóng",
+          "tool": "Scan Tool",
+          "expected": "Thay đổi tuyến tính: nguội ~ 20°C, nóng ~ 80-90°C"
+        }
+      ],
+      "relatedCodes": [],
+      "relatedSections": ["2.2"],
+      "qrUrl": "https://yourdomain.com/#/dtc/P0710"
+    },
+    {
+      "code": "P0560",
+      "group": "P07",
+      "title": "Điện Áp Nguồn Hệ Thống Thấp",
+      "severity": "low",
+      "symptom": "Nhiều mã lỗi xuất hiện cùng lúc, hộp số hoạt động bất thường.",
+      "possibleCauses": [
+        "Ắc quy yếu hoặc hết điện",
+        "Máy phát điện hỏng",
+        "Tiếp mát kém tại thân xe hoặc TCM",
+        "Cầu chì hộp số bị đứt"
+      ],
+      "diagnosis": [
+        {
+          "step": 1,
+          "action": "Kiểm tra điện áp ắc quy khi động cơ tắt và khi chạy",
+          "tool": "VOM",
+          "expected": "Tắt: 12.4 ~ 12.6V | Chạy: 13.8 ~ 14.8V"
+        },
+        {
+          "step": 2,
+          "action": "Kiểm tra điện áp nguồn cấp cho TCM tại giắc TCM",
+          "tool": "VOM",
+          "expected": "12V ~ 14.8V khi động cơ nổ"
+        }
+      ],
+      "relatedCodes": [],
+      "relatedSections": ["2.2"],
+      "qrUrl": "https://yourdomain.com/#/dtc/P0560"
+    },
+    {
+      "code": "P2757",
+      "group": "P27",
+      "title": "Áp Suất Điều Khiển Lock-Up Clutch Thấp",
+      "severity": "medium",
+      "symptom": "Lock-up Clutch trượt ở tốc độ cao, tiêu hao nhiên liệu tăng rõ rệt.",
+      "possibleCauses": [
+        "Đĩa ma sát Lock-Up mòn quá mức",
+        "Áp suất dầu Lock-Up không đủ do mòn bơm",
+        "Solenoid SLU hoạt động không đúng"
+      ],
+      "diagnosis": [
+        {
+          "step": 1,
+          "action": "Kiểm tra áp suất dầu Lock-Up tại cổng đo khi Lock-Up hoạt động",
+          "tool": "Đồng hồ đo áp suất",
+          "expected": "490 ~ 690 kPa"
+        },
+        {
+          "step": 2,
+          "action": "So sánh tốc độ NT (turbine) và NC (output) khi Lock-Up kích hoạt",
+          "tool": "Scan Tool",
+          "expected": "NT = NC (không trượt)"
+        }
+      ],
+      "relatedCodes": ["P0741", "P0742"],
+      "relatedSections": ["1.2", "2.1"],
+      "qrUrl": "https://yourdomain.com/#/dtc/P2757"
+    }
+  ]
+}

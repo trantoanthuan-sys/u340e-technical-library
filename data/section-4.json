@@ -1,0 +1,67 @@
+{
+  "id": 4,
+  "title": "Quy Trình Tháo Lắp",
+  "subsections": [
+    {
+      "id": "4.1",
+      "title": "Quy Trình Tháo",
+      "content": {
+        "intro": "Quy trình tháo hộp số U340E khỏi xe đòi hỏi các bước chuẩn bị kỹ lưỡng về an toàn và dụng cụ. Luôn xả dầu ATF trước khi tháo hộp số.",
+        "keyPoints": [
+          "Xả dầu ATF trước khi tháo (6.9L dầu)",
+          "Tháo trục dẫn động trái và phải",
+          "Tháo giá đỡ động cơ phụ (sub-frame nếu cần)",
+          "Sử dụng giá đỡ hộp số khi tháo bu lông nối",
+          "Đánh dấu vị trí biến mô trước khi tháo"
+        ],
+        "specs": {
+          "title": "Moment Xiết Bu Lông Nối Động Cơ - Hộp Số",
+          "rows": [
+            { "param": "Bu lông M10 × 1.25", "value": "37 N·m" },
+            { "param": "Bu lông M12 × 1.25", "value": "72 N·m" },
+            { "param": "Bu lông biến mô M12", "value": "41 N·m" }
+          ]
+        },
+        "images": []
+      }
+    },
+    {
+      "id": "4.2",
+      "title": "Quy Trình Lắp",
+      "content": {
+        "intro": "Quy trình lắp là ngược lại của tháo. Các điểm quan trọng cần chú ý: căn chỉnh biến mô, moment xiết đúng tiêu chuẩn, và đổ đúng lượng dầu ATF.",
+        "keyPoints": [
+          "Kiểm tra độ lùi biến mô: ≥ 1.0 mm trước khi lắp",
+          "Bôi mỡ nhẹ vào đầu trục biến mô",
+          "Siết bu lông theo trình tự chéo và đúng moment",
+          "Đổ 6.9L dầu ATF WS sau khi lắp",
+          "Chạy xe và kiểm tra rò rỉ"
+        ]
+      }
+    },
+    {
+      "id": "4.3",
+      "title": "Bảo Dưỡng Định Kỳ",
+      "content": {
+        "intro": "Bảo dưỡng định kỳ hộp số U340E chủ yếu là thay dầu ATF và vệ sinh lưới lọc dầu. Toyota khuyến nghị thay dầu mỗi 40,000 km hoặc 2 năm.",
+        "keyPoints": [
+          "Thay dầu ATF: mỗi 40,000 km hoặc 2 năm",
+          "Dung tích thay thế (một phần): 2.5 ~ 3.0 L",
+          "Tiêu chuẩn dầu: Toyota ATF WS (không thể thay thế loại khác)",
+          "Vệ sinh lưới lọc dầu khi tháo hộp số (không có thể thay từ ngoài)",
+          "Kiểm tra màu sắc dầu: đỏ tươi (mới) → nâu sẫm (cần thay)"
+        ],
+        "specs": {
+          "title": "Thông Số Dầu ATF",
+          "rows": [
+            { "param": "Tiêu chuẩn", "value": "Toyota ATF WS" },
+            { "param": "Màu sắc", "value": "Đỏ trong suốt" },
+            { "param": "Dung tích tổng", "value": "6.9 L" },
+            { "param": "Dung tích thay TH", "value": "2.5 ~ 3.0 L" },
+            { "param": "Chu kỳ thay", "value": "40,000 km / 2 năm" }
+          ]
+        }
+      }
+    }
+  ]
+}

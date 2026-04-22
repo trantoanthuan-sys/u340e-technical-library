@@ -1,0 +1,411 @@
+{
+  "id": 1,
+  "title": "Kết Cấu Hộp Số",
+  "subsections": [
+    {
+      "id": "1.1",
+      "title": "Kết cấu chung",
+      "content": {
+        "intro": "Hộp số U340E sử dụng vỏ hợp kim nhôm dạng hai nửa (thân chính và nắp/đai bắt). Bên trong được chia thành các khoang chức năng riêng biệt, gồm khoang biến mô – bơm dầu ở phía trước, khoang cơ cấu hành tinh và phần tử ma sát ở giữa, và khoang truyền lực cuối – vi sai ở phía sau.",
+
+        "keyPoints": [
+          "Vỏ hộp số chia thành 3 khoang chức năng rõ ràng",
+          "Bố trí giúp rút ngắn chiều dài hộp số",
+          "Đảm bảo đồng tâm trục và thuận lợi cho đường dầu",
+          "Nguyên lý tạo số dựa trên khóa – nối các phần tử"
+        ],
+        "sequence": {
+          "title": "Thứ tự các cụm chính",
+          "content": "Các cụm được bố trí theo thứ tự từ trục sơ cấp, bơm, biến mô, các bánh răng hành tinh đến truyền lực cuối. Việc định vị này quyết định logic lắp ráp và nguyên lý tạo số của hộp số."
+        },
+        "explain": [
+          {
+            "title": "Vỏ hộp số và bố trí tổng thành",
+            "text": "Cách bố trí các khoang giúp tối ưu không gian, đảm bảo độ cứng vững và thuận tiện cho việc bố trí các đường dầu trong thân van và thân hộp."
+          },
+          {
+            "title": "Hệ thống thủy lực",
+            "text": "Dầu ATF được chứa trong các-te, qua lọc và được bơm hút lên để tạo áp suất. Áp suất này được phân phối qua thân van tới các piston ly hợp/phanh và các kênh bôi trơn."
+          }
+        ],
+
+        "images": [
+          {
+            "src": "assets/images/s1/s1-1.png",
+            "caption": "Hình 1.1 – Hộp số U340E"
+          }
+        ],
+
+        "diagram": {
+          "image": "assets/images/s1/s1-2.png",
+          "caption": "Hình 1.2 – Sơ đồ bố trí tổng thể hộp số U340E",
+          "points": [
+            {
+              "id": "1",
+              "label": "Trục sơ cấp",
+              "top": "54.15%",
+              "left": "67.4%",
+              "popupTop": "34%",
+              "popupLeft": "65%"
+            },
+            {
+              "id": "2",
+              "label": "Bơm",
+              "top": "75.87%",
+              "left": "83.53%",
+              "popupTop": "50%",
+              "popupLeft": "72%"
+            },
+            {
+              "id": "3",
+              "label": "Biến mô thủy lực",
+              "top": "90%",
+              "left": "91.3%",
+              "popupTop": "68%",
+              "popupLeft": "72%"
+            },
+            {
+              "id": "4",
+              "label": "Bánh răng mặt trời trước",
+              "top": "59.93%",
+              "left": "60.77%",
+              "popupTop": "42%",
+              "popupLeft": "66%"
+            },
+            {
+              "id": "5",
+              "label": "Bánh răng hành tinh trước",
+              "top": "70.62%",
+              "left": "58.9%",
+              "popupTop": "52%",
+              "popupLeft": "66%"
+            },
+            {
+              "id": "6",
+              "label": "Cần dẫn trước",
+              "top": "5.64%",
+              "left": "41.62%",
+              "popupTop": "18%",
+              "popupLeft": "64%"
+            },
+            {
+              "id": "7",
+              "label": "Bánh răng bao trước",
+              "top": "79.3%",
+              "left": "43.35%",
+              "popupTop": "62%",
+              "popupLeft": "60%"
+            },
+            {
+              "id": "8",
+              "label": "Bánh răng bao sau",
+              "top": "85.76%",
+              "left": "22.75%",
+              "popupTop": "70%",
+              "popupLeft": "40%"
+            },
+            {
+              "id": "9",
+              "label": "Bánh răng mặt trời sau",
+              "top": "63.16%",
+              "left": "10.08%",
+              "popupTop": "45%",
+              "popupLeft": "30%"
+            },
+            {
+              "id": "10",
+              "label": "Cần dẫn sau",
+              "top": "57.71%",
+              "left": "36.43%",
+              "popupTop": "38%",
+              "popupLeft": "50%"
+            },
+            {
+              "id": "11",
+              "label": "Bánh răng hành tinh sau",
+              "top": "15.12%",
+              "left": "13.54%",
+              "popupTop": "26%",
+              "popupLeft": "38%"
+            },
+            {
+              "id": "12",
+              "label": "Bánh răng chủ động",
+              "top": "7.05%",
+              "left": "65.24%",
+              "popupTop": "20%",
+              "popupLeft": "70%"
+            },
+            {
+              "id": "13",
+              "label": "Bánh răng bị động",
+              "top": "87.78%",
+              "left": "69.84%",
+              "popupTop": "65%",
+              "popupLeft": "70%"
+            }
+          ]
+        },
+
+        "table": {
+          "title": "Bảng 1.2 – Nhóm phần tử chính và vai trò",
+          "headers": ["Nhóm", "Thành phần tiêu biểu", "Vai trò"],
+          "rows": [
+            [
+              "Truyền lực thủy lực đầu vào",
+              "Biến mô + lock-up",
+              "Khuếch đại mô-men khi khởi hành, giảm trượt khi chạy ổn định"
+            ],
+            [
+              "Nguồn áp suất",
+              "Bơm dầu, các-te, lọc",
+              "Tạo áp và cấp dầu cho bôi trơn, làm mát"
+            ],
+            [
+              "Truyền lực cơ khí",
+              "2 bộ hành tinh + bánh răng trung gian + truyền lực cuối/vi sai",
+              "Tạo tỉ số truyền và đưa mô-men đến bánh xe"
+            ],
+            [
+              "Điều khiển ma sát",
+              "C1, C2, C3; B1, B2, B3; F1, F2",
+              "Tạo các cấp số"
+            ],
+            [
+              "Điều khiển thủy lực - điện",
+              "Thân van, solenoid",
+              "Phân phối áp suất"
+            ]
+          ]
+        },
+
+        "relatedDTC": []
+      }
+    },
+    {
+      "id": "1.2",
+      "title": "Biến mô thủy lực",
+      "content": {
+        "intro": "Biến mô thủy lực là bộ phận trung gian giữa động cơ và hộp số tự động, có nhiệm vụ truyền mô-men xoắn từ động cơ sang hộp số thông qua dòng dầu ATF. Ngoài chức năng truyền lực, biến mô còn giúp xe khởi hành êm dịu, tăng mô-men ở tốc độ thấp và giảm tổn hao năng lượng khi xe chạy ổn định nhờ cơ cấu khóa biến mô.",
+
+        "keyPoints": [
+          "Biến mô truyền mô-men bằng dòng dầu ATF",
+          "Stator giúp tăng mô-men ở tốc độ thấp",
+          "Khi gần đồng tốc, biến mô làm việc như khớp nối thủy lực",
+          "Lock-up giúp loại bỏ trượt và tăng hiệu suất truyền động"
+        ],
+
+        "sequence": {
+          "title": "Tương tác với hình cấu tạo",
+          "content": "Nhấn vào các số trên hình để xem chú thích chi tiết từng bộ phận của biến mô thủy lực."
+        },
+
+        "diagram": {
+          "image": "assets/images/s1/s1-3.png",
+          "caption": "Hình 1.3 – Cấu tạo biến mô thủy lực",
+          "points": [
+            {
+              "id": "1",
+              "label": "Vỏ biến mô: bảo vệ toàn bộ các chi tiết bên trong biến mô, đồng thời tạo môi trường làm việc kín cho dầu ATF.",
+              "top": "22%",
+              "left": "10%",
+              "popupTop": "14%",
+              "popupLeft": "22%"
+            },
+            {
+              "id": "2",
+              "label": "Moay ơ dẫn động: nối với động cơ, truyền chuyển động quay từ trục khuỷu sang cụm biến mô.",
+              "top": "62%",
+              "left": "6%",
+              "popupTop": "52%",
+              "popupLeft": "20%"
+            },
+            {
+              "id": "3",
+              "label": "Bánh bơm: nằm trong vỏ biến mô và được nối với trục khuỷu nhờ đĩa dẫn động.",
+              "top": "24%",
+              "left": "32%",
+              "popupTop": "14%",
+              "popupLeft": "44%"
+            },
+            {
+              "id": "4",
+              "label": "Bánh tuabin: lắp trên trục sơ cấp, nhận năng lượng từ dòng dầu để truyền mô-men.",
+              "top": "24%",
+              "left": "42%",
+              "popupTop": "14%",
+              "popupLeft": "54%"
+            },
+            {
+              "id": "5",
+              "label": "Stator: nằm giữa bánh bơm và bánh tuabin, có nhiệm vụ đổi hướng dòng dầu để tăng mô-men quay.",
+              "top": "24%",
+              "left": "53%",
+              "popupTop": "14%",
+              "popupLeft": "66%"
+            },
+            {
+              "id": "6",
+              "label": "Ly hợp khóa biến mô: dùng để nối trực tiếp bánh bơm với bánh tuabin khi xe chạy ổn định.",
+              "top": "24%",
+              "left": "66%",
+              "popupTop": "14%",
+              "popupLeft": "78%"
+            },
+            {
+              "id": "7",
+              "label": "Khớp một chiều: cho phép stator quay tự do hoặc bị khóa tùy điều kiện dòng dầu.",
+              "top": "24%",
+              "left": "82%",
+              "popupTop": "14%",
+              "popupLeft": "72%"
+            },
+            {
+              "id": "8",
+              "label": "Nắp sau biến mô: cùng với vỏ biến mô tạo thành cụm kín chứa dầu ATF.",
+              "top": "24%",
+              "left": "95%",
+              "popupTop": "14%",
+              "popupLeft": "84%"
+            }
+          ]
+        },
+
+        "explain": [
+          {
+            "title": "Nguyên lý làm việc chung",
+            "text": "Khi động cơ quay, bánh bơm đẩy dầu ATF từ tâm ra ngoài theo lực ly tâm. Dòng dầu này tác động lên bánh tuabin, làm tuabin quay và truyền mô-men sang trục sơ cấp hộp số. Sau đó dầu đổi hướng và quay về phía bánh bơm; stator sẽ đổi hướng dòng dầu để tăng hiệu quả truyền lực ở tốc độ thấp."
+          }
+        ],
+
+        "stages": [
+          {
+            "title": "Giai đoạn đề-pa / tải nặng",
+            "text": "Ở giai đoạn này, bánh bơm quay nhanh theo động cơ, tuabin gần như đứng yên và stator bị khóa nhờ khớp một chiều. Nhờ đó stator đổi hướng dòng dầu và hỗ trợ tăng mô-men truyền sang tuabin.",
+            "image": "assets/images/s1/s1-4.png",
+            "caption": "Hình 1.4 – Dòng chảy dầu trong biến mô ở giai đoạn đề-pa"
+          },
+          {
+            "title": "Giai đoạn tăng tốc",
+            "text": "Bánh bơm vẫn quay nhanh, tuabin bắt đầu quay theo nhưng tốc độ còn thấp hơn bơm. Stator vẫn tiếp tục đổi hướng dòng dầu nên mô-men vẫn được nhân lên, tuy nhiên hệ số nhân mô-men giảm dần khi tốc độ tuabin tăng."
+          },
+          {
+            "title": "Giai đoạn gần đồng tốc",
+            "text": "Khi tốc độ tuabin tiến gần tốc độ bánh bơm, dòng dầu hồi không còn chặn stator nên stator quay trơn tự do. Lúc này biến mô hoạt động gần như một khớp nối thủy lực, với tỷ số truyền xấp xỉ 1:1.",
+            "image": "assets/images/s1/s1-5.png",
+            "caption": "Hình 1.5 – Dòng chảy dầu trong biến mô ở giai đoạn gần đồng tốc"
+          },
+          {
+            "title": "Giai đoạn khóa biến mô",
+            "text": "Khi xe chạy ổn định, ly hợp khóa biến mô được ép dính vào nắp biến mô để bánh bơm và tuabin quay cùng tốc độ. Nhờ đó loại bỏ trượt thủy lực, tăng hiệu suất truyền động, tiết kiệm nhiên liệu và giảm nhiệt dầu."
+          }
+        ],
+
+        "specs": {
+          "title": "Ghi nhớ nhanh",
+          "rows": [
+            { "param": "Môi chất làm việc", "value": "Dầu ATF" },
+            {
+              "param": "Vai trò stator",
+              "value": "Đổi hướng dòng dầu, tăng mô-men"
+            },
+            { "param": "Chế độ gần đồng tốc", "value": "Tỷ số truyền ≈ 1:1" },
+            {
+              "param": "Chế độ hiệu suất cao",
+              "value": "Ly hợp khóa biến mô (Lock-up)"
+            }
+          ]
+        },
+
+        "relatedDTC": ["P0741", "P0742", "P2757"]
+      }
+    },
+    {
+      "id": "1.3",
+      "title": "Bơm dầu thủy lực",
+      "content": {
+        "intro": "Bơm dầu thủy lực (Oil Pump) được dẫn động trực tiếp bởi biến mô, cung cấp áp suất dầu cho toàn bộ hệ thống thủy lực của hộp số. Bơm hoạt động khi động cơ chạy, không phụ thuộc vào tốc độ xe.",
+        "keyPoints": [
+          "Loại bơm: Bánh răng ăn khớp trong (Gerotor Pump)",
+          "Áp suất làm việc: 300 ~ 750 kPa tùy chế độ",
+          "Dẫn động trực tiếp bởi vỏ biến mô — hoạt động khi động cơ nổ",
+          "Van điều áp (Pressure Regulator Valve) duy trì áp suất ổn định",
+          "Lọc dầu sơ cấp bảo vệ bơm khỏi tạp chất"
+        ],
+        "images": [
+          {
+            "src": "assets/images/s1/s1-3.png",
+            "caption": "Hình 1.3 — Cấu tạo và vị trí bơm dầu",
+            "alt": "Oil pump location"
+          }
+        ],
+        "relatedDTC": []
+      }
+    },
+    {
+      "id": "1.4",
+      "title": "Bộ truyền bánh răng hành tinh",
+      "content": {
+        "intro": "Bộ truyền bánh răng hành tinh (Ravigneaux Planetary Gear) là trung tâm của hộp số, tạo ra các tỉ số truyền khác nhau thông qua việc khóa hoặc thả các thành phần của bánh răng.",
+        "keyPoints": [
+          "U340E sử dụng 2 bộ bánh răng hành tinh đơn giản nối tiếp nhau",
+          "Bộ hành tinh trước (Front): tạo số 1, số 2, số lùi",
+          "Bộ hành tinh sau (Rear): tạo số 3, OD (số 4)",
+          "Mỗi bộ gồm: bánh răng mặt trời, bánh răng hành tinh, cần dẫn, vành răng",
+          "Chuyển số bằng cách khóa/thả các bộ phận thông qua ly hợp và phanh"
+        ],
+        "specs": {
+          "title": "Tỉ số truyền các số",
+          "rows": [
+            { "param": "Số 1 (1st)", "value": "2.847" },
+            { "param": "Số 2 (2nd)", "value": "1.552" },
+            { "param": "Số 3 (3rd)", "value": "1.000" },
+            { "param": "Số 4 / OD", "value": "0.700" },
+            { "param": "Số lùi (R)", "value": "2.302" }
+          ]
+        },
+        "images": [
+          {
+            "src": "assets/images/s1/s1-6.png",
+            "caption": "Hình 1.4 — Sơ đồ bộ truyền hành tinh U340E",
+            "alt": "Planetary gear set"
+          }
+        ],
+        "relatedDTC": []
+      }
+    },
+    {
+      "id": "1.5",
+      "title": "Ly hợp - Phanh - Khớp 1 chiều",
+      "content": {
+        "intro": "Các bộ phận điều khiển chuyển số bao gồm ly hợp (Clutch), phanh (Brake) và khớp một chiều (One-Way Clutch). Chúng được điều khiển bởi áp suất thủy lực từ Valve Body để chọn tỉ số truyền phù hợp.",
+        "keyPoints": [
+          "C1 (Forward Clutch): ly hợp tiến — hoạt động ở tất cả số tiến",
+          "C2 (Direct Clutch): ly hợp trực tiếp — số 3 và số 4",
+          "B1 (2nd Coast Brake): phanh dải số 2",
+          "B2 (2nd Brake): phanh số 2 (điện tử)",
+          "B3 (1st & Reverse Brake): phanh số 1 và số lùi",
+          "F1, F2 (One-Way Clutch): khớp một chiều chống trơn"
+        ],
+        "specs": {
+          "title": "Bảng hoạt động ly Hợp - phanh",
+          "rows": [
+            { "param": "Số 1", "value": "C1 + F2 (hoặc B3)" },
+            { "param": "Số 2", "value": "C1 + B2 + F1" },
+            { "param": "Số 3", "value": "C1 + C2" },
+            { "param": "Số 4", "value": "C2 + B2" },
+            { "param": "Số lùi", "value": "C2 + B3" }
+          ]
+        },
+        "images": [
+          {
+            "src": "assets/images/s1/s1-7.png",
+            "caption": "Hình 1.5 — Vị trí ly hợp và phanh trong hộp số",
+            "alt": "Clutch and brake arrangement"
+          }
+        ],
+        "relatedDTC": []
+      }
+    }
+  ]
+}

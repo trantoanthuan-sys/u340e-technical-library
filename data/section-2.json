@@ -1,0 +1,35 @@
+{
+  "id": 2,
+  "title": "Điều Khiển & Thủy Lực",
+  "subsections": [
+    {
+      "id": "2.1",
+      "title": "Hệ Thống Thủy Lực",
+      "content": {
+        "intro": "Phần này trình bày tổng quan về hệ thống thủy lực trong hộp số tự động U340E.",
+        "keyPoints": [
+          "Van điều áp chính (Primary Regulator Valve) kiểm soát áp suất đường dầu chính",
+          "Valve Body là trung tâm điều phối dầu đến các ly hợp và phanh",
+          "7 solenoid điện từ điều khiển dòng dầu theo lệnh từ TCM",
+          "Áp suất làm việc: 300 ~ 750 kPa tùy chế độ và tốc độ"
+        ],
+        "images": []
+      }
+    },
+    {
+      "id": "2.2",
+      "title": "Điều Khiển Điện Tử",
+      "content": {
+        "intro": "Phần này giới thiệu khái quát về hệ thống điều khiển điện tử ECT của hộp số U340E.",
+        "keyPoints": [
+          "TCM (Transmission Control Module) tiếp nhận tín hiệu từ các cảm biến",
+          "Xử lý theo bản đồ chuyển số (Shift Map) lập trình sẵn",
+          "Điều khiển 7 solenoid để chọn tỉ số truyền tối ưu",
+          "Chế độ Fail-Safe bảo vệ hộp số khi phát hiện lỗi"
+        ],
+        "images": [],
+        "relatedDTC": ["P0715", "P0720", "P0748"]
+      }
+    }
+  ]
+}

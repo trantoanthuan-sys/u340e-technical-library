@@ -1,0 +1,111 @@
+{
+  "id": 3,
+  "title": "Nguyên Lý Làm Việc",
+  "subsections": [
+    {
+      "id": "3.1",
+      "title": "Tay Số 1",
+      "content": {
+        "intro": "Ở tay số 1, ly hợp C1 (Forward Clutch) và khớp một chiều F2 được kích hoạt. Mô-men từ động cơ được truyền qua biến mô → trục turbine → C1 → bộ hành tinh trước → trục ra.",
+        "keyPoints": [
+          "C1 (Forward Clutch) và F2 (One-Way Clutch) hoạt động",
+          "Tỉ số truyền: 2.847",
+          "Phanh động cơ: KHÔNG có (F2 cho phép trơn khi nhả ga)",
+          "Áp suất C1 tiêu chuẩn: 490 ~ 590 kPa"
+        ],
+        "specs": {
+          "title": "Trạng Thái Ly Hợp - Phanh ở Số 1",
+          "rows": [
+            { "param": "C1 (Forward Clutch)", "value": "ON ✓" },
+            { "param": "C2 (Direct Clutch)", "value": "OFF" },
+            { "param": "B1 (2nd Coast Brake)", "value": "OFF" },
+            { "param": "B2 (2nd Brake)", "value": "OFF" },
+            { "param": "B3 (1st & Rev Brake)", "value": "OFF (hoặc ON ở L)" },
+            { "param": "F1", "value": "FREE" },
+            { "param": "F2", "value": "LOCK ✓" }
+          ]
+        },
+        "relatedDTC": ["P0731"]
+      }
+    },
+    {
+      "id": "3.2",
+      "title": "Tay Số 2",
+      "content": {
+        "intro": "Ở tay số 2, C1 và B2 (2nd Brake) cùng hoạt động. Khớp một chiều F1 ngăn vành răng bộ hành tinh trước quay ngược chiều.",
+        "keyPoints": [
+          "C1 và B2 cùng hoạt động",
+          "Tỉ số truyền: 1.552",
+          "Có phanh động cơ (B2 thay thế F2 — khóa cả 2 chiều)",
+          "Chuyển từ số 1 lên số 2 êm nhờ solenoid SL1 điều chỉnh áp suất"
+        ],
+        "relatedDTC": ["P0732"]
+      }
+    },
+    {
+      "id": "3.3",
+      "title": "Tay Số 3",
+      "content": {
+        "intro": "Ở tay số 3, cả C1 và C2 (Direct Clutch) đều hoạt động. Toàn bộ bộ hành tinh quay như một khối — tỉ số truyền 1:1.",
+        "keyPoints": [
+          "C1 và C2 đều ON",
+          "Tỉ số truyền: 1.000 (Direct Drive)",
+          "Hiệu suất truyền động cao nhất trong số tiến",
+          "Không còn tổn thất do trượt bánh răng"
+        ],
+        "relatedDTC": ["P0733"]
+      }
+    },
+    {
+      "id": "3.4",
+      "title": "Tay Số 4 (OD)",
+      "content": {
+        "intro": "Số Overdrive (OD) sử dụng C2 và B2. Tốc độ trục ra lớn hơn tốc độ trục vào — tỉ số truyền < 1.",
+        "keyPoints": [
+          "C2 và B2 hoạt động",
+          "Tỉ số truyền: 0.700 (Overdrive)",
+          "Tốc độ trục ra = 1/0.7 ≈ 1.43 lần tốc độ vào",
+          "Tiết kiệm nhiên liệu tối đa ở tốc độ cao",
+          "Bị vô hiệu hóa khi nhiệt độ ATF > 135°C"
+        ],
+        "relatedDTC": ["P0734"]
+      }
+    },
+    {
+      "id": "3.5",
+      "title": "Tay Số Lùi",
+      "content": {
+        "intro": "Số lùi sử dụng C2 và B3 (1st & Reverse Brake). B3 khóa cần dẫn bộ hành tinh trước, tạo ra chiều quay ngược.",
+        "keyPoints": [
+          "C2 và B3 hoạt động",
+          "Tỉ số truyền: 2.302",
+          "Tốc độ tối đa ở số lùi bị giới hạn bởi TCM",
+          "Chuyển sang R khi xe đang chạy tiến sẽ kích hoạt bảo vệ"
+        ]
+      }
+    },
+    {
+      "id": "3.6",
+      "title": "Tính Toán Tỉ Số Truyền",
+      "content": {
+        "intro": "Tỉ số truyền tổng của xe được tính bằng tích của tỉ số hộp số × tỉ số cầu sau. Đây là cơ sở để tính toán tốc độ xe và tải trọng trên động cơ.",
+        "keyPoints": [
+          "Tỉ số truyền tổng = Tỉ số hộp số × Tỉ số cầu sau",
+          "Tỉ số cầu sau tiêu chuẩn U340E: 3.421 (tuỳ xe)",
+          "Số 1: 2.847 × 3.421 = 9.74",
+          "Số 4 (OD): 0.700 × 3.421 = 2.39"
+        ],
+        "specs": {
+          "title": "Tỉ Số Truyền Tổng (Tỉ Số Cầu = 3.421)",
+          "rows": [
+            { "param": "Số 1", "value": "2.847 × 3.421 = 9.74" },
+            { "param": "Số 2", "value": "1.552 × 3.421 = 5.31" },
+            { "param": "Số 3", "value": "1.000 × 3.421 = 3.42" },
+            { "param": "Số 4", "value": "0.700 × 3.421 = 2.39" },
+            { "param": "Số lùi", "value": "2.302 × 3.421 = 7.87" }
+          ]
+        }
+      }
+    }
+  ]
+}
