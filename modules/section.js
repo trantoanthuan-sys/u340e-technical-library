@@ -380,6 +380,7 @@ ${sequenceHtml}
 ${diagramHtml}
 ${explainHtml}
 ${stagesHtml}
+${imagesHtml}
 ${tableHtml}
 ${specsHtml}
         </div>
