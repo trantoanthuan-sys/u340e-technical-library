@@ -166,7 +166,7 @@ async function _buildSearchIndex() {
         title: `Chương ${section.id}: ${section.title}`,
         subtitle: section.description,
         href: `#/section/${section.id}`,
-        keywords: `${section.title} ${section.description}`.toLowerCase(),
+        keywords: _removeDiacritics(`${section.title} ${section.description}`),
       });
 
       // Add each subsection (from section metadata)
@@ -176,7 +176,9 @@ async function _buildSearchIndex() {
           title: `${sub.id} — ${sub.title}`,
           subtitle: `Chương ${section.id}: ${section.title}`,
           href: `#/section/${section.id}/${sub.id}`,
-          keywords: `${sub.id} ${sub.title} ${section.title}`.toLowerCase(),
+          keywords: _removeDiacritics(
+            `${sub.id} ${sub.title} ${section.title}`,
+          ),
         });
       }
     }
@@ -189,7 +191,7 @@ async function _buildSearchIndex() {
         title: `${dtc.code} — ${dtc.title}`,
         subtitle: `Triệu chứng: ${dtc.symptom.substring(0, 80)}...`,
         href: `#/dtc/${dtc.code}`,
-        keywords: `${dtc.code} ${dtc.title} ${dtc.symptom}`.toLowerCase(),
+        keywords: _removeDiacritics(`${dtc.code} ${dtc.title} ${dtc.symptom}`),
       });
     }
   } catch (err) {
@@ -204,9 +206,9 @@ function _performSearch(query, resultsEl) {
     return;
   }
 
-  const lowerQuery = query.toLowerCase();
+  const normalizedQuery = _removeDiacritics(query);
   const matches = _searchIndex
-    .filter((item) => item.keywords.includes(lowerQuery))
+    .filter((item) => item.keywords.includes(normalizedQuery))
     .slice(0, 8); // max 8 results
 
   if (!matches.length) {
@@ -253,6 +255,26 @@ function _highlight(text, query) {
 
 function _escapeRegex(str) {
   return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+/**
+ * Remove Vietnamese diacritics for accent-insensitive search.
+ * Example: "Biến Mô Thủy Lực" → "bien mo thuy luc"
+ *
+ * Works by:
+ *   1. Normalizing to NFD (separates base chars from combining marks)
+ *   2. Removing all combining diacritical marks (U+0300–U+036F)
+ *   3. Handling đ/Đ specially (not decomposable in Unicode)
+ *   4. Lowercasing the result
+ */
+function _removeDiacritics(str) {
+  if (typeof str !== "string") return "";
+  return str
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/đ/g, "d")
+    .replace(/Đ/g, "D")
+    .toLowerCase();
 }
 
 // ─── Start ───────────────────────────────────────────────────────
