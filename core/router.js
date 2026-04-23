@@ -117,12 +117,7 @@ export class Router {
 
   _parseQuery(queryStr) {
     if (!queryStr) return {};
-    return Object.fromEntries(
-      queryStr.split("&").map((pair) => {
-        const [k, v] = pair.split("=");
-        return [decodeURIComponent(k), decodeURIComponent(v || "")];
-      }),
-    );
+    return Object.fromEntries(new URLSearchParams(queryStr));
   }
 
   _notFound(path) {
