@@ -4,31 +4,127 @@
   "subsections": [
     {
       "id": "2.1",
-      "title": "Hệ Thống Thủy Lực",
+      "title": "Hệ thống điều khiển thủy lực",
       "content": {
-        "intro": "Phần này trình bày tổng quan về hệ thống thủy lực trong hộp số tự động U340E.",
+        "intro": "Phần này trình bày tổng quan về hệ thống thủy lực trong hộp số tự động U340E — nơi tạo ra và phân phối áp suất để điều khiển các ly hợp, phanh và biến mô.",
         "keyPoints": [
           "Van điều áp chính (Primary Regulator Valve) kiểm soát áp suất đường dầu chính",
           "Valve Body là trung tâm điều phối dầu đến các ly hợp và phanh",
-          "7 solenoid điện từ điều khiển dòng dầu theo lệnh từ TCM",
-          "Áp suất làm việc: 300 ~ 750 kPa tùy chế độ và tốc độ"
+          "5 solenoid điện từ điều khiển dòng dầu theo lệnh từ ECU",
+          "Thân van chia 2 phần: Upper Valve Body và Lower Valve Body"
         ],
-        "images": []
+        "images": [],
+        "relatedDTC": []
       }
     },
     {
       "id": "2.2",
-      "title": "Điều Khiển Điện Tử",
+      "title": "Hệ thống điều khiển điện tử",
       "content": {
-        "intro": "Phần này giới thiệu khái quát về hệ thống điều khiển điện tử ECT của hộp số U340E.",
+        "intro": "Nếu hệ thống thủy lực là nơi 'tạo lực' thì hệ thống điều khiển điện tử là nơi 'ra quyết định'. Với U340E, cấu hình điều khiển thể hiện rõ xu hướng tích hợp: ECU động cơ vừa xử lý thông tin động cơ vừa điều khiển hộp số thông qua các tín hiệu cảm biến và cơ cấu chấp hành (solenoid), đồng thời thực hiện chẩn đoán và lưu mã lỗi DTC.",
+
         "keyPoints": [
-          "TCM (Transmission Control Module) tiếp nhận tín hiệu từ các cảm biến",
-          "Xử lý theo bản đồ chuyển số (Shift Map) lập trình sẵn",
-          "Điều khiển 7 solenoid để chọn tỉ số truyền tối ưu",
-          "Chế độ Fail-Safe bảo vệ hộp số khi phát hiện lỗi"
+          "ECU tích hợp: vừa điều khiển động cơ vừa điều khiển hộp số",
+          "Sử dụng 5 van điện từ (solenoid) bố trí ở thân van dưới",
+          "Chuyển số không chỉ dựa vào tốc độ xe — cần biết tải, nhiệt độ, thao tác lái",
+          "Có chế độ Fail-Safe: lỗi solenoid → cấm lên số 4 để bảo vệ hộp số",
+          "Mã lỗi DTC đọc qua cổng DLC3 bằng thiết bị chẩn đoán"
         ],
-        "images": [],
-        "relatedDTC": ["P0715", "P0720", "P0748"]
+
+        "sequence": {
+          "title": "Logic điều khiển chuyển số",
+          "content": "S1 + S2 đóng vai trò CHỌN SỐ bằng cách đổi trạng thái các van chuyển số. SLT + ST + SL đóng vai trò ĐIỀU TIẾT CHẤT LƯỢNG (áp suất – tốc độ tăng áp – lock-up) để chuyển số vừa chắc vừa êm."
+        },
+
+        "explain": [
+          {
+            "title": "a) Cảm biến và tín hiệu đầu vào",
+            "text": "Chuyển số không thể chỉ dựa vào tốc độ xe. ECU cần đồng thời biết tải động cơ (bướm ga, bàn đạp ga, thông tin mô-men), trạng thái nhiệt (nước làm mát, ATF), thao tác người lái (đang phanh hay không) để quyết định có khóa biến mô hay không, có giữ số thấp để tăng hãm động cơ hay không. Các tín hiệu đầu vào điển hình gồm: lưu lượng khí nạp, vị trí trục khuỷu, vị trí bướm ga, bàn đạp ga, nhiệt độ nước làm mát, công tắc khởi động trung gian, cảm biến tốc độ hộp số (NT), nhiệt độ ATF, công tắc đèn phanh, tín hiệu tốc độ xe."
+          },
+          {
+            "title": "b) Cơ cấu chấp hành — 5 van điện từ",
+            "text": "Một điểm rất quan trọng của U340E là thân van gồm 2 phần (upper/lower valve body) và có 5 van điện từ bố trí ở thân van dưới để thuận tiện bảo dưỡng. Các solenoid chia làm 2 nhóm: nhóm chọn số (S1, S2 — dạng 2 vị trí on/off) và nhóm điều tiết áp suất (SLT, ST, SL — dạng tuyến tính theo dòng điều khiển từ ECU)."
+          },
+          {
+            "title": "c) Điều khiển chuyển số và tối ưu áp suất",
+            "text": "U340E nhấn mạnh điều khiển áp suất tối ưu theo tải và điều kiện chạy. SLT điều khiển vi sai áp suất ly hợp theo công suất động cơ và điều kiện vận hành; đồng thời điều khiển line pressure theo thông tin ECU động cơ và trạng thái hộp số. Độ trễ chuyển số được giảm đáng kể nhờ cơ cấu triệt tiêu áp suất ly tâm trong ly hợp C1: buồng triệt tiêu (chamber B) đối xứng với buồng áp suất piston (chamber A) giúp áp suất do lực ly tâm tác dụng lên chất lỏng được triệt tiêu, quá trình nạp đầy dầu nhanh hơn, chuyển số đạt đáp ứng cao và êm hơn."
+          },
+          {
+            "title": "d) Điều khiển theo điều kiện đường",
+            "text": "ECU có chiến lược hạn chế lên số 4 hoặc tạo hãm động cơ phù hợp bằng cách nhận biết xe đang lên dốc / xuống dốc (đánh giá dựa trên gia tốc thực tế suy ra từ tín hiệu tốc độ). Khi chuyển cần số từ N sang D, ECU có chiến lược chuyển tạm lên số 3 rồi về số 1 để giảm hiện tượng xe chồm (squat) khi vào số. Những chiến lược này cho thấy điều khiển hộp số không chỉ là chọn tỷ số truyền, mà còn là điều khiển động lực học thân xe và cảm giác người lái."
+          },
+          {
+            "title": "e) Chẩn đoán và chế độ dự phòng (Fail-Safe)",
+            "text": "Khi phát hiện bất thường, ECU thực hiện chẩn đoán, lưu mã lỗi và bật đèn cảnh báo động cơ; mã lỗi có thể đọc qua cổng DLC3 bằng thiết bị chẩn đoán. Ở chế độ dự phòng: một số lỗi cảm biến hoặc solenoid sẽ dẫn đến cấm lên số 4 nhằm bảo vệ hộp số và duy trì khả năng chạy được của xe. Nếu S1 hoặc S2 lỗi, ECU có thể cắt dòng đến solenoid lỗi và điều khiển bằng solenoid còn lại theo bảng logic dự phòng."
+          }
+        ],
+
+        "images": [
+          {
+            "src": "assets/images/s2/s2-1.png",
+            "caption": "Hình 2.1 — Sơ đồ khối hệ thống điều khiển điện tử hộp số U340E"
+          }
+        ],
+
+        "table": {
+          "title": "Bảng 2.1 — Nhóm tín hiệu đầu vào chính phục vụ điều khiển U340E",
+          "headers": ["Nhóm tín hiệu", "Ví dụ", "Vai trò điều khiển"],
+          "rows": [
+            [
+              "Tốc độ – trạng thái chuyển động",
+              "Speed sensor NT, tín hiệu tốc độ xe",
+              "Quyết định điểm chuyển số, phát hiện trượt"
+            ],
+            [
+              "Tải động cơ",
+              "Throttle position, accelerator pedal, thông tin mô-men",
+              "Hiệu chỉnh áp suất line pressure và áp suất ly hợp chống trượt"
+            ],
+            [
+              "Nhiệt độ",
+              "ATF temperature, water temperature",
+              "Giới hạn chiến lược khi điều kiện bất lợi, bảo vệ"
+            ],
+            [
+              "Thao tác người lái",
+              "Stop light switch, vị trí cần số P/R/N/D/2/L",
+              "Quyết định giảm số khi phanh, logic khóa chuyển số"
+            ],
+            [
+              "Chẩn đoán – giao tiếp",
+              "DLC3, đèn Check Engine",
+              "Lưu DTC, hiển thị cảnh báo và hỗ trợ đọc lỗi"
+            ]
+          ]
+        },
+
+        "specs": {
+          "title": "Chức năng 5 van điện từ (solenoid) của U340E",
+          "rows": [
+            {
+              "param": "S1 (On/Off)",
+              "value": "Điều khiển van chuyển 2-3 → điều khiển ly hợp C2"
+            },
+            {
+              "param": "S2 (On/Off)",
+              "value": "Điều khiển van chuyển 1-2 và 3-4 → điều khiển C1, C2, B1, B2"
+            },
+            {
+              "param": "ST (Tuyến tính)",
+              "value": "Điều khiển áp suất chuyển tiếp ly hợp vùng OD (3-4/4-3)"
+            },
+            {
+              "param": "SL (Tuyến tính)",
+              "value": "Điều khiển áp suất ly hợp khóa biến mô (Lock-up)"
+            },
+            {
+              "param": "SLT (Tuyến tính)",
+              "value": "Điều khiển line pressure, áp suất thứ cấp và áp suất hồi tích áp"
+            }
+          ]
+        },
+
+        "relatedDTC": ["P0715", "P0720", "P0748", "P0750", "P0753", "P0758"]
       }
     }
   ]
