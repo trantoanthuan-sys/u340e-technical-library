@@ -6,65 +6,29 @@
       "id": "3.1",
       "title": "Tay số 1",
       "content": {
-        "intro": "Tay số 1 là cấp số có **khuếch đại mô-men lớn nhất** — giúp xe khởi hành nhẹ, vượt dốc, tăng tốc nhanh từ trạng thái đứng yên. U340E phân biệt **số 1 dải D/3/2** (dùng F2 chặn chiều) và **số 1 dải L** (dùng B3 khóa cứng) để có đặc tính phanh động cơ khác nhau.",
-        "keyPoints": [
-          "**Tỉ số truyền: 2.847** (cao nhất trong các số tiến)",
-          "Phần tử kích hoạt: **C1 + F2** (dải D/3/2) hoặc **C1 + B3** (dải L)",
-          "Dải D — phanh động cơ **êm hơn** (dựa vào khớp một chiều)",
-          "Dải L — phanh động cơ **mạnh hơn** (B3 khóa cứng, chống trôi)",
-          "Solenoid: **S1 ON, S2 ON**"
-        ],
+        "intro": "Tay số 1 (D/3/2) và tay số 1 (L) — khuếch đại mômen lớn nhất.",
         "explain": [
           {
-            "title": "a) Dòng truyền lực ở số 1",
-            "text": "Ở tay số 1:\n\n• **C1** nối trục trung gian với **bánh răng mặt trời trước**\n• **B3** giữ cụm **bánh răng bao trước - cần dẫn sau** đứng yên\n• **F2** đóng vai trò chặn chiều, chống quay ngược không mong muốn\n\n**Dòng công suất:**\n\nĐộng cơ → Biến mô → Trục sơ cấp → C1 → Bánh răng mặt trời trước quay → Kéo các bánh hành tinh trước lăn trên vòng răng bị hãm → Sinh chuyển động tại **cần dẫn trước (đầu ra)**.\n\n→ Xe **khởi hành nhẹ, lực kéo lớn**."
+            "title": "Cơ cấu hoạt động",
+            "text": "Ở tay số 1, ly hợp C1 nối trục trung gian với bánh răng mặt trời trước, trong khi B3 giữ cụm bánh răng bao trước - cần dẫn sau đứng yên; đồng thời F2 đóng vai trò chặn chiều để chống quay ngược theo hướng không mong muốn.\n\nKhi động cơ truyền mômen qua biến mô đến trục sơ cấp, mômen đi qua C1 làm mặt trời trước quay, kéo các bánh hành tinh trước lăn trên vòng răng bị hãm và sinh ra chuyển động tại cần dẫn trước (đầu ra), nhờ đó xe khởi hành nhẹ, lực kéo lớn."
           },
           {
-            "title": "b) Điều khiển thủy lực",
-            "text": "**Trạng thái solenoid:** S1 ON, S2 ON\n\n**Đường đi của dầu:**\n\n• Áp suất từ bơm → Van điều áp chính\n• Qua **manual valve** (van chọn chế độ)\n• Vào **mạch C1**\n• Phân nhánh qua **bộ tích áp (accumulator)**\n\n→ Accumulator giúp **giảm giật** khi ép ly hợp."
+            "title": "Điều khiển thủy lực",
+            "text": "Về thủy lực, ở số 1 (dải D), S1 ON và S2 ON, áp suất từ bơm sau van điều áp chính đi qua manual valve, vào mạch C1, đồng thời được phân nhánh qua bộ tích áp (accumulator) để giảm giật khi ép ly hợp."
           },
           {
-            "title": "c) Sơ đồ nguyên lý số 1 — dải D/3/2",
-            "text": "Ở dải D, 3, 2: cơ cấu hoạt động **số 1 bình thường** với F2 chặn chiều. Khi nhả ga, F2 cho phép trượt tự do → **không có phanh động cơ rõ rệt**, xe trôi tự nhiên theo quán tính.",
+            "title": "Phanh động cơ ở dải D/3/2",
+            "text": "Đặc tính quan trọng của số 1 là phanh động cơ khác nhau theo dải.\n\nỞ vị trí D, cơ cấu có xu hướng phanh êm hơn do mức phụ thuộc vào khớp một chiều lớn.",
             "image": "assets/images/s3/s3-1.png",
             "caption": "Hình 3.1 — Sơ đồ nguyên lý tay số 1 (dải D/3/2)"
           },
           {
-            "title": "d) Sơ đồ nguyên lý số 1 — dải L",
-            "text": "Ở dải L (Low): **B3 tham gia rõ rệt** thay vì chỉ dùng F2.\n\n**Đặc tính:**\n\n• B3 khóa cứng cụm bánh răng bao trước - cần dẫn sau theo **cả 2 chiều**\n• Khi nhả ga → tạo **phanh động cơ mạnh**\n• Khả năng **ghì xe khi xuống dốc tốt**, tránh trôi xe",
+            "title": "Phanh động cơ ở dải L",
+            "text": "Còn ở L, B3 tham gia rõ hơn nên khả năng ghì xe khi xuống dốc tốt hơn (phanh cứng hơn), tránh trôi xe.",
             "image": "assets/images/s3/s3-2.png",
             "caption": "Hình 3.2 — Sơ đồ nguyên lý tay số 1 (dải L)"
           }
         ],
-        "specs": {
-          "title": "Trạng thái phần tử — Số 1",
-          "rows": [
-            {
-              "param": "C1 (Forward Clutch)",
-              "value": "ON ✓"
-            },
-            {
-              "param": "C2 (Direct Clutch)",
-              "value": "OFF"
-            },
-            {
-              "param": "B3 (1st & Reverse Brake)",
-              "value": "OFF (D/3/2) hoặc ON (L)"
-            },
-            {
-              "param": "F2 (No.2 One-Way Clutch)",
-              "value": "LOCK ✓"
-            },
-            {
-              "param": "Solenoid S1 / S2",
-              "value": "ON / ON"
-            },
-            {
-              "param": "Tỉ số truyền",
-              "value": "2.847"
-            }
-          ]
-        },
         "relatedDTC": ["P0731"]
       }
     },
@@ -72,65 +36,29 @@
       "id": "3.2",
       "title": "Tay số 2",
       "content": {
-        "intro": "Tay số 2 là **cấp chuyển tiếp** giữa số 1 (khuếch đại mô-men lớn) và số 3 (truyền gần trực tiếp). Cân bằng giữa **lực kéo và tốc độ** — giúp xe tăng tốc dài hơi hơn mà không mất lực kéo đột ngột. U340E phân biệt số 2 dải D/3 (chuẩn) và dải 2 (phanh động cơ mạnh hơn).",
-        "keyPoints": [
-          "**Tỉ số truyền: 1.552**",
-          "Phần tử kích hoạt: **C1 + B2 + F1**",
-          "Dải D/3 — phản lực chủ yếu từ B2 và F1",
-          "Dải 2 — siết thêm phần tử → **phanh động cơ mạnh hơn**",
-          "Solenoid: **S1 ON, S2 OFF** → van chuyển 1-2 đổi vị trí"
-        ],
+        "intro": "Tay số 2 (dải D/3) và tay số 2 (dải 2) — chuyển tiếp, cân bằng lực kéo và tốc độ.",
         "explain": [
           {
-            "title": "a) Dòng truyền lực ở số 2",
-            "text": "Khi lên số 2, hộp số **vẫn giữ C1** để tiếp tục dẫn động mặt trời trước, nhưng **chuyển phần tử tạo phản lực** sang hệ sau bằng cách:\n\n• Đóng **phanh B2**\n• Cho **F1** làm việc\n\n**Dòng công suất chia 2 nhánh:**\n\n• **Nhánh 1:** qua bộ hành tinh trước (tương tự số 1)\n• **Nhánh 2:** truyền từ bộ trước sang bộ sau theo đường vòng răng → cần dẫn → hành tinh sau\n\n→ Hai nhánh **tổng hợp đầu ra** tại cần dẫn trước. Cách tổ chức này làm tỉ số truyền giảm, xe tăng tốc dài hơi hơn **không mất lực kéo đột ngột**."
+            "title": "Cơ cấu hoạt động",
+            "text": "Khi lên số 2 (trong dải D hoặc 3), hộp số vẫn giữ C1 để tiếp tục dẫn động mặt trời trước, nhưng chuyển phần tử tạo phản lực sang hệ sau bằng cách đóng phanh B2 và cho F1 làm việc.\n\nLúc này dòng công suất có thể hình dung chia hai nhánh:\n\n• **Nhánh qua bộ hành tinh trước**: tương tự số 1\n• **Nhánh còn lại**: truyền từ bộ trước sang bộ sau theo đường vòng răng - cần dẫn - hành tinh sau để cuối cùng tổng hợp ra đầu ra tại cần dẫn trước.\n\nCách tổ chức này làm tỉ số truyền giảm xuống, xe tăng tốc dài hơi hơn mà không mất lực kéo đột ngột."
           },
           {
-            "title": "b) Điều khiển thủy lực",
-            "text": "**Trạng thái solenoid:** S1 ON, S2 **OFF**\n\n**Cơ chế:**\n\n• Van chuyển 1-2 **đổi vị trí** → đưa áp suất đến **B2**\n• Duy trì áp suất cho **C1**\n\n→ C1 đóng liên tục từ số 1 sang số 2, chỉ thêm B2 → chuyển số êm."
+            "title": "Điều khiển thủy lực",
+            "text": "Về điều khiển thủy lực, trạng thái S1 ON, S2 OFF sẽ làm van chuyển 1-2 đổi vị trí để đưa áp suất đến B2, trong khi vẫn duy trì áp suất cho C1."
           },
           {
-            "title": "c) Sơ đồ nguyên lý số 2 — dải D/3",
-            "text": "Ở dải D/3: phản lực chủ yếu dựa vào **B2 + F1** để chống quay ngược cho phần tử bị hãm. Đặc tính vận hành tự nhiên, phù hợp đi phố và đường trường.",
+            "title": "Tay số 2 ở dải D/3",
+            "text": "Đây cũng là tay số mà khác biệt dải D và dải 2 thể hiện rất rõ ở cảm giác ghì xe.\n\nỞ D-số 2, phản lực chủ yếu dựa vào B2 và F1 để chống quay ngược cho phần tử bị hãm.",
             "image": "assets/images/s3/s3-3.png",
             "caption": "Hình 3.3 — Sơ đồ nguyên lý tay số 2 (dải D/3)"
           },
           {
-            "title": "d) Sơ đồ nguyên lý số 2 — dải 2",
-            "text": "Ở dải 2: hộp số **siết thêm phần tử** để tạo **phanh động cơ mạnh hơn**.\n\n**Ứng dụng:**\n\n• Đường dốc (lên/xuống)\n• Cần hạn chế tăng tốc\n• Kiểm soát tốc độ mà không dùng nhiều phanh",
+            "title": "Tay số 2 ở dải 2",
+            "text": "Còn ở 2-số 2, hộp số siết thêm phần tử để tạo phanh động cơ mạnh hơn, phù hợp đường dốc hoặc khi cần hạn chế tăng tốc.",
             "image": "assets/images/s3/s3-4.png",
             "caption": "Hình 3.4 — Sơ đồ nguyên lý tay số 2 (dải 2)"
           }
         ],
-        "specs": {
-          "title": "Trạng thái phần tử — Số 2",
-          "rows": [
-            {
-              "param": "C1 (Forward Clutch)",
-              "value": "ON ✓"
-            },
-            {
-              "param": "C2 (Direct Clutch)",
-              "value": "OFF"
-            },
-            {
-              "param": "B2 (2nd Brake)",
-              "value": "ON ✓"
-            },
-            {
-              "param": "F1 (No.1 One-Way Clutch)",
-              "value": "LOCK ✓"
-            },
-            {
-              "param": "Solenoid S1 / S2",
-              "value": "ON / OFF"
-            },
-            {
-              "param": "Tỉ số truyền",
-              "value": "1.552"
-            }
-          ]
-        },
         "relatedDTC": ["P0732"]
       }
     },
@@ -138,55 +66,19 @@
       "id": "3.3",
       "title": "Tay số 3",
       "content": {
-        "intro": "Tay số 3 là số **truyền gần trực tiếp** — tỉ số truyền xấp xỉ 1:1, đạt **hiệu suất truyền động cao nhất**. Đầu ra quay gần như ăn theo đầu vào, tổn thất cơ học giảm xuống mức thấp nhất.",
-        "keyPoints": [
-          "**Tỉ số truyền: 1.000** (truyền gần trực tiếp)",
-          "Phần tử kích hoạt: **C1 + C2**",
-          "Cần dẫn sau và mặt trời trước quay **cùng chiều, cùng tốc độ**",
-          "**Hiệu suất truyền động cao nhất** trong số tiến",
-          "Solenoid: **S1 OFF, S2 OFF**"
-        ],
+        "intro": "Tay số 3 (dải D/3) — truyền gần trực tiếp (hiệu suất tốt).",
         "explain": [
           {
-            "title": "a) Dòng truyền lực ở số 3",
-            "text": "Sang số 3, hộp số đóng **đồng thời C1 và C2**.\n\n**Cơ chế:**\n\n• **C1** → dẫn động mặt trời trước (như số 1, 2)\n• **C2** → dẫn động cần dẫn sau\n• Cần dẫn sau và mặt trời trước quay **cùng chiều, cùng tốc độ**\n\n→ Đầu ra quay **gần như ăn theo đầu vào** → tổn thất giảm xuống mức tối thiểu.\n\n**Lưu ý:** B2 vẫn có thể được duy trì trong hệ thống nhưng **không còn chịu tải chính** như ở số 2."
+            "title": "Cơ cấu hoạt động",
+            "text": "Sang số 3, hộp số đóng đồng thời C1 và C2, khiến cần dẫn sau và mặt trời trước quay cùng chiều, cùng tốc độ, nhờ đó đầu ra quay gần như ăn theo đầu vào và tổn thất giảm.\n\nỞ tay số này, B2 vẫn có thể được duy trì trong hệ thống nhưng không còn là phần tử chịu tải chính như số 2."
           },
           {
-            "title": "b) Điều khiển thủy lực",
-            "text": "**Trạng thái solenoid:** S1 OFF, S2 OFF\n\n**Cơ chế:**\n\n• Các van chuyển số đưa áp suất đến **C2** (qua van chuyển 2-3)\n• Duy trì **C1**\n• Có thể duy trì **B2** theo cấu trúc mạch dầu\n\n→ Cả C1 và C2 cùng đóng → hộp số làm việc ở **chế độ truyền thẳng**."
-          },
-          {
-            "title": "c) Sơ đồ nguyên lý tay số 3",
-            "text": "Ở số 3, hệ thống đơn giản hóa với **2 ly hợp đóng đồng thời**. Không có phần tử giữ (hãm) nào đóng vai trò chính — toàn bộ cụm hành tinh quay **như một khối thống nhất**.\n\n→ Đây là cấp số được sử dụng nhiều nhất khi chạy phố và đường trường tốc độ trung bình.",
+            "title": "Điều khiển thủy lực",
+            "text": "Về thủy lực, trạng thái S1 OFF, S2 OFF làm các van chuyển số đưa áp suất đến C2 (qua van chuyển 2-3), đồng thời duy trì C1 và có thể duy trì B2 theo cấu trúc mạch dầu.",
             "image": "assets/images/s3/s3-5.png",
             "caption": "Hình 3.5 — Sơ đồ nguyên lý tay số 3"
           }
         ],
-        "specs": {
-          "title": "Trạng thái phần tử — Số 3",
-          "rows": [
-            {
-              "param": "C1 (Forward Clutch)",
-              "value": "ON ✓"
-            },
-            {
-              "param": "C2 (Direct Clutch)",
-              "value": "ON ✓"
-            },
-            {
-              "param": "B2 (2nd Brake)",
-              "value": "Duy trì (không chịu tải chính)"
-            },
-            {
-              "param": "Solenoid S1 / S2",
-              "value": "OFF / OFF"
-            },
-            {
-              "param": "Tỉ số truyền",
-              "value": "1.000 (truyền thẳng)"
-            }
-          ]
-        },
         "relatedDTC": ["P0733"]
       }
     },
@@ -194,63 +86,19 @@
       "id": "3.4",
       "title": "Tay số 4 (OD)",
       "content": {
-        "intro": "Tay số 4 là số **truyền tăng (Overdrive - OD)** — tỉ số truyền nhỏ hơn 1, đầu ra quay **nhanh hơn** đầu vào. Mục tiêu là **giảm vòng tua động cơ** khi xe chạy nhanh → tiết kiệm nhiên liệu, giảm tiếng ồn, tăng tuổi thọ động cơ.",
-        "keyPoints": [
-          "**Tỉ số truyền: 0.700** (Overdrive — truyền tăng)",
-          "Phần tử kích hoạt: **C2 + B1** (B2 duy trì)",
-          "Tốc độ trục ra **≈ 1.43 lần** tốc độ trục vào",
-          "**Tiết kiệm nhiên liệu** tối đa ở tốc độ cao",
-          "Solenoid: **S1 OFF, S2 ON**"
-        ],
+        "intro": "Tay số 4 (OD - dải D) — số truyền tăng, giảm tua máy.",
         "explain": [
           {
-            "title": "a) Dòng truyền lực ở số 4 (OD)",
-            "text": "Ở số 4, hộp số tạo **tỉ số truyền nhỏ hơn 1** (overdrive).\n\n**Cơ chế:**\n\n• **C2** dẫn động cần dẫn sau\n• **B1** hãm mặt trời sau\n• Bộ hành tinh sau làm việc theo **chế độ truyền tăng**\n\n**Vai trò của B2:** Vẫn ở trạng thái làm việc nhưng **không chịu tải chính** — chủ yếu mang tính ổn định/duy trì điều kiện động học.\n\n→ Đầu ra quay **nhanh hơn đầu vào** → giảm tua máy, tiết kiệm nhiên liệu."
+            "title": "Cơ cấu hoạt động",
+            "text": "Ở số 4, mục tiêu là giảm vòng tua động cơ khi xe chạy nhanh bằng cách tạo tỉ số truyền nhỏ hơn 1 (overdrive).\n\nKhi đó C2 dẫn động cần dẫn sau, đồng thời B1 hãm mặt trời sau, khiến bộ hành tinh sau làm việc theo chế độ truyền tăng.\n\nTrong nhiều tài liệu mô tả, B2 vẫn ở trạng thái làm việc nhưng chủ yếu mang tính ổn định/duy trì điều kiện động học, không phải phần tử chịu tải chính."
           },
           {
-            "title": "b) Điều khiển thủy lực",
-            "text": "**Trạng thái solenoid:** S1 OFF, S2 **ON**\n\n**Cơ chế:**\n\n• Van chuyển 3-4 **cắt đường dầu** cấp cho C1 → xả về cacte\n• Đồng thời đưa dầu tới **B1**\n• Duy trì **C2** qua van chuyển 2-3\n• Áp suất cho **B2** duy trì theo nhánh riêng\n\n→ Đây là điểm khác biệt quan trọng so với số 3: C1 bị **ngắt**, thay bằng B1 để tạo chế độ OD."
-          },
-          {
-            "title": "c) Sơ đồ nguyên lý tay số 4 (OD)",
-            "text": "Ở số 4 (OD), hệ thống hoạt động ở **chế độ truyền tăng**:\n\n• Đầu vào — cần dẫn sau (qua C2)\n• Phần tử cố định — mặt trời sau (qua B1)\n• Đầu ra — bánh răng bao sau (quay nhanh hơn đầu vào)\n\n→ Số này thường được kích hoạt ở **tốc độ cao >60 km/h** trên đường trường khi tải nhẹ.",
+            "title": "Điều khiển thủy lực",
+            "text": "Mạch dầu tương ứng: S1 OFF, S2 ON sẽ khiến van chuyển 3-4 cắt đường dầu cấp cho C1 (xả về cacte) và đồng thời đưa dầu tới B1, trong khi vẫn duy trì C2 qua van chuyển 2-3; áp suất cho B2 vẫn được duy trì theo nhánh riêng.",
             "image": "assets/images/s3/s3-6.png",
-            "caption": "Hình 3.6 — Sơ đồ nguyên lý tay số 4 (Overdrive)"
+            "caption": "Hình 3.6 — Sơ đồ nguyên lý tay số 4"
           }
         ],
-        "specs": {
-          "title": "Trạng thái phần tử — Số 4 (OD)",
-          "rows": [
-            {
-              "param": "C1 (Forward Clutch)",
-              "value": "OFF (ngắt)"
-            },
-            {
-              "param": "C2 (Direct Clutch)",
-              "value": "ON ✓"
-            },
-            {
-              "param": "B1 (OD & 2nd Brake)",
-              "value": "ON ✓"
-            },
-            {
-              "param": "B2 (2nd Brake)",
-              "value": "Duy trì (ổn định động học)"
-            },
-            {
-              "param": "Solenoid S1 / S2",
-              "value": "OFF / ON"
-            },
-            {
-              "param": "Tỉ số truyền",
-              "value": "0.700"
-            },
-            {
-              "param": "Tốc độ đầu ra",
-              "value": "≈ 1.43 × tốc độ đầu vào"
-            }
-          ]
-        },
         "relatedDTC": ["P0734"]
       }
     },
@@ -258,67 +106,19 @@
       "id": "3.5",
       "title": "Tay số lùi (R)",
       "content": {
-        "intro": "Tay số lùi R (Reverse) **đảo chiều quay đầu ra** bằng cách sắp xếp dòng công suất đặc biệt qua bộ hành tinh sau. Tỉ số truyền khá lớn giúp xe lùi **ổn định, có lực ngay cả khi tải cao**, dễ kiểm soát ở tốc độ thấp.",
-        "keyPoints": [
-          "**Tỉ số truyền: 2.302** (lớn về độ lớn)",
-          "Phần tử kích hoạt: **C3 + B3**",
-          "Tạo chuyển động **đảo chiều** tại phần tử đầu ra",
-          "Xe lùi **ổn định, lực kéo lớn** ngay cả khi tải cao",
-          "Manual valve ở vị trí **R** — solenoid S1 ON, S2 ON"
-        ],
+        "intro": "Tay số lùi (R) — đảo chiều quay đầu ra.",
         "explain": [
           {
-            "title": "a) Dòng truyền lực ở số lùi",
-            "text": "Ở số lùi, hộp số:\n\n• Đóng **C3** để dẫn động mặt trời sau\n• Đóng **B3** để hãm cần dẫn sau\n\n**Cơ chế đảo chiều:**\n\n• Khi mặt trời sau quay (qua C3) và cần dẫn sau bị khóa (qua B3)\n• Bánh răng bao sau **buộc phải quay ngược chiều** với mặt trời sau\n• Chuyển động đảo chiều truyền qua **bộ truyền cuối** ra bánh xe\n\n→ Xe **di chuyển lùi** với lực kéo lớn."
+            "title": "Cơ cấu hoạt động",
+            "text": "Ở số lùi, hộp số đóng C3 để dẫn động mặt trời sau, đồng thời B3 hãm cần dẫn sau, nhờ đó tạo chuyển động đảo chiều tại phần tử đầu ra và truyền qua bộ truyền cuối ra bánh xe.\n\nDo tỉ số truyền lùi thường khá lớn (về độ lớn), xe lùi ổn định và có lực ngay cả khi tải cao, đồng thời giúp người lái kiểm soát dễ ở tốc độ thấp."
           },
           {
-            "title": "b) Đặc tính vận hành",
-            "text": "Do tỉ số truyền lùi **khá lớn về độ lớn (2.302)**, xe có các đặc tính:\n\n• **Ổn định khi lùi** — không bị giật cục\n• **Lực kéo mạnh** — lùi được xe có tải cao\n• **Kiểm soát dễ ở tốc độ thấp** — người lái xử lý tình huống tốt\n\n**Bảo vệ:** Tốc độ tối đa ở số lùi bị **TCM giới hạn** — không cho xe lùi với vận tốc cao để tránh mất kiểm soát."
-          },
-          {
-            "title": "c) Điều khiển thủy lực",
-            "text": "**Trạng thái solenoid:** S1 ON, S2 ON\n\n**Cơ chế:**\n\n• **Manual valve ở vị trí R** (do người lái gạt cần số về R)\n• Áp suất dầu được cấp cho **C3**\n• Qua nhánh điều khiển số lùi → cấp cho **B3**\n\n→ Hai phần tử này đóng đồng thời tạo số lùi.\n\n**Lưu ý an toàn:** Khi đang chạy tiến mà chuyển sang R → ECU sẽ kích hoạt chế độ bảo vệ, ngăn không cho vào số R để tránh hư hại hộp số."
-          },
-          {
-            "title": "d) Sơ đồ nguyên lý tay số lùi",
-            "text": "Sơ đồ thể hiện rõ **đường đi công suất đảo chiều**:\n\n• Dòng vào từ biến mô → trục trung gian\n• Qua C3 → mặt trời sau (quay thuận)\n• Cần dẫn sau bị B3 khóa cứng\n• Bánh răng bao sau bị ép quay ngược → đầu ra đảo chiều",
+            "title": "Điều khiển thủy lực",
+            "text": "Về thủy lực, S1 ON, S2 ON, manual valve ở vị trí R sẽ cấp áp suất cho C3 và qua nhánh điều khiển số lùi để cấp cho B3.",
             "image": "assets/images/s3/s3-7.png",
             "caption": "Hình 3.7 — Sơ đồ nguyên lý tay số lùi R"
           }
         ],
-        "specs": {
-          "title": "Trạng thái phần tử — Số lùi R",
-          "rows": [
-            {
-              "param": "C1 (Forward Clutch)",
-              "value": "OFF"
-            },
-            {
-              "param": "C2 (Direct Clutch)",
-              "value": "OFF"
-            },
-            {
-              "param": "C3 (Reverse Clutch)",
-              "value": "ON ✓"
-            },
-            {
-              "param": "B3 (1st & Reverse Brake)",
-              "value": "ON ✓"
-            },
-            {
-              "param": "Manual valve",
-              "value": "Vị trí R"
-            },
-            {
-              "param": "Solenoid S1 / S2",
-              "value": "ON / ON"
-            },
-            {
-              "param": "Tỉ số truyền",
-              "value": "2.302 (đảo chiều)"
-            }
-          ]
-        },
         "relatedDTC": []
       }
     },
