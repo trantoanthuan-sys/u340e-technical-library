@@ -22,7 +22,6 @@
       "title": "Hệ thống điều khiển điện tử",
       "content": {
         "intro": "Nếu hệ thống thủy lực là nơi 'tạo lực' thì hệ thống điều khiển điện tử là nơi 'ra quyết định'. Với U340E, cấu hình điều khiển thể hiện rõ xu hướng tích hợp: ECU động cơ vừa xử lý thông tin động cơ vừa điều khiển hộp số thông qua các tín hiệu cảm biến và cơ cấu chấp hành (solenoid), đồng thời thực hiện chẩn đoán và lưu mã lỗi DTC.",
-
         "keyPoints": [
           "ECU tích hợp: vừa điều khiển động cơ vừa điều khiển hộp số",
           "Sử dụng 5 van điện từ (solenoid) bố trí ở thân van dưới",
@@ -30,42 +29,34 @@
           "Có chế độ Fail-Safe: lỗi solenoid → cấm lên số 4 để bảo vệ hộp số",
           "Mã lỗi DTC đọc qua cổng DLC3 bằng thiết bị chẩn đoán"
         ],
-
         "sequence": {
           "title": "Logic điều khiển chuyển số",
           "content": "S1 + S2 đóng vai trò CHỌN SỐ bằng cách đổi trạng thái các van chuyển số. SLT + ST + SL đóng vai trò ĐIỀU TIẾT CHẤT LƯỢNG (áp suất – tốc độ tăng áp – lock-up) để chuyển số vừa chắc vừa êm."
         },
-
         "explain": [
           {
             "title": "a) Cảm biến và tín hiệu đầu vào",
-            "text": "Chuyển số không thể chỉ dựa vào tốc độ xe. ECU cần đồng thời biết tải động cơ (bướm ga, bàn đạp ga, thông tin mô-men), trạng thái nhiệt (nước làm mát, ATF), thao tác người lái (đang phanh hay không) để quyết định có khóa biến mô hay không, có giữ số thấp để tăng hãm động cơ hay không. Các tín hiệu đầu vào điển hình gồm: lưu lượng khí nạp, vị trí trục khuỷu, vị trí bướm ga, bàn đạp ga, nhiệt độ nước làm mát, công tắc khởi động trung gian, cảm biến tốc độ hộp số (NT), nhiệt độ ATF, công tắc đèn phanh, tín hiệu tốc độ xe."
+            "text": "Chuyển số **không thể chỉ dựa vào tốc độ xe**. ECU cần đồng thời biết:\n\n• **Tải động cơ** — bướm ga, bàn đạp ga, thông tin mô-men\n• **Trạng thái nhiệt** — nước làm mát, ATF\n• **Thao tác người lái** — đang phanh hay không\n\nTừ đó quyết định: có khóa biến mô không? Có giữ số thấp để tăng hãm động cơ không?\n\n**Các tín hiệu đầu vào điển hình:**\n\n• Lưu lượng khí nạp, vị trí trục khuỷu\n• Vị trí bướm ga, bàn đạp ga\n• Nhiệt độ nước làm mát, nhiệt độ ATF\n• Công tắc khởi động trung gian\n• Cảm biến tốc độ hộp số (NT)\n• Công tắc đèn phanh, tín hiệu tốc độ xe"
           },
           {
-            "title": "b) Cơ cấu chấp hành — 5 van điện từ",
-            "text": "Một điểm rất quan trọng của U340E là thân van gồm 2 phần (upper/lower valve body) và có 5 van điện từ bố trí ở thân van dưới để thuận tiện bảo dưỡng. Các solenoid chia làm 2 nhóm: nhóm chọn số (S1, S2 — dạng 2 vị trí on/off) và nhóm điều tiết áp suất (SLT, ST, SL — dạng tuyến tính theo dòng điều khiển từ ECU)."
+            "title": "b) Cơ cấu chấp hành — 5 van điện từ (solenoid)",
+            "text": "Điểm quan trọng của U340E: thân van gồm **2 phần** (upper/lower valve body) với **5 van điện từ** bố trí ở thân van dưới → thuận tiện bảo dưỡng.\n\n**Các solenoid chia làm 2 nhóm:**\n\n• **Nhóm chọn số** — S1, S2 (dạng on/off 2 vị trí)\n• **Nhóm điều tiết áp suất** — SLT, ST, SL (dạng tuyến tính theo dòng điều khiển từ ECU)",
+            "image": "assets/images/s2/s2-1.png",
+            "caption": "Hình 2.1 — Sơ đồ khối hệ thống điều khiển điện tử hộp số U340E"
           },
           {
             "title": "c) Điều khiển chuyển số và tối ưu áp suất",
-            "text": "U340E nhấn mạnh điều khiển áp suất tối ưu theo tải và điều kiện chạy. SLT điều khiển vi sai áp suất ly hợp theo công suất động cơ và điều kiện vận hành; đồng thời điều khiển line pressure theo thông tin ECU động cơ và trạng thái hộp số. Độ trễ chuyển số được giảm đáng kể nhờ cơ cấu triệt tiêu áp suất ly tâm trong ly hợp C1: buồng triệt tiêu (chamber B) đối xứng với buồng áp suất piston (chamber A) giúp áp suất do lực ly tâm tác dụng lên chất lỏng được triệt tiêu, quá trình nạp đầy dầu nhanh hơn, chuyển số đạt đáp ứng cao và êm hơn."
+            "text": "U340E nhấn mạnh **điều khiển áp suất tối ưu** theo tải và điều kiện chạy.\n\n**Vai trò của SLT:**\n\n• Điều khiển vi sai áp suất ly hợp theo công suất động cơ và điều kiện vận hành\n• Điều khiển **line pressure** theo thông tin ECU động cơ và trạng thái hộp số\n\n**Giảm độ trễ chuyển số:** Nhờ cơ cấu **triệt tiêu áp suất ly tâm** trong ly hợp C1:\n\n• Buồng triệt tiêu (chamber B) đối xứng với buồng áp suất piston (chamber A)\n• Áp suất do lực ly tâm tác dụng lên chất lỏng được triệt tiêu\n• Quá trình nạp đầy dầu nhanh hơn → chuyển số đáp ứng cao và êm hơn"
           },
           {
             "title": "d) Điều khiển theo điều kiện đường",
-            "text": "ECU có chiến lược hạn chế lên số 4 hoặc tạo hãm động cơ phù hợp bằng cách nhận biết xe đang lên dốc / xuống dốc (đánh giá dựa trên gia tốc thực tế suy ra từ tín hiệu tốc độ). Khi chuyển cần số từ N sang D, ECU có chiến lược chuyển tạm lên số 3 rồi về số 1 để giảm hiện tượng xe chồm (squat) khi vào số. Những chiến lược này cho thấy điều khiển hộp số không chỉ là chọn tỷ số truyền, mà còn là điều khiển động lực học thân xe và cảm giác người lái."
+            "text": "ECU có các chiến lược thông minh theo tình huống:\n\n**Lên dốc / xuống dốc:**\n\n• Đánh giá qua gia tốc thực tế (suy ra từ tín hiệu tốc độ)\n• Hạn chế lên số 4 hoặc tạo hãm động cơ phù hợp\n\n**Chuyển N → D:**\n\n• Chiến lược chuyển tạm lên số 3 rồi về số 1\n• Mục đích: giảm hiện tượng **xe chồm (squat)** khi vào số\n\n→ Điều khiển hộp số không chỉ là chọn tỷ số truyền, mà còn là điều khiển **động lực học thân xe** và **cảm giác người lái**."
           },
           {
             "title": "e) Chẩn đoán và chế độ dự phòng (Fail-Safe)",
-            "text": "Khi phát hiện bất thường, ECU thực hiện chẩn đoán, lưu mã lỗi và bật đèn cảnh báo động cơ; mã lỗi có thể đọc qua cổng DLC3 bằng thiết bị chẩn đoán. Ở chế độ dự phòng: một số lỗi cảm biến hoặc solenoid sẽ dẫn đến cấm lên số 4 nhằm bảo vệ hộp số và duy trì khả năng chạy được của xe. Nếu S1 hoặc S2 lỗi, ECU có thể cắt dòng đến solenoid lỗi và điều khiển bằng solenoid còn lại theo bảng logic dự phòng."
+            "text": "**Khi phát hiện bất thường, ECU:**\n\n• Thực hiện chẩn đoán\n• Lưu mã lỗi DTC\n• Bật đèn cảnh báo động cơ\n\nMã lỗi có thể đọc qua cổng **DLC3** bằng thiết bị chẩn đoán.\n\n**Chế độ dự phòng (Fail-Safe):**\n\n• Lỗi cảm biến/solenoid → **cấm lên số 4** để bảo vệ hộp số\n• Vẫn duy trì khả năng chạy được của xe\n• Nếu S1 hoặc S2 lỗi → ECU cắt dòng đến solenoid lỗi, điều khiển bằng solenoid còn lại theo bảng logic dự phòng"
           }
         ],
-
-        "images": [
-          {
-            "src": "assets/images/s2/s2-1.png",
-            "caption": "Hình 2.1 — Sơ đồ khối hệ thống điều khiển điện tử hộp số U340E"
-          }
-        ],
-
         "table": {
           "title": "Bảng 2.1 — Nhóm tín hiệu đầu vào chính phục vụ điều khiển U340E",
           "headers": ["Nhóm tín hiệu", "Ví dụ", "Vai trò điều khiển"],
@@ -97,7 +88,6 @@
             ]
           ]
         },
-
         "specs": {
           "title": "Chức năng 5 van điện từ (solenoid) của U340E",
           "rows": [
@@ -123,7 +113,6 @@
             }
           ]
         },
-
         "relatedDTC": ["P0715", "P0720", "P0748", "P0750", "P0753", "P0758"]
       }
     }
