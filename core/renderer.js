@@ -219,6 +219,26 @@ export function escapeHtml(str) {
 }
 
 /**
+ * Format inline content text with minimal, safe markdown support.
+ * Escapes HTML FIRST (XSS protection), then converts:
+ *   - **bold** → <strong>bold</strong>
+ *   - Line breaks (\n) → <br>
+ *
+ * This is for content block text (explain, stages, etc.) — NOT for
+ * headings or user input. Always use escapeHtml() for unformatted text.
+ */
+export function formatInlineText(str) {
+  if (typeof str !== "string") return String(str ?? "");
+  // 1. Escape HTML first (XSS safe)
+  let safe = escapeHtml(str);
+  // 2. Convert **bold** → <strong>
+  safe = safe.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+  // 3. Convert line breaks → <br>
+  safe = safe.replace(/\n/g, "<br>");
+  return safe;
+}
+
+/**
  * Build a simple back button HTML string.
  * @param {string} href
  * @param {string} label

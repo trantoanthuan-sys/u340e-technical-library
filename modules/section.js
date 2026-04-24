@@ -15,6 +15,7 @@ import {
   backButtonHtml,
   imageOrPlaceholder,
   escapeHtml,
+  formatInlineText,
 } from "../core/renderer.js";
 
 // ─── Section Overview ────────────────────────────────────────────
@@ -189,7 +190,19 @@ function _buildSubSectionHtml(sub, sectionMeta, prevSub, nextSub) {
                <div class="explain-card-icon">⚙️</div>
                <div class="explain-card-content">
                  <div class="explain-card-title">${escapeHtml(item.title)}</div>
-                 <div class="explain-card-text">${escapeHtml(item.text)}</div>
+                 <div class="explain-card-text">${formatInlineText(item.text)}</div>
+                 ${
+                   item.image
+                     ? `<div class="lesson-image-wrap">
+                          <img src="${escapeHtml(item.image)}" alt="${escapeHtml(item.caption || item.title)}" class="lesson-image" loading="lazy" />
+                          ${
+                            item.caption
+                              ? `<div class="image-caption">${escapeHtml(item.caption)}</div>`
+                              : ""
+                          }
+                        </div>`
+                     : ""
+                 }
                </div>
              </div>
            `,
@@ -205,7 +218,7 @@ function _buildSubSectionHtml(sub, sectionMeta, prevSub, nextSub) {
              (stage) => `
                <div class="lesson-stage">
                  <div class="lesson-stage-title">${escapeHtml(stage.title)}</div>
-                 <div class="lesson-stage-text">${escapeHtml(stage.text)}</div>
+                 <div class="lesson-stage-text">${formatInlineText(stage.text)}</div>
                  ${
                    stage.image
                      ? `<div class="lesson-image-wrap">
