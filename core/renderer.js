@@ -239,6 +239,33 @@ export function formatInlineText(str) {
 }
 
 /**
+ * Render LaTeX math string to HTML using KaTeX.
+ * Requires KaTeX to be loaded globally (via <script> in index.html).
+ *
+ * @param {string} latex - LaTeX source string
+ * @param {boolean} displayMode - true = block (centered, large), false = inline
+ * @returns {string} HTML string (already safe)
+ */
+export function renderLatex(latex, displayMode = true) {
+  if (typeof latex !== "string" || !latex.trim()) return "";
+  // KaTeX is loaded globally from vendor/katex/katex.min.js
+  if (typeof window === "undefined" || !window.katex) {
+    // Fallback: show as code if KaTeX not loaded yet
+    return `<code>${escapeHtml(latex)}</code>`;
+  }
+  try {
+    return window.katex.renderToString(latex, {
+      displayMode,
+      throwOnError: false,
+      strict: "ignore",
+    });
+  } catch (err) {
+    console.warn("KaTeX render error:", err);
+    return `<code>${escapeHtml(latex)}</code>`;
+  }
+}
+
+/**
  * Build a simple back button HTML string.
  * @param {string} href
  * @param {string} label

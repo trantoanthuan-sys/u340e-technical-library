@@ -1445,3 +1445,140 @@
   line-height: 1.8;
   color: #475569;
 }
+
+/* ──────────────────────────────────────────────────────────
+ * FORMULA BLOCK — KaTeX math formulas
+ * ────────────────────────────────────────────────────────── */
+.lesson-formula {
+  margin: 32px 0;
+  padding: 24px 28px;
+  background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+}
+
+.lesson-formula-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #cbd5e1;
+}
+
+.formula-list {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.formula-item {
+  padding: 20px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  border-left: 4px solid #3b82f6;
+}
+
+.formula-item-label {
+  font-size: 17px;
+  font-weight: 700;
+  color: #1e40af;
+  margin-bottom: 12px;
+}
+
+.formula-item-desc {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #475569;
+  margin-bottom: 14px;
+}
+
+.formula-sub-section {
+  margin: 14px 0;
+  padding: 12px 16px;
+  background: #f8fafc;
+  border-radius: 8px;
+}
+
+.formula-sub-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #64748b;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.formula-sub-list {
+  margin: 0;
+  padding-left: 22px;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #334155;
+}
+
+.formula-sub-list li {
+  margin: 4px 0;
+}
+
+.formula-equations {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.formula-equation {
+  padding: 14px 0;
+}
+
+.formula-equation-caption {
+  font-size: 13px;
+  font-weight: 500;
+  color: #64748b;
+  margin-bottom: 8px;
+  font-style: italic;
+}
+
+.formula-equation-latex {
+  overflow-x: auto;
+  padding: 8px 0;
+}
+
+.formula-result {
+  margin-top: 18px;
+  padding: 16px 20px;
+  background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+  border-radius: 10px;
+  border: 1px solid #93c5fd;
+}
+
+.formula-result-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1e40af;
+  margin-bottom: 8px;
+}
+
+.formula-result-latex {
+  overflow-x: auto;
+  padding: 4px 0;
+}
+
+/* KaTeX display mode — responsive scroll on mobile */
+.formula-equation-latex .katex-display,
+.formula-result-latex .katex-display {
+  margin: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+@media (max-width: 640px) {
+  .lesson-formula {
+    padding: 16px;
+  }
+  .formula-item {
+    padding: 14px;
+  }
+}

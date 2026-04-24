@@ -16,6 +16,7 @@ import {
   imageOrPlaceholder,
   escapeHtml,
   formatInlineText,
+  renderLatex,
 } from "../core/renderer.js";
 
 // ─── Section Overview ────────────────────────────────────────────
@@ -355,6 +356,91 @@ function _buildSubSectionHtml(sub, sectionMeta, prevSub, nextSub) {
          </div>`
       : "";
 
+  // ─── Formula block (KaTeX) ──────────────────────────────────
+  const formulaHtml = content.formula?.items?.length
+    ? `<div class="lesson-formula">
+         ${
+           content.formula.title
+             ? `<div class="lesson-formula-title">📐 ${escapeHtml(content.formula.title)}</div>`
+             : ""
+         }
+         <div class="formula-list">
+           ${content.formula.items
+             .map(
+               (item) => `
+             <div class="formula-item">
+               ${
+                 item.label
+                   ? `<div class="formula-item-label">${formatInlineText(item.label)}</div>`
+                   : ""
+               }
+               ${
+                 item.description
+                   ? `<div class="formula-item-desc">${formatInlineText(item.description)}</div>`
+                   : ""
+               }
+               ${
+                 item.states?.length
+                   ? `<div class="formula-sub-section">
+                        <div class="formula-sub-title">Trạng thái làm việc:</div>
+                        <ul class="formula-sub-list">
+                          ${item.states.map((s) => `<li>${formatInlineText(s)}</li>`).join("")}
+                        </ul>
+                      </div>`
+                   : ""
+               }
+               ${
+                 item.kinematics?.length
+                   ? `<div class="formula-sub-section">
+                        <div class="formula-sub-title">Phân tích động học:</div>
+                        <ul class="formula-sub-list">
+                          ${item.kinematics
+                            .map((k) => `<li>${formatInlineText(k)}</li>`)
+                            .join("")}
+                        </ul>
+                      </div>`
+                   : ""
+               }
+               ${
+                 item.equations?.length
+                   ? `<div class="formula-equations">
+                        ${item.equations
+                          .map(
+                            (eq) => `
+                          <div class="formula-equation">
+                            ${
+                              eq.caption
+                                ? `<div class="formula-equation-caption">${formatInlineText(eq.caption)}</div>`
+                                : ""
+                            }
+                            <div class="formula-equation-latex">${renderLatex(eq.latex || "", true)}</div>
+                          </div>
+                        `,
+                          )
+                          .join("")}
+                      </div>`
+                   : ""
+               }
+               ${
+                 item.result
+                   ? `<div class="formula-result">
+                        ${
+                          item.result.label
+                            ? `<div class="formula-result-label">${formatInlineText(item.result.label)}</div>`
+                            : ""
+                        }
+                        <div class="formula-result-latex">${renderLatex(item.result.latex || "", true)}</div>
+                      </div>`
+                   : ""
+               }
+             </div>
+           `,
+             )
+             .join("")}
+         </div>
+       </div>`
+    : "";
+
   const relatedDTC = content.relatedDTC || [];
 
   const relatedDtcHtml = relatedDTC.length
@@ -396,6 +482,7 @@ ${stagesHtml}
 ${imagesHtml}
 ${tableHtml}
 ${specsHtml}
+${formulaHtml}
         </div>
       </div>
 
