@@ -17,27 +17,27 @@
         "explain": [
           {
             "title": "a) Vỏ hộp số và bố trí tổng thành",
-            "text": "U340E dùng vỏ hợp kim nhôm dạng hai nửa (thân chính và nắp/đai bắt), bên trong chia khoang rõ ràng cho từng nhóm cụm: khoang biến mô – bơm dầu ở phía trước (gần động cơ), khoang cơ cấu hành tinh và phần tử ma sát ở vùng giữa, khoang truyền lực cuối – vi sai ở phía sau. Cách bố trí này giúp rút ngắn chiều dài theo phương dọc xe nhưng vẫn đảm bảo đồng tâm giữa trục sơ cấp và cụm cơ cấu hành tinh, đồng thời dễ tổ chức các đường dầu trong thân van và thân hộp.",
+            "text": "U340E dùng vỏ hợp kim nhôm dạng hai nửa (thân chính và nắp/đai bắt), chia làm 3 khoang rõ ràng:\n\n• Phía trước (gần động cơ): khoang biến mô + bơm dầu\n• Vùng giữa: khoang cơ cấu hành tinh + phần tử ma sát\n• Phía sau: khoang truyền lực cuối + vi sai\n\nKết cấu này giúp rút ngắn chiều dài theo phương dọc xe, đảm bảo đồng tâm trục sơ cấp với cụm hành tinh, đồng thời tổ chức đường dầu thuận lợi.",
             "image": "assets/images/s1/s1-1.png",
             "caption": "Hình 1.1 — Hộp số tự động Toyota U340E"
           },
           {
             "title": "Sơ đồ bố trí 13 cụm chính",
-            "text": "Trong tài liệu tính toán, sơ đồ bố trí U340E được liệt kê theo thứ tự các cụm chính từ 1 đến 13:\n\n1/ Trục sơ cấp — 2/ Bơm — 3/ Biến mô thủy lực\n4/ Bánh răng mặt trời trước — 5/ Bánh răng hành tinh trước — 6/ Cần dẫn trước\n7/ Bánh răng bao trước — 8/ Bánh răng bao sau\n9/ Bánh răng mặt trời sau — 10/ Cần dẫn sau\n11/ Bánh răng hành tinh sau — 12/ Bánh răng chủ động — 13/ Bánh răng bị động",
+            "text": "Sơ đồ bố trí U340E được liệt kê theo thứ tự các cụm chính:\n\n• 1–3: Trục sơ cấp, Bơm, Biến mô thủy lực\n• 4–7: Bộ hành tinh trước (mặt trời, hành tinh, cần dẫn, bao)\n• 8–11: Bộ hành tinh sau (bao, mặt trời, cần dẫn, hành tinh)\n• 12–13: Cặp bánh răng trung gian (chủ động & bị động)",
             "image": "assets/images/s1/s1-2.png",
-            "caption": "Hình 1.2 — Sơ đồ bố trí tổng thể hộp số U340E (13 cụm chính)"
+            "caption": "Hình 1.2 — Sơ đồ bố trí tổng thể hộp số U340E (13 cụm)"
           },
           {
-            "title": "b) Cụm nguồn thủy lực và đáy các-te dầu",
-            "text": "Nguồn năng lượng điều khiển (áp suất dầu) do bơm dầu tạo ra. Dầu hộp số được chứa ở các-te, qua lưới lọc, được bơm hút lên để tạo áp suất đường chính, sau đó phân phối qua thân van (valve body) tới các cơ cấu chấp hành (piston ly hợp/phanh) và các kênh bôi trơn – làm mát. Ở góc nhìn tổng quan: bơm dầu + thân van + đường dầu tạo thành hệ mạch tuần hoàn; còn các ly hợp/phanh là phần tử tiêu thụ áp suất để biến năng lượng thủy lực thành lực ép ma sát."
+            "title": "b) Cụm nguồn thủy lực và các-te dầu",
+            "text": "Nguồn năng lượng điều khiển là **áp suất dầu**, do bơm dầu tạo ra.\n\nDầu ATF chứa ở các-te → qua lưới lọc → được bơm hút lên → tạo áp suất đường chính → phân phối qua thân van đến các piston ly hợp/phanh và kênh bôi trơn – làm mát.\n\nNhìn tổng quan: bơm + thân van + đường dầu = **hệ mạch tuần hoàn**. Các ly hợp/phanh là phần tử tiêu thụ áp suất để biến năng lượng thủy lực thành lực ép ma sát."
           },
           {
-            "title": "c) Cụm truyền lực cơ khí: hành tinh + truyền lực cuối",
-            "text": "Về cơ khí, U340E dùng hai bộ truyền hành tinh đơn giản và một cặp bánh răng trung gian, tổ chức theo kiểu CR-CR (Cần dẫn của bộ này liên hệ với bánh răng bao của bộ kia). Nhờ kết cấu này, chỉ với số phần tử ma sát vừa phải vẫn tạo được 4 số tiến và 1 số lùi. Truyền lực cuối và vi sai đặt chung trong vỏ, nhận mô-men từ trục ra của cơ cấu hành tinh qua cặp bánh răng truyền lực cuối rồi phân phối ra 2 bán trục."
+            "title": "c) Cụm truyền lực cơ khí",
+            "text": "U340E dùng **2 bộ truyền hành tinh đơn giản** + **1 cặp bánh răng trung gian**, tổ chức theo kiểu **CR-CR** (Cần dẫn của bộ này nối với bánh răng bao của bộ kia).\n\nNhờ kết cấu này, chỉ với số phần tử ma sát vừa phải vẫn tạo được **4 số tiến + 1 số lùi**.\n\nTruyền lực cuối và vi sai đặt chung vỏ, nhận mô-men từ trục ra của cơ cấu hành tinh qua cặp bánh răng truyền lực cuối rồi phân phối ra 2 bán trục."
           },
           {
-            "title": "d) Nhóm phần tử điều khiển và triết lý thiết kế",
-            "text": "U340E sử dụng triết lý 'ít phần tử nhưng đa nhiệm': C1 tham gia gần như toàn bộ dải số tiến; C2 đảm nhiệm truyền thẳng/OD tùy tổ hợp khóa; C3 dành riêng cho số lùi. Các phanh B1–B3 và khớp một chiều F1–F2 giúp khóa một phần tử hành tinh theo một chiều hoặc cố định theo hai chiều. Vai trò 'nối – giữ' cụ thể: C1 nối trục trung gian với mặt trời trước; C2 nối trục trung gian với cần dẫn sau; C3 nối trục trung gian với mặt trời sau; B1 giữ mặt trời sau; B3 giữ bao trước và cần dẫn sau."
+            "title": "d) Nhóm phần tử điều khiển",
+            "text": "Triết lý thiết kế: **ít phần tử nhưng đa nhiệm**.\n\n• **C1** — tham gia gần như toàn bộ dải số tiến\n• **C2** — đảm nhiệm truyền thẳng / OD\n• **C3** — dành riêng cho số lùi\n• **B1, B2, B3** — phanh giữ phần tử hành tinh\n• **F1, F2** — khớp một chiều, chống quay ngược\n\nVai trò 'nối – giữ' cụ thể: C1 nối trục trung gian với mặt trời trước; C2 nối với cần dẫn sau; C3 nối với mặt trời sau; B3 giữ bao trước và cần dẫn sau."
           }
         ],
         "table": {
@@ -92,13 +92,13 @@
         "explain": [
           {
             "title": "a) Cấu tạo biến mô thủy lực",
-            "text": "Biến mô gồm các thành phần chính:\n\n• Bánh bơm: nằm trong vỏ biến mô, được nối với trục khuỷu nhờ đĩa dẫn động. Bánh bơm có các cánh bơm cong thiết kế phía trong để đảm bảo dòng dầu hoạt động êm.\n\n• Bánh tuabin: lắp trên trục sơ cấp, có các cánh cong ngược chiều so với bánh bơm, nhận năng lượng từ dòng dầu.\n\n• Stator: nằm giữa bánh bơm và bánh tuabin, qua khớp một chiều và cố định trên vỏ hộp số. Stator giúp bổ sung lực đẩy cho bánh bơm và tăng mô-men quay nhờ đổi chiều dòng dầu.\n\n• Ly hợp khóa biến mô (Lock-up Clutch): là đĩa ma sát nằm giữa nắp biến mô và cụm tuabin. Khi xe chạy ổn định, áp suất dầu ép ly hợp dính vào nắp biến mô, tất cả quay cùng tốc độ → loại bỏ trượt, tiết kiệm nhiên liệu.\n\n• Khớp một chiều: giúp stator quay theo chiều trục khuỷu và khóa stator khi quay ngược.\n\n• Vỏ biến mô: bảo vệ các chi tiết bên trong khỏi tác động cơ học.",
+            "text": "Biến mô gồm **6 thành phần chính**:\n\n• **Bánh bơm** — nằm trong vỏ biến mô, nối với trục khuỷu qua đĩa dẫn động. Cánh cong thiết kế phía trong để dòng dầu chảy êm.\n\n• **Bánh tuabin** — lắp trên trục sơ cấp, cánh cong **ngược chiều** so với bánh bơm, nhận năng lượng từ dòng dầu.\n\n• **Stator** — nằm giữa bơm và tuabin, cố định qua khớp một chiều. Đổi hướng dòng dầu → **tăng mô-men**.\n\n• **Ly hợp khóa (Lock-up)** — đĩa ma sát giữa nắp biến mô và tuabin. Khi xe chạy ổn định → ép dính → loại bỏ trượt, tiết kiệm nhiên liệu.\n\n• **Khớp một chiều** — giúp stator quay thuận chiều, khóa khi quay ngược.\n\n• **Vỏ biến mô** — bảo vệ các chi tiết bên trong.",
             "image": "assets/images/s1/s1-3.png",
             "caption": "Hình 1.3 — Cấu tạo biến mô thủy lực"
           },
           {
             "title": "b) Nguyên lý làm việc",
-            "text": "Khi động cơ quay, bánh bơm đẩy dầu ATF từ tâm ra ngoài theo lực ly tâm. Dòng dầu này tác động lên bánh tuabin, làm tuabin quay và truyền mô-men sang trục sơ cấp hộp số. Sau đó dầu đổi hướng và chảy ngược về phía bánh bơm.\n\nỞ tốc độ thấp, dòng dầu hồi ngược chiều quay của bánh bơm tác động mạnh lên stator. Do stator bị khóa bởi khớp một chiều, dòng dầu được đổi hướng theo chiều có lợi → tăng mô-men xoắn truyền sang bánh tuabin.\n\nKhi tốc độ động cơ và tốc độ xe tăng, tốc độ tuabin tiến gần tốc độ bánh bơm, dòng dầu hồi yếu dần, khớp một chiều cho phép stator quay tự do. Lúc này biến mô hoạt động như một khớp nối thủy lực thông thường.\n\nỞ tốc độ cao hoặc tải ổn định, ECU đóng ly hợp khóa biến mô, nối trực tiếp bánh bơm với tuabin → loại bỏ trượt thủy lực."
+            "text": "**Khi động cơ quay:** Bánh bơm đẩy dầu ATF từ tâm ra ngoài theo lực ly tâm → dầu va vào bánh tuabin → tuabin quay → truyền mô-men sang trục sơ cấp hộp số → dầu đổi hướng, chảy ngược về bơm.\n\n**Ở tốc độ thấp:** Dòng dầu hồi ngược chiều tác động mạnh lên stator. Stator bị khóa → đổi hướng dòng dầu → **khuếch đại mô-men** truyền sang tuabin.\n\n**Ở tốc độ cao:** Tuabin tiến gần tốc độ bơm → dòng dầu hồi yếu → stator quay tự do → biến mô hoạt động như **khớp nối thủy lực** (tỷ số ≈ 1:1).\n\n**Tải ổn định:** ECU đóng ly hợp khóa → nối trực tiếp bơm với tuabin → **triệt trượt hoàn toàn**."
           }
         ],
         "stages": [
@@ -162,27 +162,27 @@
         "explain": [
           {
             "title": "a) Vai trò và nhiệm vụ",
-            "text": "Bơm dầu tạo áp suất dầu chính (line pressure) để điều khiển đóng – nhả các ly hợp và phanh, đồng thời cung cấp dầu cho các mạch bôi trơn và làm mát. Đây là nguồn năng lượng chính của toàn bộ hệ thống thủy lực trong hộp số.",
+            "text": "Bơm dầu tạo **áp suất dầu chính (line pressure)** cho toàn bộ hệ thống thủy lực.\n\nÁp suất này phục vụ 3 mục đích:\n\n• Điều khiển **đóng – nhả** các ly hợp và phanh\n• Vận hành **van và solenoid** trong thân van\n• **Bôi trơn và làm mát** các chi tiết bên trong\n\nBơm dầu là nguồn năng lượng chính của toàn bộ hệ thống thủy lực.",
             "image": "assets/images/s1/s1-6.png",
             "caption": "Hình 1.6 — Vị trí bơm dầu thủy lực trên hộp số U340E"
           },
           {
             "title": "b) Vị trí, dẫn động và cấu tạo",
-            "text": "Bơm được đặt ở phía trước hộp số, ngay sau biến mô và được dẫn động trực tiếp từ vỏ biến mô nên luôn hoạt động khi động cơ quay. U340E sử dụng bơm bánh răng trong (trochoid), gồm bánh răng trong – ngoài đặt lệch tâm, vỏ bơm, cửa hút và cửa đẩy, giúp làm việc êm và ổn định.",
+            "text": "**Vị trí:** Phía trước hộp số, ngay sau biến mô.\n\n**Dẫn động:** Trực tiếp từ vỏ biến mô → luôn hoạt động khi động cơ quay.\n\n**Loại bơm:** Bánh răng trong (**trochoid pump**) — phổ biến trong hộp số AT hiện đại.\n\n**Cấu tạo gồm:**\n• Bánh răng trong\n• Bánh răng ngoài đặt lệch tâm\n• Vỏ bơm\n• Cửa hút & cửa đẩy dầu\n\nKết cấu này cho bơm làm việc êm, lưu lượng ổn định, kích thước gọn, chịu được áp suất cao.",
             "image": "assets/images/s1/s1-7.png",
             "caption": "Hình 1.7 — Cấu tạo bơm dầu kiểu bánh răng trong (trochoid)"
           },
           {
             "title": "c) Nguyên lý làm việc",
-            "text": "Khi bơm quay, dầu ATF được hút từ các-te vào buồng bơm nhờ sự tăng thể tích tại cửa hút. Dầu được cuốn theo các răng bánh răng và bị nén khi thể tích giảm, sau đó đẩy ra cửa xả với áp suất cao. Áp suất này được đưa đến thân van để phân phối đến các mạch điều khiển và bôi trơn. Áp suất được điều chỉnh bởi van điều áp và solenoid để phù hợp với trạng thái vận hành."
+            "text": "Bơm quay → dầu ATF được hút từ các-te nhờ **thể tích tăng** ở cửa hút → cuốn theo các răng → **thể tích giảm** → dầu bị nén và đẩy ra cửa xả với áp suất cao.\n\nDầu áp suất cao đi đến thân van → phân phối đến các mạch điều khiển và bôi trơn.\n\nÁp suất **không cố định** mà được điều chỉnh bởi:\n• Van điều áp chính\n• Solenoid điều khiển áp suất (SLT)\n\n→ Phù hợp với tải động cơ, tốc độ xe và trạng thái chuyển số."
           },
           {
-            "title": "d) Đặc điểm làm việc và hư hỏng",
-            "text": "Bơm hoạt động liên tục khi động cơ làm việc, lưu lượng tăng theo tốc độ động cơ nhưng áp suất luôn được kiểm soát.\n\nCác hư hỏng thường gặp:\n- Mòn bánh răng → giảm áp suất dầu\n- Xước vỏ bơm → giảm lưu lượng\n- Hút khí (thiếu dầu) → áp suất dao động\n- Kẹt van điều áp → áp suất không ổn định\n\nKhi bơm hoạt động kém, hộp số có thể bị trượt ly hợp, sang số giật hoặc không vào số."
+            "title": "d) Đặc điểm và hư hỏng thường gặp",
+            "text": "Bơm hoạt động **liên tục** khi động cơ làm việc. Lưu lượng tăng theo tốc độ động cơ, áp suất luôn được kiểm soát.\n\n**4 hư hỏng thường gặp:**\n\n• **Mòn bánh răng** → giảm áp suất dầu\n• **Xước vỏ bơm** → giảm lưu lượng\n• **Hút khí** (do thiếu dầu) → áp suất dao động\n• **Kẹt van điều áp** → áp suất không ổn định\n\nHệ quả: xe bị **trượt ly hợp, sang số giật, mất số, không vào số**."
           },
           {
             "title": "e) Vai trò trong hệ thống hộp số",
-            "text": "Bơm dầu là nguồn cung cấp năng lượng cho toàn bộ hệ thống điều khiển thủy lực. Nếu áp suất dầu không đủ hoặc không ổn định, các ly hợp và phanh sẽ không hoạt động chính xác, dẫn đến sai lệch trong quá trình chuyển số và giảm hiệu suất hộp số."
+            "text": "Bơm dầu là **nguồn năng lượng chính** cho toàn bộ hệ thống điều khiển thủy lực.\n\nNếu áp suất dầu **không đủ hoặc không ổn định**:\n• Ly hợp và phanh không hoạt động chính xác\n• Sai lệch trong quá trình chuyển số\n• Giảm hiệu suất tổng thể của hộp số\n\n→ Đây là lý do **bảo dưỡng dầu ATF đúng định kỳ** đặc biệt quan trọng."
           }
         ],
         "specs": {
@@ -243,16 +243,16 @@
       "id": "1.4",
       "title": "Bộ truyền bánh răng hành tinh",
       "content": {
-        "intro": "Bộ truyền bánh răng hành tinh (Ravigneaux Planetary Gear) là trung tâm của hộp số, tạo ra các tỉ số truyền khác nhau thông qua việc khóa hoặc thả các thành phần của bánh răng.",
+        "intro": "Bộ bánh răng hành tinh (planetary gear set) là **trái tim của hộp số tự động** — cơ cấu truyền động đặc biệt nơi các bánh răng vừa quay quanh trục của chính nó, vừa quay quanh trục khác (giống như hành tinh quay quanh mặt trời). Cơ cấu này quyết định các cấp số, hướng truyền lực và cả chức năng đảo chiều khi lùi.",
         "keyPoints": [
-          "U340E sử dụng 2 bộ bánh răng hành tinh đơn giản nối tiếp nhau",
-          "Bộ hành tinh trước (Front): tạo số 1, số 2, số lùi",
-          "Bộ hành tinh sau (Rear): tạo số 3, OD (số 4)",
-          "Mỗi bộ gồm: bánh răng mặt trời, bánh răng hành tinh, cần dẫn, vành răng",
-          "Chuyển số bằng cách khóa/thả các bộ phận thông qua ly hợp và phanh"
+          "U340E dùng **2 bộ bánh răng hành tinh đơn giản** nối tiếp",
+          "Tổ chức theo kiểu **CR-CR** (Cần dẫn – Bánh răng bao liên hệ nhau)",
+          "4 bộ phận cơ bản: mặt trời, hành tinh, giá đỡ, bánh răng bao",
+          "Tạo 4 số tiến + 1 số lùi chỉ với số phần tử ma sát vừa phải",
+          "Kích thước nhỏ gọn, chịu mô-men lớn, hoạt động êm ái"
         ],
         "specs": {
-          "title": "Tỉ số truyền các số",
+          "title": "Tỉ số truyền U340E",
           "rows": [
             {
               "param": "Số 1 (1st)",
@@ -264,11 +264,11 @@
             },
             {
               "param": "Số 3 (3rd)",
-              "value": "1.000"
+              "value": "1.000 (truyền thẳng)"
             },
             {
               "param": "Số 4 / OD",
-              "value": "0.700"
+              "value": "0.700 (số tăng)"
             },
             {
               "param": "Số lùi (R)",
@@ -276,60 +276,159 @@
             }
           ]
         },
-        "images": [
+        "relatedDTC": [],
+        "explain": [
           {
-            "src": "assets/images/s1/s1-8.png",
-            "caption": "Hình 1.8 — Sơ đồ bộ truyền hành tinh U340E"
+            "title": "a) Khái niệm và vai trò",
+            "text": "Bộ bánh răng hành tinh được sử dụng **rất phổ biến** trong hộp số tự động AT, hộp số hybrid và nhiều thiết bị công nghiệp.\n\n**Ưu thế chính:**\n\n• Tạo **nhiều tỷ số truyền** trong phạm vi nhỏ gọn\n• Chuyển số **mượt và liên tục**\n• Tạo số tiến, số lùi, tăng tốc, giảm tốc mà không đổi hướng quay phức tạp\n• Truyền **mô-men lớn** mà vẫn đảm bảo độ bền\n\n→ Gần như **100% hộp số tự động truyền thống (AT)** đều sử dụng 1–3 bộ bánh răng hành tinh.",
+            "image": "assets/images/s1/s1-8.png",
+            "caption": "Hình 1.8 — Cấu tạo bánh răng hành tinh"
+          },
+          {
+            "title": "b) Cấu tạo và nguyên lý",
+            "text": "Một bộ bánh răng hành tinh cơ bản gồm **4 bộ phận chính**:\n\n• **Bánh răng mặt trời** — nằm ở trung tâm, nhận hoặc truyền mô-men từ trục vào\n• **Bánh răng hành tinh** — ăn khớp đồng thời với mặt trời và bánh răng bao, bố trí đều xung quanh\n• **Giá đỡ bánh răng hành tinh (carrier)** — giữ các bánh hành tinh, thường chịu mô-men lớn nhất\n• **Bánh răng bao (ring gear)** — bao quanh bên ngoài, có răng phía trong\n\n**Nguyên lý hoạt động** dựa trên việc điều khiển trạng thái 3 phần tử chính (mặt trời, bánh răng bao, giá hành tinh):\n\n• **1 phần tử cố định** — khóa bằng phanh hoặc ly hợp\n• **1 phần tử đầu vào** — nối với trục động cơ\n• **1 phần tử đầu ra** — truyền mô-men\n\nTùy cách kết hợp → tạo ra tỷ số **giảm tốc, tăng tốc, truyền thẳng hoặc đảo chiều quay**.",
+            "image": "assets/images/s1/s1-10.png",
+            "caption": "Hình 1.10 — Nguyên lý bánh răng hành tinh"
+          },
+          {
+            "title": "c) Kết cấu CR-CR của U340E",
+            "text": "U340E sử dụng **2 bộ truyền hành tinh đơn giản** và tổ chức theo kiểu **CR-CR**.\n\n**CR-CR là gì?**\n\n• **C** = Cần dẫn (Carrier)\n• **R** = Bánh răng bao (Ring gear)\n• **CR-CR** = Cần dẫn của bộ này **nối với** bánh răng bao của bộ kia\n\n→ Tạo **chuỗi truyền linh hoạt** giữa 2 bộ hành tinh.\n\n**Ý nghĩa thực tế:** Liên kết CR-CR giúp U340E tạo được **số 4 (OD)** bằng cách gom một bộ hành tinh thành khối quay tốc độ cao hơn khi các phần tử thích hợp được khóa.",
+            "image": "assets/images/s1/s1-11.png",
+            "caption": "Hình 1.11 — Bộ truyền hành tinh kiểu CR-CR của U340E"
+          },
+          {
+            "title": "d) Ưu và nhược điểm",
+            "text": "**Ưu điểm:**\n\n• Kích thước **nhỏ gọn**, khả năng truyền mô-men lớn\n• **Phân bố tải đều** trên nhiều bánh răng\n• Tạo được nhiều tỷ số truyền với số bánh răng hạn chế\n• Hiệu suất cao, độ bền lớn, hoạt động êm ái\n\n**Nhược điểm:**\n\n• **Cấu tạo phức tạp** — yêu cầu độ chính xác cao trong gia công và lắp ráp\n• **Phụ thuộc dầu bôi trơn** — dầu bẩn hoặc thiếu → mòn nhanh bánh răng và ổ trục\n• **Sửa chữa tốn kém** — đòi hỏi kỹ thuật cao"
           }
-        ],
-        "relatedDTC": []
+        ]
       }
     },
     {
       "id": "1.5",
       "title": "Ly hợp - Phanh - Khớp 1 chiều",
       "content": {
-        "intro": "Các bộ phận điều khiển chuyển số bao gồm ly hợp (Clutch), phanh (Brake) và khớp một chiều (One-Way Clutch). Chúng được điều khiển bởi áp suất thủy lực từ Valve Body để chọn tỉ số truyền phù hợp.",
+        "intro": "Hộp số U340E sử dụng **3 nhóm phần tử điều khiển**: ly hợp (Clutch), phanh (Brake) và khớp một chiều (One-Way Clutch). Ly hợp và phanh được điều khiển bởi áp suất thủy lực từ Valve Body, trong khi khớp một chiều hoạt động tự động theo chiều quay — không cần điều khiển điện tử. Sự phối hợp của 3 nhóm này tạo ra các cấp số khác nhau.",
         "keyPoints": [
-          "C1 (Forward Clutch): ly hợp tiến — hoạt động ở tất cả số tiến",
-          "C2 (Direct Clutch): ly hợp trực tiếp — số 3 và số 4",
-          "B1 (2nd Coast Brake): phanh dải số 2",
-          "B2 (2nd Brake): phanh số 2 (điện tử)",
-          "B3 (1st & Reverse Brake): phanh số 1 và số lùi",
-          "F1, F2 (One-Way Clutch): khớp một chiều chống trơn"
+          "**3 ly hợp** C1, C2, C3 — truyền mô-men đến phần tử hành tinh",
+          "**3 phanh** B1, B2, B3 — giữ cố định phần tử hành tinh",
+          "**2 khớp một chiều** F1, F2 — hoạt động tự động theo chiều quay",
+          "Ly hợp & phanh điều khiển bằng **áp suất thủy lực + ECU**",
+          "Khớp một chiều giúp chuyển số **êm hơn, giảm mài mòn**"
         ],
         "specs": {
-          "title": "Bảng hoạt động ly Hợp - phanh",
+          "title": "Bảng phần tử nối/giữ theo số",
           "rows": [
             {
               "param": "Số 1",
-              "value": "C1 + F2 (hoặc B3)"
+              "value": "C1 + F2 (hoặc B3 khi kéo số)"
             },
             {
               "param": "Số 2",
               "value": "C1 + B2 + F1"
             },
             {
-              "param": "Số 3",
+              "param": "Số 3 (truyền thẳng)",
               "value": "C1 + C2"
             },
             {
-              "param": "Số 4",
+              "param": "Số 4 (OD)",
               "value": "C2 + B2"
             },
             {
-              "param": "Số lùi",
+              "param": "Số lùi (R)",
               "value": "C2 + B3"
             }
           ]
         },
-        "images": [
+        "relatedDTC": [],
+        "explain": [
           {
-            "src": "assets/images/s1/s1-9.png",
-            "caption": "Hình 1.9 — Vị trí ly hợp và phanh trong hộp số"
+            "title": "a) Ba ly hợp C1 - C2 - C3",
+            "text": "U340E dùng **3 ly hợp ma sát chính**:\n\n• **C1 (Forward clutch)** — ly hợp số tiến, đặt phía trước gần biến mô. Nối trục trung gian với bánh răng mặt trời của **bộ hành tinh trước**. Tham gia hầu hết số tiến → tần suất làm việc cao.\n\n• **C2 (Direct clutch)** — ly hợp truyền thẳng/OD. Nối trục trung gian với cần dẫn của **bộ hành tinh sau**. Khi C2 đóng → mô-men đi sâu vào chuỗi CR-CR, tạo số 3 (truyền thẳng), tham gia số 4 khi kết hợp với phanh.\n\n• **C3 (Reverse clutch)** — ly hợp số lùi. Nối trục trung gian với bánh răng mặt trời của **bộ hành tinh sau**. Kết hợp với phanh B3 → đổi chiều quay đầu ra, tạo số lùi.",
+            "image": "assets/images/s1/s1-12.png",
+            "caption": "Hình 1.12 — Vị trí các ly hợp và phanh trong hộp số U340E"
+          },
+          {
+            "title": "Hoạt động ăn khớp (đóng ly hợp)",
+            "text": "Khi ECU điều khiển **đóng** một cấp số:\n\n• Van solenoid trong Valve Body **mở**\n• Dầu hộp số áp suất cao đi vào **khoang piston** của ly hợp\n• Áp suất đẩy piston → viên bi đóng kín van một chiều\n• Lực ép **thắng lò xo hồi** → ép chặt đĩa ma sát và đĩa ép\n\n→ Các bề mặt ép chặt quay **như một khối thống nhất** → truyền mô-men từ trục vào đến trục ra, hoặc giữ cố định bộ bánh răng hành tinh.",
+            "image": "assets/images/s1/s1-14.png",
+            "caption": "Hình 1.14 — Hoạt động ăn khớp của ly hợp"
+          },
+          {
+            "title": "Hoạt động nhả khớp (mở ly hợp)",
+            "text": "Khi ECU điều khiển **nhả** ly hợp (sang số hoặc dừng xe):\n\n• Van solenoid **đóng** → ngắt áp suất dầu vào khoang piston\n• Viên bi rời khỏi van một chiều nhờ **lực ly tâm**\n• Dầu trong xi lanh xả ngược ra ngoài qua van một chiều\n• Áp suất thủy lực giảm nhanh về 0\n• **Lò xo hồi vị** đưa piston về vị trí ban đầu\n\n→ Lực ép mất đi, đĩa ma sát tách rời → **mất khả năng truyền mô-men**. Dòng mô-men chuyển qua ly hợp/phanh khác để tạo tỉ số truyền mới.",
+            "image": "assets/images/s1/s1-15.png",
+            "caption": "Hình 1.15 — Hoạt động nhả khớp của ly hợp"
+          },
+          {
+            "title": "b) Ba phanh B1 - B2 - B3",
+            "text": "Nếu **ly hợp** dùng để truyền mô-men từ trục sơ cấp đến phần tử hành tinh, thì **phanh** được dùng để **giữ cố định** một phần tử bánh răng hành tinh. Việc giữ này thay đổi mối quan hệ giữa các bánh răng → tạo ra các tỉ số truyền khác nhau.\n\n**Nguyên lý tương tự ly hợp:**\n\n• Áp suất cao → piston ép chặt đĩa ma sát vào vỏ phanh\n• Phần tử bị **khóa chặt** với vỏ hộp số\n• Áp suất giảm → lò xo hồi đẩy piston về → phanh nhả\n\n**U340E có 3 phanh:**\n\n• **B1** — O/D & 2nd brake (phanh số 2 và Overdrive)\n• **B2** — 2nd brake (phanh số 2)\n• **B3** — 1st & Reverse brake (phanh số 1 và số lùi)",
+            "image": "assets/images/s1/s1-17.png",
+            "caption": "Hình 1.17 — Phanh trong hộp số U340E"
+          },
+          {
+            "title": "c) Khớp một chiều (One-Way Clutch) — Tổng quan",
+            "text": "Khớp một chiều là cơ cấu cơ khí đặc biệt:\n\n• **Chỉ cho phép** mô-men truyền theo **một chiều** nhất định\n• **Trượt tự do** khi quay theo chiều ngược lại\n\n**2 dạng phổ biến:**\n\n• **Sprag Clutch** — sử dụng các con chêm hình elip, nghiêng để khóa/kẹp khi quay ngược chiều\n• **Roller Clutch** — sử dụng con lăn lò xo, khi quay ngược thì con lăn kẹt trong rãnh → tạo khóa\n\n**Ưu điểm nổi bật:**\n\n• Hoạt động **tự động**, phản ứng nhanh\n• **Không cần** điều khiển bằng thủy lực\n• Chuyển số **mượt hơn**, giảm số lần đóng/ngắt phanh hoặc ly hợp"
+          },
+          {
+            "title": "Khớp F1 (No.1 One-Way Clutch)",
+            "text": "**Kiểu loại:** Sprag clutch với **16 con chêm**\n\n**Chức năng:**\n\n• Ngăn **bánh răng mặt trời của bộ hành tinh sau** quay ngược chiều kim đồng hồ\n• Cho phép truyền mô-men theo một chiều, tự do chiều còn lại\n• Giữ/nhả phần tử hành tinh **không cần điều khiển thủy lực**\n\n**Vị trí:** Giữa bánh răng mặt trời bộ hành tinh sau và vỏ hộp số. Làm việc cùng **phanh B2** trong các cấp số thấp và trung gian.\n\n**Đặc điểm:**\n\n• Không cần piston, không cần áp suất dầu\n• Hoạt động theo chiều quay và mô-men\n• **Giảm va đập** khi chuyển số, đặc biệt khi tăng tốc\n• Khi nhả ga → F1 quay tự do → giảm phanh động cơ",
+            "image": "assets/images/s1/s1-22.png",
+            "caption": "Hình 1.22 — Khớp một chiều F1"
+          },
+          {
+            "title": "Khớp F2 (U/D One-Way Clutch)",
+            "text": "**Kiểu loại:** Sprag clutch với **15 con chêm**\n\n**Chức năng:**\n\n• Ngăn **bánh răng bao bộ hành tinh trước** và **giá hành tinh bộ hành tinh sau** quay ngược chiều kim đồng hồ\n• Hỗ trợ tạo tỉ số truyền ở các cấp số thấp, đặc biệt khi **khởi hành**\n\n**Vị trí:** Tại cụm liên kết giữa front ring gear và rear planetary carrier. Làm việc phối hợp với **phanh B3 và ly hợp C1** trong số 1.\n\n**Đặc điểm:**\n\n• Hoạt động tự động, không cần điều khiển thủy lực\n• **Đơn giản hóa** hệ thống điều khiển\n• **Tăng độ êm dịu** khi chuyển số, giảm mài mòn phanh ma sát\n• Khi xe chạy ổn định hoặc giảm tốc → F2 quay tự do",
+            "image": "assets/images/s1/s1-24.png",
+            "caption": "Hình 1.24 — Khớp một chiều F2"
           }
         ],
-        "relatedDTC": []
+        "table": {
+          "title": "Bảng 1.3 — Tổng hợp chức năng các phần tử điều khiển U340E",
+          "headers": ["Ký hiệu", "Tên gọi", "Chức năng"],
+          "rows": [
+            [
+              "C1",
+              "Ly hợp số tiến",
+              "Nối trục trung gian và bánh răng mặt trời bộ hành tinh trước"
+            ],
+            [
+              "C2",
+              "Ly hợp truyền thẳng",
+              "Nối trục trung gian và cần dẫn bộ hành tinh sau"
+            ],
+            [
+              "C3",
+              "Ly hợp số lùi",
+              "Nối trục trung gian và bánh răng mặt trời bộ hành tinh sau"
+            ],
+            [
+              "B1",
+              "Phanh OD và số 2",
+              "Giữ bánh răng mặt trời bộ hành tinh sau"
+            ],
+            [
+              "B2",
+              "Phanh số 2",
+              "Ngăn bánh răng mặt trời bộ hành tinh sau quay ngược"
+            ],
+            [
+              "B3",
+              "Phanh số lùi và số 1",
+              "Giữ bánh răng bao bộ hành tinh trước và cần dẫn bộ hành tinh sau"
+            ],
+            [
+              "F1",
+              "Khớp 1 chiều số 1",
+              "Ngăn bánh răng mặt trời bộ hành tinh sau quay ngược"
+            ],
+            [
+              "F2",
+              "Khớp 1 chiều số 2",
+              "Ngăn bánh răng bao bộ hành tinh trước + cần dẫn bộ hành tinh sau quay ngược"
+            ]
+          ]
+        }
       }
     }
   ]
