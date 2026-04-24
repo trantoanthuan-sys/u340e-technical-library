@@ -480,9 +480,9 @@ ${diagramHtml}
 ${explainHtml}
 ${stagesHtml}
 ${imagesHtml}
-${tableHtml}
-${specsHtml}
 ${formulaHtml}
+${specsHtml}
+${tableHtml}
         </div>
       </div>
 

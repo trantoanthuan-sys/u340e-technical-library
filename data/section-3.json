@@ -65,9 +65,7 @@
             }
           ]
         },
-        "relatedDTC": [
-          "P0731"
-        ]
+        "relatedDTC": ["P0731"]
       }
     },
     {
@@ -133,9 +131,7 @@
             }
           ]
         },
-        "relatedDTC": [
-          "P0732"
-        ]
+        "relatedDTC": ["P0732"]
       }
     },
     {
@@ -191,9 +187,7 @@
             }
           ]
         },
-        "relatedDTC": [
-          "P0733"
-        ]
+        "relatedDTC": ["P0733"]
       }
     },
     {
@@ -257,9 +251,7 @@
             }
           ]
         },
-        "relatedDTC": [
-          "P0734"
-        ]
+        "relatedDTC": ["P0734"]
       }
     },
     {
@@ -334,111 +326,112 @@
       "id": "3.6",
       "title": "Tính toán tỉ số truyền",
       "content": {
-        "intro": "U340E sử dụng cụm bánh răng hành tinh **CR-CR**, gồm 1 bộ hành tinh trước, 1 bộ hành tinh sau và cặp bánh răng trung gian. Phần này áp dụng **phương trình Willis** để tính tỉ số truyền cho từng tay số dựa trên thông số số răng thực tế.",
-        "keyPoints": [
-          "Áp dụng **phương trình Willis**: R + S·T_P = R·T_R + S·T_S",
-          "Bộ hành tinh trước: **S₁ = 46, R₁ = 85**",
-          "Bộ hành tinh sau: **S₂ = 32, R₂ = 75**",
-          "Bánh răng trung gian: **Z chủ động = 52, Z bị động = 53**",
-          "Đặc điểm CR-CR: **T_P1 = T_R2** và **T_P2 = T_R1**"
-        ],
+        "intro": "U340E dùng cụm bánh răng hành tinh CR-CR, gồm 01 bộ hành tinh trước, 01 bộ hành tinh sau và cặp bánh răng trung gian.",
         "explain": [
           {
-            "title": "Thông số đầu vào",
-            "text": "**Các thông số số răng (theo tài liệu tính toán):**\n\n• **Bộ hành tinh trước:** S₁ = 46, R₁ = 85 (bánh hành tinh = 21)\n• **Bộ hành tinh sau:** S₂ = 32, R₂ = 75 (bánh hành tinh = 21)\n• **Bánh răng trung gian:** Z chủ động = 52, Z bị động = 53\n\n**Ký hiệu:**\n\n• **S** — Bánh răng mặt trời (Sun gear)\n• **R** — Bánh răng bao (Ring gear)\n• **P** — Cần dẫn hành tinh (Planet carrier)\n• **T** — Số răng của bộ phận tương ứng"
+            "title": "Các thông số số răng (theo tài liệu tính toán)",
+            "text": "• Bộ hành tinh trước: S1 = 46, R1 = 85, (bánh hành tinh = 21)\n• Bộ hành tinh sau: S2 = 32, R2 = 75, (bánh hành tinh = 21)\n• Bánh răng trung gian: Z chủ động = 52, Z bị động = 53"
           }
         ],
         "formula": {
           "title": "Tính toán tỉ số truyền các tay số",
           "items": [
             {
-              "label": "Tay số 1",
-              "description": "Ly hợp **C1** hoạt động, ly hợp một chiều **F2** hoạt động.\n\n**Dòng truyền công suất:** Bánh bơm → Bánh tuabin → Trục sơ cấp → C1 → Bánh răng mặt trời trước → Bánh răng hành tinh trước → Cần dẫn trước → Bánh răng chủ động → Bánh răng bị động.",
+              "label": "Số 1",
+              "description": "Ly hợp C1 hoạt động, ly hợp một chiều F2 hoạt động. Dòng truyền công suất: Bánh bơm → Bánh tuabin → Trục sơ cấp → Ly hợp C1 hoạt động làm bánh răng mặt trời trước quay → Bánh răng hành tinh trước → Cần dẫn trước → Bánh răng chủ động → Bánh răng bị động.",
               "states": [
                 "Ly hợp C1: làm việc",
                 "Phanh B3: làm việc",
                 "Khớp một chiều F2: làm việc"
               ],
               "kinematics": [
-                "Chủ động: bánh răng mặt trời trước → T_S = T_in",
-                "Bị hãm: bánh răng bao trước → T_R = 0",
-                "Đầu ra: cần dẫn hành tinh trước → T_P = T_out"
+                "Chủ động: bánh răng mặt trời trước → TS = Tin",
+                "Bị hãm: bánh răng bao trước → TR = 0",
+                "Đầu ra: cần dẫn hành tinh trước → TP = Tout"
               ],
               "equations": [
                 {
-                  "caption": "Công thức Willis:",
+                  "caption": "Công thức:",
                   "latex": "R + S \\cdot T_P = R \\cdot T_R + S \\cdot T_S"
                 },
                 {
                   "caption": "Thế số:",
-                  "latex": "85 + 46 \\cdot T_{out} = 85 \\cdot 0 + 46 \\cdot T_{in}"
+                  "latex": "85 + 46 \\cdot T_{out} = 85 \\times 0 + 46 \\cdot T_{in}"
                 },
                 {
-                  "caption": "Rút gọn:",
+                  "caption": "",
                   "latex": "131 \\cdot T_{out} = 46 \\cdot T_{in}"
                 }
               ],
               "result": {
-                "label": "Tỉ số truyền tay số 1:",
-                "latex": "i_1 = \\frac{T_{in}}{T_{out}} \\cdot i_{tg} = \\frac{131}{46} \\cdot \\frac{53}{52} \\approx 2{,}903"
+                "label": "Tính tỉ số truyền tay số 1:",
+                "latex": "i_1 = \\frac{T_{in}}{T_{out}} \\times i_{trung\\;gian} = \\frac{131}{46} \\times \\frac{53}{52} = 2{,}903"
               }
             },
             {
-              "label": "Tay số 2",
-              "description": "Ly hợp **C1** hoạt động, phanh **B2** hoạt động, ly hợp một chiều **F1** hoạt động.\n\n**Dòng công suất chia 2 nhánh:**\n\n• **Nhánh bộ hành tinh trước:** như ở tay số 1\n• **Nhánh bộ hành tinh sau:** Bánh răng hành tinh trước → Bánh răng bao trước → Cần dẫn sau → Bánh răng hành tinh sau → Bánh răng bao sau → Cần dẫn trước\n\nKết hợp cả 2 nhánh truyền đến Bánh răng chủ động → Bánh răng bị động.",
+              "label": "Số 2",
+              "description": "Ly hợp C1 hoạt động, phanh B2 hoạt động, ly hợp một chiều F1 hoạt động. Dòng truyền công suất: Bánh bơm → Bánh tuabin → Trục sơ cấp → Ly hợp C1 hoạt động làm bánh răng mặt trời trước quay → Bánh răng hành tinh trước. Lúc này dòng công suất chia làm 2 nhánh:\n\nNhánh bộ hành tinh trước: như ở tay số 1.\n\nNhánh bộ hành tinh sau: Bánh răng hành tinh trước → Bánh răng bao trước → Cần dẫn sau → Bánh răng hành tinh sau → Bánh răng bao sau → Cần dẫn trước.\n\nKết hợp cả 2 nhánh truyền đến Bánh răng chủ động → Bánh răng bị động.",
               "states": [
                 "Ly hợp C1: làm việc",
                 "Phanh B2: làm việc",
                 "Khớp một chiều F1: làm việc"
               ],
               "kinematics": [
-                "Chủ động: bánh răng mặt trời trước → T_{S1} = T_in",
-                "Bị hãm: bánh răng mặt trời sau → T_{S2} = 0",
-                "Đầu ra: cần dẫn trước → T_{P1} = T_out"
+                "Chủ động: bánh răng mặt trời trước → TS1 = Tin",
+                "Bị hãm: bánh răng mặt trời sau → TS2 = 0",
+                "Đầu ra: cần dẫn trước → TP1 = Tout"
               ],
               "equations": [
                 {
-                  "caption": "Đặc điểm CR-CR:",
+                  "caption": "Do hộp số U340E sử dụng cụm bánh răng hành tinh kiểu CR–CR nên:",
                   "latex": "T_{P1} = T_{R2} \\quad ; \\quad T_{P2} = T_{R1}"
                 },
                 {
-                  "caption": "Xét bộ hành tinh trước (1):",
-                  "latex": "R_1 + S_1 \\cdot T_{P1} = R_1 \\cdot T_{R1} + S_1 \\cdot T_{S1}"
+                  "caption": "Xét bộ hành tinh trước:",
+                  "latex": "R_1 + S_1 \\cdot T_{P1} = R_1 \\cdot T_{R1} + S_1 \\cdot T_{S1} \\quad (1)"
                 },
                 {
-                  "caption": "Xét bộ hành tinh sau (2):",
-                  "latex": "R_2 + S_2 \\cdot T_{P2} = R_2 \\cdot T_{R2} + S_2 \\cdot 0"
+                  "caption": "Xét bộ hành tinh sau:",
+                  "latex": "R_2 + S_2 \\cdot T_{P2} = R_2 \\cdot T_{R2} + S_2 \\cdot T_{S2}"
                 },
                 {
-                  "caption": "Từ (2) rút ra:",
-                  "latex": "T_{P2} = \\frac{R_2}{R_2 + S_2} \\cdot T_{R2}"
+                  "caption": "",
+                  "latex": "R_2 + S_2 \\cdot T_{P2} = R_2 \\cdot T_{R2} + S_2 \\times 0"
                 },
                 {
-                  "caption": "Thế vào (1):",
-                  "latex": "\\left(R_1 + S_1 - \\frac{R_1 \\cdot R_2}{R_2 + S_2} \\cdot S_1\\right) \\cdot T_{P1} = S_1 \\cdot T_{S1}"
+                  "caption": "",
+                  "latex": "T_{P2} = \\frac{R_2}{R_2 + S_2} \\cdot T_{R2} \\quad (2)"
+                },
+                {
+                  "caption": "Thế (2) ; T_{P1} = T_{R2} ; T_{P2} = T_{R1} vào (1):",
+                  "latex": "R_1 + S_1 \\cdot T_{P1} = \\frac{R_1 R_2}{R_2 + S_2} \\cdot T_{P1} + S_1 \\cdot T_{S1}"
+                },
+                {
+                  "caption": "",
+                  "latex": "\\left(R_1 + S_1 - \\frac{R_1 R_2}{R_2 + S_2} \\cdot S_1\\right) \\cdot T_{P1} = T_{S1}"
                 }
               ],
               "result": {
-                "label": "Tỉ số truyền tay số 2:",
-                "latex": "i_2 = \\frac{T_{S1}}{T_{P1}} \\cdot i_{tg} = \\frac{R_1 + S_1 - \\frac{R_1 R_2}{R_2 + S_2}}{S_1} \\cdot i_{tg} = \\frac{85 + 46 - \\frac{85 \\cdot 75}{75 + 32}}{46} \\cdot \\frac{53}{52} \\approx 1{,}582"
+                "label": "Tính tỉ số truyền tay số 2:",
+                "latex": "i_2 = \\frac{T_{in}}{T_{out}} \\times i_{trung\\;gian} = \\frac{T_{S1}}{T_{P1}} \\times i_{trung\\;gian} = \\frac{R_1 + S_1 - \\frac{R_1 R_2}{R_2 + S_2}}{S_1} \\times i_{trung\\;gian} = \\frac{85 + 46 - \\frac{85 \\times 75}{75 + 32}}{46} \\times \\frac{53}{52} = 1{,}582"
               }
             },
             {
-              "label": "Tay số 3",
-              "description": "Ly hợp **C1, C2** hoạt động, phanh **B2** hoạt động.\n\n**Dòng truyền công suất:** Bánh bơm → Bánh tuabin → Trục sơ cấp → C1, C2 → Cần dẫn sau và bánh răng mặt trời trước quay **cùng chiều, cùng tốc độ** → Cần dẫn trước quay → Bánh răng chủ động → Bánh răng bị động.",
+              "label": "Số 3",
+              "description": "Ly hợp C1, C2 hoạt động, phanh B2 hoạt động. Dòng truyền công suất: Bánh bơm → Bánh tuabin → Trục sơ cấp → Ly hợp C1, C2 hoạt động làm cho cần dẫn sau và bánh răng mặt trời trước quay cùng chiều cùng tốc độ → Cần dẫn trước quay → Bánh răng chủ động → Bánh răng bị động.",
               "states": [
                 "Ly hợp C1: làm việc",
-                "Ly hợp C2: làm việc",
-                "Phanh B2: làm việc"
+                "Phanh B2: làm việc",
+                "Ly hợp C2: làm việc"
               ],
               "kinematics": [
-                "Chủ động: bánh răng mặt trời trước, cần dẫn sau → T_{S1} = T_{P2} = T_in",
-                "Bị hãm: bánh răng mặt trời sau → T_{S2} = 0",
-                "Đầu ra: cần dẫn sau → T_{P1} = T_out"
+                "Chủ động: bánh răng mặt trời trước; cần dẫn sau → TS1 = TP2 = Tin",
+                "Bị hãm: bánh răng mặt trời sau → TS2 = 0",
+                "Đầu ra: cần dẫn sau → TP1 = Tout"
               ],
               "equations": [
                 {
-                  "caption": "Đặc điểm CR-CR:",
+                  "caption": "Do hộp số U340E sử dụng cụm bánh răng hành tinh kiểu CR–CR nên:",
                   "latex": "T_{P1} = T_{R2} \\quad ; \\quad T_{P2} = T_{R1}"
                 },
                 {
@@ -446,31 +439,39 @@
                   "latex": "R_1 + S_1 \\cdot T_{P1} = R_1 \\cdot T_{R1} + S_1 \\cdot T_{S1}"
                 },
                 {
-                  "caption": "Có T_{R1} = T_{P2} = T_{S1} = T_in (do C1, C2 làm việc):",
+                  "caption": "Có T_{R1} = T_{P2}:",
+                  "latex": "R_1 + S_1 \\cdot T_{P1} = R_1 \\cdot T_{P2} + S_1 \\cdot T_{S1}"
+                },
+                {
+                  "caption": "Có T_{P2} = T_{S1} = T_{in} (Do ly hợp C1, C2 làm việc):",
+                  "latex": "R_1 + S_1 \\cdot T_{P1} = R_1 \\cdot T_{S1} + S_1 \\cdot T_{S1}"
+                },
+                {
+                  "caption": "",
                   "latex": "R_1 + S_1 \\cdot T_{P1} = (R_1 + S_1) \\cdot T_{S1}"
                 }
               ],
               "result": {
-                "label": "Tỉ số truyền tay số 3:",
-                "latex": "i_3 = \\frac{T_{S1}}{T_{P1}} \\cdot i_{tg} = \\frac{R_1 + S_1}{R_1 + S_1} \\cdot \\frac{53}{52} \\approx 1{,}019"
+                "label": "Tính tỉ số truyền tay số 3:",
+                "latex": "i_3 = \\frac{T_{in}}{T_{out}} \\times i_{trung\\;gian} = \\frac{T_{S1}}{T_{P1}} \\times i_{trung\\;gian} = \\frac{R_1 + S_1}{R_1 + S_1} \\times \\frac{53}{52} = 1{,}019"
               }
             },
             {
-              "label": "Tay số 4 (Overdrive)",
-              "description": "Ly hợp **C2**, phanh **B1, B2** hoạt động.\n\n**Dòng truyền công suất:** Bánh bơm → Bánh tuabin → Trục sơ cấp → C2 → Cần dẫn sau → Bánh răng mặt trời sau → Bánh răng bao sau → Cần dẫn trước → Bánh răng chủ động → Bánh răng bị động.",
+              "label": "Số 4",
+              "description": "Ly hợp C2, phanh B1, B2 hoạt động. Dòng truyền công suất: Bánh bơm → Bánh tuabin → Trục sơ cấp → Ly hợp C2 hoạt động làm cho cần dẫn sau quay → Bánh răng mặt trời sau → Bánh răng bao sau → Cần dẫn trước quay → Bánh răng chủ động → Bánh răng bị động.",
               "states": [
                 "Ly hợp C2: làm việc",
                 "Phanh B1: làm việc",
                 "Phanh B2: làm việc"
               ],
               "kinematics": [
-                "Chủ động: cần dẫn sau → T_{P2} = T_in",
-                "Bị hãm: bánh răng mặt trời sau → T_{S2} = 0",
-                "Đầu ra: cần dẫn trước → T_{P1} = T_out"
+                "Chủ động: bánh răng mặt trời trước; cần dẫn sau → TP2 = Tin",
+                "Bị hãm: bánh răng mặt trời sau → TS2 = 0",
+                "Đầu ra: cần dẫn sau → TP1 = Tout"
               ],
               "equations": [
                 {
-                  "caption": "Đặc điểm CR-CR:",
+                  "caption": "Do hộp số U340E sử dụng cụm bánh răng hành tinh kiểu CR–CR nên:",
                   "latex": "T_{P1} = T_{R2} \\quad ; \\quad T_{P2} = T_{R1}"
                 },
                 {
@@ -478,34 +479,31 @@
                   "latex": "R_2 + S_2 \\cdot T_{P2} = R_2 \\cdot T_{R2} + S_2 \\cdot T_{S2}"
                 },
                 {
-                  "caption": "Thay T_{S2} = 0 và T_{R2} = T_{P1}:",
-                  "latex": "R_2 + S_2 \\cdot T_{P2} = R_2 \\cdot T_{P1}"
+                  "caption": "",
+                  "latex": "R_2 + S_2 \\cdot T_{P2} = R_2 \\cdot T_{P1} + S_2 \\times 0"
                 },
                 {
-                  "caption": "Rút gọn:",
+                  "caption": "",
                   "latex": "T_{P2} = \\frac{R_2 \\cdot T_{P1}}{R_2 + S_2}"
                 }
               ],
               "result": {
-                "label": "Tỉ số truyền tay số 4:",
-                "latex": "i_4 = \\frac{T_{P2}}{T_{P1}} \\cdot i_{tg} = \\frac{R_2}{R_2 + S_2} \\cdot i_{tg} = \\frac{75}{75 + 32} \\cdot \\frac{53}{52} \\approx 0{,}714"
+                "label": "Tính tỉ số truyền tay số 4:",
+                "latex": "i_4 = \\frac{T_{in}}{T_{out}} \\times i_{trung\\;gian} = \\frac{T_{P2}}{T_{P1}} \\times i_{trung\\;gian} = \\frac{R_2}{R_2 + S_2} \\times i_{trung\\;gian} = \\frac{75}{75 + 32} \\times \\frac{53}{52} = 0{,}714"
               }
             },
             {
-              "label": "Tay số lùi (R)",
-              "description": "Ly hợp **C3**, phanh **B3** hoạt động.\n\n**Dòng truyền công suất:** Bánh bơm → Bánh tuabin → Trục sơ cấp → C3 → Bánh răng mặt trời sau → Bánh răng bao sau → Cần dẫn trước → Bánh răng chủ động → Bánh răng bị động.\n\nDấu **âm** của kết quả thể hiện đầu ra **đảo chiều quay** so với đầu vào.",
-              "states": [
-                "Ly hợp C3: làm việc",
-                "Phanh B3: làm việc"
-              ],
+              "label": "Số lùi R",
+              "description": "Ly hợp C3, phanh B3 hoạt động. Dòng truyền công suất: Bánh bơm → Bánh tuabin → Trục sơ cấp → Ly hợp C3 hoạt động làm bánh răng mặt trời sau quay → Bánh răng mặt trời sau → Bánh răng bao sau → Cần dẫn trước quay → Bánh răng chủ động → Bánh răng bị động.",
+              "states": ["Ly hợp C3: làm việc", "Phanh B3: làm việc"],
               "kinematics": [
-                "Chủ động: bánh răng mặt trời sau → T_{S2} = T_in",
-                "Bị hãm: cần dẫn sau → T_{P2} = 0",
-                "Đầu ra: cần dẫn trước → T_{P1} = T_out"
+                "Chủ động: bánh răng mặt trời sau → TS2 = Tin",
+                "Bị hãm: cần dẫn sau → TP2 = 0",
+                "Đầu ra: cần dẫn sau → TP1 = Tout"
               ],
               "equations": [
                 {
-                  "caption": "Đặc điểm CR-CR:",
+                  "caption": "Do hộp số U340E sử dụng cụm bánh răng hành tinh kiểu CR–CR nên:",
                   "latex": "T_{P1} = T_{R2} \\quad ; \\quad T_{P2} = T_{R1}"
                 },
                 {
@@ -513,54 +511,34 @@
                   "latex": "R_2 + S_2 \\cdot T_{P2} = R_2 \\cdot T_{R2} + S_2 \\cdot T_{S2}"
                 },
                 {
-                  "caption": "Thay T_{P2} = 0 và T_{R2} = T_{P1}:",
-                  "latex": "0 = R_2 \\cdot T_{P1} + S_2 \\cdot T_{S2}"
+                  "caption": "",
+                  "latex": "R_2 + S_2 \\times 0 = R_2 \\cdot T_{P1} + S_2 \\cdot T_{S2}"
                 },
                 {
-                  "caption": "Rút gọn:",
-                  "latex": "T_{S2} = -\\frac{R_2 \\cdot T_{P1}}{S_2}"
+                  "caption": "",
+                  "latex": "-R_2 \\cdot T_{P1} = S_2 \\cdot T_{S2}"
+                },
+                {
+                  "caption": "",
+                  "latex": "-\\frac{R_2 \\cdot T_{P1}}{S_2} = T_{S2}"
                 }
               ],
               "result": {
-                "label": "Tỉ số truyền tay số lùi:",
-                "latex": "i_R = \\frac{T_{S2}}{T_{P1}} \\cdot i_{tg} = -\\frac{R_2}{S_2} \\cdot i_{tg} = -\\frac{75}{32} \\cdot \\frac{53}{52} \\approx -2{,}389"
+                "label": "Tính tỉ số truyền tay số lùi:",
+                "latex": "i_R = \\frac{T_{in}}{T_{out}} \\times i_{trung\\;gian} = \\frac{T_{S2}}{T_{P1}} \\times i_{trung\\;gian} = -\\frac{R_2}{S_2} \\times i_{trung\\;gian} = -\\frac{75}{32} \\times \\frac{53}{52} = -2{,}389"
               }
             }
           ]
         },
         "table": {
           "title": "Bảng 2.8 — Kết quả tỉ số truyền tính toán",
-          "headers": [
-            "Tay số",
-            "Vị trí cần số",
-            "Tỉ số truyền"
-          ],
+          "headers": ["Tay số", "Tỉ số truyền"],
           "rows": [
-            [
-              "1",
-              "Dãy D, 3, 2, L",
-              "i₁ = 2,903"
-            ],
-            [
-              "2",
-              "Dãy D, 3, 2",
-              "i₂ = 1,582"
-            ],
-            [
-              "3",
-              "Dãy D, 3",
-              "i₃ = 1,019"
-            ],
-            [
-              "4 (OD)",
-              "Dãy D",
-              "i₄ = 0,714"
-            ],
-            [
-              "R (lùi)",
-              "Vị trí R",
-              "iᵣ = −2,389"
-            ]
+            ["1 (Dãy D, 3, 2, L)", "i₁ = 2,903"],
+            ["2 (Dãy D, 3, 2)", "i₂ = 1,582"],
+            ["3 (Dãy D, 3)", "i₃ = 1,019"],
+            ["4 (Dãy D)", "i₄ = 0,714"],
+            ["R (Vị trí R)", "iᵣ = −2,389"]
           ]
         },
         "relatedDTC": []
