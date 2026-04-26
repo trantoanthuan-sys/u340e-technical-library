@@ -4,6 +4,35 @@
   "subsections": [
     {
       "id": "3.1",
+      "title": "Tổng quan nguyên lý làm việc",
+      "content": {
+        "intro": "Về bản chất, U340E tạo ra các cấp số bằng cách đóng/mở có điều khiển các ly hợp ma sát (C1, C2, C3), phanh (B1, B2, B3) và khớp một chiều (F1, F2) để thay đổi phần tử chủ động - bị hãm - đầu ra của cụm bánh răng hành tinh kiểu CR-CR.",
+        "explain": [
+          {
+            "title": "Cơ chế tạo cấp số",
+            "text": "Khi chuyển số, hệ thống thủy lực sẽ đưa **áp suất đường dầu (line pressure)** đến đúng phần tử chấp hành thông qua các van chuyển số; còn hệ điều khiển điện tử tác động chủ yếu lên **solenoid S1, S2** để đổi trạng thái các van chuyển số."
+          },
+          {
+            "title": "Bảng 3.1 — Trạng thái điều khiển (S1, S2) và phần tử chấp hành theo tay số",
+            "text": "Bảng dưới đây tóm tắt trạng thái solenoid S1, S2 và các phần tử chấp hành chính (ly hợp, phanh, khớp một chiều) ở mỗi tay số tương ứng với từng vị trí cần số.",
+            "customHtml": "<div class=\"custom-table-wrap\"><table class=\"content-table\"><thead>\n<tr><th>Dải số</th><th>Tay số</th><th>S1</th><th>S2</th><th>Phần tử chấp hành chính</th><th>Ghi chú vận hành</th></tr>\n</thead><tbody>\n<tr><td>D</td><td>1</td><td>ON</td><td>ON</td><td>C1 + B3 + F2</td><td style=\"text-align:left\">Khởi hành êm; F2 hỗ trợ chống quay ngược cho cụm bị hãm</td></tr>\n<tr><td>D</td><td>2</td><td>ON</td><td>OFF</td><td>C1 + B2 + F1</td><td style=\"text-align:left\">Chuyển tiếp, dùng B2/F1 để tạo phản lực cho hệ sau</td></tr>\n<tr><td>D</td><td>3</td><td>OFF</td><td>OFF</td><td>C1 + C2 (+B2 giữ)</td><td style=\"text-align:left\">Truyền gần trực tiếp, hiệu suất tốt</td></tr>\n<tr><td>D</td><td>4 (OD)</td><td>OFF</td><td>ON</td><td>C2 + B1 (+B2 giữ)</td><td style=\"text-align:left\">Overdrive, giảm tua máy khi chạy nhanh</td></tr>\n<tr><td>3</td><td>1-3</td><td>như dải D</td><td>như dải D</td><td>như dải D</td><td style=\"text-align:left\">Giới hạn không lên số 4</td></tr>\n<tr><td>2</td><td>1</td><td>ON</td><td>ON</td><td>C1 + B3 + F2</td><td style=\"text-align:left\">Tăng phanh động cơ khi cần</td></tr>\n<tr><td>2</td><td>2</td><td>ON</td><td>OFF</td><td>C1 + B1 + B2 + F1</td><td style=\"text-align:left\">Phanh động cơ mạnh hơn dải D ở số 2</td></tr>\n<tr><td>L</td><td>1</td><td>ON</td><td>ON</td><td>C1 + B3 + F2</td><td style=\"text-align:left\">Giữ số thấp, hỗ trợ leo/xuống dốc</td></tr>\n<tr><td>R</td><td>R</td><td>ON</td><td>ON</td><td>C3 + B3</td><td style=\"text-align:left\">Đảo chiều nhờ hãm cần dẫn sau và dẫn động mặt trời sau</td></tr>\n</tbody></table></div>"
+          },
+          {
+            "title": "Bảng 3.2a — Trạng thái hoạt động ở dải số tiến (D, 3, 2, L)",
+            "text": "Bảng dưới đây thể hiện trạng thái hoạt động của các van solenoid (S1, S2), ly hợp (C1, C2, C3), phanh (B1, B2, B3) và khớp một chiều (F1, F2) khi cần số ở các vị trí số tiến. Dấu **●** biểu thị phần tử đang hoạt động.",
+            "customHtml": "<div class=\"custom-table-wrap\"><table class=\"content-table\"><thead>\n<tr><th>Vị trí</th><th>Số</th><th>S1</th><th>S2</th><th>C1</th><th>C2</th><th>C3</th><th>B1</th><th>B2</th><th>B3</th><th>F1</th><th>F2</th></tr>\n</thead><tbody>\n<tr><td rowspan=\"4\">D</td><td>1</td><td>ON</td><td>ON</td><td>●</td><td></td><td></td><td></td><td></td><td></td><td></td><td>●</td></tr>\n<tr><td>2</td><td>ON</td><td>OFF</td><td>●</td><td></td><td></td><td></td><td>●</td><td></td><td>●</td><td></td></tr>\n<tr><td>3</td><td>OFF</td><td>OFF</td><td>●</td><td>●</td><td></td><td></td><td>●</td><td></td><td></td><td></td></tr>\n<tr><td>4</td><td>OFF</td><td>ON</td><td></td><td>●</td><td></td><td>●</td><td>●</td><td></td><td></td><td></td></tr>\n<tr><td rowspan=\"3\">3</td><td>1</td><td>ON</td><td>ON</td><td>●</td><td></td><td></td><td></td><td></td><td></td><td></td><td>●</td></tr>\n<tr><td>2</td><td>ON</td><td>OFF</td><td>●</td><td></td><td></td><td></td><td>●</td><td></td><td>●</td><td></td></tr>\n<tr><td>3</td><td>OFF</td><td>OFF</td><td>●</td><td>●</td><td></td><td></td><td>●</td><td></td><td></td><td></td></tr>\n<tr><td rowspan=\"2\">2</td><td>1</td><td>ON</td><td>ON</td><td>●</td><td></td><td></td><td></td><td></td><td></td><td></td><td>●</td></tr>\n<tr><td>2</td><td>ON</td><td>OFF</td><td>●</td><td></td><td></td><td>●</td><td>●</td><td></td><td>●</td><td></td></tr>\n<tr><td>L</td><td>1</td><td>ON</td><td>ON</td><td>●</td><td></td><td></td><td></td><td></td><td>●</td><td></td><td>●</td></tr>\n</tbody></table></div>"
+          },
+          {
+            "title": "Bảng 3.2b — Trạng thái hoạt động ở các vị trí P, R, N",
+            "text": "Bảng dưới đây thể hiện trạng thái hoạt động khi cần số ở các vị trí Đỗ (P), Lùi (R) và Mo (N). Dấu **●** biểu thị phần tử đang hoạt động.",
+            "customHtml": "<div class=\"custom-table-wrap\"><table class=\"content-table\"><thead>\n<tr><th>Vị trí</th><th>Số</th><th>S1</th><th>S2</th><th>C1</th><th>C2</th><th>C3</th><th>B1</th><th>B2</th><th>B3</th><th>F1</th><th>F2</th></tr>\n</thead><tbody>\n<tr><td>P</td><td>Đỗ</td><td>ON</td><td>ON</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>\n<tr><td>R</td><td>Lùi</td><td>ON</td><td>ON</td><td></td><td></td><td>●</td><td></td><td></td><td>●</td><td></td><td></td></tr>\n<tr><td>N</td><td>Mo</td><td>ON</td><td>ON</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>\n</tbody></table></div>"
+          }
+        ],
+        "relatedDTC": []
+      }
+    },
+    {
+      "id": "3.2",
       "title": "Tay số 1",
       "content": {
         "intro": "Tay số 1 (D/3/2) và tay số 1 (L) — khuếch đại mômen lớn nhất.",
@@ -33,7 +62,7 @@
       }
     },
     {
-      "id": "3.2",
+      "id": "3.3",
       "title": "Tay số 2",
       "content": {
         "intro": "Tay số 2 (dải D/3) và tay số 2 (dải 2) — chuyển tiếp, cân bằng lực kéo và tốc độ.",
@@ -63,7 +92,7 @@
       }
     },
     {
-      "id": "3.3",
+      "id": "3.4",
       "title": "Tay số 3",
       "content": {
         "intro": "Tay số 3 (dải D/3) — truyền gần trực tiếp (hiệu suất tốt).",
@@ -83,7 +112,7 @@
       }
     },
     {
-      "id": "3.4",
+      "id": "3.5",
       "title": "Tay số 4 (OD)",
       "content": {
         "intro": "Tay số 4 (OD - dải D) — số truyền tăng, giảm tua máy.",
@@ -103,7 +132,7 @@
       }
     },
     {
-      "id": "3.5",
+      "id": "3.6",
       "title": "Tay số lùi (R)",
       "content": {
         "intro": "Tay số lùi (R) — đảo chiều quay đầu ra.",
@@ -123,7 +152,7 @@
       }
     },
     {
-      "id": "3.6",
+      "id": "3.7",
       "title": "Tính toán tỉ số truyền",
       "content": {
         "intro": "U340E dùng cụm bánh răng hành tinh CR-CR, gồm 01 bộ hành tinh trước, 01 bộ hành tinh sau và cặp bánh răng trung gian.",

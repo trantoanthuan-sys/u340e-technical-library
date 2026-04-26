@@ -16,11 +16,26 @@
       "color": "#1e3a6e",
       "accentColor": "#3b6cb5",
       "subsections": [
-        { "id": "1.1", "title": "Kết cấu chung" },
-        { "id": "1.2", "title": "Biến mô thủy lực" },
-        { "id": "1.3", "title": "Bơm dầu thủy lực" },
-        { "id": "1.4", "title": "Bộ truyền hành tinh" },
-        { "id": "1.5", "title": "Ly hợp - Phanh - Khớp 1 chiều" }
+        {
+          "id": "1.1",
+          "title": "Kết cấu chung"
+        },
+        {
+          "id": "1.2",
+          "title": "Biến mô thủy lực"
+        },
+        {
+          "id": "1.3",
+          "title": "Bơm dầu thủy lực"
+        },
+        {
+          "id": "1.4",
+          "title": "Bộ truyền hành tinh"
+        },
+        {
+          "id": "1.5",
+          "title": "Ly hợp - Phanh - Khớp 1 chiều"
+        }
       ],
       "dataFile": "data/section-1.json"
     },
@@ -32,8 +47,14 @@
       "color": "#065f46",
       "accentColor": "#059669",
       "subsections": [
-        { "id": "2.1", "title": "Hệ thống thủy lực" },
-        { "id": "2.2", "title": "Điều khiển điện tử" }
+        {
+          "id": "2.1",
+          "title": "Hệ thống thủy lực"
+        },
+        {
+          "id": "2.2",
+          "title": "Điều khiển điện tử"
+        }
       ],
       "dataFile": "data/section-2.json"
     },
@@ -41,16 +62,38 @@
       "id": 3,
       "slug": "nguyen-ly-lam-viec",
       "title": "Nguyên Lý Làm Việc",
-      "description": "Nguyên lý hoạt động tại từng tay số và tính toán tỉ số truyền",
+      "description": "Tổng quan nguyên lý làm việc, hoạt động tại từng tay số và tính toán tỉ số truyền",
       "color": "#92400e",
       "accentColor": "#d97706",
       "subsections": [
-        { "id": "3.1", "title": "Tay số 1" },
-        { "id": "3.2", "title": "Tay số 2" },
-        { "id": "3.3", "title": "Tay số 3" },
-        { "id": "3.4", "title": "Tay số 4 (OD)" },
-        { "id": "3.5", "title": "Tay số lùi" },
-        { "id": "3.6", "title": "Tính toán tỉ số truyền" }
+        {
+          "id": "3.1",
+          "title": "Tổng quan nguyên lý làm việc"
+        },
+        {
+          "id": "3.2",
+          "title": "Tay số 1"
+        },
+        {
+          "id": "3.3",
+          "title": "Tay số 2"
+        },
+        {
+          "id": "3.4",
+          "title": "Tay số 3"
+        },
+        {
+          "id": "3.5",
+          "title": "Tay số 4 (OD)"
+        },
+        {
+          "id": "3.6",
+          "title": "Tay số lùi"
+        },
+        {
+          "id": "3.7",
+          "title": "Tính toán tỉ số truyền"
+        }
       ],
       "dataFile": "data/section-3.json"
     },
@@ -62,9 +105,18 @@
       "color": "#6b21a8",
       "accentColor": "#9333ea",
       "subsections": [
-        { "id": "4.1", "title": "Quy trình tháo" },
-        { "id": "4.2", "title": "Quy trình lắp" },
-        { "id": "4.3", "title": "Bảo dưỡng định kỳ" }
+        {
+          "id": "4.1",
+          "title": "Quy trình tháo"
+        },
+        {
+          "id": "4.2",
+          "title": "Quy trình lắp"
+        },
+        {
+          "id": "4.3",
+          "title": "Bảo dưỡng định kỳ"
+        }
       ],
       "dataFile": "data/section-4.json"
     },
