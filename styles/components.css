@@ -1131,10 +1131,15 @@
   max-width: 1280px;
 }
 .lesson-image {
-  width: 100%;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 380px;
   border-radius: 12px;
-  margin: 16px 0;
+  margin: 16px auto;
+  display: block;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  object-fit: contain;
 }
 
 .lesson-text {
@@ -1168,13 +1173,15 @@
   margin: 16px 0;
 }
 .lesson-image-wrap img {
-  width: 100%;
-  max-width: 620px;
+  width: auto;
+  max-width: 100%;
   height: auto;
+  max-height: 380px;
   border-radius: 14px;
   background: #f8fafc;
   padding: 12px;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  object-fit: contain;
 }
 .image-caption {
   font-size: 13px;
