@@ -193,6 +193,11 @@ function _buildSubSectionHtml(sub, sectionMeta, prevSub, nextSub) {
                  <div class="explain-card-title">${escapeHtml(item.title)}</div>
                  <div class="explain-card-text">${formatInlineText(item.text)}</div>
                  ${
+                   item.customHtml
+                     ? `<div class="explain-card-custom">${item.customHtml}</div>`
+                     : ""
+                 }
+                 ${
                    item.image
                      ? `<div class="lesson-image-wrap">
                           <img src="${escapeHtml(item.image)}" alt="${escapeHtml(item.caption || item.title)}" class="lesson-image" loading="lazy" />

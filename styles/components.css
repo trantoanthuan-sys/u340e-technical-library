@@ -1589,3 +1589,60 @@
     padding: 14px;
   }
 }
+
+/* ──────────────────────────────────────────────────────────
+ * CUSTOM TABLE (cho bảng phức tạp như Bảng 3.2)
+ * ────────────────────────────────────────────────────────── */
+.custom-table-wrap {
+  overflow-x: auto;
+  margin: 16px 0;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+}
+
+.content-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  font-family: var(--font-sans, system-ui);
+  min-width: 720px;
+}
+
+.content-table thead {
+  background: linear-gradient(180deg, #f1f5f9 0%, #e2e8f0 100%);
+}
+
+.content-table thead th {
+  padding: 10px 8px;
+  font-weight: 700;
+  color: #1e293b;
+  font-size: 12px;
+  text-align: center;
+  border: 1px solid #cbd5e1;
+  white-space: nowrap;
+}
+
+.content-table tbody td {
+  padding: 8px 6px;
+  text-align: center;
+  border: 1px solid #e2e8f0;
+  color: #334155;
+  vertical-align: middle;
+}
+
+.content-table tbody tr:hover {
+  background: #f8fafc;
+}
+
+.content-table tbody td:first-child,
+.content-table tbody td:nth-child(2) {
+  font-weight: 600;
+  color: #1e293b;
+  background: #f8fafc;
+}
+
+/* Wrapper cho explain card khi chứa table */
+.explain-card-custom {
+  margin-top: 12px;
+}
