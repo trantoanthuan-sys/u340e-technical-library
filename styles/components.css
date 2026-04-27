@@ -1646,3 +1646,1022 @@
 .explain-card-custom {
   margin-top: 12px;
 }
+
+/* ──────────────────────────────────────────────────────────
+ * DIAGNOSIS FLOW (Interactive)
+ * ────────────────────────────────────────────────────────── */
+.diagnosis-flow-block {
+  background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 24px;
+  margin-top: 16px;
+}
+
+.flow-container {
+  margin-top: 8px;
+}
+
+/* History breadcrumb */
+.flow-history {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+  padding: 10px 14px;
+  background: #fefce8;
+  border-left: 3px solid #f59e0b;
+  border-radius: 6px;
+  font-size: 13px;
+  color: #78716c;
+}
+.flow-history-label {
+  font-weight: 600;
+  color: #44403c;
+  margin-right: 4px;
+}
+.flow-history-item {
+  display: inline-block;
+  padding: 3px 8px;
+  background: #fff;
+  border: 1px solid #fde68a;
+  border-radius: 4px;
+  font-family: "JetBrains Mono", "SF Mono", monospace;
+  font-size: 12px;
+  font-weight: 600;
+  color: #92400e;
+  white-space: nowrap;
+}
+
+/* Main card */
+.flow-card {
+  background: #ffffff;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 24px;
+  position: relative;
+  transition: all 0.3s ease;
+  animation: flowSlideIn 0.3s ease;
+}
+
+@keyframes flowSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.flow-step-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  color: #1e293b;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-radius: 9999px;
+  margin-bottom: 12px;
+}
+
+.flow-card-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0 0 12px 0;
+  line-height: 1.4;
+}
+
+.flow-card-description {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #475569;
+  margin-bottom: 24px;
+}
+
+.flow-card-description strong {
+  color: #1e293b;
+  font-weight: 700;
+}
+
+/* YES/NO buttons */
+.flow-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.flow-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px 20px;
+  border: 2px solid;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: #fff;
+}
+
+.flow-btn-icon {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.flow-btn-text {
+  font-family: "JetBrains Mono", "SF Mono", monospace;
+}
+
+.flow-btn-yes {
+  color: #16a34a;
+  border-color: #86efac;
+}
+.flow-btn-yes:hover {
+  background: #f0fdf4;
+  border-color: #16a34a;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(22, 163, 74, 0.15);
+}
+
+.flow-btn-no {
+  color: #dc2626;
+  border-color: #fca5a5;
+}
+.flow-btn-no:hover {
+  background: #fef2f2;
+  border-color: #dc2626;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.15);
+}
+
+/* Result card (kết quả cuối) */
+.flow-card-result {
+  border-color: #10b981;
+  background: linear-gradient(135deg, #ecfdf5 0%, #ffffff 100%);
+}
+
+.flow-result-banner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  background: #10b981;
+  color: #fff;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 16px;
+}
+
+.flow-result-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background: #fff;
+  color: #10b981;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+/* Navigation buttons */
+.flow-nav {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+  justify-content: flex-end;
+}
+
+.flow-btn-secondary {
+  padding: 8px 14px;
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  color: #64748b;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.flow-btn-secondary:hover {
+  background: #f1f5f9;
+  border-color: #94a3b8;
+  color: #1e293b;
+}
+
+.flow-error {
+  padding: 16px;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  color: #b91c1c;
+  font-size: 14px;
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .diagnosis-flow-block {
+    padding: 16px;
+  }
+  .flow-card {
+    padding: 16px;
+  }
+  .flow-card-title {
+    font-size: 16px;
+  }
+  .flow-card-description {
+    font-size: 14px;
+  }
+  .flow-buttons {
+    grid-template-columns: 1fr;
+  }
+  .flow-btn {
+    padding: 14px;
+  }
+}
+
+/* ──────────────────────────────────────────────────────────
+ * MINI-MAP FLOWCHART (cho diagnosis flow)
+ * ────────────────────────────────────────────────────────── */
+.minimap-section {
+  margin-top: 24px;
+  padding: 20px;
+  background: linear-gradient(180deg, #fffbeb 0%, #ffffff 100%);
+  border: 1px solid #fde68a;
+  border-radius: 12px;
+}
+
+.minimap-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px dashed #fcd34d;
+  flex-wrap: wrap;
+}
+
+.minimap-icon {
+  font-size: 18px;
+}
+
+.minimap-header strong {
+  color: #92400e;
+  font-size: 15px;
+}
+
+.minimap-hint {
+  font-size: 12px;
+  color: #78716c;
+  margin-left: auto;
+  font-style: italic;
+}
+
+.minimap-body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.minimap-question-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+  padding: 12px;
+  background: #ffffff;
+  border-radius: 8px;
+  border-left: 4px solid #e2e8f0;
+  transition: all 0.2s;
+}
+
+.minimap-question-row:hover {
+  border-left-color: #f59e0b;
+  box-shadow: 0 2px 8px rgba(245, 158, 11, 0.1);
+}
+
+/* Question node — tiêu đề bước */
+.minimap-node {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: #fef3c7;
+  border: 2px solid #fde68a;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  font-size: 13px;
+  color: #78350f;
+  transition: all 0.2s;
+  width: 100%;
+}
+
+.minimap-node:hover {
+  background: #fde68a;
+  border-color: #f59e0b;
+  transform: translateX(2px);
+}
+
+/* Node visited (đã đi qua) */
+.minimap-node-visited {
+  background: #dcfce7;
+  border-color: #86efac;
+  color: #166534;
+}
+
+.minimap-node-visited:hover {
+  background: #bbf7d0;
+  border-color: #22c55e;
+}
+
+/* Node hiện tại — highlight đỏ cam */
+.minimap-node-current {
+  background: linear-gradient(135deg, #fef3c7 0%, #fbbf24 100%);
+  border-color: #d97706;
+  color: #78350f;
+  font-weight: 700;
+  box-shadow:
+    0 0 0 3px rgba(217, 119, 6, 0.2),
+    0 4px 12px rgba(217, 119, 6, 0.15);
+  animation: minimapPulse 2s ease-in-out infinite;
+}
+
+@keyframes minimapPulse {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 3px rgba(217, 119, 6, 0.2),
+      0 4px 12px rgba(217, 119, 6, 0.15);
+  }
+  50% {
+    box-shadow:
+      0 0 0 6px rgba(217, 119, 6, 0.1),
+      0 4px 12px rgba(217, 119, 6, 0.25);
+  }
+}
+
+.minimap-node-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  background: #fff;
+  color: #78350f;
+  border-radius: 50%;
+  font-family: "JetBrains Mono", "SF Mono", monospace;
+  font-weight: 700;
+  font-size: 11px;
+  flex-shrink: 0;
+  border: 1px solid currentColor;
+}
+
+.minimap-node-current .minimap-node-num {
+  background: #d97706;
+  color: #fff;
+  border-color: #fff;
+}
+
+.minimap-node-visited .minimap-node-num {
+  background: #22c55e;
+  color: #fff;
+  border-color: #fff;
+}
+
+.minimap-node-title {
+  flex: 1;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+/* Branches container */
+.minimap-branches {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  padding-left: 28px;
+  margin-top: 4px;
+}
+
+.minimap-branch {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  flex-wrap: wrap;
+}
+
+.minimap-branch-label {
+  font-family: "JetBrains Mono", "SF Mono", monospace;
+  font-weight: 700;
+  font-size: 11px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  letter-spacing: 0.05em;
+}
+
+.minimap-branch-yes .minimap-branch-label {
+  background: #dcfce7;
+  color: #15803d;
+  border: 1px solid #86efac;
+}
+
+.minimap-branch-no .minimap-branch-label {
+  background: #fee2e2;
+  color: #b91c1c;
+  border: 1px solid #fca5a5;
+}
+
+.minimap-branch-arrow {
+  color: #94a3b8;
+  font-weight: 700;
+}
+
+/* Target buttons (Bước N hoặc Kết quả) */
+.minimap-target {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  background: #fff;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 12px;
+  font-family: inherit;
+  color: #475569;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.minimap-target:hover {
+  background: #f1f5f9;
+  border-color: #64748b;
+  color: #1e293b;
+}
+
+.minimap-target-question {
+  background: #fef3c7;
+  border-color: #fde68a;
+  color: #78350f;
+}
+
+.minimap-target-question:hover {
+  background: #fde68a;
+  border-color: #f59e0b;
+}
+
+.minimap-target-result {
+  background: #ecfdf5;
+  border-color: #a7f3d0;
+  color: #065f46;
+}
+
+.minimap-target-result:hover {
+  background: #d1fae5;
+  border-color: #10b981;
+}
+
+.minimap-target.is-current {
+  background: #d97706;
+  color: #fff;
+  border-color: #d97706;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(217, 119, 6, 0.3);
+}
+
+.minimap-target-missing {
+  display: inline-block;
+  padding: 4px 8px;
+  background: #fef2f2;
+  color: #dc2626;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* Legend */
+.minimap-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px dashed #fcd34d;
+  font-size: 12px;
+  color: #78716c;
+}
+
+.minimap-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.minimap-legend-dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid;
+}
+
+.minimap-legend-dot.dot-current {
+  background: #fbbf24;
+  border-color: #d97706;
+}
+
+.minimap-legend-dot.dot-visited {
+  background: #86efac;
+  border-color: #22c55e;
+}
+
+.minimap-legend-dot.dot-default {
+  background: #fef3c7;
+  border-color: #fde68a;
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .minimap-section {
+    padding: 12px;
+  }
+  .minimap-question-row {
+    padding: 10px;
+  }
+  .minimap-branches {
+    grid-template-columns: 1fr;
+    padding-left: 16px;
+    gap: 6px;
+  }
+  .minimap-hint {
+    width: 100%;
+    margin-left: 0;
+  }
+  .minimap-legend {
+    gap: 10px;
+  }
+  .minimap-legend-item {
+    font-size: 11px;
+  }
+}
+
+/* ──────────────────────────────────────────────────────────
+ * FLOW TABS (Step-by-step / Mindmap)
+ * ────────────────────────────────────────────────────────── */
+.flow-tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 16px;
+  border-bottom: 2px solid #e2e8f0;
+  padding-bottom: 0;
+}
+
+.flow-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 18px;
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.2s;
+  border-radius: 6px 6px 0 0;
+}
+
+.flow-tab:hover {
+  background: #f1f5f9;
+  color: #1e293b;
+}
+
+.flow-tab-active {
+  color: #047857;
+  border-bottom-color: #047857;
+  background: #ecfdf5;
+}
+
+.flow-tab-active:hover {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.flow-tab-panel-hidden {
+  display: none !important;
+}
+
+/* ──────────────────────────────────────────────────────────
+ * TREE FLOWCHART (HTML, animation kiểu PowerPoint)
+ * ────────────────────────────────────────────────────────── */
+.svg-flowchart-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-bottom: 12px;
+  padding: 8px 12px;
+  background: #fffbeb;
+  border: 1px dashed #fcd34d;
+  border-radius: 6px;
+  font-size: 12px;
+  color: #92400e;
+}
+
+.svg-flowchart-canvas {
+  background: linear-gradient(180deg, #fffbeb 0%, #ffffff 100%);
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 32px 24px;
+  min-height: 300px;
+  overflow-x: auto;
+}
+
+.tree-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Edge (đường nối + label YES/NO) */
+.tree-edge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  padding: 4px 0;
+}
+
+.tree-edge-arrow {
+  width: 2px;
+  height: 28px;
+  background: #cbd5e1;
+  position: relative;
+}
+
+.tree-edge-arrow::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 7px solid #cbd5e1;
+}
+
+.tree-edge-label {
+  position: absolute;
+  top: 50%;
+  left: calc(50% + 16px);
+  transform: translateY(-50%);
+  padding: 3px 10px;
+  font-family: "JetBrains Mono", "SF Mono", monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  border-radius: 4px;
+  white-space: nowrap;
+  animation: treeEdgeIn 0.4s ease;
+}
+
+.tree-edge-yes .tree-edge-arrow {
+  background: #86efac;
+}
+.tree-edge-yes .tree-edge-arrow::after {
+  border-top-color: #86efac;
+}
+.tree-edge-yes .tree-edge-label {
+  background: #dcfce7;
+  color: #166534;
+  border: 1px solid #86efac;
+}
+
+.tree-edge-no .tree-edge-arrow {
+  background: #fca5a5;
+}
+.tree-edge-no .tree-edge-arrow::after {
+  border-top-color: #fca5a5;
+}
+.tree-edge-no .tree-edge-label {
+  background: #fee2e2;
+  color: #b91c1c;
+  border: 1px solid #fca5a5;
+}
+
+.tree-edge-jump .tree-edge-label {
+  background: #fef3c7;
+  color: #92400e;
+  border: 1px solid #fde68a;
+}
+
+/* Node (box bo tròn) */
+.tree-node {
+  position: relative;
+  background: #f8fafc;
+  border: 2px solid #cbd5e1;
+  border-radius: 14px;
+  padding: 14px 18px;
+  width: 100%;
+  max-width: 480px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+/* Visited (đã đi qua) */
+.tree-node-visited {
+  background: #ecfdf5;
+  border-color: #86efac;
+  opacity: 0.85;
+}
+
+.tree-node-visited .tree-node-title {
+  color: #047857;
+  font-size: 14px;
+}
+
+.tree-node-visited .tree-node-badge {
+  background: #10b981;
+  color: #fff;
+  border-color: #fff;
+}
+
+/* Current (đang ở đây — highlight cam) */
+.tree-node-current {
+  background: linear-gradient(135deg, #fef3c7 0%, #ffffff 100%);
+  border-color: #f59e0b;
+  border-width: 3px;
+  box-shadow: 0 8px 24px rgba(245, 158, 11, 0.2);
+  padding: 18px 22px;
+}
+
+.tree-node-current .tree-node-title {
+  color: #78350f;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.tree-node-current .tree-node-badge {
+  background: #d97706;
+  color: #fff;
+  border-color: #fff;
+}
+
+/* Result node */
+.tree-node-result {
+  background: linear-gradient(135deg, #dbeafe 0%, #ffffff 100%);
+  border-color: #3b82f6;
+  border-style: dashed;
+}
+.tree-node-result.tree-node-current {
+  box-shadow: 0 8px 24px rgba(59, 130, 246, 0.2);
+}
+.tree-node-result .tree-node-title {
+  color: #1e40af;
+}
+.tree-node-result .tree-node-badge {
+  background: #3b82f6;
+  color: #fff;
+}
+
+/* Number badge ở góc */
+.tree-node-badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 28px;
+  height: 28px;
+  background: #94a3b8;
+  color: #fff;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "JetBrains Mono", "SF Mono", monospace;
+  font-weight: 700;
+  font-size: 13px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.tree-node-badge-result {
+  background: #3b82f6 !important;
+  font-size: 14px;
+}
+
+.tree-node-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #475569;
+  line-height: 1.4;
+}
+
+/* Description (chỉ ở node hiện tại) */
+.tree-node-description {
+  margin-top: 12px;
+  padding: 12px 16px;
+  background: #f8fafc;
+  border-left: 3px solid #f59e0b;
+  border-radius: 6px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #334155;
+  text-align: left;
+}
+
+.tree-node-description strong {
+  color: #1e293b;
+  font-weight: 700;
+}
+
+/* Action buttons (YES/NO) trong node hiện tại */
+.tree-node-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.tree-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 12px 14px;
+  border: 2px solid;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: #fff;
+  font-family: inherit;
+}
+
+.tree-btn-icon {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.tree-btn-text {
+  font-family: "JetBrains Mono", "SF Mono", monospace;
+  letter-spacing: 0.05em;
+  font-size: 14px;
+}
+
+.tree-btn-target {
+  font-size: 11px;
+  font-weight: 500;
+  font-family: inherit;
+  opacity: 0.85;
+}
+
+.tree-btn-yes {
+  color: #16a34a;
+  border-color: #86efac;
+}
+.tree-btn-yes:hover {
+  background: #f0fdf4;
+  border-color: #16a34a;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(22, 163, 74, 0.18);
+}
+
+.tree-btn-no {
+  color: #dc2626;
+  border-color: #fca5a5;
+}
+.tree-btn-no:hover {
+  background: #fef2f2;
+  border-color: #dc2626;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(220, 38, 38, 0.18);
+}
+
+/* Result banner */
+.tree-node-result-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 16px;
+  background: #3b82f6;
+  color: #fff;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 14px;
+}
+
+.tree-node-result-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background: #fff;
+  color: #3b82f6;
+  border-radius: 50%;
+  font-weight: 700;
+}
+
+/* Navigation (Back/Reset) */
+.tree-nav {
+  display: flex;
+  gap: 10px;
+  margin-top: 24px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.tree-btn-secondary {
+  padding: 8px 16px;
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  color: #64748b;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+.tree-btn-secondary:hover {
+  background: #f1f5f9;
+  border-color: #94a3b8;
+  color: #1e293b;
+}
+
+/* ANIMATIONS — kiểu PowerPoint slide-in */
+@keyframes treeNodeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes treeEdgeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-50%) scale(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(-50%) scale(1);
+  }
+}
+
+.tree-anim-in {
+  animation: treeNodeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .svg-flowchart-canvas {
+    padding: 16px 12px;
+  }
+  .tree-container {
+    max-width: 100%;
+  }
+  .tree-node {
+    padding: 12px 14px;
+  }
+  .tree-node-current {
+    padding: 14px 16px;
+  }
+  .tree-node-current .tree-node-title {
+    font-size: 15px;
+  }
+  .tree-node-actions {
+    grid-template-columns: 1fr;
+  }
+  .tree-edge-label {
+    left: calc(50% + 12px);
+    font-size: 10px;
+    padding: 2px 8px;
+  }
+}
