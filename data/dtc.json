@@ -2,392 +2,1256 @@
   "meta": {
     "title": "Danh Mục Mã Lỗi DTC",
     "transmission": "U340E",
-    "total": 12,
+    "total": 18,
     "groups": [
-      { "id": "P07", "label": "Tốc Độ & Cảm Biến" },
-      { "id": "P08", "label": "Áp Suất Thủy Lực" },
-      { "id": "P17", "label": "Chuyển Số" },
-      { "id": "P27", "label": "Solenoid" }
+      {
+        "id": "P07",
+        "label": "Cảm Biến (Sensor)"
+      },
+      {
+        "id": "P0750",
+        "label": "Solenoid - Hiệu Suất"
+      },
+      {
+        "id": "P0780",
+        "label": "Solenoid - Mạch ON/OFF"
+      },
+      {
+        "id": "P0970",
+        "label": "Solenoid - Mạch S1/S2"
+      },
+      {
+        "id": "P2700",
+        "label": "Solenoid Tuyến Tính (SLT/SLU)"
+      }
     ]
   },
   "codes": [
     {
-      "code": "P0715",
+      "code": "P0705",
       "group": "P07",
-      "title": "Lỗi Cảm Biến Tốc Độ Đầu Vào (NT Sensor)",
+      "title": "Lỗi Mạch Công Tắc Vị Trí Cần Số (Range Switch)",
       "severity": "high",
-      "symptom": "Hộp số vào chế độ Fail-Safe, không chuyển số, kẹt ở số 3. Đèn CHECK ENGINE sáng.",
-      "possibleCauses": [
-        "Đứt hoặc chập mạch dây dẫn đến cảm biến NT",
-        "Cảm biến NT bị hỏng (điện trở ngoài tiêu chuẩn)",
-        "Rotor cảm biến bị mòn hoặc vỡ răng",
-        "Giắc kết nối bị lỏng, oxy hóa hoặc tiếp xúc kém",
-        "TCM bị lỗi (ít gặp)"
-      ],
+      "symptom": "⏳ Đang cập nhật từ team nội dung",
+      "possibleCauses": ["⏳ Đang cập nhật từ team nội dung"],
       "diagnosis": [
         {
           "step": 1,
-          "action": "Đọc freeze frame data bằng Scan Tool, ghi lại tốc độ xe và rpm khi lỗi xuất hiện",
-          "tool": "Scan Tool",
-          "expected": "Ghi nhận điều kiện lỗi"
-        },
-        {
-          "step": 2,
-          "action": "Kiểm tra điện trở cảm biến NT tại giắc TCM (pin NT+ và NT-)",
-          "tool": "VOM (Đồng hồ vạn năng)",
-          "expected": "985 ~ 1615 Ω"
-        },
-        {
-          "step": 3,
-          "action": "Kiểm tra thông mạch dây từ giắc cảm biến NT đến giắc TCM",
-          "tool": "VOM",
-          "expected": "< 1 Ω (thông mạch)"
-        },
-        {
-          "step": 4,
-          "action": "Kiểm tra tín hiệu xung tại cảm biến NT khi cho xe chạy tốc độ thấp",
-          "tool": "Oscilloscope",
-          "expected": "Xung AC dạng sin, biên độ tăng theo tốc độ"
+          "action": "Xem chi tiết quy trình chẩn đoán ở phần \"Chẩn đoán Tương Tác\" bên dưới."
         }
       ],
-      "relatedCodes": ["P0716", "P0717", "P0720"],
-      "relatedSections": ["1.2", "2.2"],
-      "qrUrl": "https://yourdomain.com/#/dtc/P0715"
-    },
-    {
-      "code": "P0720",
-      "group": "P07",
-      "title": "Lỗi Cảm Biến Tốc Độ Đầu Ra (SP2 Sensor)",
-      "severity": "high",
-      "symptom": "Đồng hồ tốc độ không hoạt động, hộp số vào Fail-Safe. Đèn CHECK ENGINE sáng.",
-      "possibleCauses": [
-        "Cảm biến SP2 bị hỏng",
-        "Hở mạch hoặc ngắn mạch dây tín hiệu SP2",
-        "Răng rotor bị vỡ hoặc dị vật bám vào cảm biến",
-        "Điện áp nguồn cấp 12V bị mất"
-      ],
-      "diagnosis": [
-        {
-          "step": 1,
-          "action": "Kiểm tra điện áp nguồn cấp 12V tại giắc cảm biến SP2 (pin nguồn và mass)",
-          "tool": "VOM",
-          "expected": "10 ~ 14V"
-        },
-        {
-          "step": 2,
-          "action": "Nâng xe, cho bánh sau quay, kiểm tra tín hiệu xung tốc độ tại pin tín hiệu SP2",
-          "tool": "Scan Tool / Oscilloscope",
-          "expected": "Xung điện áp thay đổi 0V ~ 5V"
-        },
-        {
-          "step": 3,
-          "action": "Kiểm tra giá trị tốc độ xe trên Scan Tool khi xe chạy",
-          "tool": "Scan Tool",
-          "expected": "Giá trị thay đổi tỉ lệ với tốc độ thực"
-        }
-      ],
-      "relatedCodes": ["P0715", "P0500"],
-      "relatedSections": ["2.2"],
-      "qrUrl": "https://yourdomain.com/#/dtc/P0720"
-    },
-    {
-      "code": "P0731",
-      "group": "P17",
-      "title": "Tỉ Số Truyền Số 1 Không Đúng",
-      "severity": "high",
-      "symptom": "Cảm giác giật khi vào số 1, hộp số vào Fail-Safe. Có thể kèm trượt số.",
-      "possibleCauses": [
-        "Ly hợp C1 (Forward Clutch) bị mòn hoặc hỏng",
-        "Khớp một chiều F2 bị hỏng",
-        "Áp suất thủy lực số 1 không đủ",
-        "Solenoid SL1 bị hỏng hoặc nghẹt bụi"
-      ],
-      "diagnosis": [
-        {
-          "step": 1,
-          "action": "Kiểm tra áp suất thủy lực số 1 tại cổng đo áp suất C1",
-          "tool": "Đồng hồ đo áp suất",
-          "expected": "490 ~ 590 kPa"
-        },
-        {
-          "step": 2,
-          "action": "Thực hiện Stall Test để đánh giá mức độ trượt",
-          "tool": "Tachometer",
-          "expected": "2200 ~ 2600 rpm (bình thường)"
-        },
-        {
-          "step": 3,
-          "action": "Kiểm tra điện trở solenoid SL1",
-          "tool": "VOM",
-          "expected": "5 ~ 7 Ω"
-        }
-      ],
-      "relatedCodes": ["P0732", "P0733", "P0734"],
-      "relatedSections": ["1.5", "3.1"],
-      "qrUrl": "https://yourdomain.com/#/dtc/P0731"
-    },
-    {
-      "code": "P0732",
-      "group": "P17",
-      "title": "Tỉ Số Truyền Số 2 Không Đúng",
-      "severity": "medium",
-      "symptom": "Giật hoặc trượt khi chuyển lên số 2. Đèn OD OFF có thể nháy.",
-      "possibleCauses": [
-        "Phanh B2 (2nd Brake) bị mòn",
-        "Khớp một chiều F1 bị hỏng",
-        "Van solenoid SL2 bị kẹt hoặc rò rỉ",
-        "Đường dầu số 2 bị tắc nghẽn"
-      ],
-      "diagnosis": [
-        {
-          "step": 1,
-          "action": "Kiểm tra áp suất thủy lực tại cổng B2 khi ở số 2",
-          "tool": "Đồng hồ đo áp suất",
-          "expected": "390 ~ 490 kPa"
-        },
-        {
-          "step": 2,
-          "action": "Kiểm tra hoạt động solenoid SL2 bằng Scan Tool (active test)",
-          "tool": "Scan Tool",
-          "expected": "Solenoid đóng/mở theo lệnh"
-        }
-      ],
-      "relatedCodes": ["P0731", "P0733"],
-      "relatedSections": ["1.5", "3.2"],
-      "qrUrl": "https://yourdomain.com/#/dtc/P0732"
-    },
-    {
-      "code": "P0733",
-      "group": "P17",
-      "title": "Tỉ Số Truyền Số 3 Không Đúng",
-      "severity": "medium",
-      "symptom": "Trượt hoặc không vào được số 3. Xe mất công suất ở tốc độ trung bình.",
-      "possibleCauses": [
-        "Ly hợp C2 (Direct Clutch) bị mòn hoặc hỏng",
-        "Áp suất dầu C2 không đủ",
-        "Cụm Valve Body bị mòn tại mạch số 3"
-      ],
-      "diagnosis": [
-        {
-          "step": 1,
-          "action": "Kiểm tra áp suất tại cổng C2 khi hộp số ở số 3",
-          "tool": "Đồng hồ đo áp suất",
-          "expected": "490 ~ 590 kPa"
-        },
-        {
-          "step": 2,
-          "action": "Kiểm tra tình trạng đĩa ma sát C2 qua cửa quan sát",
-          "tool": "Kiểm tra trực quan",
-          "expected": "Đĩa ma sát không bị cháy, dày ≥ tiêu chuẩn"
-        }
-      ],
-      "relatedCodes": ["P0731", "P0734"],
-      "relatedSections": ["1.5", "3.3"],
-      "qrUrl": "https://yourdomain.com/#/dtc/P0733"
-    },
-    {
-      "code": "P0734",
-      "group": "P17",
-      "title": "Tỉ Số Truyền Số 4 (OD) Không Đúng",
-      "severity": "medium",
-      "symptom": "Hộp số không vào được OD, đèn OD OFF sáng cố định. Xe không đạt tốc độ tối đa.",
-      "possibleCauses": [
-        "Phanh B2 hỏng (dùng cả số 2 và số 4)",
-        "Solenoid SLT hoạt động không đúng",
-        "OD bị tắt bởi lệnh từ TCM do nhiệt độ ATF cao"
-      ],
-      "diagnosis": [
-        {
-          "step": 1,
-          "action": "Kiểm tra nhiệt độ ATF trên Scan Tool",
-          "tool": "Scan Tool",
-          "expected": "< 135°C (bình thường)"
-        },
-        {
-          "step": 2,
-          "action": "Kiểm tra nút OD OFF trên cần số, bật công tắc và đọc trạng thái",
-          "tool": "Quan sát đèn báo",
-          "expected": "Đèn tắt khi OD được cho phép"
-        }
-      ],
-      "relatedCodes": ["P0733", "P0741"],
-      "relatedSections": ["1.5", "3.4"],
-      "qrUrl": "https://yourdomain.com/#/dtc/P0734"
-    },
-    {
-      "code": "P0741",
-      "group": "P07",
-      "title": "Mạch Khóa Biến Mô - Kẹt Ở Trạng Thái Mở",
-      "severity": "medium",
-      "symptom": "Tiêu hao nhiên liệu tăng, động cơ tăng tốc nhưng xe không tăng tốc tương ứng ở tốc độ cao.",
-      "possibleCauses": [
-        "Solenoid SLU bị hỏng hoặc kẹt ở trạng thái mở",
-        "Đĩa ma sát Lock-Up bị mòn quá mức",
-        "Áp suất dầu Lock-Up không đủ"
-      ],
-      "diagnosis": [
-        {
-          "step": 1,
-          "action": "Chạy xe ở tốc độ 60 km/h, kiểm tra xem Lock-Up có kích hoạt không qua Scan Tool",
-          "tool": "Scan Tool",
-          "expected": "Tốc độ NT = tốc độ NC khi Lock-Up ON"
-        },
-        {
-          "step": 2,
-          "action": "Kiểm tra điện trở solenoid SLU tại giắc TCM",
-          "tool": "VOM",
-          "expected": "5.0 ~ 5.6 Ω"
-        }
-      ],
-      "relatedCodes": ["P0742", "P2757"],
-      "relatedSections": ["1.2", "2.1"],
-      "qrUrl": "https://yourdomain.com/#/dtc/P0741"
-    },
-    {
-      "code": "P0748",
-      "group": "P08",
-      "title": "Lỗi Mạch Điều Áp Thủy Lực (SLT Solenoid)",
-      "severity": "high",
-      "symptom": "Chuyển số giật mạnh, áp suất thủy lực không ổn định. Fail-Safe mode.",
-      "possibleCauses": [
-        "Solenoid SLT bị hỏng (hở mạch hoặc ngắn mạch)",
-        "Đường dây điện từ TCM đến SLT bị hỏng",
-        "Valve body bị mài mòn tại mạch SLT"
-      ],
-      "diagnosis": [
-        {
-          "step": 1,
-          "action": "Kiểm tra điện trở solenoid SLT",
-          "tool": "VOM",
-          "expected": "5 ~ 7 Ω (ở 20°C)"
-        },
-        {
-          "step": 2,
-          "action": "Kiểm tra áp suất đường dầu chính (Line Pressure) ở N range và D range",
-          "tool": "Đồng hồ đo áp suất",
-          "expected": "N: 380 kPa | D (ga bằng): 420 ~ 520 kPa"
-        }
-      ],
-      "relatedCodes": ["P0731", "P0732", "P0733"],
-      "relatedSections": ["2.1"],
-      "qrUrl": "https://yourdomain.com/#/dtc/P0748"
-    },
-    {
-      "code": "P2716",
-      "group": "P27",
-      "title": "Lỗi Mạch Solenoid Áp Suất D (SL2)",
-      "severity": "medium",
-      "symptom": "Chuyển số không êm, giật mạnh hoặc không thể vào số 2.",
-      "possibleCauses": [
-        "Solenoid SL2 bị hỏng hoặc có bụi bẩn bít",
-        "Hở mạch hoặc chập mạch tại dây dẫn SL2",
-        "Nguồn cấp 12V cho solenoid bị mất"
-      ],
-      "diagnosis": [
-        {
-          "step": 1,
-          "action": "Kiểm tra điện trở solenoid SL2",
-          "tool": "VOM",
-          "expected": "5.0 ~ 5.6 Ω"
-        },
-        {
-          "step": 2,
-          "action": "Thực hiện active test solenoid SL2 bằng Scan Tool",
-          "tool": "Scan Tool",
-          "expected": "Nghe tiếng click khi solenoid kích hoạt"
-        }
-      ],
-      "relatedCodes": ["P2714", "P2718"],
-      "relatedSections": ["2.1", "2.2"],
-      "qrUrl": "https://yourdomain.com/#/dtc/P2716"
+      "diagnosisFlow": {
+        "startStep": 1,
+        "steps": [
+          {
+            "id": 1,
+            "title": "Bước 1 — Xem dữ liệu động",
+            "description": "Dùng Scan Tool xem dữ liệu động.\n\nTín hiệu vị trí cần số (P/R/N/D/2/L) hiển thị có **trùng khớp** với vị trí thực tế của cần số?",
+            "yes": 5,
+            "no": 2
+          },
+          {
+            "id": 2,
+            "title": "Bước 2 — Kiểm tra đường dây, giắc nối (Nguồn cấp)",
+            "description": "Kiểm tra đường dây và giắc nối **nguồn cấp** đến công tắc vị trí P/N.\n\nĐường dây và giắc có thông mạch, không bị đứt, chập, lỏng tiếp xúc?",
+            "yes": 3,
+            "no": "result-power-ecm"
+          },
+          {
+            "id": 3,
+            "title": "Bước 3 — Kiểm tra công tắc vị trí P/N",
+            "description": "Tháo công tắc vị trí P/N. Cấp điện thử và đo điện áp ra ở các vị trí P, R, N, D, 2, L.\n\nCông tắc có hoạt động đúng (ON/OFF chính xác theo vị trí)?",
+            "yes": 4,
+            "no": "result-replace-pn-switch"
+          },
+          {
+            "id": 4,
+            "title": "Bước 4 — Kiểm tra đường dây (Công tắc P/N → ECM)",
+            "description": "Kiểm tra dây dẫn, giắc nối từ **công tắc vị trí P/N đến ECM**.\n\nDây có thông mạch, không chập với mass/nguồn?",
+            "yes": 5,
+            "no": "result-fix-wiring-ecm"
+          },
+          {
+            "id": 5,
+            "title": "Bước 5 — Kiểm tra dây nối (Công tắc P/N → ECU điều khiển khóa cần số)",
+            "description": "Kiểm tra dây dẫn và đầu nối giữa **công tắc P/N và ECU điều khiển khóa cần số**.\n\nDây và đầu nối có thông mạch, không hỏng?",
+            "yes": 6,
+            "no": "result-fix-wiring-shift"
+          },
+          {
+            "id": 6,
+            "title": "Bước 6 — Kiểm tra bộ phận điều khiển khóa cần số ECU",
+            "description": "Kiểm tra hoạt động của **bộ phận điều khiển khóa cần số ECU**.\n\nECU điều khiển khóa cần số có hoạt động bình thường?",
+            "yes": 7,
+            "no": "result-replace-shift-ecu"
+          },
+          {
+            "id": 7,
+            "title": "Bước 7 — Kiểm tra dây dẫn (ECU điều khiển khóa cần số → ECM)",
+            "description": "Kiểm tra dây dẫn và đầu nối giữa **ECU điều khiển khóa cần số và ECM**.\n\nDây có thông mạch, không hỏng?",
+            "yes": "result-replace-ecm",
+            "no": "result-fix-wiring-shift-ecm"
+          },
+          {
+            "id": "result-power-ecm",
+            "type": "result",
+            "title": "Kiểm tra nguồn cấp điện ECM",
+            "description": "Đường dây nguồn cấp đến công tắc P/N có vấn đề.\n\n**Hướng xử lý:** Kiểm tra cầu chì, ắc quy, mạch nguồn cấp đến ECM. Sửa chữa đường dây hoặc thay đầu nối hỏng."
+          },
+          {
+            "id": "result-replace-pn-switch",
+            "type": "result",
+            "title": "Thay thế công tắc vị trí P/N",
+            "description": "Công tắc vị trí cần số P/N đã hỏng.\n\n**Hướng xử lý:** Thay công tắc P/N mới (chính hãng), sau đó xóa mã lỗi và kiểm tra lại."
+          },
+          {
+            "id": "result-fix-wiring-ecm",
+            "type": "result",
+            "title": "Sửa chữa hoặc thay thế bộ dây điện hoặc đầu nối",
+            "description": "Đường dây từ **công tắc P/N đến ECM** bị lỗi.\n\n**Hướng xử lý:** Tìm điểm đứt/chập, sửa chữa hoặc thay đoạn dây/đầu nối hỏng. Xóa mã lỗi và lái thử."
+          },
+          {
+            "id": "result-fix-wiring-shift",
+            "type": "result",
+            "title": "Sửa chữa hoặc thay thế bộ dây điện hoặc đầu nối",
+            "description": "Đường dây từ **công tắc P/N đến ECU điều khiển khóa cần số** bị lỗi.\n\n**Hướng xử lý:** Sửa chữa hoặc thay đoạn dây/giắc hỏng."
+          },
+          {
+            "id": "result-replace-shift-ecu",
+            "type": "result",
+            "title": "Thay thế bộ phận điều khiển khóa cần số ECU",
+            "description": "ECU điều khiển khóa cần số bị lỗi.\n\n**Hướng xử lý:** Thay ECU điều khiển khóa cần số mới và lập trình theo VIN xe."
+          },
+          {
+            "id": "result-fix-wiring-shift-ecm",
+            "type": "result",
+            "title": "Sửa chữa hoặc thay thế bộ dây điện hoặc đầu nối",
+            "description": "Đường dây từ **ECU điều khiển khóa cần số đến ECM** bị lỗi.\n\n**Hướng xử lý:** Sửa chữa hoặc thay đoạn dây/giắc hỏng."
+          },
+          {
+            "id": "result-replace-ecm",
+            "type": "result",
+            "title": "Thay ECM",
+            "description": "Đã loại trừ tất cả các nguyên nhân khác. ECM bị lỗi.\n\n**Hướng xử lý:** Thay ECM mới (chính hãng) và lập trình theo VIN xe. Đây là phương án cuối, đảm bảo đã loại trừ các nguyên nhân khác."
+          }
+        ]
+      },
+      "relatedCodes": [],
+      "relatedSections": ["3.6"],
+      "qrUrl": "https://yourdomain.com/#/dtc/P0705"
     },
     {
       "code": "P0710",
       "group": "P07",
-      "title": "Lỗi Cảm Biến Nhiệt Độ ATF",
-      "severity": "low",
-      "symptom": "Hộp số không kích hoạt OD ở nhiệt độ thấp, tiêu thụ nhiên liệu tăng.",
-      "possibleCauses": [
-        "Cảm biến nhiệt độ ATF bị hỏng",
-        "Hở mạch hoặc ngắn mạch tại mạch cảm biến",
-        "Dầu ATF bị nhiễm bẩn ảnh hưởng đến cảm biến"
-      ],
+      "title": "Lỗi Cảm Biến Nhiệt Độ Dầu Hộp Số (Mạch)",
+      "severity": "medium",
+      "symptom": "⏳ Đang cập nhật từ team nội dung",
+      "possibleCauses": ["⏳ Đang cập nhật từ team nội dung"],
       "diagnosis": [
         {
           "step": 1,
-          "action": "Đo điện trở cảm biến nhiệt độ ATF ở nhiệt độ phòng (20°C)",
-          "tool": "VOM",
-          "expected": "2.0 ~ 2.5 kΩ ở 20°C"
-        },
-        {
-          "step": 2,
-          "action": "Kiểm tra giá trị nhiệt độ ATF trên Scan Tool khi động cơ nguội và nóng",
-          "tool": "Scan Tool",
-          "expected": "Thay đổi tuyến tính: nguội ~ 20°C, nóng ~ 80-90°C"
+          "action": "Xem chi tiết quy trình chẩn đoán ở phần \"Chẩn đoán Tương Tác\" bên dưới."
         }
       ],
-      "relatedCodes": [],
+      "diagnosisFlow": {
+        "startStep": 1,
+        "steps": [
+          {
+            "id": 1,
+            "title": "Bước 1 — Đọc dữ liệu động (Nhiệt độ dầu hộp số)",
+            "description": "Dùng Scan Tool đọc dữ liệu động **nhiệt độ dầu hộp số tự động**.\n\nGiá trị nhiệt độ đọc được là gì?\n\n• **150°C** (rất cao bất thường) → Hiện tượng **ngắn mạch**\n• **40°C** (giá trị cố định, không thay đổi) → Hiện tượng **hở mạch**\n• Giá trị thay đổi bình thường theo nhiệt độ thực → tiếp tục bước 2",
+            "yes": 2,
+            "no": "result-short-or-open"
+          },
+          {
+            "id": 2,
+            "title": "Bước 2 — Kiểm tra dây dẫn hộp số (Cảm biến nhiệt độ dầu hộp số tự động)",
+            "description": "Kiểm tra dây dẫn và đầu nối của cảm biến nhiệt độ dầu hộp số tự động.\n\nDây dẫn, đầu nối có thông mạch và đúng tiêu chuẩn?",
+            "yes": 3,
+            "no": "result-fix-transmission-wiring"
+          },
+          {
+            "id": 3,
+            "title": "Bước 3 — Kiểm tra dây điện và đầu nối (Dây dẫn ↔ ECM)",
+            "description": "Kiểm tra dây điện và đầu nối từ **cảm biến nhiệt độ dầu hộp số đến ECM**.\n\nDây có thông mạch, không chập?",
+            "yes": "result-replace-ecm-atf",
+            "no": "result-fix-wiring-atf"
+          },
+          {
+            "id": "result-short-or-open",
+            "type": "result",
+            "title": "Hiện tượng ngắn mạch hoặc hở mạch",
+            "description": "**Nếu đọc 150°C:** Hiện tượng **ngắn mạch** trong cảm biến hoặc dây dẫn.\n\n**Nếu đọc 40°C cố định:** Hiện tượng **hở mạch** trong cảm biến hoặc dây dẫn.\n\n**Hướng xử lý:** Kiểm tra dây dẫn cảm biến và bản thân cảm biến nhiệt độ ATF. Tiến hành kiểm tra theo bước 2 để xác định vị trí lỗi."
+          },
+          {
+            "id": "result-fix-transmission-wiring",
+            "type": "result",
+            "title": "Sửa hoặc thay dây truyền hộp số",
+            "description": "Dây dẫn hộp số bị lỗi.\n\n**Hướng xử lý:** Sửa chữa hoặc thay dây dẫn hộp số. Sau đó xóa mã lỗi và kiểm tra lại."
+          },
+          {
+            "id": "result-fix-wiring-atf",
+            "type": "result",
+            "title": "Sửa hoặc thay dây điện, đầu nối",
+            "description": "Dây điện hoặc đầu nối bị lỗi.\n\n**Hướng xử lý:** Sửa chữa hoặc thay đoạn dây/đầu nối hỏng. Sau đó xóa mã lỗi và kiểm tra lại."
+          },
+          {
+            "id": "result-replace-ecm-atf",
+            "type": "result",
+            "title": "Thay ECM",
+            "description": "Đã loại trừ các nguyên nhân khác. ECM bị lỗi.\n\n**Hướng xử lý:** Thay ECM mới và lập trình theo VIN xe."
+          }
+        ]
+      },
+      "relatedCodes": ["P0712", "P0713"],
       "relatedSections": ["2.2"],
       "qrUrl": "https://yourdomain.com/#/dtc/P0710"
     },
     {
-      "code": "P0560",
+      "code": "P0712",
       "group": "P07",
-      "title": "Điện Áp Nguồn Hệ Thống Thấp",
-      "severity": "low",
-      "symptom": "Nhiều mã lỗi xuất hiện cùng lúc, hộp số hoạt động bất thường.",
-      "possibleCauses": [
-        "Ắc quy yếu hoặc hết điện",
-        "Máy phát điện hỏng",
-        "Tiếp mát kém tại thân xe hoặc TCM",
-        "Cầu chì hộp số bị đứt"
-      ],
+      "title": "Lỗi Cảm Biến Nhiệt Độ Dầu Hộp Số (Ngắn Mạch)",
+      "severity": "medium",
+      "symptom": "⏳ Đang cập nhật từ team nội dung",
+      "possibleCauses": ["⏳ Đang cập nhật từ team nội dung"],
       "diagnosis": [
         {
           "step": 1,
-          "action": "Kiểm tra điện áp ắc quy khi động cơ tắt và khi chạy",
-          "tool": "VOM",
-          "expected": "Tắt: 12.4 ~ 12.6V | Chạy: 13.8 ~ 14.8V"
-        },
-        {
-          "step": 2,
-          "action": "Kiểm tra điện áp nguồn cấp cho TCM tại giắc TCM",
-          "tool": "VOM",
-          "expected": "12V ~ 14.8V khi động cơ nổ"
+          "action": "Xem chi tiết quy trình chẩn đoán ở phần \"Chẩn đoán Tương Tác\" bên dưới."
         }
       ],
+      "diagnosisFlow": {
+        "startStep": 1,
+        "steps": [
+          {
+            "id": 1,
+            "title": "Bước 1 — Đọc dữ liệu động (Nhiệt độ dầu hộp số)",
+            "description": "Dùng Scan Tool đọc dữ liệu động **nhiệt độ dầu hộp số tự động**.\n\nGiá trị nhiệt độ đọc được là gì?\n\n• **150°C** (rất cao bất thường) → Hiện tượng **ngắn mạch**\n• **40°C** (giá trị cố định, không thay đổi) → Hiện tượng **hở mạch**\n• Giá trị thay đổi bình thường theo nhiệt độ thực → tiếp tục bước 2",
+            "yes": 2,
+            "no": "result-short-or-open"
+          },
+          {
+            "id": 2,
+            "title": "Bước 2 — Kiểm tra dây dẫn hộp số (Cảm biến nhiệt độ dầu hộp số tự động)",
+            "description": "Kiểm tra dây dẫn và đầu nối của cảm biến nhiệt độ dầu hộp số tự động.\n\nDây dẫn, đầu nối có thông mạch và đúng tiêu chuẩn?",
+            "yes": 3,
+            "no": "result-fix-transmission-wiring"
+          },
+          {
+            "id": 3,
+            "title": "Bước 3 — Kiểm tra dây điện và đầu nối (Dây dẫn ↔ ECM)",
+            "description": "Kiểm tra dây điện và đầu nối từ **cảm biến nhiệt độ dầu hộp số đến ECM**.\n\nDây có thông mạch, không chập?",
+            "yes": "result-replace-ecm-atf",
+            "no": "result-fix-wiring-atf"
+          },
+          {
+            "id": "result-short-or-open",
+            "type": "result",
+            "title": "Hiện tượng ngắn mạch hoặc hở mạch",
+            "description": "**Nếu đọc 150°C:** Hiện tượng **ngắn mạch** trong cảm biến hoặc dây dẫn.\n\n**Nếu đọc 40°C cố định:** Hiện tượng **hở mạch** trong cảm biến hoặc dây dẫn.\n\n**Hướng xử lý:** Kiểm tra dây dẫn cảm biến và bản thân cảm biến nhiệt độ ATF. Tiến hành kiểm tra theo bước 2 để xác định vị trí lỗi."
+          },
+          {
+            "id": "result-fix-transmission-wiring",
+            "type": "result",
+            "title": "Sửa hoặc thay dây truyền hộp số",
+            "description": "Dây dẫn hộp số bị lỗi.\n\n**Hướng xử lý:** Sửa chữa hoặc thay dây dẫn hộp số. Sau đó xóa mã lỗi và kiểm tra lại."
+          },
+          {
+            "id": "result-fix-wiring-atf",
+            "type": "result",
+            "title": "Sửa hoặc thay dây điện, đầu nối",
+            "description": "Dây điện hoặc đầu nối bị lỗi.\n\n**Hướng xử lý:** Sửa chữa hoặc thay đoạn dây/đầu nối hỏng. Sau đó xóa mã lỗi và kiểm tra lại."
+          },
+          {
+            "id": "result-replace-ecm-atf",
+            "type": "result",
+            "title": "Thay ECM",
+            "description": "Đã loại trừ các nguyên nhân khác. ECM bị lỗi.\n\n**Hướng xử lý:** Thay ECM mới và lập trình theo VIN xe."
+          }
+        ]
+      },
+      "relatedCodes": ["P0710", "P0713"],
+      "relatedSections": ["2.2"],
+      "qrUrl": "https://yourdomain.com/#/dtc/P0712"
+    },
+    {
+      "code": "P0713",
+      "group": "P07",
+      "title": "Lỗi Cảm Biến Nhiệt Độ Dầu Hộp Số (Hở Mạch)",
+      "severity": "medium",
+      "symptom": "⏳ Đang cập nhật từ team nội dung",
+      "possibleCauses": ["⏳ Đang cập nhật từ team nội dung"],
+      "diagnosis": [
+        {
+          "step": 1,
+          "action": "Xem chi tiết quy trình chẩn đoán ở phần \"Chẩn đoán Tương Tác\" bên dưới."
+        }
+      ],
+      "diagnosisFlow": {
+        "startStep": 1,
+        "steps": [
+          {
+            "id": 1,
+            "title": "Bước 1 — Đọc dữ liệu động (Nhiệt độ dầu hộp số)",
+            "description": "Dùng Scan Tool đọc dữ liệu động **nhiệt độ dầu hộp số tự động**.\n\nGiá trị nhiệt độ đọc được là gì?\n\n• **150°C** (rất cao bất thường) → Hiện tượng **ngắn mạch**\n• **40°C** (giá trị cố định, không thay đổi) → Hiện tượng **hở mạch**\n• Giá trị thay đổi bình thường theo nhiệt độ thực → tiếp tục bước 2",
+            "yes": 2,
+            "no": "result-short-or-open"
+          },
+          {
+            "id": 2,
+            "title": "Bước 2 — Kiểm tra dây dẫn hộp số (Cảm biến nhiệt độ dầu hộp số tự động)",
+            "description": "Kiểm tra dây dẫn và đầu nối của cảm biến nhiệt độ dầu hộp số tự động.\n\nDây dẫn, đầu nối có thông mạch và đúng tiêu chuẩn?",
+            "yes": 3,
+            "no": "result-fix-transmission-wiring"
+          },
+          {
+            "id": 3,
+            "title": "Bước 3 — Kiểm tra dây điện và đầu nối (Dây dẫn ↔ ECM)",
+            "description": "Kiểm tra dây điện và đầu nối từ **cảm biến nhiệt độ dầu hộp số đến ECM**.\n\nDây có thông mạch, không chập?",
+            "yes": "result-replace-ecm-atf",
+            "no": "result-fix-wiring-atf"
+          },
+          {
+            "id": "result-short-or-open",
+            "type": "result",
+            "title": "Hiện tượng ngắn mạch hoặc hở mạch",
+            "description": "**Nếu đọc 150°C:** Hiện tượng **ngắn mạch** trong cảm biến hoặc dây dẫn.\n\n**Nếu đọc 40°C cố định:** Hiện tượng **hở mạch** trong cảm biến hoặc dây dẫn.\n\n**Hướng xử lý:** Kiểm tra dây dẫn cảm biến và bản thân cảm biến nhiệt độ ATF. Tiến hành kiểm tra theo bước 2 để xác định vị trí lỗi."
+          },
+          {
+            "id": "result-fix-transmission-wiring",
+            "type": "result",
+            "title": "Sửa hoặc thay dây truyền hộp số",
+            "description": "Dây dẫn hộp số bị lỗi.\n\n**Hướng xử lý:** Sửa chữa hoặc thay dây dẫn hộp số. Sau đó xóa mã lỗi và kiểm tra lại."
+          },
+          {
+            "id": "result-fix-wiring-atf",
+            "type": "result",
+            "title": "Sửa hoặc thay dây điện, đầu nối",
+            "description": "Dây điện hoặc đầu nối bị lỗi.\n\n**Hướng xử lý:** Sửa chữa hoặc thay đoạn dây/đầu nối hỏng. Sau đó xóa mã lỗi và kiểm tra lại."
+          },
+          {
+            "id": "result-replace-ecm-atf",
+            "type": "result",
+            "title": "Thay ECM",
+            "description": "Đã loại trừ các nguyên nhân khác. ECM bị lỗi.\n\n**Hướng xử lý:** Thay ECM mới và lập trình theo VIN xe."
+          }
+        ]
+      },
+      "relatedCodes": ["P0710", "P0712"],
+      "relatedSections": ["2.2"],
+      "qrUrl": "https://yourdomain.com/#/dtc/P0713"
+    },
+    {
+      "code": "P0711",
+      "group": "P07",
+      "title": "Lỗi Hiệu Suất Cảm Biến Nhiệt Độ Dầu Hộp Số",
+      "severity": "medium",
+      "symptom": "⏳ Đang cập nhật từ team nội dung",
+      "possibleCauses": ["⏳ Đang cập nhật từ team nội dung"],
+      "diagnosis": [
+        {
+          "step": 1,
+          "action": "Xem chi tiết quy trình chẩn đoán ở phần \"Chẩn đoán Tương Tác\" bên dưới."
+        }
+      ],
+      "diagnosisFlow": {
+        "startStep": 1,
+        "steps": [
+          {
+            "id": 1,
+            "title": "Bước 1 — Kiểm tra các DTC khác (ngoài P0711)",
+            "description": "Quét lỗi tổng quát bằng Scan Tool.\n\nNgoài P0711, còn mã lỗi DTC nào khác đang xuất hiện không?",
+            "yes": "result-handle-other-dtc",
+            "no": 2
+          },
+          {
+            "id": 2,
+            "title": "Bước 2 — Kiểm tra mức dầu ATF",
+            "description": "Kiểm tra mức dầu ATF trong hộp số.\n\nMức dầu có **đúng và đủ** theo tiêu chuẩn?",
+            "yes": 3,
+            "no": "result-add-atf"
+          },
+          {
+            "id": 3,
+            "title": "Bước 3 — Thay thế dây truyền cảm biến nhiệt độ ATF",
+            "description": "Tiến hành thay thế dây truyền của cảm biến nhiệt độ ATF.\n\nSau khi thay, kiểm tra lại — lỗi đã được khắc phục?",
+            "yes": "result-fixed",
+            "no": "result-check-ecm"
+          },
+          {
+            "id": "result-handle-other-dtc",
+            "type": "result",
+            "title": "Xử lý DTC khác trước",
+            "description": "Có DTC khác đi kèm.\n\n**Hướng xử lý:** Xử lý các mã lỗi DTC khác trước, sau đó xóa toàn bộ mã lỗi và kiểm tra lại P0711."
+          },
+          {
+            "id": "result-add-atf",
+            "type": "result",
+            "title": "Thêm dầu ATF đúng lưu lượng, sau đó kiểm tra lại",
+            "description": "Mức dầu ATF không đủ.\n\n**Hướng xử lý:** Thêm dầu ATF đúng loại (theo khuyến cáo Toyota), đúng lưu lượng. Sau đó xóa mã lỗi và kiểm tra lại sau khi xe vận hành ấm."
+          },
+          {
+            "id": "result-fixed",
+            "type": "result",
+            "title": "Đã khắc phục lỗi",
+            "description": "Lỗi đã được khắc phục sau khi thay dây truyền cảm biến nhiệt độ ATF.\n\n**Hướng xử lý:** Xóa mã lỗi, lái thử kiểm tra. Theo dõi sau 5-10 phút lái xe để đảm bảo lỗi không tái xuất."
+          },
+          {
+            "id": "result-check-ecm",
+            "type": "result",
+            "title": "Kiểm tra ECM",
+            "description": "Đã thay dây truyền nhưng lỗi vẫn còn.\n\n**Hướng xử lý:** Tiến hành kiểm tra ECM. Có thể ECM bị lỗi và cần thay/lập trình lại."
+          }
+        ]
+      },
+      "relatedCodes": ["P0710", "P0712", "P0713"],
+      "relatedSections": ["2.2"],
+      "qrUrl": "https://yourdomain.com/#/dtc/P0711"
+    },
+    {
+      "code": "P0717",
+      "group": "P07",
+      "title": "Lỗi Cảm Biến Tốc Độ Đầu Vào Hộp Số (NT)",
+      "severity": "high",
+      "symptom": "⏳ Đang cập nhật từ team nội dung",
+      "possibleCauses": ["⏳ Đang cập nhật từ team nội dung"],
+      "diagnosis": [
+        {
+          "step": 1,
+          "action": "Xem chi tiết quy trình chẩn đoán ở phần \"Chẩn đoán Tương Tác\" bên dưới."
+        }
+      ],
+      "diagnosisFlow": {
+        "startStep": 1,
+        "steps": [
+          {
+            "id": 1,
+            "title": "Bước 1 — Kiểm tra việc lắp đặt cảm biến tốc độ đầu vào hộp số (NT)",
+            "description": "Kiểm tra **việc lắp đặt** cảm biến tốc độ đầu vào hộp số (NT).\n\nCảm biến có được lắp đặt **đúng vị trí, đúng cách, không bị lỏng**?",
+            "yes": 2,
+            "no": "result-install-sensor"
+          },
+          {
+            "id": 2,
+            "title": "Bước 2 — Kiểm tra cảm biến tốc độ đầu vào của hộp số",
+            "description": "Kiểm tra **bản thân cảm biến** tốc độ đầu vào (đo điện trở, kiểm tra tín hiệu).\n\nCảm biến có hoạt động đúng theo tiêu chuẩn?",
+            "yes": 3,
+            "no": "result-replace-nt-sensor"
+          },
+          {
+            "id": 3,
+            "title": "Bước 3 — Kiểm tra dây dẫn và đầu nối (Cảm biến NT ↔ ECM)",
+            "description": "Kiểm tra dây dẫn và đầu nối từ **cảm biến tốc độ NT đến ECM**.\n\nDây và đầu nối có thông mạch, không bị đứt/chập?",
+            "yes": "result-replace-ecm-nt",
+            "no": "result-fix-wiring-nt"
+          },
+          {
+            "id": "result-install-sensor",
+            "type": "result",
+            "title": "Lắp đặt hoặc thay thế cảm biến vòng quay hộp số một cách an toàn",
+            "description": "Cảm biến lắp đặt sai hoặc bị lỏng.\n\n**Hướng xử lý:** Lắp đặt lại cảm biến đúng kỹ thuật. Nếu cảm biến hỏng do lắp sai trước đó, thay cảm biến mới."
+          },
+          {
+            "id": "result-replace-nt-sensor",
+            "type": "result",
+            "title": "Thay thế cảm biến tốc độ đầu vào hộp số",
+            "description": "Cảm biến NT đã hỏng.\n\n**Hướng xử lý:** Thay cảm biến NT mới (chính hãng Toyota). Sau đó xóa mã lỗi và lái thử."
+          },
+          {
+            "id": "result-fix-wiring-nt",
+            "type": "result",
+            "title": "Sửa chữa hoặc thay thế dây dẫn và đầu nối",
+            "description": "Dây dẫn từ cảm biến NT đến ECM bị lỗi.\n\n**Hướng xử lý:** Tìm điểm đứt/chập trên đường dây, sửa chữa hoặc thay đoạn dây/giắc hỏng."
+          },
+          {
+            "id": "result-replace-ecm-nt",
+            "type": "result",
+            "title": "Thay thế ECM",
+            "description": "Đã loại trừ các nguyên nhân khác. ECM bị lỗi.\n\n**Hướng xử lý:** Thay ECM mới và lập trình theo VIN xe."
+          }
+        ]
+      },
       "relatedCodes": [],
       "relatedSections": ["2.2"],
-      "qrUrl": "https://yourdomain.com/#/dtc/P0560"
+      "qrUrl": "https://yourdomain.com/#/dtc/P0717"
+    },
+    {
+      "code": "P0751",
+      "group": "P0750",
+      "title": "Lỗi Hiệu Suất Van Điện Từ Chuyển Số S1",
+      "severity": "high",
+      "symptom": "⏳ Đang cập nhật từ team nội dung",
+      "possibleCauses": ["⏳ Đang cập nhật từ team nội dung"],
+      "diagnosis": [
+        {
+          "step": 1,
+          "action": "Xem chi tiết quy trình chẩn đoán ở phần \"Chẩn đoán Tương Tác\" bên dưới."
+        }
+      ],
+      "diagnosisFlow": {
+        "startStep": 1,
+        "steps": [
+          {
+            "id": 1,
+            "title": "Bước 1 — Kiểm tra van điện từ S1",
+            "description": "Kiểm tra hoạt động và điện trở của van điện từ chuyển số S1.\n\nVan S1 có hoạt động bình thường (điện trở đúng tiêu chuẩn, có tiếng tác động khi cấp điện)?",
+            "yes": 2,
+            "no": "result-replace-s1"
+          },
+          {
+            "id": 2,
+            "title": "Bước 2 — Kiểm tra cụm thân van hộp số",
+            "description": "Kiểm tra **cụm thân van hộp số** (valve body) — các van trượt có hoạt động đúng, không bị kẹt cơ khí?",
+            "yes": "result-fix-transmission",
+            "no": "result-fix-valve-body"
+          },
+          {
+            "id": "result-replace-s1",
+            "type": "result",
+            "title": "Thay thế van điện từ chuyển số S1",
+            "description": "Van điện từ chuyển số S1 đã hỏng.\n\n**Hướng xử lý:** Thay van điện từ S1 mới (chính hãng Toyota). Xóa mã lỗi và lái thử kiểm tra."
+          },
+          {
+            "id": "result-fix-valve-body",
+            "type": "result",
+            "title": "Sửa chữa hoặc thay thế bộ van hộp số",
+            "description": "Cụm thân van bị lỗi (van trượt kẹt, mòn, hoặc nhiễm bẩn).\n\n**Hướng xử lý:** Tháo, vệ sinh hoặc thay cụm thân van hộp số. Có thể cần thay dầu ATF mới."
+          },
+          {
+            "id": "result-fix-transmission",
+            "type": "result",
+            "title": "Sửa chữa hoặc thay thế hộp số tự động",
+            "description": "Van và thân van OK nhưng vẫn lỗi → có thể vấn đề từ bộ phận cơ khí hộp số.\n\n**Hướng xử lý:** Cần kiểm tra sâu hơn (mở hộp số), có thể phải đại tu hoặc thay hộp số."
+          }
+        ]
+      },
+      "relatedCodes": [],
+      "relatedSections": ["2.1", "3.2"],
+      "qrUrl": "https://yourdomain.com/#/dtc/P0751"
+    },
+    {
+      "code": "P0756",
+      "group": "P0750",
+      "title": "Lỗi Hiệu Suất Van Điện Từ Chuyển Số S2",
+      "severity": "high",
+      "symptom": "⏳ Đang cập nhật từ team nội dung",
+      "possibleCauses": ["⏳ Đang cập nhật từ team nội dung"],
+      "diagnosis": [
+        {
+          "step": 1,
+          "action": "Xem chi tiết quy trình chẩn đoán ở phần \"Chẩn đoán Tương Tác\" bên dưới."
+        }
+      ],
+      "diagnosisFlow": {
+        "startStep": 1,
+        "steps": [
+          {
+            "id": 1,
+            "title": "Bước 1 — Kiểm tra van điện từ S2",
+            "description": "Kiểm tra hoạt động và điện trở của van điện từ chuyển số S2.\n\nVan S2 có hoạt động bình thường (điện trở đúng tiêu chuẩn, có tiếng tác động khi cấp điện)?",
+            "yes": 2,
+            "no": "result-replace-s2"
+          },
+          {
+            "id": 2,
+            "title": "Bước 2 — Kiểm tra cụm thân van hộp số",
+            "description": "Kiểm tra **cụm thân van hộp số** (valve body) — các van trượt có hoạt động đúng, không bị kẹt cơ khí?",
+            "yes": "result-fix-transmission",
+            "no": "result-fix-valve-body"
+          },
+          {
+            "id": "result-replace-s2",
+            "type": "result",
+            "title": "Thay thế van điện từ chuyển số S2",
+            "description": "Van điện từ chuyển số S2 đã hỏng.\n\n**Hướng xử lý:** Thay van điện từ S2 mới (chính hãng Toyota). Xóa mã lỗi và lái thử kiểm tra."
+          },
+          {
+            "id": "result-fix-valve-body",
+            "type": "result",
+            "title": "Sửa chữa hoặc thay thế bộ van hộp số",
+            "description": "Cụm thân van bị lỗi (van trượt kẹt, mòn, hoặc nhiễm bẩn).\n\n**Hướng xử lý:** Tháo, vệ sinh hoặc thay cụm thân van hộp số. Có thể cần thay dầu ATF mới."
+          },
+          {
+            "id": "result-fix-transmission",
+            "type": "result",
+            "title": "Sửa chữa hoặc thay thế hộp số tự động",
+            "description": "Van và thân van OK nhưng vẫn lỗi → có thể vấn đề từ bộ phận cơ khí hộp số.\n\n**Hướng xử lý:** Cần kiểm tra sâu hơn (mở hộp số), có thể phải đại tu hoặc thay hộp số."
+          }
+        ]
+      },
+      "relatedCodes": [],
+      "relatedSections": ["2.1", "3.3"],
+      "qrUrl": "https://yourdomain.com/#/dtc/P0756"
+    },
+    {
+      "code": "P0787",
+      "group": "P0780",
+      "title": "Lỗi Mạch Van Điện Từ Chuyển Đổi ST (Thấp)",
+      "severity": "high",
+      "symptom": "⏳ Đang cập nhật từ team nội dung",
+      "possibleCauses": ["⏳ Đang cập nhật từ team nội dung"],
+      "diagnosis": [
+        {
+          "step": 1,
+          "action": "Xem chi tiết quy trình chẩn đoán ở phần \"Chẩn đoán Tương Tác\" bên dưới."
+        }
+      ],
+      "diagnosisFlow": {
+        "startStep": 1,
+        "steps": [
+          {
+            "id": 1,
+            "title": "Bước 1 — Kiểm tra dây dẫn hộp số (Van điện từ chuyển số ST)",
+            "description": "Kiểm tra dây dẫn của **van điện từ chuyển số ST** trong hộp số.\n\nDây dẫn có thông mạch, không bị đứt/chập?",
+            "yes": 2,
+            "no": 3
+          },
+          {
+            "id": 2,
+            "title": "Bước 2 — Kiểm tra van điện từ chuyển đổi ST",
+            "description": "Kiểm tra hoạt động của **van điện từ chuyển đổi ST**.\n\nVan có hoạt động đúng (điện trở đúng tiêu chuẩn, có tiếng tác động khi cấp điện)?",
+            "yes": "result-replace-ecm-st",
+            "no": "result-fix-st-wiring"
+          },
+          {
+            "id": 3,
+            "title": "Bước 3 — Kiểm tra van điện từ chuyển đổi ST",
+            "description": "Kiểm tra van điện từ chuyển đổi ST sau khi đã loại trừ vấn đề ở dây dẫn hộp số.\n\nVan có hoạt động đúng?",
+            "yes": "result-fix-driveline",
+            "no": "result-replace-st"
+          },
+          {
+            "id": "result-replace-ecm-st",
+            "type": "result",
+            "title": "Thay ECM",
+            "description": "Dây dẫn và van ST đều OK → ECM bị lỗi.\n\n**Hướng xử lý:** Thay ECM mới và lập trình theo VIN xe."
+          },
+          {
+            "id": "result-fix-st-wiring",
+            "type": "result",
+            "title": "Sửa chữa hoặc thay thế bộ dây điện hoặc đầu nối",
+            "description": "Dây điện hoặc đầu nối của van ST bị lỗi.\n\n**Hướng xử lý:** Sửa chữa hoặc thay đoạn dây/giắc hỏng."
+          },
+          {
+            "id": "result-replace-st",
+            "type": "result",
+            "title": "Thay thế van điện từ chuyển số (ST)",
+            "description": "Van điện từ chuyển đổi ST đã hỏng.\n\n**Hướng xử lý:** Thay van điện từ ST mới (chính hãng). Xóa mã lỗi và kiểm tra lại."
+          },
+          {
+            "id": "result-fix-driveline",
+            "type": "result",
+            "title": "Sửa chữa hoặc thay thế dây truyền",
+            "description": "Lỗi nằm ở dây truyền (driveline).\n\n**Hướng xử lý:** Sửa chữa hoặc thay dây truyền."
+          }
+        ]
+      },
+      "relatedCodes": ["P0788"],
+      "relatedSections": ["2.1", "3.4", "3.5"],
+      "qrUrl": "https://yourdomain.com/#/dtc/P0787"
+    },
+    {
+      "code": "P0788",
+      "group": "P0780",
+      "title": "Lỗi Mạch Van Điện Từ Chuyển Đổi ST (Cao)",
+      "severity": "high",
+      "symptom": "⏳ Đang cập nhật từ team nội dung",
+      "possibleCauses": ["⏳ Đang cập nhật từ team nội dung"],
+      "diagnosis": [
+        {
+          "step": 1,
+          "action": "Xem chi tiết quy trình chẩn đoán ở phần \"Chẩn đoán Tương Tác\" bên dưới."
+        }
+      ],
+      "diagnosisFlow": {
+        "startStep": 1,
+        "steps": [
+          {
+            "id": 1,
+            "title": "Bước 1 — Kiểm tra dây dẫn hộp số (Van điện từ chuyển số ST)",
+            "description": "Kiểm tra dây dẫn của **van điện từ chuyển số ST** trong hộp số.\n\nDây dẫn có thông mạch, không bị đứt/chập?",
+            "yes": 2,
+            "no": 3
+          },
+          {
+            "id": 2,
+            "title": "Bước 2 — Kiểm tra van điện từ chuyển đổi ST",
+            "description": "Kiểm tra hoạt động của **van điện từ chuyển đổi ST**.\n\nVan có hoạt động đúng (điện trở đúng tiêu chuẩn, có tiếng tác động khi cấp điện)?",
+            "yes": "result-replace-ecm-st",
+            "no": "result-fix-st-wiring"
+          },
+          {
+            "id": 3,
+            "title": "Bước 3 — Kiểm tra van điện từ chuyển đổi ST",
+            "description": "Kiểm tra van điện từ chuyển đổi ST sau khi đã loại trừ vấn đề ở dây dẫn hộp số.\n\nVan có hoạt động đúng?",
+            "yes": "result-fix-driveline",
+            "no": "result-replace-st"
+          },
+          {
+            "id": "result-replace-ecm-st",
+            "type": "result",
+            "title": "Thay ECM",
+            "description": "Dây dẫn và van ST đều OK → ECM bị lỗi.\n\n**Hướng xử lý:** Thay ECM mới và lập trình theo VIN xe."
+          },
+          {
+            "id": "result-fix-st-wiring",
+            "type": "result",
+            "title": "Sửa chữa hoặc thay thế bộ dây điện hoặc đầu nối",
+            "description": "Dây điện hoặc đầu nối của van ST bị lỗi.\n\n**Hướng xử lý:** Sửa chữa hoặc thay đoạn dây/giắc hỏng."
+          },
+          {
+            "id": "result-replace-st",
+            "type": "result",
+            "title": "Thay thế van điện từ chuyển số (ST)",
+            "description": "Van điện từ chuyển đổi ST đã hỏng.\n\n**Hướng xử lý:** Thay van điện từ ST mới (chính hãng). Xóa mã lỗi và kiểm tra lại."
+          },
+          {
+            "id": "result-fix-driveline",
+            "type": "result",
+            "title": "Sửa chữa hoặc thay thế dây truyền",
+            "description": "Lỗi nằm ở dây truyền (driveline).\n\n**Hướng xử lý:** Sửa chữa hoặc thay dây truyền."
+          }
+        ]
+      },
+      "relatedCodes": ["P0787"],
+      "relatedSections": ["2.1", "3.4", "3.5"],
+      "qrUrl": "https://yourdomain.com/#/dtc/P0788"
+    },
+    {
+      "code": "P0973",
+      "group": "P0970",
+      "title": "Lỗi Mạch Van Điện Từ Chuyển Số S1 (Thấp)",
+      "severity": "high",
+      "symptom": "⏳ Đang cập nhật từ team nội dung",
+      "possibleCauses": ["⏳ Đang cập nhật từ team nội dung"],
+      "diagnosis": [
+        {
+          "step": 1,
+          "action": "Xem chi tiết quy trình chẩn đoán ở phần \"Chẩn đoán Tương Tác\" bên dưới."
+        }
+      ],
+      "diagnosisFlow": {
+        "startStep": 1,
+        "steps": [
+          {
+            "id": 1,
+            "title": "Bước 1 — Kiểm tra dây dẫn hộp số (Van điện từ chuyển số S1)",
+            "description": "Kiểm tra dây dẫn của **van điện từ chuyển số S1** trong hộp số.\n\nDây dẫn có thông mạch, không bị đứt/chập?",
+            "yes": 2,
+            "no": 3
+          },
+          {
+            "id": 2,
+            "title": "Bước 2 — Kiểm tra bộ dây và đầu nối (Dây điện hộp số ↔ ECM)",
+            "description": "Kiểm tra dây và đầu nối từ **hộp số đến ECM**.\n\nDây có thông mạch, không lỗi?",
+            "yes": "result-replace-ecm-circuit",
+            "no": "result-fix-cable-ecm"
+          },
+          {
+            "id": 3,
+            "title": "Bước 3 — Kiểm tra van điện từ chuyển đổi S1",
+            "description": "Kiểm tra van điện từ chuyển đổi S1 (sau khi đã loại trừ vấn đề dây dẫn hộp số).\n\nVan có hoạt động đúng?",
+            "yes": "result-fix-driveline-circuit",
+            "no": "result-replace-s1-circuit"
+          },
+          {
+            "id": "result-replace-ecm-circuit",
+            "type": "result",
+            "title": "Thay ECM",
+            "description": "Đã loại trừ các nguyên nhân khác. ECM bị lỗi.\n\n**Hướng xử lý:** Thay ECM mới và lập trình theo VIN xe."
+          },
+          {
+            "id": "result-fix-cable-ecm",
+            "type": "result",
+            "title": "Sửa chữa hoặc thay thế bộ dây điện",
+            "description": "Đường dây từ hộp số đến ECM bị lỗi.\n\n**Hướng xử lý:** Sửa chữa hoặc thay đoạn dây/giắc hỏng giữa hộp số và ECM."
+          },
+          {
+            "id": "result-replace-s1-circuit",
+            "type": "result",
+            "title": "Thay thế van điện từ chuyển số S1",
+            "description": "Van điện từ S1 đã hỏng.\n\n**Hướng xử lý:** Thay van mới (chính hãng). Xóa mã lỗi và kiểm tra lại."
+          },
+          {
+            "id": "result-fix-driveline-circuit",
+            "type": "result",
+            "title": "Sửa chữa hoặc thay thế dây truyền động",
+            "description": "Lỗi nằm ở dây truyền động.\n\n**Hướng xử lý:** Sửa chữa hoặc thay dây truyền động."
+          }
+        ]
+      },
+      "relatedCodes": ["P0974"],
+      "relatedSections": ["2.1", "3.2"],
+      "qrUrl": "https://yourdomain.com/#/dtc/P0973"
+    },
+    {
+      "code": "P0974",
+      "group": "P0970",
+      "title": "Lỗi Mạch Van Điện Từ Chuyển Số S1 (Cao)",
+      "severity": "high",
+      "symptom": "⏳ Đang cập nhật từ team nội dung",
+      "possibleCauses": ["⏳ Đang cập nhật từ team nội dung"],
+      "diagnosis": [
+        {
+          "step": 1,
+          "action": "Xem chi tiết quy trình chẩn đoán ở phần \"Chẩn đoán Tương Tác\" bên dưới."
+        }
+      ],
+      "diagnosisFlow": {
+        "startStep": 1,
+        "steps": [
+          {
+            "id": 1,
+            "title": "Bước 1 — Kiểm tra dây dẫn hộp số (Van điện từ chuyển số S1)",
+            "description": "Kiểm tra dây dẫn của **van điện từ chuyển số S1** trong hộp số.\n\nDây dẫn có thông mạch, không bị đứt/chập?",
+            "yes": 2,
+            "no": 3
+          },
+          {
+            "id": 2,
+            "title": "Bước 2 — Kiểm tra bộ dây và đầu nối (Dây điện hộp số ↔ ECM)",
+            "description": "Kiểm tra dây và đầu nối từ **hộp số đến ECM**.\n\nDây có thông mạch, không lỗi?",
+            "yes": "result-replace-ecm-circuit",
+            "no": "result-fix-cable-ecm"
+          },
+          {
+            "id": 3,
+            "title": "Bước 3 — Kiểm tra van điện từ chuyển đổi S1",
+            "description": "Kiểm tra van điện từ chuyển đổi S1 (sau khi đã loại trừ vấn đề dây dẫn hộp số).\n\nVan có hoạt động đúng?",
+            "yes": "result-fix-driveline-circuit",
+            "no": "result-replace-s1-circuit"
+          },
+          {
+            "id": "result-replace-ecm-circuit",
+            "type": "result",
+            "title": "Thay ECM",
+            "description": "Đã loại trừ các nguyên nhân khác. ECM bị lỗi.\n\n**Hướng xử lý:** Thay ECM mới và lập trình theo VIN xe."
+          },
+          {
+            "id": "result-fix-cable-ecm",
+            "type": "result",
+            "title": "Sửa chữa hoặc thay thế bộ dây điện",
+            "description": "Đường dây từ hộp số đến ECM bị lỗi.\n\n**Hướng xử lý:** Sửa chữa hoặc thay đoạn dây/giắc hỏng giữa hộp số và ECM."
+          },
+          {
+            "id": "result-replace-s1-circuit",
+            "type": "result",
+            "title": "Thay thế van điện từ chuyển số S1",
+            "description": "Van điện từ S1 đã hỏng.\n\n**Hướng xử lý:** Thay van mới (chính hãng). Xóa mã lỗi và kiểm tra lại."
+          },
+          {
+            "id": "result-fix-driveline-circuit",
+            "type": "result",
+            "title": "Sửa chữa hoặc thay thế dây truyền động",
+            "description": "Lỗi nằm ở dây truyền động.\n\n**Hướng xử lý:** Sửa chữa hoặc thay dây truyền động."
+          }
+        ]
+      },
+      "relatedCodes": ["P0973"],
+      "relatedSections": ["2.1", "3.2"],
+      "qrUrl": "https://yourdomain.com/#/dtc/P0974"
+    },
+    {
+      "code": "P0976",
+      "group": "P0970",
+      "title": "Lỗi Mạch Van Điện Từ Chuyển Số S2 (Thấp)",
+      "severity": "high",
+      "symptom": "⏳ Đang cập nhật từ team nội dung",
+      "possibleCauses": ["⏳ Đang cập nhật từ team nội dung"],
+      "diagnosis": [
+        {
+          "step": 1,
+          "action": "Xem chi tiết quy trình chẩn đoán ở phần \"Chẩn đoán Tương Tác\" bên dưới."
+        }
+      ],
+      "diagnosisFlow": {
+        "startStep": 1,
+        "steps": [
+          {
+            "id": 1,
+            "title": "Bước 1 — Kiểm tra dây dẫn hộp số (Van điện từ chuyển số S2)",
+            "description": "Kiểm tra dây dẫn của **van điện từ chuyển số S2** trong hộp số.\n\nDây dẫn có thông mạch, không bị đứt/chập?",
+            "yes": 2,
+            "no": 3
+          },
+          {
+            "id": 2,
+            "title": "Bước 2 — Kiểm tra bộ dây và đầu nối (Dây điện hộp số ↔ ECM)",
+            "description": "Kiểm tra dây và đầu nối từ **hộp số đến ECM**.\n\nDây có thông mạch, không lỗi?",
+            "yes": "result-replace-ecm-circuit",
+            "no": "result-fix-cable-ecm"
+          },
+          {
+            "id": 3,
+            "title": "Bước 3 — Kiểm tra van điện từ chuyển đổi S2",
+            "description": "Kiểm tra van điện từ chuyển đổi S2 (sau khi đã loại trừ vấn đề dây dẫn hộp số).\n\nVan có hoạt động đúng?",
+            "yes": "result-fix-driveline-circuit",
+            "no": "result-replace-s2-circuit"
+          },
+          {
+            "id": "result-replace-ecm-circuit",
+            "type": "result",
+            "title": "Thay ECM",
+            "description": "Đã loại trừ các nguyên nhân khác. ECM bị lỗi.\n\n**Hướng xử lý:** Thay ECM mới và lập trình theo VIN xe."
+          },
+          {
+            "id": "result-fix-cable-ecm",
+            "type": "result",
+            "title": "Sửa chữa hoặc thay thế bộ dây điện",
+            "description": "Đường dây từ hộp số đến ECM bị lỗi.\n\n**Hướng xử lý:** Sửa chữa hoặc thay đoạn dây/giắc hỏng giữa hộp số và ECM."
+          },
+          {
+            "id": "result-replace-s2-circuit",
+            "type": "result",
+            "title": "Thay thế van điện từ chuyển số S2",
+            "description": "Van điện từ S2 đã hỏng.\n\n**Hướng xử lý:** Thay van mới (chính hãng). Xóa mã lỗi và kiểm tra lại."
+          },
+          {
+            "id": "result-fix-driveline-circuit",
+            "type": "result",
+            "title": "Sửa chữa hoặc thay thế dây truyền động",
+            "description": "Lỗi nằm ở dây truyền động.\n\n**Hướng xử lý:** Sửa chữa hoặc thay dây truyền động."
+          }
+        ]
+      },
+      "relatedCodes": ["P0977"],
+      "relatedSections": ["2.1", "3.3", "3.5"],
+      "qrUrl": "https://yourdomain.com/#/dtc/P0976"
+    },
+    {
+      "code": "P0977",
+      "group": "P0970",
+      "title": "Lỗi Mạch Van Điện Từ Chuyển Số S2 (Cao)",
+      "severity": "high",
+      "symptom": "⏳ Đang cập nhật từ team nội dung",
+      "possibleCauses": ["⏳ Đang cập nhật từ team nội dung"],
+      "diagnosis": [
+        {
+          "step": 1,
+          "action": "Xem chi tiết quy trình chẩn đoán ở phần \"Chẩn đoán Tương Tác\" bên dưới."
+        }
+      ],
+      "diagnosisFlow": {
+        "startStep": 1,
+        "steps": [
+          {
+            "id": 1,
+            "title": "Bước 1 — Kiểm tra dây dẫn hộp số (Van điện từ chuyển số S2)",
+            "description": "Kiểm tra dây dẫn của **van điện từ chuyển số S2** trong hộp số.\n\nDây dẫn có thông mạch, không bị đứt/chập?",
+            "yes": 2,
+            "no": 3
+          },
+          {
+            "id": 2,
+            "title": "Bước 2 — Kiểm tra bộ dây và đầu nối (Dây điện hộp số ↔ ECM)",
+            "description": "Kiểm tra dây và đầu nối từ **hộp số đến ECM**.\n\nDây có thông mạch, không lỗi?",
+            "yes": "result-replace-ecm-circuit",
+            "no": "result-fix-cable-ecm"
+          },
+          {
+            "id": 3,
+            "title": "Bước 3 — Kiểm tra van điện từ chuyển đổi S2",
+            "description": "Kiểm tra van điện từ chuyển đổi S2 (sau khi đã loại trừ vấn đề dây dẫn hộp số).\n\nVan có hoạt động đúng?",
+            "yes": "result-fix-driveline-circuit",
+            "no": "result-replace-s2-circuit"
+          },
+          {
+            "id": "result-replace-ecm-circuit",
+            "type": "result",
+            "title": "Thay ECM",
+            "description": "Đã loại trừ các nguyên nhân khác. ECM bị lỗi.\n\n**Hướng xử lý:** Thay ECM mới và lập trình theo VIN xe."
+          },
+          {
+            "id": "result-fix-cable-ecm",
+            "type": "result",
+            "title": "Sửa chữa hoặc thay thế bộ dây điện",
+            "description": "Đường dây từ hộp số đến ECM bị lỗi.\n\n**Hướng xử lý:** Sửa chữa hoặc thay đoạn dây/giắc hỏng giữa hộp số và ECM."
+          },
+          {
+            "id": "result-replace-s2-circuit",
+            "type": "result",
+            "title": "Thay thế van điện từ chuyển số S2",
+            "description": "Van điện từ S2 đã hỏng.\n\n**Hướng xử lý:** Thay van mới (chính hãng). Xóa mã lỗi và kiểm tra lại."
+          },
+          {
+            "id": "result-fix-driveline-circuit",
+            "type": "result",
+            "title": "Sửa chữa hoặc thay thế dây truyền động",
+            "description": "Lỗi nằm ở dây truyền động.\n\n**Hướng xử lý:** Sửa chữa hoặc thay dây truyền động."
+          }
+        ]
+      },
+      "relatedCodes": ["P0976"],
+      "relatedSections": ["2.1", "3.3", "3.5"],
+      "qrUrl": "https://yourdomain.com/#/dtc/P0977"
+    },
+    {
+      "code": "P2714",
+      "group": "P2700",
+      "title": "Lỗi Hiệu Suất Van Điện Từ Áp Suất SLT",
+      "severity": "high",
+      "symptom": "⏳ Đang cập nhật từ team nội dung",
+      "possibleCauses": ["⏳ Đang cập nhật từ team nội dung"],
+      "diagnosis": [
+        {
+          "step": 1,
+          "action": "Xem chi tiết quy trình chẩn đoán ở phần \"Chẩn đoán Tương Tác\" bên dưới."
+        }
+      ],
+      "diagnosisFlow": {
+        "startStep": 1,
+        "steps": [
+          {
+            "id": 1,
+            "title": "Bước 1 — Kiểm tra van điện từ chuyển số SLT",
+            "description": "Kiểm tra hoạt động và điện trở của **van điện từ áp suất SLT**.\n\nVan SLT có hoạt động đúng (điện trở chuẩn, đáp ứng dòng điều khiển)?",
+            "yes": 2,
+            "no": "result-replace-slt-perf"
+          },
+          {
+            "id": 2,
+            "title": "Bước 2 — Kiểm tra van điện từ chuyển đổi SLT",
+            "description": "Kiểm tra hoạt động của **van điện từ chuyển đổi SLT** (cụm valve body liên quan).\n\nVan có hoạt động đúng?",
+            "yes": 3,
+            "no": "result-fix-valve-body-slt"
+          },
+          {
+            "id": 3,
+            "title": "Bước 3 — Kiểm tra bộ ly hợp biến đổi mô-men xoắn",
+            "description": "Kiểm tra **bộ ly hợp biến đổi mô-men xoắn (Torque Converter Clutch)**.\n\nLy hợp biến mô có hoạt động bình thường?",
+            "yes": "result-fix-transmission-slt",
+            "no": "result-replace-tcc"
+          },
+          {
+            "id": "result-replace-slt-perf",
+            "type": "result",
+            "title": "Thay thế van điện từ chuyển số SLT",
+            "description": "Van điện từ áp suất SLT đã hỏng.\n\n**Hướng xử lý:** Thay van SLT mới (chính hãng). Xóa mã lỗi và kiểm tra lại."
+          },
+          {
+            "id": "result-fix-valve-body-slt",
+            "type": "result",
+            "title": "Sửa chữa hoặc thay thế bộ van hộp số",
+            "description": "Cụm thân van bị lỗi (van trượt kẹt, mòn).\n\n**Hướng xử lý:** Tháo, vệ sinh hoặc thay cụm thân van. Thay dầu ATF mới."
+          },
+          {
+            "id": "result-replace-tcc",
+            "type": "result",
+            "title": "Thay thế bộ ly hợp",
+            "description": "Bộ ly hợp biến đổi mô-men xoắn (TCC) đã hỏng.\n\n**Hướng xử lý:** Thay bộ ly hợp biến mô. Đây là công việc phức tạp, cần tháo hộp số."
+          },
+          {
+            "id": "result-fix-transmission-slt",
+            "type": "result",
+            "title": "Sửa chữa hoặc thay thế hộp số tự động",
+            "description": "Đã loại trừ nguyên nhân van và ly hợp → vấn đề từ bộ phận khác trong hộp số.\n\n**Hướng xử lý:** Cần kiểm tra sâu hơn, có thể phải đại tu hộp số."
+          }
+        ]
+      },
+      "relatedCodes": ["P2716"],
+      "relatedSections": ["1.3", "2.1"],
+      "qrUrl": "https://yourdomain.com/#/dtc/P2714"
+    },
+    {
+      "code": "P2716",
+      "group": "P2700",
+      "title": "Lỗi Mạch Van Điện Từ Áp Suất SLT",
+      "severity": "high",
+      "symptom": "⏳ Đang cập nhật từ team nội dung",
+      "possibleCauses": ["⏳ Đang cập nhật từ team nội dung"],
+      "diagnosis": [
+        {
+          "step": 1,
+          "action": "Xem chi tiết quy trình chẩn đoán ở phần \"Chẩn đoán Tương Tác\" bên dưới."
+        }
+      ],
+      "diagnosisFlow": {
+        "startStep": 1,
+        "steps": [
+          {
+            "id": 1,
+            "title": "Bước 1 — Kiểm tra dây dẫn hộp số (Van điện từ chuyển số S2)",
+            "description": "Kiểm tra dây dẫn của **van điện từ chuyển số S2** trong hộp số (vì SLT và S2 dùng chung tuyến).\n\nDây dẫn có thông mạch, không bị đứt/chập?",
+            "yes": 2,
+            "no": 3
+          },
+          {
+            "id": 2,
+            "title": "Bước 2 — Kiểm tra bộ dây và đầu nối (Dây điện hộp số ↔ ECM)",
+            "description": "Kiểm tra dây và đầu nối từ **hộp số đến ECM**.\n\nDây có thông mạch, không lỗi?",
+            "yes": "result-replace-ecm-2716",
+            "no": "result-fix-cable-2716"
+          },
+          {
+            "id": 3,
+            "title": "Bước 3 — Kiểm tra van điện từ chuyển đổi SLT",
+            "description": "Kiểm tra van điện từ chuyển đổi SLT.\n\nVan có hoạt động đúng?",
+            "yes": "result-fix-cable-2716-2",
+            "no": "result-replace-slt-2716"
+          },
+          {
+            "id": "result-replace-ecm-2716",
+            "type": "result",
+            "title": "Thay ECM",
+            "description": "Đã loại trừ các nguyên nhân khác. ECM bị lỗi.\n\n**Hướng xử lý:** Thay ECM mới và lập trình theo VIN xe."
+          },
+          {
+            "id": "result-fix-cable-2716",
+            "type": "result",
+            "title": "Sửa chữa hoặc thay thế bộ dây điện",
+            "description": "Đường dây hộp số bị lỗi.\n\n**Hướng xử lý:** Sửa chữa hoặc thay dây/giắc hỏng."
+          },
+          {
+            "id": "result-replace-slt-2716",
+            "type": "result",
+            "title": "Thay thế van điện từ chuyển số SLT",
+            "description": "Van SLT đã hỏng.\n\n**Hướng xử lý:** Thay van SLT mới (chính hãng)."
+          },
+          {
+            "id": "result-fix-cable-2716-2",
+            "type": "result",
+            "title": "Sửa chữa hoặc thay thế dây điện",
+            "description": "Lỗi nằm ở dây điện kết nối.\n\n**Hướng xử lý:** Sửa chữa hoặc thay đoạn dây hỏng."
+          }
+        ]
+      },
+      "relatedCodes": ["P2714"],
+      "relatedSections": ["1.3", "2.1"],
+      "qrUrl": "https://yourdomain.com/#/dtc/P2716"
     },
     {
       "code": "P2757",
-      "group": "P27",
-      "title": "Áp Suất Điều Khiển Lock-Up Clutch Thấp",
-      "severity": "medium",
-      "symptom": "Lock-up Clutch trượt ở tốc độ cao, tiêu hao nhiên liệu tăng rõ rệt.",
-      "possibleCauses": [
-        "Đĩa ma sát Lock-Up mòn quá mức",
-        "Áp suất dầu Lock-Up không đủ do mòn bơm",
-        "Solenoid SLU hoạt động không đúng"
-      ],
+      "group": "P2700",
+      "title": "Lỗi Hiệu Suất Van Điện Từ Lock-up SLU",
+      "severity": "high",
+      "symptom": "⏳ Đang cập nhật từ team nội dung",
+      "possibleCauses": ["⏳ Đang cập nhật từ team nội dung"],
       "diagnosis": [
         {
           "step": 1,
-          "action": "Kiểm tra áp suất dầu Lock-Up tại cổng đo khi Lock-Up hoạt động",
-          "tool": "Đồng hồ đo áp suất",
-          "expected": "490 ~ 690 kPa"
-        },
-        {
-          "step": 2,
-          "action": "So sánh tốc độ NT (turbine) và NC (output) khi Lock-Up kích hoạt",
-          "tool": "Scan Tool",
-          "expected": "NT = NC (không trượt)"
+          "action": "Xem chi tiết quy trình chẩn đoán ở phần \"Chẩn đoán Tương Tác\" bên dưới."
         }
       ],
-      "relatedCodes": ["P0741", "P0742"],
+      "diagnosisFlow": {
+        "startStep": 1,
+        "steps": [
+          {
+            "id": 1,
+            "title": "Bước 1 — Kiểm tra van điện từ chuyển đổi SLU",
+            "description": "Kiểm tra hoạt động và điện trở của **van điện từ Lock-up SLU**.\n\nVan SLU có hoạt động đúng (điện trở chuẩn, đáp ứng dòng điều khiển)?",
+            "yes": 2,
+            "no": "result-replace-slu-perf"
+          },
+          {
+            "id": 2,
+            "title": "Bước 2 — Kiểm tra cụm thân van hộp số",
+            "description": "Kiểm tra **cụm thân van hộp số** (valve body) — đặc biệt là các van liên quan đến lock-up.\n\nThân van có hoạt động đúng, không kẹt?",
+            "yes": 3,
+            "no": "result-fix-vb-slu"
+          },
+          {
+            "id": 3,
+            "title": "Bước 3 — Kiểm tra bộ ly hợp biến đổi mô-men xoắn",
+            "description": "Kiểm tra **bộ ly hợp biến đổi mô-men xoắn (Lock-up Clutch)**.\n\nLy hợp lock-up có hoạt động đúng?",
+            "yes": "result-fix-trans-slu",
+            "no": "result-replace-tcc-slu"
+          },
+          {
+            "id": "result-replace-slu-perf",
+            "type": "result",
+            "title": "Thay thế van điện từ chuyển số SLU",
+            "description": "Van điện từ Lock-up SLU đã hỏng.\n\n**Hướng xử lý:** Thay van SLU mới."
+          },
+          {
+            "id": "result-fix-vb-slu",
+            "type": "result",
+            "title": "Sửa chữa hoặc thay thế bộ van hộp số",
+            "description": "Cụm thân van bị lỗi.\n\n**Hướng xử lý:** Tháo, vệ sinh hoặc thay cụm thân van. Thay dầu ATF mới."
+          },
+          {
+            "id": "result-replace-tcc-slu",
+            "type": "result",
+            "title": "Thay thế bộ ly hợp",
+            "description": "Bộ ly hợp Lock-up đã hỏng.\n\n**Hướng xử lý:** Thay bộ ly hợp Lock-up. Cần tháo hộp số."
+          },
+          {
+            "id": "result-fix-trans-slu",
+            "type": "result",
+            "title": "Sửa chữa hoặc thay thế hộp số tự động",
+            "description": "Vấn đề từ bộ phận khác trong hộp số.\n\n**Hướng xử lý:** Cần kiểm tra sâu hơn hoặc đại tu."
+          }
+        ]
+      },
+      "relatedCodes": ["P2759"],
       "relatedSections": ["1.2", "2.1"],
       "qrUrl": "https://yourdomain.com/#/dtc/P2757"
+    },
+    {
+      "code": "P2759",
+      "group": "P2700",
+      "title": "Lỗi Mạch Van Điện Từ Lock-up SLU",
+      "severity": "high",
+      "symptom": "⏳ Đang cập nhật từ team nội dung",
+      "possibleCauses": ["⏳ Đang cập nhật từ team nội dung"],
+      "diagnosis": [
+        {
+          "step": 1,
+          "action": "Xem chi tiết quy trình chẩn đoán ở phần \"Chẩn đoán Tương Tác\" bên dưới."
+        }
+      ],
+      "diagnosisFlow": {
+        "startStep": 1,
+        "steps": [
+          {
+            "id": 1,
+            "title": "Bước 1 — Kiểm tra dây dẫn truyền động (Van điện từ chuyển số SLU)",
+            "description": "Kiểm tra dây dẫn truyền động của **van điện từ chuyển số SLU**.\n\nDây dẫn có thông mạch, không bị đứt/chập?",
+            "yes": 2,
+            "no": 3
+          },
+          {
+            "id": 2,
+            "title": "Bước 2 — Kiểm tra bộ dây và đầu nối (Dây hộp số ↔ ECM)",
+            "description": "Kiểm tra bộ dây và đầu nối từ **hộp số đến ECM**.\n\nDây có thông mạch, không lỗi?",
+            "yes": "result-replace-ecm-2759",
+            "no": "result-fix-cable-2759"
+          },
+          {
+            "id": 3,
+            "title": "Bước 3 — Kiểm tra van điện từ chuyển đổi SLU",
+            "description": "Kiểm tra van điện từ chuyển đổi SLU.\n\nVan có hoạt động đúng?",
+            "yes": "result-fix-cable-2759-2",
+            "no": "result-replace-slu-2759"
+          },
+          {
+            "id": "result-replace-ecm-2759",
+            "type": "result",
+            "title": "Thay ECM",
+            "description": "Đã loại trừ các nguyên nhân khác. ECM bị lỗi.\n\n**Hướng xử lý:** Thay ECM mới và lập trình theo VIN xe."
+          },
+          {
+            "id": "result-fix-cable-2759",
+            "type": "result",
+            "title": "Sửa chữa hoặc thay thế bộ dây điện",
+            "description": "Đường dây hộp số bị lỗi.\n\n**Hướng xử lý:** Sửa chữa hoặc thay dây/giắc hỏng."
+          },
+          {
+            "id": "result-replace-slu-2759",
+            "type": "result",
+            "title": "Thay thế van điện từ chuyển số SLU",
+            "description": "Van SLU đã hỏng.\n\n**Hướng xử lý:** Thay van SLU mới."
+          },
+          {
+            "id": "result-fix-cable-2759-2",
+            "type": "result",
+            "title": "Sửa chữa hoặc thay thế dây điện",
+            "description": "Lỗi nằm ở dây điện kết nối.\n\n**Hướng xử lý:** Sửa chữa hoặc thay đoạn dây hỏng."
+          }
+        ]
+      },
+      "relatedCodes": ["P2757"],
+      "relatedSections": ["1.2", "2.1"],
+      "qrUrl": "https://yourdomain.com/#/dtc/P2759"
     }
   ]
 }

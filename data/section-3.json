@@ -58,7 +58,7 @@
             "caption": "Hình 3.2 — Sơ đồ nguyên lý tay số 1 (dải L)"
           }
         ],
-        "relatedDTC": ["P0731"]
+        "relatedDTC": ["P0973", "P0974"]
       }
     },
     {
@@ -88,7 +88,7 @@
             "caption": "Hình 3.4 — Sơ đồ nguyên lý tay số 2 (dải 2)"
           }
         ],
-        "relatedDTC": ["P0732"]
+        "relatedDTC": ["P0976", "P0977"]
       }
     },
     {
@@ -108,7 +108,7 @@
             "caption": "Hình 3.5 — Sơ đồ nguyên lý tay số 3"
           }
         ],
-        "relatedDTC": ["P0733"]
+        "relatedDTC": ["P0976", "P0977", "P0787"]
       }
     },
     {
@@ -128,7 +128,7 @@
             "caption": "Hình 3.6 — Sơ đồ nguyên lý tay số 4"
           }
         ],
-        "relatedDTC": ["P0734"]
+        "relatedDTC": ["P0787", "P0788", "P0976"]
       }
     },
     {
@@ -148,7 +148,7 @@
             "caption": "Hình 3.7 — Sơ đồ nguyên lý tay số lùi R"
           }
         ],
-        "relatedDTC": []
+        "relatedDTC": ["P0705"]
       }
     },
     {
