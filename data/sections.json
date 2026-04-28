@@ -101,7 +101,7 @@
       "id": 4,
       "slug": "quy-trinh-thao-lap",
       "title": "Quy Trình Tháo Lắp",
-      "description": "Quy trình tháo, lắp và bảo dưỡng định kỳ hộp số U340E",
+      "description": "Quy trình tháo và lắp hộp số U340E theo thực hành nhóm",
       "color": "#6b21a8",
       "accentColor": "#9333ea",
       "subsections": [
@@ -112,10 +112,6 @@
         {
           "id": "4.2",
           "title": "Quy trình lắp"
-        },
-        {
-          "id": "4.3",
-          "title": "Bảo dưỡng định kỳ"
         }
       ],
       "dataFile": "data/section-4.json"
