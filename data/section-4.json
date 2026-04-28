@@ -6,23 +6,104 @@
       "id": "4.1",
       "title": "Quy Trình Tháo",
       "content": {
-        "intro": "Quy trình tháo hộp số U340E khỏi xe đòi hỏi các bước chuẩn bị kỹ lưỡng về an toàn và dụng cụ. Luôn xả dầu ATF trước khi tháo hộp số.",
+        "intro": "Quy trình tháo hộp số U340E gồm 22 bước, được nhóm thực hiện trên mô hình thực hành. Mỗi bước trình bày song song hình vẽ kỹ thuật từ tài liệu và ảnh chụp thực tế khi nhóm tháo, giúp người đọc đối chiếu trực quan.",
         "keyPoints": [
-          "Xả dầu ATF trước khi tháo (6.9L dầu)",
-          "Tháo trục dẫn động trái và phải",
-          "Tháo giá đỡ động cơ phụ (sub-frame nếu cần)",
-          "Sử dụng giá đỡ hộp số khi tháo bu lông nối",
-          "Đánh dấu vị trí biến mô trước khi tháo"
+          "Tổng cộng 22 bước, bám theo thực hành tháo lắp trên mô hình",
+          "Dụng cụ chính: tuýp 10mm, tuýp 12mm, tua vít, búa, dụng cụ chuyên dùng",
+          "Thứ tự tháo: từ ngoài (lọc nhớt, valve body) vào trong (vi sai, bơm dầu, bộ hành tinh, các phanh B1/B2/B3)",
+          "Mỗi bước có 2 cột: hình vẽ kỹ thuật (tài liệu) bên trái và ảnh chụp thực tế (nhóm tháo) bên phải",
+          "Khi tháo: ghi nhớ số đĩa ma sát/đĩa thép của từng phanh để lắp lại đúng"
         ],
-        "specs": {
-          "title": "Moment Xiết Bu Lông Nối Động Cơ - Hộp Số",
-          "rows": [
-            { "param": "Bu lông M10 × 1.25", "value": "37 N·m" },
-            { "param": "Bu lông M12 × 1.25", "value": "72 N·m" },
-            { "param": "Bu lông biến mô M12", "value": "41 N·m" }
-          ]
-        },
-        "images": []
+        "explain": [
+          {
+            "title": "Bước 1: Tháo lọc nhớt hộp số",
+            "customHtml": "<p class=\"step-desc\">Dùng tuýp 10mm tháo 03 bulong cố định lọc nhớt. Tháo vòng đẹp khỏi lưới lọc dầu.</p><div class=\"step-2col\">\n  <div class=\"step-col step-col-diagram\">\n    <div class=\"step-col-label\">📐 Tài liệu kỹ thuật</div>\n    <div class=\"step-col-imgs\"><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step01-diagram-1.png\" alt=\"Hình kỹ thuật\"></figure><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step01-diagram-2.png\" alt=\"Hình kỹ thuật\"></figure></div>\n  </div>\n  <div class=\"step-col step-col-real\">\n    <div class=\"step-col-label\">📷 Ảnh thực tế nhóm</div>\n    <div class=\"step-col-imgs\"><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step01-real-1.png\" alt=\"Ảnh thực tế\"></figure><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step01-real-2.png\" alt=\"Ảnh thực tế\"></figure><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step01-real-3.png\" alt=\"Ảnh thực tế\"></figure></div>\n  </div>\n</div>"
+          },
+          {
+            "title": "Bước 2: Tháo cụm điều khiển dầu của hộp số",
+            "customHtml": "<p class=\"step-desc\">Tháo giắt kết nối của 5 van solennoid Dùng tuýp 10 để tháo bu lông, phe chặn và cảm biến nhiệt độ dầu ATF.</p><div class=\"step-2col\">\n  <div class=\"step-col step-col-diagram\">\n    <div class=\"step-col-label\">📐 Tài liệu kỹ thuật</div>\n    <div class=\"step-col-imgs\"><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step02-diagram-1.png\" alt=\"Hình kỹ thuật\"></figure></div>\n  </div>\n  <div class=\"step-col step-col-real\">\n    <div class=\"step-col-label\">📷 Ảnh thực tế nhóm</div>\n    <div class=\"step-col-imgs\"><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step02-real-1.png\" alt=\"Ảnh thực tế\"></figure><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step02-real-2.png\" alt=\"Ảnh thực tế\"></figure><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step02-real-3.png\" alt=\"Ảnh thực tế\"></figure></div>\n  </div>\n</div><p class=\"step-desc\">Tháo 2 bu lông nắp lò xo định vị và lò xo định vị. Dùng tuýp 10 tháo 13 bu lông và valvebody.</p><div class=\"step-2col\">\n  <div class=\"step-col step-col-diagram\">\n    <div class=\"step-col-label\">📐 Tài liệu kỹ thuật</div>\n    <div class=\"step-col-imgs\"><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step02-diagram-2.png\" alt=\"Hình kỹ thuật\"></figure><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step02-diagram-3.png\" alt=\"Hình kỹ thuật\"></figure></div>\n  </div>\n  <div class=\"step-col step-col-real\">\n    <div class=\"step-col-label\">📷 Ảnh thực tế nhóm</div>\n    <div class=\"step-col-imgs\"><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step02-real-4.png\" alt=\"Ảnh thực tế\"></figure><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step02-real-5.png\" alt=\"Ảnh thực tế\"></figure></div>\n  </div>\n</div><p class=\"step-desc\">Tháo bu lông và rút dây truyền.</p><div class=\"step-2col\">\n  <div class=\"step-col step-col-diagram\">\n    <div class=\"step-col-label\">📐 Tài liệu kỹ thuật</div>\n    <div class=\"step-col-imgs\"><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step02-diagram-4.png\" alt=\"Hình kỹ thuật\"></figure></div>\n  </div>\n  <div class=\"step-col step-col-real\">\n    <div class=\"step-col-label\">📷 Ảnh thực tế nhóm</div>\n    <div class=\"step-col-imgs\"><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step02-real-6.png\" alt=\"Ảnh thực tế\"></figure></div>\n  </div>\n</div>"
+          },
+          {
+            "title": "Bước 3: Tháo các chi tiết",
+            "customHtml": "<p class=\"step-desc\">Tháo gioăng phanh B2. Tháo gioăng vỏ hộp số. Tháo gioăng trống phanh. Tháo cụm check ball body.</p><div class=\"step-2col\">\n  <div class=\"step-col step-col-diagram\">\n    <div class=\"step-col-label\">📐 Tài liệu kỹ thuật</div>\n    <div class=\"step-col-imgs\"><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step03-diagram-1.png\" alt=\"Hình kỹ thuật\"></figure><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step03-diagram-2.png\" alt=\"Hình kỹ thuật\"></figure><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step03-diagram-3.png\" alt=\"Hình kỹ thuật\"></figure><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step03-diagram-4.png\" alt=\"Hình kỹ thuật\"></figure></div>\n  </div>\n  <div class=\"step-col step-col-real\">\n    <div class=\"step-col-label\">📷 Ảnh thực tế nhóm</div>\n    <div class=\"step-col-imgs\"><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step03-real-1.png\" alt=\"Ảnh thực tế\"></figure><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step03-real-2.png\" alt=\"Ảnh thực tế\"></figure><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step03-real-1.png\" alt=\"Ảnh thực tế\"></figure><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step03-real-3.png\" alt=\"Ảnh thực tế\"></figure></div>\n  </div>\n</div><p class=\"step-desc\">Tháo các bộ tích áp</p><div class=\"step-2col\">\n  <div class=\"step-col step-col-diagram\">\n    <div class=\"step-col-label\">📐 Tài liệu kỹ thuật</div>\n    <div class=\"step-col-imgs\"><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step03-diagram-5.png\" alt=\"Hình kỹ thuật\"></figure></div>\n  </div>\n  <div class=\"step-col step-col-real\">\n    <div class=\"step-col-label\">📷 Ảnh thực tế nhóm</div>\n    <div class=\"step-col-imgs\"><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step03-real-4.png\" alt=\"Ảnh thực tế\"></figure></div>\n  </div>\n</div>"
+          },
+          {
+            "title": "Bước 4: Tháo vỏ hộp số",
+            "customHtml": "<p class=\"step-desc\">Dùng tuýp 12mm tháo 14 bu lông trên vỏ hộp số</p><div class=\"step-2col\">\n  <div class=\"step-col step-col-diagram\">\n    <div class=\"step-col-label\">📐 Tài liệu kỹ thuật</div>\n    <div class=\"step-col-imgs\"><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step04-diagram-1.png\" alt=\"Hình kỹ thuật\"></figure></div>\n  </div>\n  <div class=\"step-col step-col-real\">\n    <div class=\"step-col-label\">📷 Ảnh thực tế nhóm</div>\n    <div class=\"step-col-imgs\"><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step04-real-1.png\" alt=\"Ảnh thực tế\"></figure></div>\n  </div>\n</div>"
+          },
+          {
+            "title": "Bước 5: Tháo bộ vi sai",
+            "customHtml": "<p class=\"step-desc\">Dùng tay nhấc bộ vi sai.</p><div class=\"step-2col\">\n  <div class=\"step-col step-col-diagram\">\n    <div class=\"step-col-label\">📐 Tài liệu kỹ thuật</div>\n    <div class=\"step-col-imgs\"><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step05-diagram-1.png\" alt=\"Hình kỹ thuật\"></figure></div>\n  </div>\n  <div class=\"step-col step-col-real\">\n    <div class=\"step-col-label\">📷 Ảnh thực tế nhóm</div>\n    <div class=\"step-col-imgs\"><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step05-real-1.png\" alt=\"Ảnh thực tế\"></figure></div>\n  </div>\n</div>"
+          },
+          {
+            "title": "Bước 6: Tháo bơm dầu thuỷ lực",
+            "customHtml": "<p class=\"step-desc\">Dùng tuýp 12 tháo 7 bu lông và cụm bơm dầu thuỷ lực</p><div class=\"step-2col\">\n  <div class=\"step-col step-col-diagram\">\n    <div class=\"step-col-label\">📐 Tài liệu kỹ thuật</div>\n    <div class=\"step-col-imgs\"><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step06-diagram-1.png\" alt=\"Hình kỹ thuật\"></figure></div>\n  </div>\n  <div class=\"step-col step-col-real\">\n    <div class=\"step-col-label\">📷 Ảnh thực tế nhóm</div>\n    <div class=\"step-col-imgs\"><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step06-real-1.png\" alt=\"Ảnh thực tế\"></figure></div>\n  </div>\n</div>"
+          },
+          {
+            "title": "Bước 7: Tháo cụm trục đầu vào",
+            "customHtml": "<p class=\"step-desc\">Tháo cụm trục đầu vào ra khỏi hộp số.</p><div class=\"step-2col\">\n  <div class=\"step-col step-col-diagram\">\n    <div class=\"step-col-label\">📐 Tài liệu kỹ thuật</div>\n    <div class=\"step-col-imgs\"><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step07-diagram-1.png\" alt=\"Hình kỹ thuật\"></figure></div>\n  </div>\n  <div class=\"step-col step-col-real\">\n    <div class=\"step-col-label\">📷 Ảnh thực tế nhóm</div>\n    <div class=\"step-col-imgs\"><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step07-real-1.png\" alt=\"Ảnh thực tế\"></figure></div>\n  </div>\n</div>"
+          },
+          {
+            "title": "Bước 8: Tháo cụm moay ơ ly hợp số tiến",
+            "customHtml": "<p class=\"step-desc\">Tháo cụm moay ơ ly hợp số tiến1 ra khỏi vỏ hộp số.</p><div class=\"step-2col\">\n  <div class=\"step-col step-col-diagram\">\n    <div class=\"step-col-label\">📐 Tài liệu kỹ thuật</div>\n    <div class=\"step-col-imgs\"><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step08-diagram-1.png\" alt=\"Hình kỹ thuật\"></figure></div>\n  </div>\n  <div class=\"step-col step-col-real\">\n    <div class=\"step-col-label\">📷 Ảnh thực tế nhóm</div>\n    <div class=\"step-col-imgs\"><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step08-real-1.png\" alt=\"Ảnh thực tế\"></figure></div>\n  </div>\n</div>"
+          },
+          {
+            "title": "Bước 9: Tháo nặp chụp sau của hộp số",
+            "customHtml": "<p class=\"step-desc\">Dùng tuýp 12 tháo 11 bu lông để tháo nắp chụp.</p><div class=\"step-2col\">\n  <div class=\"step-col step-col-diagram\">\n    <div class=\"step-col-label\">📐 Tài liệu kỹ thuật</div>\n    <div class=\"step-col-imgs\"><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step09-diagram-1.png\" alt=\"Hình kỹ thuật\"></figure></div>\n  </div>\n  <div class=\"step-col step-col-real\">\n    <div class=\"step-col-label\">📷 Ảnh thực tế nhóm</div>\n    <div class=\"step-col-imgs\"><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step09-real-1.png\" alt=\"Ảnh thực tế\"></figure></div>\n  </div>\n</div>"
+          },
+          {
+            "title": "Bước 10: Tháo các gioăng hộp số",
+            "customHtml": "<p class=\"step-desc\">Tháo 4 gioăng hộp số</p><div class=\"step-2col\">\n  <div class=\"step-col step-col-diagram\">\n    <div class=\"step-col-label\">📐 Tài liệu kỹ thuật</div>\n    <div class=\"step-col-imgs\"><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step10-diagram-1.png\" alt=\"Hình kỹ thuật\"></figure></div>\n  </div>\n  <div class=\"step-col step-col-real\">\n    <div class=\"step-col-label\">📷 Ảnh thực tế nhóm</div>\n    <div class=\"step-col-imgs\"><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step10-real-1.png\" alt=\"Ảnh thực tế\"></figure></div>\n  </div>\n</div>"
+          },
+          {
+            "title": "Bước 11: Tháo cụm trục trung gian",
+            "customHtml": "<p class=\"step-desc\">Dùng tay nhấc cụm trục trung gian của hộp số Tháo moay ơ ly hợp truyền thằng B2.</p><div class=\"step-2col\">\n  <div class=\"step-col step-col-diagram\">\n    <div class=\"step-col-label\">📐 Tài liệu kỹ thuật</div>\n    <div class=\"step-col-imgs\"><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step11-diagram-1.png\" alt=\"Hình kỹ thuật\"></figure><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step11-diagram-2.png\" alt=\"Hình kỹ thuật\"></figure></div>\n  </div>\n  <div class=\"step-col step-col-real\">\n    <div class=\"step-col-label\">📷 Ảnh thực tế nhóm</div>\n    <div class=\"step-col-imgs\"><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step11-real-1.png\" alt=\"Ảnh thực tế\"></figure><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step11-real-2.png\" alt=\"Ảnh thực tế\"></figure></div>\n  </div>\n</div>"
+          },
+          {
+            "title": "Bước 12: Tháo bánh răng mặt trời của bộ hành tinh phía sau",
+            "customHtml": "<div class=\"step-2col\">\n  <div class=\"step-col step-col-diagram\">\n    <div class=\"step-col-label\">📐 Tài liệu kỹ thuật</div>\n    <div class=\"step-col-imgs\"><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step12-diagram-1.png\" alt=\"Hình kỹ thuật\"></figure></div>\n  </div>\n  <div class=\"step-col step-col-real\">\n    <div class=\"step-col-label\">📷 Ảnh thực tế nhóm</div>\n    <div class=\"step-col-imgs\"><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step12-real-1.png\" alt=\"Ảnh thực tế\"></figure></div>\n  </div>\n</div>"
+          },
+          {
+            "title": "Bước 13: Tháo bộ phanh B1 (OD&2nd Brake)",
+            "customHtml": "<p class=\"step-desc\">Phanh B1 có 2 đĩa ma sát, 3 đĩa thép.</p><div class=\"step-2col\">\n  <div class=\"step-col step-col-diagram\">\n    <div class=\"step-col-label\">📐 Tài liệu kỹ thuật</div>\n    <div class=\"step-col-imgs\"><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step13-diagram-1.png\" alt=\"Hình kỹ thuật\"></figure></div>\n  </div>\n  <div class=\"step-col step-col-real\">\n    <div class=\"step-col-label\">📷 Ảnh thực tế nhóm</div>\n    <div class=\"step-col-imgs\"><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step13-real-1.png\" alt=\"Ảnh thực tế\"></figure><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step13-real-2.png\" alt=\"Ảnh thực tế\"></figure></div>\n  </div>\n</div>"
+          },
+          {
+            "title": "Bước 14: Tháo cụm khớp một chiều F1 và vòng đệm chặn của bánh răng mặt trời sau",
+            "customHtml": "<p class=\"step-desc\">Tháo cụm khớp một chiều. Tháo vòng đệm.</p><div class=\"step-2col\">\n  <div class=\"step-col step-col-diagram\">\n    <div class=\"step-col-label\">📐 Tài liệu kỹ thuật</div>\n    <div class=\"step-col-imgs\"><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step14-diagram-1.png\" alt=\"Hình kỹ thuật\"></figure></div>\n  </div>\n  <div class=\"step-col step-col-real\">\n    <div class=\"step-col-label\">📷 Ảnh thực tế nhóm</div>\n    <div class=\"step-col-imgs\"><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step14-real-1.png\" alt=\"Ảnh thực tế\"></figure><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step14-real-2.png\" alt=\"Ảnh thực tế\"></figure><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step14-real-3.png\" alt=\"Ảnh thực tế\"></figure></div>\n  </div>\n</div>"
+          },
+          {
+            "title": "Bước 15: Tháo phanh B2 (2nd Brake)",
+            "customHtml": "<p class=\"step-desc\">Dùng tua vít, tháo phe chặn của bộ phanh. Tháo phanh B2, phanh có 3 đĩa ma sát và 4 đĩa thép. Tháo miếng lót piston ép của phanh B2.</p><div class=\"step-2col\">\n  <div class=\"step-col step-col-diagram\">\n    <div class=\"step-col-label\">📐 Tài liệu kỹ thuật</div>\n    <div class=\"step-col-imgs\"><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step15-diagram-1.png\" alt=\"Hình kỹ thuật\"></figure><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step15-diagram-2.png\" alt=\"Hình kỹ thuật\"></figure><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step15-diagram-3.png\" alt=\"Hình kỹ thuật\"></figure></div>\n  </div>\n  <div class=\"step-col step-col-real\">\n    <div class=\"step-col-label\">📷 Ảnh thực tế nhóm</div>\n    <div class=\"step-col-imgs\"><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step15-real-1.png\" alt=\"Ảnh thực tế\"></figure><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step15-real-2.png\" alt=\"Ảnh thực tế\"></figure><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step15-real-3.png\" alt=\"Ảnh thực tế\"></figure><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step15-real-4.png\" alt=\"Ảnh thực tế\"></figure></div>\n  </div>\n</div>"
+          },
+          {
+            "title": "Bước 16: Tháo cụm hành tinh sau",
+            "customHtml": "<p class=\"step-desc\">Dùng tua vít, tháo phe chặn Tháo cụm hành tinh sau.</p><div class=\"step-2col\">\n  <div class=\"step-col step-col-diagram\">\n    <div class=\"step-col-label\">📐 Tài liệu kỹ thuật</div>\n    <div class=\"step-col-imgs\"><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step16-diagram-1.png\" alt=\"Hình kỹ thuật\"></figure></div>\n  </div>\n  <div class=\"step-col step-col-real\">\n    <div class=\"step-col-label\">📷 Ảnh thực tế nhóm</div>\n    <div class=\"step-col-imgs\"><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step16-real-1.png\" alt=\"Ảnh thực tế\"></figure><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step16-real-2.png\" alt=\"Ảnh thực tế\"></figure></div>\n  </div>\n</div>"
+          },
+          {
+            "title": "Bước 17: Tháo cụm khớp một chiều F2",
+            "customHtml": "<div class=\"step-2col\">\n  <div class=\"step-col step-col-diagram\">\n    <div class=\"step-col-label\">📐 Tài liệu kỹ thuật</div>\n    <div class=\"step-col-imgs\"><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step17-diagram-1.png\" alt=\"Hình kỹ thuật\"></figure></div>\n  </div>\n  <div class=\"step-col step-col-real\">\n    <div class=\"step-col-label\">📷 Ảnh thực tế nhóm</div>\n    <div class=\"step-col-imgs\"><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step17-real-1.png\" alt=\"Ảnh thực tế\"></figure></div>\n  </div>\n</div>"
+          },
+          {
+            "title": "Bước 18: Tháo bánh răng mặt trời của bộ hành tinh trước",
+            "customHtml": "<p class=\"step-desc\">Tháo bành băng mặt trời. Tháo vòng đệm.</p><div class=\"step-2col\">\n  <div class=\"step-col step-col-diagram\">\n    <div class=\"step-col-label\">📐 Tài liệu kỹ thuật</div>\n    <div class=\"step-col-imgs\"><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step18-diagram-1.png\" alt=\"Hình kỹ thuật\"></figure></div>\n  </div>\n  <div class=\"step-col step-col-real\">\n    <div class=\"step-col-label\">📷 Ảnh thực tế nhóm</div>\n    <div class=\"step-col-imgs\"><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step18-real-1.png\" alt=\"Ảnh thực tế\"></figure><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step18-real-2.png\" alt=\"Ảnh thực tế\"></figure></div>\n  </div>\n</div>"
+          },
+          {
+            "title": "Bước 19: Tháo phanh B3 (1st & Reverse Brake)",
+            "customHtml": "<p class=\"step-desc\">Dùng tua vít, tháo phe chặn. Tháo phanh B3, phanh có 4 đĩa ma sát và 5 đĩa thép. Tháo piston ép phanh.</p><div class=\"step-2col\">\n  <div class=\"step-col step-col-diagram\">\n    <div class=\"step-col-label\">📐 Tài liệu kỹ thuật</div>\n    <div class=\"step-col-imgs\"><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step19-diagram-1.png\" alt=\"Hình kỹ thuật\"></figure><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step19-diagram-2.png\" alt=\"Hình kỹ thuật\"></figure><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step19-diagram-3.png\" alt=\"Hình kỹ thuật\"></figure></div>\n  </div>\n  <div class=\"step-col step-col-real\">\n    <div class=\"step-col-label\">📷 Ảnh thực tế nhóm</div>\n    <div class=\"step-col-imgs\"><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step19-real-1.png\" alt=\"Ảnh thực tế\"></figure><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step19-real-2.png\" alt=\"Ảnh thực tế\"></figure><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step19-real-3.png\" alt=\"Ảnh thực tế\"></figure><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step19-real-4.png\" alt=\"Ảnh thực tế\"></figure></div>\n  </div>\n</div>"
+          },
+          {
+            "title": "Bước 20: Tháo bộ bánh răng trung gian chủ động",
+            "customHtml": "<p class=\"step-desc\">Dùng búa và dụng cụ chuyên dùng, tháo vòng đệm chặn. b) Lắp 2 bu lông vào bánh răng chủ động, xoay 2 bu lông để tháo bánh răng ra khỏi bánh răng mặt trời của bộ hành tinh trước.</p><div class=\"step-2col\">\n  <div class=\"step-col step-col-diagram\">\n    <div class=\"step-col-label\">📐 Tài liệu kỹ thuật</div>\n    <div class=\"step-col-imgs\"><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step20-diagram-1.png\" alt=\"Hình kỹ thuật\"></figure><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step20-diagram-2.png\" alt=\"Hình kỹ thuật\"></figure></div>\n  </div>\n  <div class=\"step-col step-col-real\">\n    <div class=\"step-col-label\">📷 Ảnh thực tế nhóm</div>\n    <div class=\"step-col-imgs\"><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step20-real-1.png\" alt=\"Ảnh thực tế\"></figure><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step20-real-2.png\" alt=\"Ảnh thực tế\"></figure></div>\n  </div>\n</div>"
+          },
+          {
+            "title": "Bước 21: Tháo chốt khoá đỗ xe",
+            "customHtml": "<p class=\"step-desc\">Dùng tua vít, tháo trục của chốt và tháo lò xo xoắn. Tháo chốt khoá đỗ xe</p><div class=\"step-2col\">\n  <div class=\"step-col step-col-diagram\">\n    <div class=\"step-col-label\">📐 Tài liệu kỹ thuật</div>\n    <div class=\"step-col-imgs\"><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step21-diagram-1.png\" alt=\"Hình kỹ thuật\"></figure></div>\n  </div>\n  <div class=\"step-col step-col-real\">\n    <div class=\"step-col-label\">📷 Ảnh thực tế nhóm</div>\n    <div class=\"step-col-imgs\"><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step21-real-1.png\" alt=\"Ảnh thực tế\"></figure><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step21-real-2.png\" alt=\"Ảnh thực tế\"></figure></div>\n  </div>\n</div>"
+          },
+          {
+            "title": "Bước 22: Tháo bánh răng trung gian bị động",
+            "customHtml": "<p class=\"step-desc\">Tháo bánh răng bị động, bánh răng chủ động và vòng đệm.</p><div class=\"step-2col\">\n  <div class=\"step-col step-col-diagram\">\n    <div class=\"step-col-label\">📐 Tài liệu kỹ thuật</div>\n    <div class=\"step-col-imgs\"><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step22-diagram-1.png\" alt=\"Hình kỹ thuật\"></figure></div>\n  </div>\n  <div class=\"step-col step-col-real\">\n    <div class=\"step-col-label\">📷 Ảnh thực tế nhóm</div>\n    <div class=\"step-col-imgs\"><figure class=\"step-img\"><img src=\"assets/images/s4/s4-1-step22-real-1.png\" alt=\"Ảnh thực tế\"></figure></div>\n  </div>\n</div>"
+          }
+        ]
       }
     },
     {
@@ -37,30 +118,6 @@
           "Đổ 6.9L dầu ATF WS sau khi lắp",
           "Chạy xe và kiểm tra rò rỉ"
         ]
-      }
-    },
-    {
-      "id": "4.3",
-      "title": "Bảo Dưỡng Định Kỳ",
-      "content": {
-        "intro": "Bảo dưỡng định kỳ hộp số U340E chủ yếu là thay dầu ATF và vệ sinh lưới lọc dầu. Toyota khuyến nghị thay dầu mỗi 40,000 km hoặc 2 năm.",
-        "keyPoints": [
-          "Thay dầu ATF: mỗi 40,000 km hoặc 2 năm",
-          "Dung tích thay thế (một phần): 2.5 ~ 3.0 L",
-          "Tiêu chuẩn dầu: Toyota ATF WS (không thể thay thế loại khác)",
-          "Vệ sinh lưới lọc dầu khi tháo hộp số (không có thể thay từ ngoài)",
-          "Kiểm tra màu sắc dầu: đỏ tươi (mới) → nâu sẫm (cần thay)"
-        ],
-        "specs": {
-          "title": "Thông Số Dầu ATF",
-          "rows": [
-            { "param": "Tiêu chuẩn", "value": "Toyota ATF WS" },
-            { "param": "Màu sắc", "value": "Đỏ trong suốt" },
-            { "param": "Dung tích tổng", "value": "6.9 L" },
-            { "param": "Dung tích thay TH", "value": "2.5 ~ 3.0 L" },
-            { "param": "Chu kỳ thay", "value": "40,000 km / 2 năm" }
-          ]
-        }
       }
     }
   ]
