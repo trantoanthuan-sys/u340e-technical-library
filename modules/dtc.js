@@ -121,7 +121,7 @@ function _buildDtcListHtml(dtcData, activeGroup) {
   const rowsHtml = filtered.length
     ? filtered.map((entry) => _buildDtcRow(entry)).join("")
     : `<div class="empty-state" style="padding: var(--space-10);">
-         <div class="empty-state-icon">🔍</div>
+         <div class="empty-state-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
          <div class="empty-state-title">Không có mã lỗi nào trong nhóm này</div>
        </div>`;
 
@@ -388,7 +388,7 @@ function _buildDtcNotFoundHtml(code) {
   return `
     <div class="content-wrapper">
       <div class="empty-state">
-        <div class="empty-state-icon">🔍</div>
+        <div class="empty-state-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
         <div class="empty-state-title">Không tìm thấy mã lỗi ${escapeHtml(code)}</div>
         <p class="empty-state-text">Mã lỗi này không có trong cơ sở dữ liệu.</p>
         <a href="#/dtc" class="btn-back" style="margin-top:var(--space-4)">← Về Danh Mục DTC</a>
@@ -401,7 +401,7 @@ function _buildErrorHtml() {
   return `
     <div class="content-wrapper">
       <div class="empty-state">
-        <div class="empty-state-icon">⚠️</div>
+        <div class="empty-state-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
         <div class="empty-state-title">Lỗi tải dữ liệu DTC</div>
         <p class="empty-state-text">Không thể tải file <code>data/dtc.json</code>.</p>
       </div>
@@ -446,10 +446,28 @@ function _buildDiagnosisFlowHtml(flow) {
       <!-- Tab buttons -->
       <div class="flow-tabs" role="tablist">
         <button class="flow-tab flow-tab-active" data-tab="step" type="button">
-          📋 Step-by-step
+          <svg class="flow-tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="8" y1="6" x2="21" y2="6"/>
+            <line x1="8" y1="12" x2="21" y2="12"/>
+            <line x1="8" y1="18" x2="21" y2="18"/>
+            <line x1="3" y1="6" x2="3.01" y2="6"/>
+            <line x1="3" y1="12" x2="3.01" y2="12"/>
+            <line x1="3" y1="18" x2="3.01" y2="18"/>
+          </svg>
+          Step-by-step
         </button>
         <button class="flow-tab" data-tab="flowchart" type="button">
-          🗺️ Sơ đồ chẩn đoán
+          <svg class="flow-tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="6" cy="6" r="2"/>
+            <circle cx="18" cy="6" r="2"/>
+            <circle cx="6" cy="18" r="2"/>
+            <circle cx="18" cy="18" r="2"/>
+            <line x1="8" y1="6" x2="16" y2="6"/>
+            <line x1="6" y1="8" x2="6" y2="16"/>
+            <line x1="18" y1="8" x2="18" y2="16"/>
+            <line x1="8" y1="18" x2="16" y2="18"/>
+          </svg>
+          Sơ đồ chẩn đoán
         </button>
       </div>
 
@@ -464,7 +482,14 @@ function _buildDiagnosisFlowHtml(flow) {
       <div id="flow-svg-panel" class="flow-tab-panel flow-tab-panel-hidden"
            data-tab-panel="flowchart">
         <div class="svg-flowchart-toolbar">
-          <span class="svg-flowchart-hint">💡 Click YES/NO để cây phát triển dần theo lựa chọn</span>
+          <span class="svg-flowchart-hint">
+            <svg class="svg-flowchart-hint-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="12" y1="8" x2="12" y2="12"/>
+              <line x1="12" y1="16" x2="12.01" y2="16"/>
+            </svg>
+            <span>Click YES/NO để cây phát triển dần theo lựa chọn</span>
+          </span>
         </div>
         <div id="flow-svg-canvas" class="svg-flowchart-canvas">
           <!-- Render bởi _renderSvgFlowchart() -->
@@ -775,7 +800,16 @@ function _buildMiniMapHtml(state, code) {
   return `
     <div class="minimap-section">
       <div class="minimap-header">
-        <span class="minimap-icon">🗺️</span>
+        <svg class="minimap-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="6" cy="6" r="2"/>
+          <circle cx="18" cy="6" r="2"/>
+          <circle cx="6" cy="18" r="2"/>
+          <circle cx="18" cy="18" r="2"/>
+          <line x1="8" y1="6" x2="16" y2="6"/>
+          <line x1="6" y1="8" x2="6" y2="16"/>
+          <line x1="18" y1="8" x2="18" y2="16"/>
+          <line x1="8" y1="18" x2="16" y2="18"/>
+        </svg>
         <strong>Tổng quan luồng chẩn đoán</strong>
         <span class="minimap-hint">Click vào ô để nhảy đến bước</span>
       </div>

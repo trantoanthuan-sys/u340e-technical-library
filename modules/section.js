@@ -365,7 +365,7 @@ function _buildSubSectionHtml(sub, sectionMeta, prevSub, nextSub) {
     ? `<div class="lesson-formula">
          ${
            content.formula.title
-             ? `<div class="lesson-formula-title">📐 ${escapeHtml(content.formula.title)}</div>`
+             ? `<div class="lesson-formula-title">${escapeHtml(content.formula.title)}</div>`
              : ""
          }
          <div class="formula-list">
@@ -539,7 +539,7 @@ function _buildNotFoundHtml(id) {
   return `
     <div class="content-wrapper">
       <div class="empty-state">
-        <div class="empty-state-icon">📂</div>
+        <div class="empty-state-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg></div>
         <div class="empty-state-title">Không tìm thấy Chương ${id}</div>
         <p class="empty-state-text">Chương này chưa có dữ liệu hoặc không tồn tại.</p>
         <a href="#/" class="btn-back" style="margin-top:var(--space-4)">← Về Trang Chủ</a>
@@ -669,7 +669,7 @@ function _buildSubNotFoundHtml(sectionId, subId) {
   return `
     <div class="content-wrapper">
       <div class="empty-state">
-        <div class="empty-state-icon">🔍</div>
+        <div class="empty-state-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg></div>
         <div class="empty-state-title">Không tìm thấy Mục ${subId}</div>
         <p class="empty-state-text">Mục này chưa có nội dung hoặc không tồn tại.</p>
         <a href="#/section/${sectionId}" class="btn-back" style="margin-top:var(--space-4)">
@@ -684,7 +684,7 @@ function _buildErrorHtml() {
   return `
     <div class="content-wrapper">
       <div class="empty-state">
-        <div class="empty-state-icon">⚠️</div>
+        <div class="empty-state-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
         <div class="empty-state-title">Lỗi tải dữ liệu</div>
         <p class="empty-state-text">Không thể tải file dữ liệu. Vui lòng kiểm tra lại.</p>
       </div>

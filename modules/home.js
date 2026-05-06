@@ -198,7 +198,7 @@ function _buildErrorHtml() {
   return `
     <div class="content-wrapper">
       <div class="empty-state">
-        <div class="empty-state-icon">⚠️</div>
+        <div class="empty-state-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
         <div class="empty-state-title">Không tải được dữ liệu</div>
         <p class="empty-state-text">
           Vui lòng kiểm tra file <code>data/sections.json</code> và thử lại.

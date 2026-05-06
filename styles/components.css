@@ -806,6 +806,15 @@
 .empty-state-icon {
   font-size: 48px;
   opacity: 0.4;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.empty-state-icon svg {
+  width: 56px;
+  height: 56px;
+  color: var(--color-slate-400);
 }
 .empty-state-title {
   font-family: var(--font-serif);
@@ -1914,7 +1923,10 @@
 }
 
 .minimap-icon {
-  font-size: 18px;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  color: #92400e;
 }
 
 .minimap-header strong {
@@ -2247,6 +2259,12 @@
   border-radius: 6px 6px 0 0;
 }
 
+.flow-tab-icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
 .flow-tab:hover {
   background: #f1f5f9;
   color: #1e293b;
@@ -2281,6 +2299,19 @@
   border-radius: 6px;
   font-size: 12px;
   color: #92400e;
+}
+
+.svg-flowchart-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.svg-flowchart-hint-icon {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  color: #b45309;
 }
 
 .svg-flowchart-canvas {
@@ -2680,6 +2711,11 @@
   font-size: 14px;
   line-height: 1.7;
   color: #1e293b;
+}
+
+/* Hide empty step-desc boxes (e.g. when content was cleaned but tag remains) */
+.step-desc:empty {
+  display: none;
 }
 
 .step-2col {
