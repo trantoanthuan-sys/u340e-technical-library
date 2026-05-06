@@ -182,13 +182,12 @@ function _buildSubSectionHtml(sub, sectionMeta, prevSub, nextSub) {
 
   const explainHtml = content.explain?.length
     ? `<div class="lesson-explain">
-         <div class="lesson-explain-title">📘 Giải thích chi tiết</div>
+         <div class="lesson-explain-title">Giải thích chi tiết</div>
          <div class="explain-list">
            ${content.explain
              .map(
                (item) => `
              <div class="explain-card">
-               <div class="explain-card-icon">⚙️</div>
                <div class="explain-card-content">
                  <div class="explain-card-title">${escapeHtml(item.title)}</div>
                  <div class="explain-card-text">${formatInlineText(item.text)}</div>
