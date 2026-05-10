@@ -185,22 +185,66 @@ export function renderBreadcrumb(items) {
 
 // ── Sidebar Open/Close ───────────────────────────────────────────
 
+const SIDEBAR_COLLAPSED_KEY = "u340e:sidebarCollapsed";
+
 export function openSidebar() {
-  sidebarEl.classList.add("is-open");
-  overlayEl.classList.add("is-visible");
-  store.set("sidebarOpen", true);
-  document.body.style.overflow = "hidden"; // prevent background scroll
+  if (window.innerWidth >= 1024) {
+    // Desktop: remove collapsed class to show sidebar
+    document.body.classList.remove("sidebar-collapsed");
+    localStorage.setItem(SIDEBAR_COLLAPSED_KEY, "false");
+    store.set("sidebarOpen", true);
+  } else {
+    // Mobile: slide sidebar in over content
+    sidebarEl.classList.add("is-open");
+    overlayEl.classList.add("is-visible");
+    store.set("sidebarOpen", true);
+    document.body.style.overflow = "hidden"; // prevent background scroll
+  }
 }
 
 export function closeSidebar() {
-  sidebarEl.classList.remove("is-open");
-  overlayEl.classList.remove("is-visible");
-  store.set("sidebarOpen", false);
-  document.body.style.overflow = "";
+  if (window.innerWidth >= 1024) {
+    // Desktop: add collapsed class to hide sidebar
+    document.body.classList.add("sidebar-collapsed");
+    localStorage.setItem(SIDEBAR_COLLAPSED_KEY, "true");
+    store.set("sidebarOpen", false);
+  } else {
+    // Mobile: hide overlay
+    sidebarEl.classList.remove("is-open");
+    overlayEl.classList.remove("is-visible");
+    store.set("sidebarOpen", false);
+    document.body.style.overflow = "";
+  }
 }
 
 export function toggleSidebar() {
-  store.get("sidebarOpen") ? closeSidebar() : openSidebar();
+  if (window.innerWidth >= 1024) {
+    // Desktop: check body class
+    document.body.classList.contains("sidebar-collapsed")
+      ? openSidebar()
+      : closeSidebar();
+  } else {
+    // Mobile: check sidebar class
+    store.get("sidebarOpen") ? closeSidebar() : openSidebar();
+  }
+}
+
+// Restore collapsed state on page load (desktop only)
+if (typeof window !== "undefined") {
+  const restoreSidebarState = () => {
+    if (window.innerWidth >= 1024) {
+      const wasCollapsed =
+        localStorage.getItem(SIDEBAR_COLLAPSED_KEY) === "true";
+      if (wasCollapsed) {
+        document.body.classList.add("sidebar-collapsed");
+      }
+    }
+  };
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", restoreSidebarState);
+  } else {
+    restoreSidebarState();
+  }
 }
 
 // ── HTML Helpers ─────────────────────────────────────────────────
@@ -233,7 +277,28 @@ export function formatInlineText(str) {
   let safe = escapeHtml(str);
   // 2. Convert **bold** → <strong>
   safe = safe.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
-  // 3. Convert line breaks → <br>
+  // 3. Convert [arrow:color] markers → inline SVG arrow (oil-flow legend)
+  //    Supported colors: green, blue, yellow, orange, purple
+  safe = safe.replace(
+    /\[arrow:(green|blue|yellow|orange|purple)\]/g,
+    (_, color) => {
+      const colorMap = {
+        green: "#22c55e",
+        blue: "#3b82f6",
+        yellow: "#eab308",
+        orange: "#f97316",
+        purple: "#a855f7",
+      };
+      const stroke = colorMap[color];
+      return (
+        `<svg class="oil-arrow" viewBox="0 0 28 16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">` +
+        `<polyline points="2,3 14,8 2,13" fill="none" stroke="${stroke}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>` +
+        `<polyline points="9,3 21,8 9,13" fill="none" stroke="${stroke}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>` +
+        `</svg>`
+      );
+    },
+  );
+  // 4. Convert line breaks → <br>
   safe = safe.replace(/\n/g, "<br>");
   return safe;
 }

@@ -1201,6 +1201,22 @@
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
   object-fit: contain;
 }
+
+/* Large variant for technical diagrams (e.g. oil-flow schematics) */
+.lesson-image-wrap-large img {
+  max-height: 640px;
+  max-width: 900px;
+}
+
+/* Inline oil-flow legend arrow (rendered from [arrow:color] markers) */
+.oil-arrow {
+  display: inline-block;
+  width: 26px;
+  height: 14px;
+  vertical-align: middle;
+  margin-right: 6px;
+  flex-shrink: 0;
+}
 .image-caption {
   font-size: 13px;
   color: var(--color-slate-500);

@@ -71,16 +71,16 @@ function _initSidebarControls() {
     }
   });
 
-  // On desktop resize, ensure sidebar state is reset
+  // On resize between mobile/desktop, clean up overlay-mode state
+  // (do NOT touch sidebar-collapsed class — that's user preference for desktop)
   window.addEventListener("resize", () => {
     if (window.innerWidth >= 1024) {
-      // Desktop — always visible, clear mobile classes
+      // Going to desktop — clear mobile-overlay mode artifacts
       document.getElementById("sidebar")?.classList.remove("is-open");
       document
         .getElementById("sidebar-overlay")
         ?.classList.remove("is-visible");
       document.body.style.overflow = "";
-      store.set("sidebarOpen", false);
     }
   });
 }

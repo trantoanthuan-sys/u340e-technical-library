@@ -198,7 +198,7 @@ function _buildSubSectionHtml(sub, sectionMeta, prevSub, nextSub) {
                  }
                  ${
                    item.image
-                     ? `<div class="lesson-image-wrap">
+                     ? `<div class="lesson-image-wrap${item.imageSize === "large" ? " lesson-image-wrap-large" : ""}">
                           <img src="${escapeHtml(item.image)}" alt="${escapeHtml(item.caption || item.title)}" class="lesson-image" loading="lazy" />
                           ${
                             item.caption

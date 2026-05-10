@@ -6,7 +6,7 @@
       "id": "2.1",
       "title": "Hệ thống điều khiển thủy lực",
       "content": {
-        "intro": "Về cấu trúc, hệ thống thủy lực của U340E được tổ chức theo chuỗi chức năng: nguồn tạo áp (bơm dầu) → điều áp → phân phối (manual valve và cụm van chuyển số) → làm việc (đường dầu đến các ly hợp/phanh và bộ tích áp).",
+        "intro": "Về cấu trúc, hệ thống thủy lực của U340E được tổ chức theo chuỗi chức năng: nguồn tạo áp (bơm dầu) → điều áp (van điều áp sơ cấp/thứ cấp, van bướm ga/van tuyến tính điều khiển áp suất) → phân phối (manual valve và cụm van chuyển số trong valve body) → làm việc (đường dầu đến các ly hợp/phanh và bộ tích áp để giảm chấn).\n\nTrong sơ đồ thành phần, hệ thống thường bao gồm lưới lọc dầu, bơm dầu, van điều áp sơ cấp, van chọn tay số, van điều áp thứ cấp, bộ tích năng, các van chuyển số 1-2/2-3/3-4, các van khóa biến mô và các đường dầu.",
         "explain": [
           {
             "title": "Cấu trúc tổng quan",
@@ -156,23 +156,38 @@
           },
           {
             "title": "Đường đi của dầu — Số 1 (Vị trí D)",
-            "text": "**Solenoid:** S1 (ON), S2 (ON)\n\n**Chấp hành:** Ly hợp C1 đóng, Khớp một chiều F2 khóa\n\n**Đường đi của dầu:**\n\nCácte → Lọc dầu → Bơm dầu → Van điều áp chính → Manual valve → Ly hợp C1\n\n*Chú thích:* Khi dầu đi từ Manual valve đi tới ly hợp C1 rồi chia ngả: một đường vào ly hợp, một đường rẽ vào bộ tích áp C1 để \"giảm sốc\"."
+            "text": "**Solenoid:** S1 (ON), S2 (ON)\n\n**Chấp hành:** Ly hợp C1 đóng, Khớp một chiều F2 khóa\n\n**Đường đi của dầu:**\n\nCácte → Lọc dầu → Bơm dầu → Van điều áp chính → Manual valve → Van chuyển 1-2 (ở vị trí số 1) → Ly hợp C1\n\n*Đồng thời:* Khi dầu từ Manual valve đi tới ly hợp C1, dòng dầu được chia nhánh: một nhánh vào ly hợp C1, một nhánh rẽ vào bộ tích áp C1 để giảm sốc khi C1 ăn khớp. Khớp một chiều F2 khóa để chống quay ngược, giúp hộp số hoạt động êm dịu.\n\n**Chú thích đường dầu trên sơ đồ:**\n\n[arrow:green] Áp suất dầu từ bơm và được điều chỉnh từ van điều áp tới manual valve\n\n[arrow:blue] Áp suất dầu dẫn trực tiếp từ Manual valve tới phanh, ly hợp; áp suất dầu dẫn từ van chuyển tới phanh, ly hợp",
+            "image": "assets/images/s2/s2-23.png",
+            "caption": "Hình 2.23 — Sơ đồ đường dầu ở số 1 (vị trí D)",
+            "imageSize": "large"
           },
           {
             "title": "Số 2 (Vị trí D)",
-            "text": "**Solenoid:** S1 (ON), S2 (OFF)\n\n**Chấp hành:** Ly hợp C1 đóng, Phanh B2 đóng\n\n**Đường đi của dầu:**\n\n• **Duy trì áp suất C1:** Van điều áp chính → Manual valve → Ly hợp C1\n• **Cấp áp suất cho B2:** Van điều áp chính → Manual valve → Van chuyển 1-2 ở số 2 → Phanh B2"
+            "text": "**Solenoid:** S1 (ON), S2 (OFF)\n\n**Chấp hành:** Ly hợp C1 đóng, Phanh B2 đóng, Khớp một chiều F1 khóa\n\n**Đường đi của dầu:**\n\n• **Duy trì áp suất C1:** Van điều áp chính → Manual valve → Ly hợp C1\n• **Cấp áp suất cho B2:** Van điều áp chính → Manual valve → Van chuyển 1-2 (ở vị trí số 2) → Phanh B2 (kèm tích áp B2)\n\n*Đồng thời:* F1 hoạt động cùng lúc với B2 để chống quay ngược, giúp quá trình chuyển 1→2 êm dịu. C1 vẫn duy trì áp suất song song.\n\n**Chú thích đường dầu trên sơ đồ:**\n\n[arrow:green] Áp suất dầu từ bơm và được điều chỉnh từ van điều áp tới manual valve\n\n[arrow:blue] Áp suất dầu dẫn trực tiếp từ Manual valve tới phanh, ly hợp; áp suất dầu dẫn từ van chuyển, van số lùi tới phanh, ly hợp\n\n[arrow:yellow] Áp suất dầu điều khiển từ Manual valve tới van solenoid S1, S2\n\n[arrow:orange] Áp suất dầu điều khiển từ các van solenoid S1, S2 tới các van chuyển",
+            "image": "assets/images/s2/s2-24.png",
+            "caption": "Hình 2.24 — Sơ đồ đường dầu ở số 2 (vị trí D)",
+            "imageSize": "large"
           },
           {
             "title": "Số 3 (Vị trí D)",
-            "text": "**Solenoid:** S1 (OFF), S2 (OFF)\n\n**Chấp hành:** Ly hợp C1 đóng, Ly hợp C2 đóng (Phanh B2 vẫn giữ nhưng không chịu lực chính)\n\n**Đường đi của dầu:**\n\n• **Duy trì áp suất C1:** Van điều áp chính → Manual valve → Ly hợp C1\n• **Duy trì áp suất B2:** Van điều áp chính → Manual valve → Van chuyển 1-2 ở số 2 → Phanh B2\n• **Cấp áp suất cho C2:** Van điều áp chính → Manual valve → Van chuyển 2-3 → Ly hợp C2"
+            "text": "**Solenoid:** S1 (OFF), S2 (OFF)\n\n**Chấp hành:** Ly hợp C1 đóng, Ly hợp C2 đóng (Phanh B2 vẫn giữ nhưng không chịu lực chính)\n\n**Đường đi của dầu:**\n\n• **Duy trì áp suất C1:** Van điều áp chính → Manual valve → Ly hợp C1\n• **Duy trì áp suất B2:** Van điều áp chính → Manual valve → Van chuyển 1-2 ở số 2 → Phanh B2\n• **Cấp áp suất cho C2:** Van điều áp chính → Manual valve → Van chuyển 2-3 → Ly hợp C2\n\n**Chú thích đường dầu trên sơ đồ:**\n\n[arrow:green] Áp suất dầu từ bơm và được điều chỉnh từ van điều áp tới manual valve\n\n[arrow:blue] Áp suất dầu dẫn trực tiếp từ Manual valve tới phanh, ly hợp; áp suất dầu dẫn từ van chuyển, van số lùi tới phanh, ly hợp\n\n[arrow:yellow] Áp suất dầu điều khiển từ Manual valve tới van solenoid S1, S2\n\n[arrow:orange] Áp suất dầu điều khiển từ các van solenoid S1, S2 tới các van chuyển",
+            "image": "assets/images/s2/s2-25.png",
+            "caption": "Hình 2.25 — Sơ đồ đường dầu ở số 3 (vị trí D)",
+            "imageSize": "large"
           },
           {
             "title": "Số 4 (Overdrive)",
-            "text": "**Solenoid:** S1 (OFF), S2 (ON)\n\n**Chấp hành:** Ly hợp C2 đóng, Phanh B1 đóng (Ly hợp C1 ngắt)\n\n**Đường đi của dầu:**\n\n• **Duy trì áp suất C2:** Van điều áp chính → Manual valve → Van chuyển 2-3 → Ly hợp C2\n• **Ngắt C1 và đóng B1:** Van điều áp chính → Manual valve → Van chuyển 3-4 → Cắt đường dầu C1 (xả về cácte) đồng thời → dầu tới B1\n• **Duy trì áp suất B2:** Van điều áp chính → Manual valve → Van chuyển 1-2 ở số 2 → Phanh B2"
+            "text": "**Solenoid:** S1 (OFF), S2 (ON)\n\n**Chấp hành:** Ly hợp C2 đóng, Phanh B1 đóng (Ly hợp C1 ngắt), Phanh B2 đóng\n\n**Đường đi của dầu:**\n\n• **Duy trì áp suất C2:** Van điều áp chính → Manual valve → Van chuyển 2-3 → Ly hợp C2\n• **Ngắt C1 và đóng B1:** Van điều áp chính → Manual valve → Van chuyển 3-4 → Cắt đường dầu C1 (xả về cácte) đồng thời → dầu tới B1\n• **Duy trì áp suất B2:** Van điều áp chính → Manual valve → Van chuyển 1-2 ở số 2 → Phanh B2\n\n**Chú thích đường dầu trên sơ đồ:**\n\n[arrow:green] Áp suất dầu từ bơm và được điều chỉnh từ van điều áp tới manual valve\n\n[arrow:blue] Áp suất dầu dẫn trực tiếp từ Manual valve tới phanh, ly hợp; áp suất dầu dẫn từ van chuyển, van số lùi tới phanh, ly hợp\n\n[arrow:yellow] Áp suất dầu điều khiển từ Manual valve tới van solenoid S1, S2\n\n[arrow:orange] Áp suất dầu điều khiển từ các van solenoid S1, S2 tới các van chuyển",
+            "image": "assets/images/s2/s2-26.png",
+            "caption": "Hình 2.26 — Sơ đồ đường dầu ở số 4 (Overdrive)",
+            "imageSize": "large"
           },
           {
             "title": "Số Lùi (R)",
-            "text": "**Solenoid:** S1 (ON), S2 (ON)\n\n**Chấp hành:** Ly hợp C3 đóng, Phanh B3 đóng\n\n**Đường đi của dầu:**\n\n• **Cấp áp suất cho C3:** Van điều áp chính → Manual valve → Ly hợp C3\n• **Cấp áp suất cho B3:** Van điều áp chính → Manual valve → Van điều khiển số lùi → Phanh B3"
+            "text": "**Solenoid:** S1 (ON), S2 (ON)\n\n**Chấp hành:** Ly hợp C3 đóng, Phanh B3 đóng\n\n**Đường đi của dầu:**\n\nKhi cần số ở vị trí R, dầu được bơm và lọc → ổn định áp lực ở van điều áp chính → qua Manual valve (ở vị trí lùi) → điều chỉnh áp ở van điều khiển số lùi → đưa tới ly hợp C3, phanh B3 và **tích áp C3, B3**.\n\n• **Cấp áp suất cho C3:** Van điều áp chính → Manual valve → Ly hợp C3 (kèm tích áp C3)\n• **Cấp áp suất cho B3:** Van điều áp chính → Manual valve → Van điều khiển số lùi → Phanh B3 (kèm tích áp B3)\n\n**Chú thích đường dầu trên sơ đồ:**\n\n[arrow:green] Áp suất dầu từ bơm và được điều chỉnh từ van điều áp tới manual valve\n\n[arrow:blue] Áp suất dầu dẫn trực tiếp từ Manual valve tới phanh, ly hợp; áp suất dầu dẫn từ van chuyển, van số lùi tới phanh, ly hợp\n\n[arrow:purple] Áp suất dầu điều khiển từ manual valve tới van số lùi",
+            "image": "assets/images/s2/s2-27.png",
+            "caption": "Hình 2.27 — Sơ đồ đường dầu ở số lùi (R)",
+            "imageSize": "large"
           },
           {
             "title": "Điều áp — tạo nền áp suất ổn định",
