@@ -2846,3 +2846,207 @@
     max-height: 240px;
   }
 }
+
+/* ============================================================
+   Lightbox (image fullscreen viewer with prev/next navigation)
+   ============================================================ */
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.92);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease-out;
+}
+
+.lightbox-overlay.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.lightbox-overlay[hidden] {
+  display: none;
+}
+
+.lightbox-stage {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 80px 100px;
+  cursor: zoom-out;
+  min-height: 0; /* allow flex child to shrink */
+}
+
+.lightbox-img {
+  /* Fill the stage area (don't preserve original small size) */
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  /* Force image to be at least 60% of viewport so small images get enlarged */
+  min-width: min(80vw, 1100px);
+  min-height: min(70vh, 800px);
+  object-fit: contain;
+  border-radius: 6px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  background: #fff;
+  cursor: default;
+  user-select: none;
+  transform: scale(0.96);
+  transition: transform 0.2s ease-out;
+}
+
+.lightbox-overlay.is-open .lightbox-img {
+  transform: scale(1);
+}
+
+/* Mobile: don't force min size — let it fit naturally */
+@media (max-width: 768px) {
+  .lightbox-img {
+    min-width: 0;
+    min-height: 0;
+    max-width: 100%;
+    max-height: 100%;
+  }
+}
+
+.lightbox-close,
+.lightbox-prev,
+.lightbox-next {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition:
+    background 0.15s,
+    transform 0.15s;
+  backdrop-filter: blur(8px);
+}
+
+.lightbox-close:hover,
+.lightbox-prev:hover,
+.lightbox-next:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.lightbox-close:active,
+.lightbox-prev:active,
+.lightbox-next:active {
+  transform: scale(0.95);
+}
+
+.lightbox-close {
+  top: 18px;
+  right: 18px;
+  width: 44px;
+  height: 44px;
+  z-index: 2;
+}
+
+.lightbox-prev,
+.lightbox-next {
+  top: 50%;
+  transform: translateY(-50%);
+  width: 56px;
+  height: 56px;
+  z-index: 2;
+}
+
+.lightbox-prev:active,
+.lightbox-next:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.lightbox-prev {
+  left: 18px;
+}
+
+.lightbox-next {
+  right: 18px;
+}
+
+.lightbox-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 16px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  pointer-events: none;
+}
+
+.lightbox-counter {
+  color: rgba(255, 255, 255, 0.7);
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+.lightbox-caption {
+  color: #fff;
+  font-size: 14px;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 8px 18px;
+  border-radius: 999px;
+  max-width: 80vw;
+  text-align: center;
+  font-style: italic;
+}
+
+/* Mobile tweaks */
+@media (max-width: 640px) {
+  .lightbox-stage {
+    padding: 50px 12px 90px;
+  }
+  .lightbox-prev,
+  .lightbox-next {
+    width: 44px;
+    height: 44px;
+  }
+  .lightbox-prev {
+    left: 8px;
+  }
+  .lightbox-next {
+    right: 8px;
+  }
+  .lightbox-close {
+    top: 12px;
+    right: 12px;
+    width: 38px;
+    height: 38px;
+  }
+  .lightbox-caption {
+    font-size: 12px;
+    padding: 6px 14px;
+  }
+}
+
+/* Hover hint on zoomable images */
+.lesson-image-wrap img,
+.lesson-image-wrap-large img,
+.step-img img,
+.lesson-image-wrap img[data-lightbox-bound],
+.lesson-image-wrap-large img[data-lightbox-bound],
+.step-img img[data-lightbox-bound],
+figure.step-img[style*="cursor"] {
+  transition: transform 0.15s ease-out;
+  cursor: zoom-in !important;
+}
+.lesson-image-wrap img:hover,
+.lesson-image-wrap-large img:hover,
+.step-img img:hover {
+  transform: scale(1.01);
+}

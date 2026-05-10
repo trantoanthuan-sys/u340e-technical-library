@@ -18,6 +18,7 @@ import {
   toggleSidebar,
   escapeHtml,
 } from "./core/renderer.js";
+import { initLightbox } from "./core/lightbox.js";
 import { renderHome } from "./modules/home.js";
 import { renderSection, renderSubSection } from "./modules/section.js";
 import { renderDtcList, renderDtcDetail } from "./modules/dtc.js";
@@ -50,6 +51,7 @@ async function init() {
   // Wire up global UI
   _initSidebarControls();
   _initSearch();
+  _initLightbox();
 }
 
 // ─── 3. Sidebar Controls ─────────────────────────────────────────
@@ -275,6 +277,16 @@ function _removeDiacritics(str) {
     .replace(/đ/g, "d")
     .replace(/Đ/g, "D")
     .toLowerCase();
+}
+
+// ─── Lightbox ────────────────────────────────────────────────────
+
+/**
+ * Initialize image lightbox using event delegation.
+ * One-time setup — handles all current and future images automatically.
+ */
+function _initLightbox() {
+  initLightbox();
 }
 
 // ─── Start ───────────────────────────────────────────────────────
