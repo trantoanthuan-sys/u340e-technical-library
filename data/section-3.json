@@ -232,7 +232,7 @@
                   "latex": "T_{P2} = \\frac{R_2}{R_2 + S_2} \\cdot T_{R2} \\quad (2)"
                 },
                 {
-                  "caption": "Thế (2) ; T_{P1} = T_{R2} ; T_{P2} = T_{R1} vào (1):",
+                  "caption": "Thế (2) ; T[sub:P1] = T[sub:R2] ; T[sub:P2] = T[sub:R1] vào (1):",
                   "latex": "R_1 + S_1 \\cdot T_{P1} = \\frac{R_1 R_2}{R_2 + S_2} \\cdot T_{P1} + S_1 \\cdot T_{S1}"
                 },
                 {
@@ -268,11 +268,11 @@
                   "latex": "R_1 + S_1 \\cdot T_{P1} = R_1 \\cdot T_{R1} + S_1 \\cdot T_{S1}"
                 },
                 {
-                  "caption": "Có T_{R1} = T_{P2}:",
+                  "caption": "Có T[sub:R1] = T[sub:P2]:",
                   "latex": "R_1 + S_1 \\cdot T_{P1} = R_1 \\cdot T_{P2} + S_1 \\cdot T_{S1}"
                 },
                 {
-                  "caption": "Có T_{P2} = T_{S1} = T_{in} (Do ly hợp C1, C2 làm việc):",
+                  "caption": "Có T[sub:P2] = T[sub:S1] = T[sub:in] (Do ly hợp C1, C2 làm việc):",
                   "latex": "R_1 + S_1 \\cdot T_{P1} = R_1 \\cdot T_{S1} + S_1 \\cdot T_{S1}"
                 },
                 {

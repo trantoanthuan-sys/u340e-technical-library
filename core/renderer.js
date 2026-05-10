@@ -298,7 +298,12 @@ export function formatInlineText(str) {
       );
     },
   );
-  // 4. Convert line breaks → <br>
+  // 4. Convert [sub:text] → <sub>text</sub>  (e.g. T[sub:R1] → T<sub>R1</sub>)
+  //    Convert [sup:text] → <sup>text</sup>  (bonus superscript support)
+  //    Allowed chars inside: letters, digits, comma, dot, minus, plus, space, parens
+  safe = safe.replace(/\[sub:([\w,.\-+ ()]+)\]/g, "<sub>$1</sub>");
+  safe = safe.replace(/\[sup:([\w,.\-+ ()]+)\]/g, "<sup>$1</sup>");
+  // 5. Convert line breaks → <br>
   safe = safe.replace(/\n/g, "<br>");
   return safe;
 }
