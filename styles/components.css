@@ -3050,3 +3050,639 @@ figure.step-img[style*="cursor"] {
 .step-img img:hover {
   transform: scale(1.01);
 }
+
+/* ============================================================
+   HOME HERO V2 — Dark navy + watermark + product image
+   Phong cách Logitech G502 — đồng bộ màu BK (xanh navy)
+   ============================================================ */
+
+.home-hero-v2 {
+  position: relative;
+  background: linear-gradient(135deg, #0f1e3d 0%, #1e3a8a 50%, #1e40af 100%);
+  border-radius: 20px;
+  padding: 56px 48px;
+  overflow: hidden;
+  min-height: 460px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 20px 60px rgba(15, 30, 61, 0.25);
+}
+
+/* Accent bar trên đầu (gold/amber) */
+.home-hero-accent-bar {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #f59e0b, #fbbf24);
+  border-radius: 0 0 4px 4px;
+}
+
+/* Watermark "U340E" khổng lồ phía sau */
+.home-hero-watermark {
+  position: absolute;
+  top: 50%;
+  left: -2%;
+  transform: translateY(-50%);
+  font-size: clamp(140px, 18vw, 280px);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 0.9;
+  color: rgba(96, 165, 250, 0.14);
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+  font-family: var(--font-sans, system-ui, sans-serif);
+  z-index: 1;
+}
+
+/* Content layout: 2 columns */
+.home-hero-content-v2 {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+  width: 100%;
+}
+
+.home-hero-text {
+  color: #fff;
+}
+
+.home-hero-eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #93c5fd;
+  margin-bottom: 18px;
+}
+
+.home-hero-title {
+  font-size: clamp(48px, 7vw, 84px);
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  line-height: 0.95;
+  margin: 0 0 16px;
+  color: #fff;
+  /* Tách từ font-family heading mặc định nếu có */
+  font-family: var(--font-sans, system-ui, sans-serif);
+}
+
+.home-hero-subtitle {
+  font-size: 15px;
+  font-weight: 500;
+  color: #e2e8f0;
+  margin: 0 0 6px;
+  line-height: 1.55;
+}
+
+.home-hero-subtitle-school {
+  font-size: 12px;
+  font-weight: 400;
+  color: #94a3b8;
+  letter-spacing: 0.02em;
+}
+
+.home-hero-desc {
+  font-size: 13px;
+  color: #cbd5e1;
+  line-height: 1.7;
+  margin: 14px 0 22px;
+  max-width: 460px;
+}
+
+/* Stats inline */
+.home-hero-stats {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 26px;
+  flex-wrap: wrap;
+  font-family: var(--font-mono, ui-monospace, monospace);
+}
+.home-hero-stat-num {
+  font-size: 22px;
+  font-weight: 700;
+  color: #fbbf24;
+  letter-spacing: 0.02em;
+}
+.home-hero-stat-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: #94a3b8;
+  margin-right: 6px;
+}
+.home-hero-stat-sep {
+  color: #475569;
+  font-size: 18px;
+  margin: 0 4px;
+}
+
+/* Buttons */
+.home-hero-buttons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.home-hero-btn-primary,
+.home-hero-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  border: 1px solid transparent;
+}
+
+.home-hero-btn-primary {
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  color: #0f1e3d;
+  border: none;
+  box-shadow: 0 4px 14px rgba(251, 191, 36, 0.35);
+}
+.home-hero-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(251, 191, 36, 0.5);
+}
+.home-hero-btn-primary:active {
+  transform: translateY(0);
+}
+
+.home-hero-btn-secondary {
+  background: transparent;
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+.home-hero-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+/* Product image (hộp số thật) */
+.home-hero-product {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-hero-product-img {
+  max-width: 100%;
+  max-height: 420px;
+  height: auto;
+  width: auto;
+  object-fit: contain;
+  /* Soft glow behind */
+  filter: drop-shadow(0 25px 50px rgba(96, 165, 250, 0.25))
+    drop-shadow(0 10px 20px rgba(0, 0, 0, 0.4));
+  transition: transform 0.4s ease;
+}
+.home-hero-product-img:hover {
+  transform: scale(1.02) rotate(-1deg);
+}
+
+/* === Responsive: Tablet === */
+@media (max-width: 968px) {
+  .home-hero-v2 {
+    padding: 40px 28px;
+    min-height: auto;
+  }
+  .home-hero-content-v2 {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .home-hero-text {
+    order: 2;
+    text-align: center;
+  }
+  .home-hero-product {
+    order: 1;
+  }
+  .home-hero-product-img {
+    max-height: 280px;
+  }
+  .home-hero-watermark {
+    font-size: clamp(100px, 22vw, 180px);
+    opacity: 0.6;
+  }
+  .home-hero-stats {
+    justify-content: center;
+  }
+  .home-hero-buttons {
+    justify-content: center;
+  }
+  .home-hero-desc {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* === Responsive: Mobile === */
+@media (max-width: 560px) {
+  .home-hero-v2 {
+    padding: 32px 20px;
+    border-radius: 14px;
+  }
+  .home-hero-title {
+    font-size: 44px;
+  }
+  .home-hero-subtitle {
+    font-size: 13px;
+  }
+  .home-hero-desc {
+    font-size: 12px;
+  }
+  .home-hero-product-img {
+    max-height: 220px;
+  }
+  .home-hero-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+  .home-hero-btn-primary,
+  .home-hero-btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+  .home-hero-stat-num {
+    font-size: 18px;
+  }
+}
+
+/* ============================================================
+   HOME — HERO v3 (Indigo Deep + watermark + floating spec)
+   ============================================================ */
+.home-hero-v3 {
+  position: relative;
+  padding: 56px 32px 64px;
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    var(--color-slate-050, #f8fafc) 100%
+  );
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 0;
+}
+
+.home-hero-v3 .home-hero-watermark {
+  position: absolute;
+  top: 50%;
+  right: -30px;
+  transform: translateY(-50%);
+  font-family: var(--font-sans);
+  font-size: 200px;
+  font-weight: 700;
+  color: var(--color-navy-050);
+  letter-spacing: -0.02em;
+  z-index: 0;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+.home-hero-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 40px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.home-hero-v3 .home-hero-eyebrow {
+  display: inline-block;
+  background: var(--color-navy-050);
+  color: var(--color-navy-900);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  padding: 5px 12px;
+  border-radius: 4px;
+  font-weight: 500;
+  margin-bottom: 18px;
+}
+
+.home-hero-v3 .home-hero-title {
+  font-family: var(--font-sans);
+  font-size: 44px;
+  line-height: 1.15;
+  color: var(--color-slate-900, #0f172a);
+  font-weight: 700;
+  margin: 0 0 18px;
+  letter-spacing: -0.01em;
+}
+.home-hero-title-accent {
+  color: var(--color-amber-600, #b45309);
+}
+
+.home-hero-v3 .home-hero-desc {
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--color-slate-700, #334155);
+  margin: 0 0 28px;
+  max-width: 100%;
+}
+.home-hero-v3 .home-hero-desc strong {
+  color: var(--color-navy-900);
+  font-weight: 600;
+}
+
+.home-hero-v3 .home-hero-buttons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.home-hero-v3 .home-hero-btn-primary {
+  background: var(--color-navy-900);
+  color: white;
+  border: none;
+  padding: 13px 26px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 6px 18px rgba(30, 58, 138, 0.25);
+  transition: all 0.2s;
+}
+.home-hero-v3 .home-hero-btn-primary:hover {
+  background: var(--color-navy-800);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 22px rgba(30, 58, 138, 0.32);
+}
+
+.home-hero-v3 .home-hero-btn-secondary {
+  background: white;
+  color: var(--color-navy-900);
+  border: 1.5px solid var(--color-navy-900);
+  padding: 11.5px 24px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  transition: all 0.2s;
+}
+.home-hero-v3 .home-hero-btn-secondary:hover {
+  background: var(--color-navy-050);
+}
+
+/* Visual + floating specs */
+.home-hero-visual {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 280px;
+}
+
+.home-hero-product-v3 {
+  width: 100%;
+  max-width: 360px;
+  aspect-ratio: 1 / 0.92;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+}
+.home-hero-product-v3 .home-hero-product-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 20px 50px rgba(30, 58, 138, 0.2));
+}
+
+.home-hero-spec {
+  position: absolute;
+  background: white;
+  border: 1px solid var(--color-slate-200, #e2e8f0);
+  border-radius: 8px;
+  padding: 9px 14px;
+  font-size: 12px;
+  color: var(--color-navy-900);
+  box-shadow: 0 8px 20px rgba(30, 58, 138, 0.12);
+  z-index: 3;
+  font-weight: 600;
+  min-width: 140px;
+}
+.home-hero-spec-tr {
+  top: 12px;
+  right: -10px;
+}
+.home-hero-spec-bl {
+  bottom: 18px;
+  left: -10px;
+}
+.home-hero-spec-label {
+  display: block;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  color: var(--color-slate-500, #64748b);
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+
+/* ============================================================
+   HOME — STATS BAR (4 cột navy + số amber)
+   ============================================================ */
+.home-stats-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  background: var(--color-navy-900);
+  color: white;
+  margin: 0 0 24px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(30, 58, 138, 0.18);
+}
+.home-stat {
+  padding: 24px 16px;
+  text-align: center;
+  border-right: 1px solid rgba(255, 255, 255, 0.12);
+}
+.home-stat:last-child {
+  border-right: none;
+}
+.home-stat-num {
+  font-family: var(--font-sans);
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 8px;
+  color: var(--color-amber-500, #d97706);
+}
+.home-stat-label {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 500;
+}
+
+/* ============================================================
+   HOME — UNIVERSITY CARD (compact)
+   ============================================================ */
+.home-uni-card {
+  margin: 0;
+  padding: 18px 22px;
+  background: var(--color-navy-900);
+  border-radius: 10px;
+  color: white;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  border-left: 4px solid var(--color-amber-500, #d97706);
+}
+.home-uni-label {
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  color: var(--color-amber-500, #d97706);
+  margin: 0 0 6px;
+  font-weight: 500;
+  font-family: var(--font-sans);
+}
+.home-uni-name {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 4px;
+}
+.home-uni-desc {
+  font-size: 11px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.6;
+}
+
+/* ============================================================
+   HOME — Responsive
+   ============================================================ */
+@media (max-width: 900px) {
+  .home-hero-v3 {
+    padding: 40px 20px 48px;
+  }
+  .home-hero-v3 .home-hero-watermark {
+    font-size: 130px;
+    right: -10px;
+  }
+  .home-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .home-hero-v3 .home-hero-title {
+    font-size: 32px;
+  }
+  .home-hero-spec-tr {
+    top: 0;
+    right: 0;
+  }
+  .home-hero-spec-bl {
+    bottom: 0;
+    left: 0;
+  }
+  .home-stats-bar {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .home-stat {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+  .home-stat:nth-child(odd) {
+    border-right: 1px solid rgba(255, 255, 255, 0.12);
+  }
+  .home-stat:nth-child(even) {
+    border-right: none;
+  }
+  .home-stat:nth-last-child(-n + 2) {
+    border-bottom: none;
+  }
+  .home-stat-num {
+    font-size: 30px;
+  }
+  .home-uni-card {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+}
+
+/* ============================================================
+   FOOTNOTE — site-wide (mọi trang con)
+   Đồng bộ với home-uni-card: navy + 2 cột + border-left amber
+   ============================================================ */
+.site-footnote {
+  margin: 40px 0 0;
+  padding: 18px 22px;
+  background: var(--color-navy-900);
+  border-radius: 10px;
+  color: white;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  border-left: 4px solid var(--color-amber-500, #d97706);
+}
+
+/* Hide footnote on home page (home has its own university card) */
+body.is-home .site-footnote {
+  display: none;
+}
+
+.site-footnote-label {
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  color: var(--color-amber-500, #d97706);
+  margin: 0 0 6px;
+  font-weight: 500;
+  font-family: var(--font-sans);
+}
+
+.site-footnote-name {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 4px;
+}
+
+.site-footnote-desc {
+  font-size: 11px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.6;
+}
+
+@media (max-width: 640px) {
+  .site-footnote {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin: 32px 0 0;
+    padding: 14px 18px;
+  }
+  .site-footnote-name {
+    font-size: 14px;
+  }
+}

@@ -9,16 +9,16 @@
 :root {
   /* --- Color Palette --- */
   --color-navy-950: #0a0f1e;
-  --color-navy-900: #0b3d91;
-  --color-navy-800: #1450a3;
-  --color-navy-700: #1a5fb4;
-  --color-navy-600: #2f7be5;
-  --color-navy-500: #4a90e2;
+  --color-navy-900: #1e3a8a; /* Indigo Deep — main brand color */
+  --color-navy-800: #1e40af;
+  --color-navy-700: #1d4ed8;
+  --color-navy-600: #2563eb;
+  --color-navy-500: #3b82f6;
   --color-navy-400: #6aa6ff;
   --color-navy-300: #5b8ad4;
   --color-navy-200: #cfe0f7;
-  --color-navy-100: #e3efff;
-  --color-navy-050: #f2f7ff;
+  --color-navy-100: #e0e7ff;
+  --color-navy-050: #eef2ff;
 
   --color-amber-600: #b45309;
   --color-amber-500: #d97706;
@@ -53,9 +53,11 @@
   --severity-low: #16a34a;
 
   /* --- Typography --- */
-  --font-sans: "IBM Plex Sans", sans-serif;
-  --font-serif: "IBM Plex Serif", serif;
-  --font-mono: "IBM Plex Mono", monospace;
+  --font-sans:
+    "Be Vietnam Pro", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-serif:
+    "Be Vietnam Pro", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", "Courier New", ui-monospace, monospace;
 
   --text-xs: 0.75rem; /* 12px */
   --text-sm: 0.8125rem; /* 13px */

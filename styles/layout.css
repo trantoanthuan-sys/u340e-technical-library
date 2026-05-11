@@ -409,6 +409,20 @@
   min-width: 0;
   padding: var(--space-8) var(--space-8) var(--space-16);
   transition: padding var(--duration-normal) var(--ease-in-out);
+  /* Sticky footer: stretch min-height + flex col so footer sticks to bottom */
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - var(--header-height, 80px));
+}
+
+/* page-root takes all remaining space, pushing footer down */
+.content-area > #page-root {
+  flex: 1 0 auto;
+}
+
+/* site-footnote sits at bottom naturally */
+.content-area > .site-footnote {
+  flex-shrink: 0;
 }
 
 @media (min-width: 1024px) {

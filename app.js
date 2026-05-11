@@ -26,13 +26,39 @@ import { renderDtcList, renderDtcDetail } from "./modules/dtc.js";
 // ─── 1. Define Routes ────────────────────────────────────────────
 
 const router = new Router({
-  "": (p, q) => renderHome(),
-  "/": (p, q) => renderHome(),
-  "/section/:id": (p, q) => renderSection(p),
-  "/section/:id/:subId": (p, q) => renderSubSection(p),
-  "/dtc": (p, q) => renderDtcList(p, q),
-  "/dtc/:code": (p, q) => renderDtcDetail(p),
+  "": (p, q) => {
+    _setHomeMode(true);
+    return renderHome();
+  },
+  "/": (p, q) => {
+    _setHomeMode(true);
+    return renderHome();
+  },
+  "/section/:id": (p, q) => {
+    _setHomeMode(false);
+    return renderSection(p);
+  },
+  "/section/:id/:subId": (p, q) => {
+    _setHomeMode(false);
+    return renderSubSection(p);
+  },
+  "/dtc": (p, q) => {
+    _setHomeMode(false);
+    return renderDtcList(p, q);
+  },
+  "/dtc/:code": (p, q) => {
+    _setHomeMode(false);
+    return renderDtcDetail(p);
+  },
 });
+
+/**
+ * Toggle body class `is-home` — used to hide site-footnote on home page
+ * (since home has its own university card).
+ */
+function _setHomeMode(isHome) {
+  document.body.classList.toggle("is-home", isHome);
+}
 
 // ─── 2. Bootstrap ────────────────────────────────────────────────
 

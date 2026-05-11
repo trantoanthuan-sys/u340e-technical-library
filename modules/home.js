@@ -56,62 +56,102 @@ function _buildHomeHtml(sections) {
 
       <!-- TRANG GIỚI THIỆU -->
       <div class="home-landing" id="home-landing">
-        <div class="page-title-block">
-          <div class="home-hero">
-            <div class="home-hero-media">
-              <img
-                src="assets/images/hero-u340e.png"
-                alt="Hộp số tự động U340E"
-                class="home-hero-image"
-              />
-            </div>
 
-            <div class="home-hero-content">
-              <h1 class="page-title">
-                Hộp Số Tự Động <span style="color: var(--color-amber-600);">U340E</span>
+        <!-- HERO -->
+        <div class="home-hero-v3">
+          <!-- Watermark "U340E" khổng lồ phía sau -->
+          <div class="home-hero-watermark" aria-hidden="true">U340E</div>
+
+          <div class="home-hero-grid">
+            <!-- Bên trái: text -->
+            <div class="home-hero-text">
+              <div class="home-hero-eyebrow">TOYOTA · AUTOMATIC TRANSMISSION</div>
+
+              <h1 class="home-hero-title">
+                Hộp Số Tự Động<br>
+                <span class="home-hero-title-accent">U340E</span>
               </h1>
 
-              <p class="page-subtitle">
-                U340E là hộp số tự động 4 cấp được Toyota sử dụng trên một số dòng xe du lịch cỡ nhỏ và trung bình.
-                Hộp số có kết cấu gọn, làm việc ổn định, sử dụng hệ thống điều khiển điện – thủy lực điển hình,
-                rất phù hợp để học tập, nghiên cứu và tra cứu kỹ thuật trong chuyên ngành Kỹ thuật Ô tô.
+              <p class="home-hero-desc">
+                <strong>U340E</strong> là hộp số tự động 4 cấp kiểu <strong>transaxle</strong> (tích hợp hộp số và vi sai) thuộc họ U của Toyota, phổ biến trên xe dẫn động cầu trước dùng động cơ <strong>1NZ-FE</strong>. Thiết kế gọn nhẹ giúp <strong>tiết kiệm nhiên liệu</strong>, chuyển số êm nhờ kết hợp điều khiển thủy lực và điện tử.
               </p>
 
-              <div class="home-overview">
-                <div class="home-overview-item">
-                  <strong>Loại hộp số:</strong> Hộp số tự động 4 cấp
-                </div>
-                <div class="home-overview-item">
-                  <strong>Điều khiển:</strong> Điện tử kết hợp thủy lực
-                </div>
-                <div class="home-overview-item">
-                  <strong>Ứng dụng:</strong> Một số dòng xe Toyota sử dụng hộp số U340E
-                </div>
+              <div class="home-hero-buttons">
+                <button class="home-hero-btn-primary" id="btn-start-learning">
+                  Bắt đầu học tập
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <line x1="5" y1="12" x2="19" y2="12"/>
+                    <polyline points="12 5 19 12 12 19"/>
+                  </svg>
+                </button>
+                <a href="#/dtc" class="home-hero-btn-secondary">
+                  Tra Cứu DTC
+                </a>
               </div>
+            </div>
 
-              <div class="home-stats">
-                <div class="home-stat">
-                  <span class="home-stat-num">5</span>
-                  <span class="home-stat-label">Chương</span>
-                </div>
-                <div class="home-stat-divider"></div>
-                <div class="home-stat">
-                  <span class="home-stat-num">19</span>
-                  <span class="home-stat-label">Mục</span>
-                </div>
-                <div class="home-stat-divider"></div>
-                <div class="home-stat">
-                  <span class="home-stat-num">12</span>
-                  <span class="home-stat-label">Mã Lỗi DTC</span>
-                </div>
+            <!-- Bên phải: ảnh hộp số thật + floating spec -->
+            <div class="home-hero-visual">
+              <div class="home-hero-spec home-hero-spec-tr">
+                <span class="home-hero-spec-label">LOẠI</span>
+                Hộp số tự động 4 cấp
               </div>
-
-              <button class="home-start-btn" id="btn-start-learning">
-                Bắt đầu học tập
-              </button>
+              <div class="home-hero-product-v3">
+                <img
+                  src="assets/images/hero-u340e-real.png"
+                  alt="Mô hình hộp số tự động Toyota U340E thực tế"
+                  class="home-hero-product-img"
+                  loading="eager"
+                />
+              </div>
+              <div class="home-hero-spec home-hero-spec-bl">
+                <span class="home-hero-spec-label">ĐIỀU KHIỂN</span>
+                Điện tử + Thủy lực
+              </div>
             </div>
           </div>
         </div>
+
+        <!-- STATS BAR -->
+        <div class="home-stats-bar">
+          <div class="home-stat">
+            <div class="home-stat-num">5</div>
+            <div class="home-stat-label">CHƯƠNG</div>
+          </div>
+          <div class="home-stat">
+            <div class="home-stat-num">19</div>
+            <div class="home-stat-label">MỤC HỌC</div>
+          </div>
+          <div class="home-stat">
+            <div class="home-stat-num">18</div>
+            <div class="home-stat-label">MÃ DTC</div>
+          </div>
+          <div class="home-stat">
+            <div class="home-stat-num">165+</div>
+            <div class="home-stat-label">HÌNH ẢNH</div>
+          </div>
+        </div>
+
+        <!-- UNIVERSITY CARD -->
+        <div class="home-uni-card">
+          <div class="home-uni-col">
+            <h4 class="home-uni-label">TRƯỜNG ĐẠI HỌC</h4>
+            <div class="home-uni-name">Đại học Bách Khoa TP.HCM</div>
+            <p class="home-uni-desc">
+              Khoa Kỹ thuật Giao thông<br>
+              Bộ môn Kỹ thuật Ô tô · Máy động lực
+            </p>
+          </div>
+          <div class="home-uni-col">
+            <h4 class="home-uni-label">SINH VIÊN THỰC HIỆN</h4>
+            <div class="home-uni-name">Trần Toàn Thuận · MSSV 2213366</div>
+            <p class="home-uni-desc">
+              GVHD: Nguyễn Đình Hùng<br>
+              Năm học 2025 – 2026
+            </p>
+          </div>
+        </div>
+
       </div>
 
       <!-- TRANG DANH MỤC HỌC -->

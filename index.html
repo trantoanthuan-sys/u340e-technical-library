@@ -9,13 +9,14 @@
       content="Hệ thống tra cứu kỹ thuật hộp số tự động U340E"
     />
     <link rel="icon" type="image/png" href="assets/images/logo-bk.png" />
-    <!-- Google Fonts: IBM Plex Sans (technical) + IBM Plex Serif (headings) -->
+    <!-- Google Fonts: Be Vietnam Pro (chuyên tối ưu tiếng Việt) + JetBrains Mono (code) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Serif:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
-    S
+
     <!-- Stylesheets (order matters) -->
     <link rel="stylesheet" href="styles/base.css" />
     <link rel="stylesheet" href="styles/layout.css" />
@@ -164,6 +165,29 @@
           <span>Đang tải...</span>
         </div>
         <div id="page-root"></div>
+
+        <!-- ============================================================
+          SITE FOOTNOTE — hiển thị ở mọi trang con (ẩn ở home)
+          Đồng bộ với home-uni-card: nền navy + 2 cột + border-left amber
+        ============================================================ -->
+        <footer class="site-footnote" id="site-footnote">
+          <div class="site-footnote-col">
+            <h4 class="site-footnote-label">TRƯỜNG ĐẠI HỌC</h4>
+            <div class="site-footnote-name">Đại học Bách Khoa TP.HCM</div>
+            <p class="site-footnote-desc">
+              Khoa Kỹ thuật Giao thông<br>
+              Bộ môn Kỹ thuật Ô tô · Máy động lực
+            </p>
+          </div>
+          <div class="site-footnote-col">
+            <h4 class="site-footnote-label">SINH VIÊN THỰC HIỆN</h4>
+            <div class="site-footnote-name">Trần Toàn Thuận · MSSV 2213366</div>
+            <p class="site-footnote-desc">
+              GVHD: Nguyễn Đình Hùng<br>
+              Năm học 2025 – 2026
+            </p>
+          </div>
+        </footer>
       </main>
     </div>
 
