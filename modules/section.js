@@ -101,8 +101,64 @@ export async function renderSubSection({ id, subId }) {
     // Determine prev/next sub-sections for navigation
     const allSubs = sectionData.subsections;
     const subIndex = allSubs.findIndex((s) => s.id === subId);
-    const prevSub = allSubs[subIndex - 1] || null;
-    const nextSub = allSubs[subIndex + 1] || null;
+
+    // Build prev/next info with cross-chapter support
+    let prevSub = allSubs[subIndex - 1] || null;
+    let nextSub = allSubs[subIndex + 1] || null;
+
+    // If at the START of chapter, prev = last sub of previous chapter
+    const sectionIndex = sections.findIndex((s) => s.id === sectionId);
+    if (!prevSub && sectionIndex > 0) {
+      try {
+        const prevSectionMeta = sections[sectionIndex - 1];
+        const prevSectionData = await store.loadSection(prevSectionMeta.id);
+        if (prevSectionData && prevSectionData.subsections.length > 0) {
+          const lastSub =
+            prevSectionData.subsections[prevSectionData.subsections.length - 1];
+          prevSub = {
+            ...lastSub,
+            _crossChapter: true,
+            _targetSectionId: prevSectionMeta.id,
+            _targetSectionTitle: prevSectionMeta.title,
+          };
+        }
+      } catch (e) {
+        console.warn("[Section] Could not load prev chapter for cross-nav", e);
+      }
+    }
+
+    // If at the END of chapter, next = first sub of next chapter
+    // Hoặc nếu chapter sau là DTC section thì → /dtc
+    if (!nextSub && sectionIndex >= 0 && sectionIndex < sections.length - 1) {
+      try {
+        const nextSectionMeta = sections[sectionIndex + 1];
+
+        // Trường hợp 1: Chương sau là DTC (vd Chương 5)
+        if (nextSectionMeta.isDtcSection) {
+          nextSub = {
+            id: "DTC",
+            title: nextSectionMeta.description || "Mã lỗi DTC",
+            _crossChapter: true,
+            _isDtcLink: true,
+            _targetSectionTitle: nextSectionMeta.title,
+          };
+        } else {
+          // Trường hợp 2: Chương sau là chapter thông thường có subsections
+          const nextSectionData = await store.loadSection(nextSectionMeta.id);
+          if (nextSectionData && nextSectionData.subsections.length > 0) {
+            const firstSub = nextSectionData.subsections[0];
+            nextSub = {
+              ...firstSub,
+              _crossChapter: true,
+              _targetSectionId: nextSectionMeta.id,
+              _targetSectionTitle: nextSectionMeta.title,
+            };
+          }
+        }
+      } catch (e) {
+        console.warn("[Section] Could not load next chapter for cross-nav", e);
+      }
+    }
 
     // Update breadcrumb
     renderBreadcrumb([
@@ -499,24 +555,50 @@ ${tableHtml}
 function _buildPrevNextNav(section, prevSub, nextSub) {
   if (!prevSub && !nextSub) return "";
 
+  // Build URLs: cross-chapter dùng _targetSectionId, DTC link dùng #/dtc
+  const prevSectionId = prevSub?._targetSectionId ?? section.id;
+  const prevIsCross = prevSub?._crossChapter === true;
+  const prevHref = `#/section/${prevSectionId}/${prevSub?.id}`;
+
+  const nextIsCross = nextSub?._crossChapter === true;
+  const nextIsDtc = nextSub?._isDtcLink === true;
+  const nextSectionId = nextSub?._targetSectionId ?? section.id;
+  const nextHref = nextIsDtc
+    ? "#/dtc"
+    : `#/section/${nextSectionId}/${nextSub?.id}`;
+
   const prevHtml = prevSub
-    ? `<a href="#/section/${section.id}/${prevSub.id}" class="prevnext-btn prevnext-prev">
+    ? `<a href="${prevHref}" class="prevnext-btn prevnext-prev${prevIsCross ? " prevnext-cross" : ""}">
          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
               stroke="currentColor" stroke-width="2">
            <polyline points="15 18 9 12 15 6"/>
          </svg>
          <div>
-           <div class="prevnext-dir">Trước</div>
+           <div class="prevnext-dir">${prevIsCross ? `← ${escapeHtml(prevSub._targetSectionTitle || `Chương ${prevSectionId}`)} • Trước đó` : "Trước"}</div>
            <div class="prevnext-title">${escapeHtml(prevSub.id)} — ${escapeHtml(prevSub.title)}</div>
          </div>
        </a>`
     : "<div></div>";
 
+  let nextDirText = "Tiếp theo";
+  let nextTitleText = "";
+  if (nextSub) {
+    if (nextIsDtc) {
+      nextDirText = `${escapeHtml(nextSub._targetSectionTitle || "Chẩn đoán")} • Tiếp theo →`;
+      nextTitleText = `${escapeHtml(nextSub.title)}`;
+    } else if (nextIsCross) {
+      nextDirText = `${escapeHtml(nextSub._targetSectionTitle || `Chương ${nextSectionId}`)} • Tiếp theo →`;
+      nextTitleText = `${escapeHtml(nextSub.id)} — ${escapeHtml(nextSub.title)}`;
+    } else {
+      nextTitleText = `${escapeHtml(nextSub.id)} — ${escapeHtml(nextSub.title)}`;
+    }
+  }
+
   const nextHtml = nextSub
-    ? `<a href="#/section/${section.id}/${nextSub.id}" class="prevnext-btn prevnext-next">
+    ? `<a href="${nextHref}" class="prevnext-btn prevnext-next${nextIsCross ? " prevnext-cross" : ""}">
          <div>
-           <div class="prevnext-dir">Tiếp theo</div>
-           <div class="prevnext-title">${escapeHtml(nextSub.id)} — ${escapeHtml(nextSub.title)}</div>
+           <div class="prevnext-dir">${nextDirText}</div>
+           <div class="prevnext-title">${nextTitleText}</div>
          </div>
          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
               stroke="currentColor" stroke-width="2">

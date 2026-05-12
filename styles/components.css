@@ -904,6 +904,25 @@
   color: var(--color-slate-700);
 }
 
+/* Cross-chapter navigation — highlight amber để dễ nhận biết */
+.prevnext-btn.prevnext-cross {
+  background: linear-gradient(135deg, #fef3c7 0%, #fed7aa 100%);
+  border-color: var(--color-amber-500, #d97706);
+}
+.prevnext-btn.prevnext-cross:hover {
+  background: linear-gradient(135deg, #fde68a 0%, #fdba74 100%);
+  border-color: var(--color-amber-600, #b45309);
+  box-shadow: 0 4px 14px rgba(217, 119, 6, 0.2);
+}
+.prevnext-btn.prevnext-cross .prevnext-dir {
+  color: var(--color-amber-600, #b45309);
+  font-weight: 600;
+}
+.prevnext-btn.prevnext-cross .prevnext-title {
+  color: var(--color-slate-900, #0f172a);
+  font-weight: 600;
+}
+
 @media (max-width: 600px) {
   .prevnext-nav {
     flex-direction: column;
@@ -3457,13 +3476,13 @@ figure.step-img[style*="cursor"] {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 280px;
+  min-height: 360px;
 }
 
 .home-hero-product-v3 {
   width: 100%;
-  max-width: 360px;
-  aspect-ratio: 1 / 0.92;
+  max-width: 480px;
+  aspect-ratio: 1 / 0.75;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -3474,7 +3493,8 @@ figure.step-img[style*="cursor"] {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  filter: drop-shadow(0 20px 50px rgba(30, 58, 138, 0.2));
+  filter: drop-shadow(0 24px 50px rgba(30, 58, 138, 0.28))
+    drop-shadow(0 0 80px rgba(99, 102, 241, 0.18));
 }
 
 .home-hero-spec {
