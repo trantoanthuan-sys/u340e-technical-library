@@ -178,7 +178,10 @@ function closeSearch() {
 
 /**
  * Build a flat search index from cached JSON data.
- * Structure: [ { type, title, subtitle, href, keywords } ]
+ * Structure: [ { type, title, subtitle, href, keywords, excerpt? } ]
+ *
+ * Indexes BOTH metadata (titles) AND full content (intro, keyPoints, explain, table)
+ * from each section-N.json file, plus all DTC codes.
  */
 async function _buildSearchIndex() {
   if (_searchIndex) return;
@@ -188,16 +191,18 @@ async function _buildSearchIndex() {
     const sections = await store.loadSections();
 
     for (const section of sections) {
-      // Add section itself
+      // 1) Add section itself (chapter-level)
       _searchIndex.push({
         type: "section",
         title: `Chương ${section.id}: ${section.title}`,
-        subtitle: section.description,
+        subtitle: section.description || "",
         href: `#/section/${section.id}`,
-        keywords: _removeDiacritics(`${section.title} ${section.description}`),
+        keywords: _removeDiacritics(
+          `${section.title} ${section.description || ""}`,
+        ),
       });
 
-      // Add each subsection (from section metadata)
+      // 2) Add each subsection (title only — for quick top match)
       for (const sub of section.subsections || []) {
         _searchIndex.push({
           type: "section",
@@ -209,22 +214,128 @@ async function _buildSearchIndex() {
           ),
         });
       }
+
+      // 3) NEW: Load full section data and index content of each subsection
+      // Skip DTC sections (no subsection content files)
+      if (section.isDtcSection) continue;
+
+      try {
+        const sectionData = await store.loadSection(section.id);
+        if (!sectionData || !sectionData.subsections) continue;
+
+        for (const sub of sectionData.subsections) {
+          const content = sub.content;
+          if (!content) continue;
+
+          // 3a) Intro paragraph
+          if (content.intro) {
+            _addContentEntry(
+              _searchIndex,
+              section,
+              sub,
+              "Giới thiệu",
+              content.intro,
+            );
+          }
+
+          // 3b) Key points (array of strings)
+          if (Array.isArray(content.keyPoints)) {
+            content.keyPoints.forEach((point) => {
+              _addContentEntry(_searchIndex, section, sub, "Ý chính", point);
+            });
+          }
+
+          // 3c) Explain blocks (array of {title, text, caption})
+          if (Array.isArray(content.explain)) {
+            content.explain.forEach((block) => {
+              const blockTitle = block.title || "Nội dung chi tiết";
+              if (block.text) {
+                _addContentEntry(
+                  _searchIndex,
+                  section,
+                  sub,
+                  blockTitle,
+                  block.text,
+                );
+              }
+              if (block.caption) {
+                _addContentEntry(
+                  _searchIndex,
+                  section,
+                  sub,
+                  blockTitle,
+                  block.caption,
+                );
+              }
+            });
+          }
+
+          // 3d) Table headers + rows
+          if (content.table) {
+            const tableTitle = content.table.title || "Bảng dữ liệu";
+            if (Array.isArray(content.table.rows)) {
+              content.table.rows.forEach((row) => {
+                const rowText = Array.isArray(row) ? row.join(" — ") : "";
+                if (rowText) {
+                  _addContentEntry(
+                    _searchIndex,
+                    section,
+                    sub,
+                    tableTitle,
+                    rowText,
+                  );
+                }
+              });
+            }
+          }
+        }
+      } catch (e) {
+        console.warn(`[Search] Could not load section ${section.id}:`, e);
+      }
     }
 
-    // Add DTC codes
+    // 4) Add DTC codes
     const dtcData = await store.loadDtc();
     for (const dtc of dtcData.codes) {
       _searchIndex.push({
         type: "dtc",
         title: `${dtc.code} — ${dtc.title}`,
-        subtitle: `Triệu chứng: ${dtc.symptom.substring(0, 80)}...`,
+        subtitle: `Triệu chứng: ${(dtc.symptom || "").substring(0, 80)}...`,
         href: `#/dtc/${dtc.code}`,
-        keywords: _removeDiacritics(`${dtc.code} ${dtc.title} ${dtc.symptom}`),
+        keywords: _removeDiacritics(
+          `${dtc.code} ${dtc.title} ${dtc.symptom || ""}`,
+        ),
       });
     }
+
+    console.log(`[Search] Built index with ${_searchIndex.length} entries`);
   } catch (err) {
     console.warn("[Search] Could not build index:", err);
   }
+}
+
+/**
+ * Helper: Push a content-level search entry into the index.
+ * `text` is the original (with diacritics) — stored as excerpt for display.
+ * `keywords` is the diacritics-removed lowercase version for matching.
+ */
+function _addContentEntry(index, section, sub, blockTitle, text) {
+  // Strip markdown markers (** for bold, • for bullets) for cleaner display
+  const cleanText = String(text)
+    .replace(/\*\*/g, "")
+    .replace(/\n+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+  if (!cleanText) return;
+
+  index.push({
+    type: "content",
+    title: `${sub.id} — ${sub.title}`,
+    subtitle: `Chương ${section.id}: ${section.title} › ${blockTitle}`,
+    href: `#/section/${section.id}/${sub.id}`,
+    keywords: _removeDiacritics(cleanText),
+    excerpt: cleanText, // original text for context display
+  });
 }
 
 function _performSearch(query, resultsEl) {
@@ -235,9 +346,25 @@ function _performSearch(query, resultsEl) {
   }
 
   const normalizedQuery = _removeDiacritics(query);
-  const matches = _searchIndex
-    .filter((item) => item.keywords.includes(normalizedQuery))
-    .slice(0, 8); // max 8 results
+  let matches = _searchIndex.filter((item) =>
+    item.keywords.includes(normalizedQuery),
+  );
+
+  // Dedup: each href appears only ONCE, with the best (first) match
+  // BUT keep section-level matches and content matches separate so user
+  // sees both "the section" and "specific content within"
+  const seen = new Set();
+  matches = matches.filter((item) => {
+    const key = `${item.type}::${item.href}::${item.title}`;
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+
+  // Cap results, prioritize section/dtc results above content matches
+  const sectionMatches = matches.filter((m) => m.type !== "content");
+  const contentMatches = matches.filter((m) => m.type === "content");
+  matches = [...sectionMatches.slice(0, 5), ...contentMatches.slice(0, 8)];
 
   if (!matches.length) {
     resultsEl.innerHTML = `<p class="search-hint">Không tìm thấy kết quả cho "<strong>${escapeHtml(query)}</strong>"</p>`;
@@ -246,17 +373,31 @@ function _performSearch(query, resultsEl) {
 
   const html = matches
     .map((item) => {
-      // Highlight matching text
       const titleHighlighted = _highlight(item.title, query);
+      const subtitleHighlighted = _highlight(item.subtitle || "", query);
+
+      // For content matches: show excerpt with highlighted context window
+      let excerptHtml = "";
+      if (item.type === "content" && item.excerpt) {
+        const context = _extractContext(item.excerpt, query, 100);
+        excerptHtml = `<div class="search-result-excerpt">${_highlight(context, query)}</div>`;
+      }
+
+      const typeLabel =
+        item.type === "dtc"
+          ? "DTC"
+          : item.type === "content"
+            ? "Nội dung"
+            : "Mục";
+
       return `
       <a href="${item.href}" class="search-result-item" data-href="${item.href}">
         <div class="search-result-title">
-          <span class="search-result-type type-${item.type}">
-            ${item.type === "dtc" ? "DTC" : "Mục"}
-          </span>
+          <span class="search-result-type type-${item.type}">${typeLabel}</span>
           ${titleHighlighted}
         </div>
-        <div class="search-result-meta">${escapeHtml(item.subtitle)}</div>
+        <div class="search-result-meta">${subtitleHighlighted}</div>
+        ${excerptHtml}
       </a>
     `;
     })
@@ -264,7 +405,6 @@ function _performSearch(query, resultsEl) {
 
   resultsEl.innerHTML = html;
 
-  // Close search when a result is clicked
   resultsEl.querySelectorAll(".search-result-item").forEach((link) => {
     link.addEventListener("click", () => {
       closeSearch();
@@ -273,16 +413,69 @@ function _performSearch(query, resultsEl) {
 }
 
 /**
- * Highlight matching query substring in text.
+ * Extract a window of text around the first occurrence of query.
+ * Returns ~contextLen chars on each side, with "..." if truncated.
+ *
+ * Note: matching is done on diacritics-removed text to find position,
+ * but returned text is original (with diacritics).
  */
-function _highlight(text, query) {
-  const escaped = escapeHtml(text);
-  const regex = new RegExp(`(${_escapeRegex(query)})`, "gi");
-  return escaped.replace(regex, "<mark>$1</mark>");
+function _extractContext(text, query, contextLen = 100) {
+  const normalizedText = _removeDiacritics(text);
+  const normalizedQuery = _removeDiacritics(query);
+  const idx = normalizedText.indexOf(normalizedQuery);
+
+  if (idx === -1) {
+    // Fallback: just truncate
+    return text.length > contextLen * 2
+      ? text.substring(0, contextLen * 2) + "…"
+      : text;
+  }
+
+  // Calc window in original text (positions match since normalize is char-aligned)
+  const start = Math.max(0, idx - contextLen);
+  const end = Math.min(text.length, idx + query.length + contextLen);
+
+  let snippet = text.substring(start, end);
+  if (start > 0) snippet = "…" + snippet;
+  if (end < text.length) snippet = snippet + "…";
+  return snippet;
 }
 
-function _escapeRegex(str) {
-  return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+/**
+ * Highlight matching query substring in text.
+ * Accent-insensitive: query "bien mo" highlights "Biến Mô" in source.
+ *
+ * Works by finding match positions in diacritics-removed text,
+ * then wrapping the SAME positions in original text with <mark>.
+ */
+function _highlight(text, query) {
+  if (!text || !query) return escapeHtml(text || "");
+  const normalizedText = _removeDiacritics(text);
+  const normalizedQuery = _removeDiacritics(query);
+  if (!normalizedQuery) return escapeHtml(text);
+
+  const result = [];
+  let lastEnd = 0;
+  let pos = normalizedText.indexOf(normalizedQuery);
+
+  while (pos !== -1) {
+    // Append text before match
+    if (pos > lastEnd) {
+      result.push(escapeHtml(text.substring(lastEnd, pos)));
+    }
+    // Append highlighted match (from ORIGINAL text — preserves diacritics)
+    const matchEnd = pos + normalizedQuery.length;
+    result.push(
+      "<mark>" + escapeHtml(text.substring(pos, matchEnd)) + "</mark>",
+    );
+    lastEnd = matchEnd;
+    pos = normalizedText.indexOf(normalizedQuery, matchEnd);
+  }
+  // Append remaining text
+  if (lastEnd < text.length) {
+    result.push(escapeHtml(text.substring(lastEnd)));
+  }
+  return result.join("");
 }
 
 /**

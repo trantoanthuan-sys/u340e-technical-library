@@ -3706,3 +3706,33 @@ body.is-home .site-footnote {
     font-size: 14px;
   }
 }
+/* ============================================================
+   FULL-TEXT SEARCH RESULTS — additions for content matches
+   Append this CSS to your styles/components.css at the END
+   ============================================================ */
+
+/* Excerpt: hiển thị đoạn text gốc với context xung quanh từ khóa */
+.search-result-excerpt {
+  margin-top: 6px;
+  padding-top: 6px;
+  border-top: 1px dashed var(--color-slate-200, #e2e8f0);
+  font-size: 12px;
+  color: var(--color-slate-700, #334155);
+  line-height: 1.55;
+  font-style: italic;
+}
+
+.search-result-excerpt mark {
+  background-color: #fef3c7;
+  color: #92400e;
+  padding: 1px 3px;
+  border-radius: 2px;
+  font-style: normal;
+  font-weight: 600;
+}
+
+/* Badge "Nội dung" — màu xanh teal để phân biệt với section (navy) và DTC (đỏ) */
+.search-result-type.type-content {
+  background: #0d9488;
+  color: white;
+}
