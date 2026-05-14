@@ -22,6 +22,7 @@ import { initLightbox } from "./core/lightbox.js";
 import { renderHome } from "./modules/home.js";
 import { renderSection, renderSubSection } from "./modules/section.js";
 import { renderDtcList, renderDtcDetail } from "./modules/dtc.js";
+import { dtcData } from "./data/dtc-data.js";
 
 // ─── 1. Define Routes ────────────────────────────────────────────
 
@@ -294,16 +295,17 @@ async function _buildSearchIndex() {
       }
     }
 
-    // 4) Add DTC codes
-    const dtcData = await store.loadDtc();
-    for (const dtc of dtcData.codes) {
+    // 4) Add DTC codes (từ dtc-data.js mới)
+    for (const dtc of Object.values(dtcData)) {
       _searchIndex.push({
         type: "dtc",
         title: `${dtc.code} — ${dtc.title}`,
-        subtitle: `Triệu chứng: ${(dtc.symptom || "").substring(0, 80)}...`,
+        subtitle: dtc.subtitle
+          ? `${dtc.subtitle} · ${(dtc.description || "").substring(0, 60)}...`
+          : `${(dtc.description || "").substring(0, 80)}...`,
         href: `#/dtc/${dtc.code}`,
         keywords: _removeDiacritics(
-          `${dtc.code} ${dtc.title} ${dtc.symptom || ""}`,
+          `${dtc.code} ${dtc.title} ${dtc.subtitle || ""} ${dtc.description || ""}`,
         ),
       });
     }

@@ -18,6 +18,7 @@ import {
   formatInlineText,
   renderLatex,
 } from "../core/renderer.js";
+import { renderDtcList } from "./dtc.js";
 
 // ─── Section Overview ────────────────────────────────────────────
 
@@ -98,67 +99,24 @@ export async function renderSubSection({ id, subId }) {
       return;
     }
 
+    // SPECIAL CASE: If this sub-section is marked as DTC list,
+    // delegate to the DTC module which renders the full 18-code listing
+    // with search, filters, and grouping
+    if (sub.isDtcList === true) {
+      renderBreadcrumb([
+        { label: "Trang Chủ", href: "#/" },
+        { label: `Chương ${sectionId}`, href: `#/section/${sectionId}` },
+        { label: `${sub.id} — ${sub.title}` },
+      ]);
+      await renderDtcList(null, {});
+      return;
+    }
+
     // Determine prev/next sub-sections for navigation
     const allSubs = sectionData.subsections;
     const subIndex = allSubs.findIndex((s) => s.id === subId);
-
-    // Build prev/next info with cross-chapter support
-    let prevSub = allSubs[subIndex - 1] || null;
-    let nextSub = allSubs[subIndex + 1] || null;
-
-    // If at the START of chapter, prev = last sub of previous chapter
-    const sectionIndex = sections.findIndex((s) => s.id === sectionId);
-    if (!prevSub && sectionIndex > 0) {
-      try {
-        const prevSectionMeta = sections[sectionIndex - 1];
-        const prevSectionData = await store.loadSection(prevSectionMeta.id);
-        if (prevSectionData && prevSectionData.subsections.length > 0) {
-          const lastSub =
-            prevSectionData.subsections[prevSectionData.subsections.length - 1];
-          prevSub = {
-            ...lastSub,
-            _crossChapter: true,
-            _targetSectionId: prevSectionMeta.id,
-            _targetSectionTitle: prevSectionMeta.title,
-          };
-        }
-      } catch (e) {
-        console.warn("[Section] Could not load prev chapter for cross-nav", e);
-      }
-    }
-
-    // If at the END of chapter, next = first sub of next chapter
-    // Hoặc nếu chapter sau là DTC section thì → /dtc
-    if (!nextSub && sectionIndex >= 0 && sectionIndex < sections.length - 1) {
-      try {
-        const nextSectionMeta = sections[sectionIndex + 1];
-
-        // Trường hợp 1: Chương sau là DTC (vd Chương 5)
-        if (nextSectionMeta.isDtcSection) {
-          nextSub = {
-            id: "DTC",
-            title: nextSectionMeta.description || "Mã lỗi DTC",
-            _crossChapter: true,
-            _isDtcLink: true,
-            _targetSectionTitle: nextSectionMeta.title,
-          };
-        } else {
-          // Trường hợp 2: Chương sau là chapter thông thường có subsections
-          const nextSectionData = await store.loadSection(nextSectionMeta.id);
-          if (nextSectionData && nextSectionData.subsections.length > 0) {
-            const firstSub = nextSectionData.subsections[0];
-            nextSub = {
-              ...firstSub,
-              _crossChapter: true,
-              _targetSectionId: nextSectionMeta.id,
-              _targetSectionTitle: nextSectionMeta.title,
-            };
-          }
-        }
-      } catch (e) {
-        console.warn("[Section] Could not load next chapter for cross-nav", e);
-      }
-    }
+    const prevSub = allSubs[subIndex - 1] || null;
+    const nextSub = allSubs[subIndex + 1] || null;
 
     // Update breadcrumb
     renderBreadcrumb([
@@ -238,12 +196,13 @@ function _buildSubSectionHtml(sub, sectionMeta, prevSub, nextSub) {
 
   const explainHtml = content.explain?.length
     ? `<div class="lesson-explain">
-         <div class="lesson-explain-title">Giải thích chi tiết</div>
+         <div class="lesson-explain-title">📘 Giải thích chi tiết</div>
          <div class="explain-list">
            ${content.explain
              .map(
                (item) => `
              <div class="explain-card">
+               <div class="explain-card-icon">⚙️</div>
                <div class="explain-card-content">
                  <div class="explain-card-title">${escapeHtml(item.title)}</div>
                  <div class="explain-card-text">${formatInlineText(item.text)}</div>
@@ -254,7 +213,7 @@ function _buildSubSectionHtml(sub, sectionMeta, prevSub, nextSub) {
                  }
                  ${
                    item.image
-                     ? `<div class="lesson-image-wrap${item.imageSize === "large" ? " lesson-image-wrap-large" : ""}">
+                     ? `<div class="lesson-image-wrap">
                           <img src="${escapeHtml(item.image)}" alt="${escapeHtml(item.caption || item.title)}" class="lesson-image" loading="lazy" />
                           ${
                             item.caption
@@ -421,7 +380,7 @@ function _buildSubSectionHtml(sub, sectionMeta, prevSub, nextSub) {
     ? `<div class="lesson-formula">
          ${
            content.formula.title
-             ? `<div class="lesson-formula-title">${escapeHtml(content.formula.title)}</div>`
+             ? `<div class="lesson-formula-title">📐 ${escapeHtml(content.formula.title)}</div>`
              : ""
          }
          <div class="formula-list">
@@ -555,50 +514,24 @@ ${tableHtml}
 function _buildPrevNextNav(section, prevSub, nextSub) {
   if (!prevSub && !nextSub) return "";
 
-  // Build URLs: cross-chapter dùng _targetSectionId, DTC link dùng #/dtc
-  const prevSectionId = prevSub?._targetSectionId ?? section.id;
-  const prevIsCross = prevSub?._crossChapter === true;
-  const prevHref = `#/section/${prevSectionId}/${prevSub?.id}`;
-
-  const nextIsCross = nextSub?._crossChapter === true;
-  const nextIsDtc = nextSub?._isDtcLink === true;
-  const nextSectionId = nextSub?._targetSectionId ?? section.id;
-  const nextHref = nextIsDtc
-    ? "#/dtc"
-    : `#/section/${nextSectionId}/${nextSub?.id}`;
-
   const prevHtml = prevSub
-    ? `<a href="${prevHref}" class="prevnext-btn prevnext-prev${prevIsCross ? " prevnext-cross" : ""}">
+    ? `<a href="#/section/${section.id}/${prevSub.id}" class="prevnext-btn prevnext-prev">
          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
               stroke="currentColor" stroke-width="2">
            <polyline points="15 18 9 12 15 6"/>
          </svg>
          <div>
-           <div class="prevnext-dir">${prevIsCross ? `← ${escapeHtml(prevSub._targetSectionTitle || `Chương ${prevSectionId}`)} • Trước đó` : "Trước"}</div>
+           <div class="prevnext-dir">Trước</div>
            <div class="prevnext-title">${escapeHtml(prevSub.id)} — ${escapeHtml(prevSub.title)}</div>
          </div>
        </a>`
     : "<div></div>";
 
-  let nextDirText = "Tiếp theo";
-  let nextTitleText = "";
-  if (nextSub) {
-    if (nextIsDtc) {
-      nextDirText = `${escapeHtml(nextSub._targetSectionTitle || "Chẩn đoán")} • Tiếp theo →`;
-      nextTitleText = `${escapeHtml(nextSub.title)}`;
-    } else if (nextIsCross) {
-      nextDirText = `${escapeHtml(nextSub._targetSectionTitle || `Chương ${nextSectionId}`)} • Tiếp theo →`;
-      nextTitleText = `${escapeHtml(nextSub.id)} — ${escapeHtml(nextSub.title)}`;
-    } else {
-      nextTitleText = `${escapeHtml(nextSub.id)} — ${escapeHtml(nextSub.title)}`;
-    }
-  }
-
   const nextHtml = nextSub
-    ? `<a href="${nextHref}" class="prevnext-btn prevnext-next${nextIsCross ? " prevnext-cross" : ""}">
+    ? `<a href="#/section/${section.id}/${nextSub.id}" class="prevnext-btn prevnext-next">
          <div>
-           <div class="prevnext-dir">${nextDirText}</div>
-           <div class="prevnext-title">${nextTitleText}</div>
+           <div class="prevnext-dir">Tiếp theo</div>
+           <div class="prevnext-title">${escapeHtml(nextSub.id)} — ${escapeHtml(nextSub.title)}</div>
          </div>
          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
               stroke="currentColor" stroke-width="2">
@@ -621,7 +554,7 @@ function _buildNotFoundHtml(id) {
   return `
     <div class="content-wrapper">
       <div class="empty-state">
-        <div class="empty-state-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg></div>
+        <div class="empty-state-icon">📂</div>
         <div class="empty-state-title">Không tìm thấy Chương ${id}</div>
         <p class="empty-state-text">Chương này chưa có dữ liệu hoặc không tồn tại.</p>
         <a href="#/" class="btn-back" style="margin-top:var(--space-4)">← Về Trang Chủ</a>
@@ -751,7 +684,7 @@ function _buildSubNotFoundHtml(sectionId, subId) {
   return `
     <div class="content-wrapper">
       <div class="empty-state">
-        <div class="empty-state-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg></div>
+        <div class="empty-state-icon">🔍</div>
         <div class="empty-state-title">Không tìm thấy Mục ${subId}</div>
         <p class="empty-state-text">Mục này chưa có nội dung hoặc không tồn tại.</p>
         <a href="#/section/${sectionId}" class="btn-back" style="margin-top:var(--space-4)">
@@ -766,7 +699,7 @@ function _buildErrorHtml() {
   return `
     <div class="content-wrapper">
       <div class="empty-state">
-        <div class="empty-state-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+        <div class="empty-state-icon">⚠️</div>
         <div class="empty-state-title">Lỗi tải dữ liệu</div>
         <p class="empty-state-text">Không thể tải file dữ liệu. Vui lòng kiểm tra lại.</p>
       </div>
