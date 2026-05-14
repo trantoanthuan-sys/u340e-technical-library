@@ -64,13 +64,12 @@
       "id": 5,
       "slug": "chan-doan-bao-duong",
       "title": "Chẩn Đoán & Bảo Dưỡng",
-      "description": "Hệ thống mã lỗi DTC, triệu chứng thường gặp và tổng kết",
+      "description": "Hệ thống mã lỗi DTC và 25 triệu chứng thường gặp trên hộp số U340E",
       "color": "#991b1b",
       "accentColor": "#dc2626",
       "subsections": [
         { "id": "5.1", "title": "Danh mục mã lỗi DTC", "isDtcList": true },
-        { "id": "5.2", "title": "Danh mục triệu chứng" },
-        { "id": "5.3", "title": "Tổng kết" }
+        { "id": "5.2", "title": "Danh mục triệu chứng" }
       ],
       "dataFile": "data/section-5.json"
     }

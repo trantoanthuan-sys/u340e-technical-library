@@ -460,6 +460,10 @@
   background: var(--color-amber-100);
   color: var(--color-amber-700);
 }
+.search-result-type.type-symptom {
+  background: #ede9fe; /* violet-100 */
+  color: #6d28d9; /* violet-700 — distinct from dtc amber & section navy */
+}
 .search-result-type.type-content {
   background: #0d9488;
   color: white;
@@ -2408,11 +2412,12 @@ body.is-home .site-footnote {
   font-weight: 500;
   margin: 0;
   line-height: 1.4;
+  color: #fff; /* override global p { color: slate-700 } */
 }
 .dtc-detail-subtitle {
   font-size: 13px;
-  opacity: 0.85;
   margin: 4px 0 0;
+  color: rgba(255, 255, 255, 0.85); /* override global p { color: slate-700 } */
 }
 .dtc-detail-badges {
   display: flex;
@@ -3213,5 +3218,63 @@ body.is-home .site-footnote {
     align-items: center;
     display: flex;
     flex-direction: column;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Mục 5.2 — Image gallery in symptom step cards
+   ═══════════════════════════════════════════════════════════════ */
+.symptom-step-images {
+  margin-top: 16px;
+  padding: 14px 16px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+}
+.symptom-step-images-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #475569;
+  letter-spacing: 0.05em;
+  margin-bottom: 12px;
+}
+.symptom-step-images-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+}
+.symptom-step-img {
+  margin: 0;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.symptom-step-img img {
+  width: 100%;
+  height: auto;
+  display: block;
+  cursor: zoom-in;
+  background: #fff;
+  /* keep illustrations crisp without forcing aspect ratio */
+  object-fit: contain;
+  max-height: 240px;
+}
+.symptom-step-img figcaption {
+  padding: 8px 12px;
+  font-size: 12px;
+  line-height: 1.45;
+  color: #475569;
+  border-top: 1px solid #e2e8f0;
+  background: #fafbfc;
+}
+@media (max-width: 640px) {
+  .symptom-step-images-grid {
+    grid-template-columns: 1fr;
+  }
+  .symptom-step-img img {
+    max-height: none;
   }
 }

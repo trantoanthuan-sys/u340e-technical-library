@@ -22,7 +22,9 @@ import { initLightbox } from "./core/lightbox.js";
 import { renderHome } from "./modules/home.js";
 import { renderSection, renderSubSection } from "./modules/section.js";
 import { renderDtcList, renderDtcDetail } from "./modules/dtc.js";
+import { renderSymptomList, renderSymptomDetail } from "./modules/symptoms.js";
 import { dtcData } from "./data/dtc-data.js";
+import { symptomsData } from "./data/symptoms-data.js";
 
 // ─── 1. Define Routes ────────────────────────────────────────────
 
@@ -50,6 +52,14 @@ const router = new Router({
   "/dtc/:code": (p, q) => {
     _setHomeMode(false);
     return renderDtcDetail(p);
+  },
+  "/symptoms": (p, q) => {
+    _setHomeMode(false);
+    return renderSymptomList(p, q);
+  },
+  "/symptoms/:id": (p, q) => {
+    _setHomeMode(false);
+    return renderSymptomDetail(p);
   },
 });
 
@@ -310,6 +320,21 @@ async function _buildSearchIndex() {
       });
     }
 
+    // 5) Add Symptoms (mục 5.2)
+    for (const sym of Object.values(symptomsData)) {
+      _searchIndex.push({
+        type: "symptom",
+        title: `${sym.id} — ${sym.title}`,
+        subtitle: sym.subtitle
+          ? `${sym.subtitle} · ${(sym.description || "").substring(0, 60)}...`
+          : `${(sym.description || "").substring(0, 80)}...`,
+        href: `#/symptoms/${sym.id}`,
+        keywords: _removeDiacritics(
+          `${sym.id} ${sym.title} ${sym.subtitle || ""} ${sym.description || ""}`,
+        ),
+      });
+    }
+
     console.log(`[Search] Built index with ${_searchIndex.length} entries`);
   } catch (err) {
     console.warn("[Search] Could not build index:", err);
@@ -388,9 +413,11 @@ function _performSearch(query, resultsEl) {
       const typeLabel =
         item.type === "dtc"
           ? "DTC"
-          : item.type === "content"
-            ? "Nội dung"
-            : "Mục";
+          : item.type === "symptom"
+            ? "Triệu chứng"
+            : item.type === "content"
+              ? "Nội dung"
+              : "Mục";
 
       return `
       <a href="${item.href}" class="search-result-item" data-href="${item.href}">

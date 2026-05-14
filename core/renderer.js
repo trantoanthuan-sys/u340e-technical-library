@@ -163,16 +163,29 @@ export function updateSidebarActive() {
 /**
  * Update the header breadcrumb.
  * @param {Array<{label: string, href?: string}>} items
+ *
+ * The first item with href === "#/" is ALWAYS rendered as a clickable link,
+ * even when it's also the last (current) item. The user must be able to click
+ * "Trang Chủ" from anywhere to return home — including the home page itself.
  */
 export function renderBreadcrumb(items) {
   if (!items.length) {
-    breadcrumbEl.innerHTML = "";
+    // Defensive fallback: if a route forgets to set a breadcrumb, at least
+    // keep a "Trang Chủ" link in the DOM so the user is never stranded.
+    breadcrumbEl.innerHTML = `<a href="#/" class="breadcrumb-item">Trang Chủ</a>`;
     return;
   }
 
   const parts = items.map((item, i) => {
     const isLast = i === items.length - 1;
     const sep = i > 0 ? `<span class="breadcrumb-sep">›</span>` : "";
+
+    // Home link is always clickable — even when it's the only/last item.
+    const isHomeLink = item.href === "#/";
+    if (isHomeLink) {
+      const activeCls = isLast ? " active" : "";
+      return `${sep}<a href="${item.href}" class="breadcrumb-item${activeCls}">${escapeHtml(item.label)}</a>`;
+    }
 
     if (isLast || !item.href) {
       return `${sep}<span class="breadcrumb-item active">${escapeHtml(item.label)}</span>`;

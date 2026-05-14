@@ -20,6 +20,7 @@ import {
   renderLatex,
 } from "../core/renderer.js";
 import { renderDtcList } from "./dtc.js";
+import { renderSymptomList } from "./symptoms.js";
 
 // ─── Section Overview ────────────────────────────────────────────
 
@@ -161,6 +162,33 @@ export async function renderSubSection({ id, subId }) {
         const dtcPage = root?.querySelector(".dtc-page");
         if (dtcPage) {
           dtcPage.insertAdjacentHTML("beforeend", navHtml);
+        }
+      }
+      return;
+    }
+
+    // Same delegation pattern for the Symptom Catalog (mục 5.2).
+    if (sub.isSymptomList === true) {
+      hideLoading();
+      renderBreadcrumb([
+        { label: "Trang Chủ", href: "#/" },
+        { label: `Chương ${sectionId}`, href: `#/section/${sectionId}` },
+        { label: `${sub.id} — ${sub.title}` },
+      ]);
+      await renderSymptomList(null, {});
+
+      const navHtml = _buildPrevNextNav(
+        sectionMeta,
+        prevSub,
+        nextSub,
+        crossPrev,
+        crossNext,
+      );
+      if (navHtml) {
+        const root = document.getElementById("page-root");
+        const page = root?.querySelector(".dtc-page");
+        if (page) {
+          page.insertAdjacentHTML("beforeend", navHtml);
         }
       }
       return;

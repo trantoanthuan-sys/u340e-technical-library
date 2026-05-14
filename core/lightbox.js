@@ -11,6 +11,7 @@ const SELECTORS = [
   ".lesson-image-wrap-large img",
   ".step-img img",
   ".lesson-stage img",
+  ".symptom-step-img img",
 ];
 const SELECTOR_STRING = SELECTORS.join(", ");
 
