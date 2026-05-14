@@ -12,6 +12,7 @@ import {
   renderBreadcrumb,
   updateSidebarActive,
   showLoading,
+  hideLoading,
   backButtonHtml,
   imageOrPlaceholder,
   escapeHtml,
@@ -99,24 +100,71 @@ export async function renderSubSection({ id, subId }) {
       return;
     }
 
+    // Determine prev/next sub-sections for navigation (within current chapter)
+    const allSubs = sectionData.subsections;
+    const subIndex = allSubs.findIndex((s) => s.id === subId);
+    const prevSub = allSubs[subIndex - 1] || null;
+    const nextSub = allSubs[subIndex + 1] || null;
+
+    // Cross-chapter navigation
+    // If no nextSub in this chapter → find first sub of next chapter
+    // If no prevSub in this chapter → find last sub of previous chapter
+    let crossNext = null;
+    let crossPrev = null;
+    if (!nextSub) {
+      const nextChapter = sections.find((s) => s.id === sectionId + 1);
+      if (nextChapter && nextChapter.subsections?.length > 0) {
+        crossNext = {
+          chapterId: nextChapter.id,
+          chapterTitle: nextChapter.title,
+          sub: nextChapter.subsections[0],
+        };
+      }
+    }
+    if (!prevSub) {
+      const prevChapter = sections.find((s) => s.id === sectionId - 1);
+      if (prevChapter && prevChapter.subsections?.length > 0) {
+        const lastSub =
+          prevChapter.subsections[prevChapter.subsections.length - 1];
+        crossPrev = {
+          chapterId: prevChapter.id,
+          chapterTitle: prevChapter.title,
+          sub: lastSub,
+        };
+      }
+    }
+
     // SPECIAL CASE: If this sub-section is marked as DTC list,
     // delegate to the DTC module which renders the full 18-code listing
-    // with search, filters, and grouping
+    // with search, filters, and grouping. We still need to:
+    //   1. Hide loading spinner (renderDtcList doesn't call renderPage)
+    //   2. Add prev/next navigation at the bottom
     if (sub.isDtcList === true) {
+      hideLoading();
       renderBreadcrumb([
         { label: "Trang Chủ", href: "#/" },
         { label: `Chương ${sectionId}`, href: `#/section/${sectionId}` },
         { label: `${sub.id} — ${sub.title}` },
       ]);
       await renderDtcList(null, {});
+
+      // Append prev/next navigation to the bottom of the DTC list page
+      const navHtml = _buildPrevNextNav(
+        sectionMeta,
+        prevSub,
+        nextSub,
+        crossPrev,
+        crossNext,
+      );
+      if (navHtml) {
+        const root = document.getElementById("page-root");
+        const dtcPage = root?.querySelector(".dtc-page");
+        if (dtcPage) {
+          dtcPage.insertAdjacentHTML("beforeend", navHtml);
+        }
+      }
       return;
     }
-
-    // Determine prev/next sub-sections for navigation
-    const allSubs = sectionData.subsections;
-    const subIndex = allSubs.findIndex((s) => s.id === subId);
-    const prevSub = allSubs[subIndex - 1] || null;
-    const nextSub = allSubs[subIndex + 1] || null;
 
     // Update breadcrumb
     renderBreadcrumb([
@@ -125,7 +173,16 @@ export async function renderSubSection({ id, subId }) {
       { label: `${sub.id} — ${sub.title}` },
     ]);
 
-    renderPage(_buildSubSectionHtml(sub, sectionMeta, prevSub, nextSub));
+    renderPage(
+      _buildSubSectionHtml(
+        sub,
+        sectionMeta,
+        prevSub,
+        nextSub,
+        crossPrev,
+        crossNext,
+      ),
+    );
     _bindDiagramPoints();
   } catch (err) {
     console.error(`[Section] Failed to render sub-section ${subId}:`, err);
@@ -174,7 +231,14 @@ function _buildSectionOverviewHtml(section) {
   `;
 }
 
-function _buildSubSectionHtml(sub, sectionMeta, prevSub, nextSub) {
+function _buildSubSectionHtml(
+  sub,
+  sectionMeta,
+  prevSub,
+  nextSub,
+  crossPrev,
+  crossNext,
+) {
   const content = sub.content || {};
 
   const introHtml = content.intro
@@ -474,7 +538,13 @@ function _buildSubSectionHtml(sub, sectionMeta, prevSub, nextSub) {
        </div>`
     : "";
 
-  const prevNextHtml = _buildPrevNextNav(sectionMeta, prevSub, nextSub);
+  const prevNextHtml = _buildPrevNextNav(
+    sectionMeta,
+    prevSub,
+    nextSub,
+    crossPrev,
+    crossNext,
+  );
 
   return `
     <div class="content-wrapper animate-fade-in">
@@ -511,11 +581,14 @@ ${tableHtml}
   `;
 }
 
-function _buildPrevNextNav(section, prevSub, nextSub) {
-  if (!prevSub && !nextSub) return "";
+function _buildPrevNextNav(section, prevSub, nextSub, crossPrev, crossNext) {
+  if (!prevSub && !nextSub && !crossPrev && !crossNext) return "";
 
-  const prevHtml = prevSub
-    ? `<a href="#/section/${section.id}/${prevSub.id}" class="prevnext-btn prevnext-prev">
+  // Determine PREV side
+  let prevHtml = "<div></div>";
+  if (prevSub) {
+    // Same chapter
+    prevHtml = `<a href="#/section/${section.id}/${prevSub.id}" class="prevnext-btn prevnext-prev">
          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
               stroke="currentColor" stroke-width="2">
            <polyline points="15 18 9 12 15 6"/>
@@ -524,11 +597,26 @@ function _buildPrevNextNav(section, prevSub, nextSub) {
            <div class="prevnext-dir">Trước</div>
            <div class="prevnext-title">${escapeHtml(prevSub.id)} — ${escapeHtml(prevSub.title)}</div>
          </div>
-       </a>`
-    : "<div></div>";
+       </a>`;
+  } else if (crossPrev) {
+    // Cross-chapter: previous chapter's last sub
+    prevHtml = `<a href="#/section/${crossPrev.chapterId}/${crossPrev.sub.id}" class="prevnext-btn prevnext-prev prevnext-cross">
+         <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2">
+           <polyline points="15 18 9 12 15 6"/>
+         </svg>
+         <div>
+           <div class="prevnext-dir">Chương ${crossPrev.chapterId} · Mục trước</div>
+           <div class="prevnext-title">${escapeHtml(crossPrev.sub.id)} — ${escapeHtml(crossPrev.sub.title)}</div>
+         </div>
+       </a>`;
+  }
 
-  const nextHtml = nextSub
-    ? `<a href="#/section/${section.id}/${nextSub.id}" class="prevnext-btn prevnext-next">
+  // Determine NEXT side
+  let nextHtml = "<div></div>";
+  if (nextSub) {
+    // Same chapter
+    nextHtml = `<a href="#/section/${section.id}/${nextSub.id}" class="prevnext-btn prevnext-next">
          <div>
            <div class="prevnext-dir">Tiếp theo</div>
            <div class="prevnext-title">${escapeHtml(nextSub.id)} — ${escapeHtml(nextSub.title)}</div>
@@ -537,8 +625,20 @@ function _buildPrevNextNav(section, prevSub, nextSub) {
               stroke="currentColor" stroke-width="2">
            <polyline points="9 18 15 12 9 6"/>
          </svg>
-       </a>`
-    : "<div></div>";
+       </a>`;
+  } else if (crossNext) {
+    // Cross-chapter: next chapter's first sub
+    nextHtml = `<a href="#/section/${crossNext.chapterId}/${crossNext.sub.id}" class="prevnext-btn prevnext-next prevnext-cross">
+         <div>
+           <div class="prevnext-dir">Sang Chương ${crossNext.chapterId} · ${escapeHtml(crossNext.chapterTitle)}</div>
+           <div class="prevnext-title">${escapeHtml(crossNext.sub.id)} — ${escapeHtml(crossNext.sub.title)}</div>
+         </div>
+         <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2">
+           <polyline points="9 18 15 12 9 6"/>
+         </svg>
+       </a>`;
+  }
 
   return `
   <div class="prevnext-nav">

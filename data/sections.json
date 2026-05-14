@@ -1,41 +1,18 @@
 {
-  "meta": {
-    "title": "Thư Viện Kỹ Thuật U340E",
-    "subtitle": "Hộp Số Tự Động — Toyota",
-    "version": "1.0.0",
-    "lastUpdated": "2025-01-01",
-    "transmission": "U340E",
-    "totalSections": 5
-  },
   "sections": [
     {
       "id": 1,
       "slug": "ket-cau-hop-so",
       "title": "Kết Cấu Hộp Số",
-      "description": "Tổng quan kết cấu và các bộ phận chính của hộp số tự động U340E",
-      "color": "#1e3a6e",
-      "accentColor": "#3b6cb5",
+      "description": "Cấu tạo tổng thể và các thành phần chính của hộp số U340E",
+      "color": "#2563eb",
+      "accentColor": "#3b82f6",
       "subsections": [
-        {
-          "id": "1.1",
-          "title": "Kết cấu chung"
-        },
-        {
-          "id": "1.2",
-          "title": "Biến mô thủy lực"
-        },
-        {
-          "id": "1.3",
-          "title": "Bơm dầu thủy lực"
-        },
-        {
-          "id": "1.4",
-          "title": "Bộ truyền hành tinh"
-        },
-        {
-          "id": "1.5",
-          "title": "Ly hợp - Phanh - Khớp 1 chiều"
-        }
+        { "id": "1.1", "title": "Kết cấu chung" },
+        { "id": "1.2", "title": "Biến mô thủy lực" },
+        { "id": "1.3", "title": "Bơm dầu thủy lực" },
+        { "id": "1.4", "title": "Bộ truyền bánh răng hành tinh" },
+        { "id": "1.5", "title": "Ly hợp - Phanh - Khớp 1 chiều" }
       ],
       "dataFile": "data/section-1.json"
     },
@@ -43,18 +20,12 @@
       "id": 2,
       "slug": "dieu-khien-thuy-luc",
       "title": "Điều Khiển & Thủy Lực",
-      "description": "Hệ thống thủy lực và hệ thống điều khiển điện tử ECT",
-      "color": "#065f46",
-      "accentColor": "#059669",
+      "description": "Hệ thống điều khiển thủy lực và điện tử của hộp số",
+      "color": "#0d9488",
+      "accentColor": "#14b8a6",
       "subsections": [
-        {
-          "id": "2.1",
-          "title": "Hệ thống thủy lực"
-        },
-        {
-          "id": "2.2",
-          "title": "Điều khiển điện tử"
-        }
+        { "id": "2.1", "title": "Hệ thống thủy lực" },
+        { "id": "2.2", "title": "Điều khiển điện tử" }
       ],
       "dataFile": "data/section-2.json"
     },
@@ -62,38 +33,17 @@
       "id": 3,
       "slug": "nguyen-ly-lam-viec",
       "title": "Nguyên Lý Làm Việc",
-      "description": "Tổng quan nguyên lý làm việc, hoạt động tại từng tay số và tính toán tỉ số truyền",
-      "color": "#92400e",
-      "accentColor": "#d97706",
+      "description": "Nguyên lý hoạt động qua các tay số và biến mô",
+      "color": "#d97706",
+      "accentColor": "#f59e0b",
       "subsections": [
-        {
-          "id": "3.1",
-          "title": "Tổng quan nguyên lý làm việc"
-        },
-        {
-          "id": "3.2",
-          "title": "Tay số 1"
-        },
-        {
-          "id": "3.3",
-          "title": "Tay số 2"
-        },
-        {
-          "id": "3.4",
-          "title": "Tay số 3"
-        },
-        {
-          "id": "3.5",
-          "title": "Tay số 4 (OD)"
-        },
-        {
-          "id": "3.6",
-          "title": "Tay số lùi"
-        },
-        {
-          "id": "3.7",
-          "title": "Tính toán tỉ số truyền"
-        }
+        { "id": "3.1", "title": "Tổng quan nguyên lý làm việc" },
+        { "id": "3.2", "title": "Tay số 1" },
+        { "id": "3.3", "title": "Tay số 2" },
+        { "id": "3.4", "title": "Tay số 3" },
+        { "id": "3.5", "title": "Tay số 4 (OD)" },
+        { "id": "3.6", "title": "Tay số lùi" },
+        { "id": "3.7", "title": "Tính toán tỉ số truyền" }
       ],
       "dataFile": "data/section-3.json"
     },
@@ -101,18 +51,12 @@
       "id": 4,
       "slug": "quy-trinh-thao-lap",
       "title": "Quy Trình Tháo Lắp",
-      "description": "Quy trình tháo và lắp hộp số U340E theo thực hành nhóm",
-      "color": "#6b21a8",
-      "accentColor": "#9333ea",
+      "description": "Hướng dẫn từng bước tháo và lắp hộp số U340E",
+      "color": "#7c3aed",
+      "accentColor": "#8b5cf6",
       "subsections": [
-        {
-          "id": "4.1",
-          "title": "Quy trình tháo"
-        },
-        {
-          "id": "4.2",
-          "title": "Quy trình lắp"
-        }
+        { "id": "4.1", "title": "Quy trình tháo" },
+        { "id": "4.2", "title": "Quy trình lắp" }
       ],
       "dataFile": "data/section-4.json"
     },
@@ -120,12 +64,15 @@
       "id": 5,
       "slug": "chan-doan-bao-duong",
       "title": "Chẩn Đoán & Bảo Dưỡng",
-      "description": "Hệ thống mã lỗi DTC và quy trình chẩn đoán sự cố hộp số",
+      "description": "Hệ thống mã lỗi DTC, triệu chứng thường gặp và tổng kết",
       "color": "#991b1b",
       "accentColor": "#dc2626",
-      "isDtcSection": true,
-      "subsections": [],
-      "dataFile": "data/dtc.json"
+      "subsections": [
+        { "id": "5.1", "title": "Danh mục mã lỗi DTC", "isDtcList": true },
+        { "id": "5.2", "title": "Danh mục triệu chứng" },
+        { "id": "5.3", "title": "Tổng kết" }
+      ],
+      "dataFile": "data/section-5.json"
     }
   ]
 }
