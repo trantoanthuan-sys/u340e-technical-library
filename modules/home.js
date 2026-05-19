@@ -28,8 +28,8 @@ const SECTION_COLORS = [
 export async function renderHome() {
   showLoading();
 
-  // Update breadcrumb to home
-  renderBreadcrumb([{ label: "Trang Chủ" }]);
+  // Update breadcrumb to home (still clickable — clicking it just refreshes home)
+  renderBreadcrumb([{ label: "Trang Chủ", href: "#/" }]);
 
   // Update sidebar state
   store.set("activeSectionId", null);
@@ -116,7 +116,7 @@ function _buildHomeHtml(sections) {
         <div class="home-stats-bar">
           <div class="home-stat">
             <div class="home-stat-num">5</div>
-            <div class="home-stat-label">CHƯƠNG</div>
+            <div class="home-stat-label">BÀI</div>
           </div>
           <div class="home-stat">
             <div class="home-stat-num">19</div>
@@ -166,7 +166,7 @@ function _buildHomeHtml(sections) {
           </h1>
 
           <p class="page-subtitle">
-            Chọn một chương để bắt đầu học tập và tra cứu nội dung kỹ thuật hộp số tự động U340E.
+            Chọn một bài để bắt đầu học tập và tra cứu nội dung kỹ thuật hộp số tự động U340E.
           </p>
         </div>
 
@@ -208,7 +208,7 @@ function _buildSectionCard(section, index) {
       <div class="section-card-body">
 
         <div class="section-card-num">
-          CHƯƠNG ${escapeHtml(String(section.id))}
+          BÀI ${escapeHtml(String(section.id))}
         </div>
 
         <div class="section-card-title">

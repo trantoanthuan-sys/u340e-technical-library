@@ -9,7 +9,7 @@
  */
 
 import { store } from "../core/store.js";
-import { escapeHtml } from "../core/renderer.js";
+import { escapeHtml, renderBreadcrumb } from "../core/renderer.js";
 import { dtcData, dtcGroups } from "../data/dtc-data.js";
 
 // ─── List Page ────────────────────────────────────────────────────
@@ -50,7 +50,7 @@ export async function renderDtcList(params, query) {
   const html = `
     <div class="dtc-page">
       <header class="dtc-page-header">
-        <div class="dtc-page-eyebrow">CHƯƠNG 5 · MỤC 5.1</div>
+        <div class="dtc-page-eyebrow">BÀI 5 · MỤC 5.1</div>
         <h1 class="dtc-page-title">Danh mục mã lỗi DTC</h1>
         <p class="dtc-page-desc">
           Hệ thống 18 mã chẩn đoán hộp số tự động U340E. Click vào mã bất kỳ để xem chi tiết quy trình chẩn đoán tương tác.
@@ -192,6 +192,15 @@ export async function renderDtcDetail(params) {
 
   const code = params.code?.toUpperCase();
   const dtc = dtcData[code];
+
+  // Set breadcrumb even before content renders, so the Trang Chủ link is always
+  // present — also covers direct deep-links to /#/dtc/P0705 from outside the SPA.
+  renderBreadcrumb([
+    { label: "Trang Chủ", href: "#/" },
+    { label: "Bài 5", href: "#/section/5" },
+    { label: "5.1 — Danh mục mã lỗi DTC", href: "#/dtc" },
+    { label: code || "?" },
+  ]);
 
   if (!dtc) {
     root.innerHTML = `

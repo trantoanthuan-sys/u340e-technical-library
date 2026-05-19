@@ -19,6 +19,7 @@ import {
   escapeHtml,
 } from "./core/renderer.js";
 import { initLightbox } from "./core/lightbox.js";
+import { applyHighlight } from "./core/highlight.js";
 import { renderHome } from "./modules/home.js";
 import { renderSection, renderSubSection } from "./modules/section.js";
 import { renderDtcList, renderDtcDetail } from "./modules/dtc.js";
@@ -28,39 +29,55 @@ import { symptomsData } from "./data/symptoms-data.js";
 
 // ─── 1. Define Routes ────────────────────────────────────────────
 
+/**
+ * Wrap a route handler so that after the page finishes rendering,
+ * we automatically apply highlight() to mark any ?highlight=keyword
+ * found in the URL. Works whether the handler returns a Promise or not.
+ */
+function withHighlight(handler) {
+  return (params, query) => {
+    const result = handler(params, query);
+    if (result && typeof result.then === "function") {
+      return result.then(() => applyHighlight(query?.highlight));
+    }
+    applyHighlight(query?.highlight);
+    return result;
+  };
+}
+
 const router = new Router({
-  "": (p, q) => {
+  "": withHighlight((p, q) => {
     _setHomeMode(true);
     return renderHome();
-  },
-  "/": (p, q) => {
+  }),
+  "/": withHighlight((p, q) => {
     _setHomeMode(true);
     return renderHome();
-  },
-  "/section/:id": (p, q) => {
+  }),
+  "/section/:id": withHighlight((p, q) => {
     _setHomeMode(false);
     return renderSection(p);
-  },
-  "/section/:id/:subId": (p, q) => {
+  }),
+  "/section/:id/:subId": withHighlight((p, q) => {
     _setHomeMode(false);
     return renderSubSection(p);
-  },
-  "/dtc": (p, q) => {
+  }),
+  "/dtc": withHighlight((p, q) => {
     _setHomeMode(false);
     return renderDtcList(p, q);
-  },
-  "/dtc/:code": (p, q) => {
+  }),
+  "/dtc/:code": withHighlight((p, q) => {
     _setHomeMode(false);
     return renderDtcDetail(p);
-  },
-  "/symptoms": (p, q) => {
+  }),
+  "/symptoms": withHighlight((p, q) => {
     _setHomeMode(false);
     return renderSymptomList(p, q);
-  },
-  "/symptoms/:id": (p, q) => {
+  }),
+  "/symptoms/:id": withHighlight((p, q) => {
     _setHomeMode(false);
     return renderSymptomDetail(p);
-  },
+  }),
 });
 
 /**
@@ -205,7 +222,7 @@ async function _buildSearchIndex() {
       // 1) Add section itself (chapter-level)
       _searchIndex.push({
         type: "section",
-        title: `Chương ${section.id}: ${section.title}`,
+        title: `Bài ${section.id}: ${section.title}`,
         subtitle: section.description || "",
         href: `#/section/${section.id}`,
         keywords: _removeDiacritics(
@@ -218,7 +235,7 @@ async function _buildSearchIndex() {
         _searchIndex.push({
           type: "section",
           title: `${sub.id} — ${sub.title}`,
-          subtitle: `Chương ${section.id}: ${section.title}`,
+          subtitle: `Bài ${section.id}: ${section.title}`,
           href: `#/section/${section.id}/${sub.id}`,
           keywords: _removeDiacritics(
             `${sub.id} ${sub.title} ${section.title}`,
@@ -256,9 +273,9 @@ async function _buildSearchIndex() {
             });
           }
 
-          // 3c) Explain blocks (array of {title, text, caption})
+          // 3c) Explain blocks (array of {title, text, caption, customHtml})
           if (Array.isArray(content.explain)) {
-            content.explain.forEach((block) => {
+            content.explain.forEach((block, blockIdx) => {
               const blockTitle = block.title || "Nội dung chi tiết";
               if (block.text) {
                 _addContentEntry(
@@ -267,6 +284,7 @@ async function _buildSearchIndex() {
                   sub,
                   blockTitle,
                   block.text,
+                  blockIdx,
                 );
               }
               if (block.caption) {
@@ -276,12 +294,28 @@ async function _buildSearchIndex() {
                   sub,
                   blockTitle,
                   block.caption,
+                  blockIdx,
                 );
+              }
+              // customHtml — used by Chapter 4 (tháo lắp) for the
+              // 2-column step layout. Strip HTML tags to get plain text.
+              if (block.customHtml) {
+                const plainText = _stripHtml(block.customHtml);
+                if (plainText) {
+                  _addContentEntry(
+                    _searchIndex,
+                    section,
+                    sub,
+                    blockTitle,
+                    plainText,
+                    blockIdx,
+                  );
+                }
               }
             });
           }
 
-          // 3d) Table headers + rows
+          // 3d) Table headers + rows (array format)
           if (content.table) {
             const tableTitle = content.table.title || "Bảng dữ liệu";
             if (Array.isArray(content.table.rows)) {
@@ -298,6 +332,29 @@ async function _buildSearchIndex() {
                 }
               });
             }
+          }
+
+          // 3e) Specs table — used by Chapter 4 with {param, value} objects
+          if (content.specs && Array.isArray(content.specs.rows)) {
+            const specsTitle = content.specs.title || "Thông số";
+            content.specs.rows.forEach((row) => {
+              // Row can be {param, value} or array — handle both
+              let rowText = "";
+              if (row && typeof row === "object" && !Array.isArray(row)) {
+                rowText = [row.param, row.value].filter(Boolean).join(" — ");
+              } else if (Array.isArray(row)) {
+                rowText = row.join(" — ");
+              }
+              if (rowText) {
+                _addContentEntry(
+                  _searchIndex,
+                  section,
+                  sub,
+                  specsTitle,
+                  rowText,
+                );
+              }
+            });
           }
         }
       } catch (e) {
@@ -346,7 +403,7 @@ async function _buildSearchIndex() {
  * `text` is the original (with diacritics) — stored as excerpt for display.
  * `keywords` is the diacritics-removed lowercase version for matching.
  */
-function _addContentEntry(index, section, sub, blockTitle, text) {
+function _addContentEntry(index, section, sub, blockTitle, text, blockIdx) {
   // Strip markdown markers (** for bold, • for bullets) for cleaner display
   const cleanText = String(text)
     .replace(/\*\*/g, "")
@@ -355,11 +412,18 @@ function _addContentEntry(index, section, sub, blockTitle, text) {
     .trim();
   if (!cleanText) return;
 
+  // If blockIdx given, append #block-N anchor + ?block=N param so the
+  // destination page can scroll to the right block (not just first match).
+  let href = `#/section/${section.id}/${sub.id}`;
+  if (typeof blockIdx === "number" && blockIdx >= 0) {
+    href += `?block=${blockIdx}`;
+  }
+
   index.push({
     type: "content",
     title: `${sub.id} — ${sub.title}`,
-    subtitle: `Chương ${section.id}: ${section.title} › ${blockTitle}`,
-    href: `#/section/${section.id}/${sub.id}`,
+    subtitle: `Bài ${section.id}: ${section.title} › ${blockTitle}`,
+    href,
     keywords: _removeDiacritics(cleanText),
     excerpt: cleanText, // original text for context display
   });
@@ -435,7 +499,17 @@ function _performSearch(query, resultsEl) {
   resultsEl.innerHTML = html;
 
   resultsEl.querySelectorAll(".search-result-item").forEach((link) => {
-    link.addEventListener("click", () => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      const baseHref = link.getAttribute("data-href");
+      // Append the search query as a URL parameter so the destination page
+      // can highlight matching text after rendering.
+      const sep = baseHref.includes("?") ? "&" : "?";
+      const targetHref =
+        baseHref + sep + "highlight=" + encodeURIComponent(query);
+      window.location.hash = targetHref.startsWith("#")
+        ? targetHref.slice(1)
+        : targetHref;
       closeSearch();
     });
   });
@@ -525,6 +599,32 @@ function _removeDiacritics(str) {
     .replace(/đ/g, "d")
     .replace(/Đ/g, "D")
     .toLowerCase();
+}
+
+/**
+ * Strip HTML tags from a string and return plain text.
+ * Used for indexing customHtml fields (Chapter 4 tháo lắp steps).
+ * Decodes common HTML entities (&amp; &lt; &gt; &quot; &nbsp;).
+ */
+function _stripHtml(html) {
+  if (typeof html !== "string") return "";
+  return (
+    html
+      // Remove <script>...</script> and <style>...</style> entirely
+      .replace(/<(script|style)[^>]*>[\s\S]*?<\/\1>/gi, " ")
+      // Strip all remaining tags
+      .replace(/<[^>]+>/g, " ")
+      // Decode common entities
+      .replace(/&nbsp;/g, " ")
+      .replace(/&amp;/g, "&")
+      .replace(/&lt;/g, "<")
+      .replace(/&gt;/g, ">")
+      .replace(/&quot;/g, '"')
+      .replace(/&#39;/g, "'")
+      // Collapse whitespace
+      .replace(/\s+/g, " ")
+      .trim()
+  );
 }
 
 // ─── Lightbox ────────────────────────────────────────────────────

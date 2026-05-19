@@ -51,7 +51,7 @@ export async function renderSection({ id }) {
     // Update breadcrumb
     renderBreadcrumb([
       { label: "Trang Chủ", href: "#/" },
-      { label: `Chương ${sectionId}: ${sectionMeta.title}` },
+      { label: `Bài ${sectionId}: ${sectionMeta.title}` },
     ]);
 
     // If DTC section, redirect to DTC list
@@ -144,7 +144,7 @@ export async function renderSubSection({ id, subId }) {
       hideLoading();
       renderBreadcrumb([
         { label: "Trang Chủ", href: "#/" },
-        { label: `Chương ${sectionId}`, href: `#/section/${sectionId}` },
+        { label: `Bài ${sectionId}`, href: `#/section/${sectionId}` },
         { label: `${sub.id} — ${sub.title}` },
       ]);
       await renderDtcList(null, {});
@@ -172,7 +172,7 @@ export async function renderSubSection({ id, subId }) {
       hideLoading();
       renderBreadcrumb([
         { label: "Trang Chủ", href: "#/" },
-        { label: `Chương ${sectionId}`, href: `#/section/${sectionId}` },
+        { label: `Bài ${sectionId}`, href: `#/section/${sectionId}` },
         { label: `${sub.id} — ${sub.title}` },
       ]);
       await renderSymptomList(null, {});
@@ -197,7 +197,7 @@ export async function renderSubSection({ id, subId }) {
     // Update breadcrumb
     renderBreadcrumb([
       { label: "Trang Chủ", href: "#/" },
-      { label: `Chương ${sectionId}`, href: `#/section/${sectionId}` },
+      { label: `Bài ${sectionId}`, href: `#/section/${sectionId}` },
       { label: `${sub.id} — ${sub.title}` },
     ]);
 
@@ -244,7 +244,7 @@ function _buildSectionOverviewHtml(section) {
       <!-- Section header -->
       <div class="page-title-block">
         <div class="page-label">
-          <span style="font-family:var(--font-mono)">CHƯƠNG ${escapeHtml(String(section.id))}</span>
+          <span style="font-family:var(--font-mono)">BÀI ${escapeHtml(String(section.id))}</span>
         </div>
         <h1 class="page-title">${escapeHtml(section.title)}</h1>
         <p class="page-subtitle">${escapeHtml(section.description)}</p>
@@ -577,12 +577,12 @@ function _buildSubSectionHtml(
   return `
     <div class="content-wrapper animate-fade-in">
 
-      ${backButtonHtml(`#/section/${sectionMeta.id}`, `Chương ${sectionMeta.id}: ${sectionMeta.title}`)}
+      ${backButtonHtml(`#/section/${sectionMeta.id}`, `Bài ${sectionMeta.id}: ${sectionMeta.title}`)}
 
       <div class="page-title-block">
         <div class="page-label">
           <span style="font-family:var(--font-mono)">
-            CHƯƠNG ${escapeHtml(String(sectionMeta.id))} — MỤC ${escapeHtml(sub.id)}
+            BÀI ${escapeHtml(String(sectionMeta.id))} — MỤC ${escapeHtml(sub.id)}
           </span>
         </div>
         <h1 class="page-title">${escapeHtml(sub.title)}</h1>
@@ -634,7 +634,7 @@ function _buildPrevNextNav(section, prevSub, nextSub, crossPrev, crossNext) {
            <polyline points="15 18 9 12 15 6"/>
          </svg>
          <div>
-           <div class="prevnext-dir">Chương ${crossPrev.chapterId} · Mục trước</div>
+           <div class="prevnext-dir">Bài ${crossPrev.chapterId} · Mục trước</div>
            <div class="prevnext-title">${escapeHtml(crossPrev.sub.id)} — ${escapeHtml(crossPrev.sub.title)}</div>
          </div>
        </a>`;
@@ -658,7 +658,7 @@ function _buildPrevNextNav(section, prevSub, nextSub, crossPrev, crossNext) {
     // Cross-chapter: next chapter's first sub
     nextHtml = `<a href="#/section/${crossNext.chapterId}/${crossNext.sub.id}" class="prevnext-btn prevnext-next prevnext-cross">
          <div>
-           <div class="prevnext-dir">Sang Chương ${crossNext.chapterId} · ${escapeHtml(crossNext.chapterTitle)}</div>
+           <div class="prevnext-dir">Sang Bài ${crossNext.chapterId} · ${escapeHtml(crossNext.chapterTitle)}</div>
            <div class="prevnext-title">${escapeHtml(crossNext.sub.id)} — ${escapeHtml(crossNext.sub.title)}</div>
          </div>
          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
@@ -683,8 +683,8 @@ function _buildNotFoundHtml(id) {
     <div class="content-wrapper">
       <div class="empty-state">
         <div class="empty-state-icon">📂</div>
-        <div class="empty-state-title">Không tìm thấy Chương ${id}</div>
-        <p class="empty-state-text">Chương này chưa có dữ liệu hoặc không tồn tại.</p>
+        <div class="empty-state-title">Không tìm thấy Bài ${id}</div>
+        <p class="empty-state-text">Bài này chưa có dữ liệu hoặc không tồn tại.</p>
         <a href="#/" class="btn-back" style="margin-top:var(--space-4)">← Về Trang Chủ</a>
       </div>
     </div>
@@ -816,7 +816,7 @@ function _buildSubNotFoundHtml(sectionId, subId) {
         <div class="empty-state-title">Không tìm thấy Mục ${subId}</div>
         <p class="empty-state-text">Mục này chưa có nội dung hoặc không tồn tại.</p>
         <a href="#/section/${sectionId}" class="btn-back" style="margin-top:var(--space-4)">
-          ← Về Chương ${sectionId}
+          ← Về Bài ${sectionId}
         </a>
       </div>
     </div>

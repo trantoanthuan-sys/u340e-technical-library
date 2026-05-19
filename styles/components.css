@@ -3278,3 +3278,43 @@ body.is-home .site-footnote {
     max-height: none;
   }
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   Search highlight — highlight matched keywords after navigation
+   ═══════════════════════════════════════════════════════════════ */
+mark.search-highlight {
+  /* Nền vàng nhẹ + chữ giữ nguyên màu để không ảnh hưởng tương phản */
+  background: linear-gradient(180deg, #fef3c7 0%, #fde68a 100%);
+  color: inherit;
+  padding: 1px 3px;
+  border-radius: 3px;
+  /* Đường viền mảnh dưới chân chữ để nổi hơn trên nền sáng */
+  box-shadow: 0 1px 0 rgba(180, 83, 9, 0.25);
+}
+
+/* First match gets a brief pulse animation when scrolled into view */
+mark.search-highlight.search-highlight-active {
+  animation: search-pulse 2.2s ease-out 1;
+}
+
+@keyframes search-pulse {
+  0% {
+    background: #fbbf24;
+    box-shadow: 0 0 0 6px rgba(251, 191, 36, 0.6);
+  }
+  40% {
+    background: #fcd34d;
+    box-shadow: 0 0 0 4px rgba(251, 191, 36, 0.3);
+  }
+  100% {
+    background: linear-gradient(180deg, #fef3c7 0%, #fde68a 100%);
+    box-shadow: 0 1px 0 rgba(180, 83, 9, 0.25);
+  }
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  mark.search-highlight.search-highlight-active {
+    animation: none;
+  }
+}

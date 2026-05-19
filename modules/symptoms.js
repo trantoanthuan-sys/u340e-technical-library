@@ -11,7 +11,7 @@
  */
 
 import { store } from "../core/store.js";
-import { escapeHtml } from "../core/renderer.js";
+import { escapeHtml, renderBreadcrumb } from "../core/renderer.js";
 import { symptomsData, symptomGroups } from "../data/symptoms-data.js";
 
 // ─── List Page ────────────────────────────────────────────────────
@@ -53,7 +53,7 @@ export async function renderSymptomList(params, query) {
   const html = `
     <div class="dtc-page">
       <header class="dtc-page-header">
-        <div class="dtc-page-eyebrow">CHƯƠNG 5 · MỤC 5.2</div>
+        <div class="dtc-page-eyebrow">BÀI 5 · MỤC 5.2</div>
         <h1 class="dtc-page-title">Danh mục triệu chứng</h1>
         <p class="dtc-page-desc">
           25 triệu chứng thường gặp trên hộp số U340E, mỗi triệu chứng đi kèm flowchart chẩn đoán tương tác YES/NO. Click vào triệu chứng để xem chi tiết quy trình.
@@ -184,6 +184,14 @@ export async function renderSymptomDetail(params) {
 
   const id = params.id?.toUpperCase();
   const sym = symptomsData[id];
+
+  // Set breadcrumb up-front so deep-links always show the Trang Chủ link.
+  renderBreadcrumb([
+    { label: "Trang Chủ", href: "#/" },
+    { label: "Bài 5", href: "#/section/5" },
+    { label: "5.2 — Danh mục triệu chứng", href: "#/symptoms" },
+    { label: id || "?" },
+  ]);
 
   if (!sym) {
     root.innerHTML = `
