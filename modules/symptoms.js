@@ -13,6 +13,7 @@
 import { store } from "../core/store.js";
 import { escapeHtml, renderBreadcrumb } from "../core/renderer.js";
 import { symptomsData, symptomGroups } from "../data/symptoms-data.js";
+import { renderSubConclusion } from "./lesson-outcomes.js";
 
 // ─── List Page ────────────────────────────────────────────────────
 
@@ -133,6 +134,8 @@ export async function renderSymptomList(params, query) {
           Tài liệu tham khảo: Toyota Service Manual · Quy trình thực hành nhóm
         </p>
       </footer>
+
+      ${renderSubConclusion(5, "5.2")}
     </div>
   `;
 

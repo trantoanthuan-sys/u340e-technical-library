@@ -11,6 +11,7 @@
 import { store } from "../core/store.js";
 import { escapeHtml, renderBreadcrumb } from "../core/renderer.js";
 import { dtcData, dtcGroups } from "../data/dtc-data.js";
+import { renderSubConclusion } from "./lesson-outcomes.js";
 
 // ─── List Page ────────────────────────────────────────────────────
 
@@ -139,6 +140,8 @@ export async function renderDtcList(params, query) {
           Tài liệu tham khảo: Toyota Service Manual · ATSG Diagnostic Guide
         </p>
       </footer>
+
+      ${renderSubConclusion(5, "5.1")}
     </div>
   `;
 

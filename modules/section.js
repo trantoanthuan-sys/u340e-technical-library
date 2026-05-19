@@ -21,6 +21,7 @@ import {
 } from "../core/renderer.js";
 import { renderDtcList } from "./dtc.js";
 import { renderSymptomList } from "./symptoms.js";
+import { renderObjectives, renderLessonOutcomes } from "./lesson-outcomes.js";
 
 // ─── Section Overview ────────────────────────────────────────────
 
@@ -574,6 +575,15 @@ function _buildSubSectionHtml(
     crossNext,
   );
 
+  // ⭐ KẾT QUẢ BÀI HỌC: chèn objectives ở đầu của mục đầu tiên của bài,
+  // và full outcomes (quiz, case, checklist, deliverable) ở cuối mục cuối.
+  const baiId = parseInt(sectionMeta.id, 10);
+  const allSubIds = (sectionMeta.subsections || []).map((s) => s.id);
+  const isFirstSub = sub.id === allSubIds[0];
+  const isLastSub = sub.id === allSubIds[allSubIds.length - 1];
+  const objectivesHtml = isFirstSub ? renderObjectives(baiId) : "";
+  const outcomesHtml = isLastSub ? renderLessonOutcomes(baiId) : "";
+
   return `
     <div class="content-wrapper animate-fade-in">
 
@@ -587,6 +597,8 @@ function _buildSubSectionHtml(
         </div>
         <h1 class="page-title">${escapeHtml(sub.title)}</h1>
       </div>
+
+      ${objectivesHtml}
 
      <div class="content-block">
  <div class="lesson-content lesson-content-wide">
@@ -604,6 +616,8 @@ ${tableHtml}
       </div>
 
       ${prevNextHtml}
+
+      ${outcomesHtml}
 
     </div>
   `;
