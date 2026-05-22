@@ -33,7 +33,7 @@ Trường Đại học Bách Khoa — ĐHQG TP. Hồ Chí Minh
 
 ### 📊 Số liệu
 
-**5 chương** — **17 mục** — **18 mã lỗi DTC** — **25 triệu chứng** — **160+ hình minh họa**
+**5 chương** — **18 mục** — **18 mã lỗi DTC** — **25 triệu chứng** — **220+ hình minh họa**
 
 ---
 
@@ -48,7 +48,8 @@ Trường Đại học Bách Khoa — ĐHQG TP. Hồ Chí Minh
 - 🔎 **Lightbox** — click bất kỳ ảnh kỹ thuật nào để phóng to xem chi tiết, có prev/next
 - 📐 **Render công thức LaTeX** — hiển thị công thức đẹp như sách giáo khoa (KaTeX, offline)
 - 🔗 **Liên kết chéo** — bài học và mã lỗi DTC liên kết hai chiều (`relatedDTC` ↔ `relatedSections`)
-- 📷 **Layout 2 cột** (Chương 4) — so sánh trực quan **hình kỹ thuật** từ tài liệu Toyota với **ảnh thực tế** khi nhóm tháo lắp
+- 🎓 **Hệ thống chuẩn đầu ra bài học** — mỗi bài có khối Mục tiêu, Kết luận (kiến thức + kỹ năng), Trắc nghiệm tương tác, Bài tập tình huống và Rubric chấm sản phẩm
+- 📷 **Layout 2 cột** (Chương 2) — so sánh trực quan **hình kỹ thuật** từ tài liệu Toyota với **ảnh thực tế** khi nhóm tháo lắp
 - 📱 **Responsive** — tối ưu cho desktop, tablet và mobile
 - ♿ **Accessible** — ARIA labels, phím tắt, keyboard navigation
 
@@ -71,9 +72,9 @@ Project này khác các tài liệu kỹ thuật truyền thống (Word/PDF/slid
 | Chương | Tiêu đề               | Số mục | Trọng tâm                                           |
 | :----: | --------------------- | :----: | --------------------------------------------------- |
 | **1**  | Kết Cấu Hộp Số        |   5    | Biến mô, bơm dầu, bộ hành tinh, ly hợp - phanh      |
-| **2**  | Điều Khiển & Thủy Lực |   2    | Hệ thống thủy lực, hệ thống điện tử (cảm biến, ECU) |
+| **2**  | Quy Trình Tháo Lắp    |   2    | 22 bước tháo + 26 bước lắp, ảnh thực tế             |
 | **3**  | Nguyên Lý Làm Việc    |   7    | Tổng quan + 6 chế độ tay số (1, 2, 3, 4 OD, lùi)    |
-| **4**  | Quy Trình Tháo Lắp    |   2    | 22 bước tháo + 26 bước lắp, ảnh thực tế             |
+| **4**  | Điều Khiển & Thủy Lực |   2    | Hệ thống thủy lực, hệ thống điện tử (cảm biến, ECU) |
 | **5**  | Chẩn Đoán & Bảo Dưỡng |   2    | 18 mã DTC + 25 triệu chứng với flowchart YES/NO     |
 
 ### Chương 5.1 — Database mã lỗi DTC
@@ -173,7 +174,7 @@ Chrome ≥ 61, Firefox ≥ 60, Safari ≥ 11, Edge ≥ 16 (hỗ trợ ES Modules
 3. Click vào triệu chứng → trang chi tiết với mô tả, khu vực nghi ngờ
 4. 2 tab tương tự DTC để chẩn đoán theo từng bước
 
-### Sơ đồ tương tác (Chương 1-3)
+### Sơ đồ tương tác (Chương 1, 3, 4)
 
 Click vào **số thứ tự** trên sơ đồ để xem chi tiết bộ phận. Dùng nút **Trước/Sau** để duyệt lần lượt.
 
@@ -208,38 +209,43 @@ U340E Project/
 ├── app.js                  # Bootstrap, router setup, global search index
 ├── README.md
 │
-├── core/                   # 🧩 Hạ tầng dùng chung
+├── core/                   # 🧩 Hạ tầng dùng chung (5 file)
 │   ├── router.js          #   Hash-based SPA router
 │   ├── store.js           #   State + data fetching + cache
 │   ├── renderer.js        #   DOM helpers, breadcrumb, sidebar
-│   └── lightbox.js        #   Image lightbox với event delegation
+│   ├── lightbox.js        #   Image lightbox với event delegation
+│   └── highlight.js       #   Đánh dấu từ khóa từ URL ?highlight=...
 │
-├── modules/                # 🎨 Các module tính năng
+├── modules/                # 🎨 Các module tính năng (5 file)
 │   ├── home.js            #   Trang chủ với 5 chương
 │   ├── section.js         #   Trang chương + bài học + cross-chapter nav
 │   ├── dtc.js             #   Danh mục + chi tiết DTC + flowchart
-│   └── symptoms.js        #   Danh mục + chi tiết triệu chứng + flowchart
+│   ├── symptoms.js        #   Danh mục + chi tiết triệu chứng + flowchart
+│   └── lesson-outcomes.js #   Mục tiêu, kết luận, quiz, case study, rubric
 │
-├── data/                   # 📊 Nội dung (JSON + ES module)
+├── data/                   # 📊 Nội dung (JSON + ES module) — 9 file
 │   ├── sections.json      #   Metadata 5 chương + sidebar
-│   ├── section-1.json     #   Chương 1 (5 mục)
-│   ├── section-2.json     #   Chương 2 (2 mục)
-│   ├── section-3.json     #   Chương 3 (7 mục)
-│   ├── section-4.json     #   Chương 4 (2 mục: tháo + lắp)
-│   ├── section-5.json     #   Chương 5 (2 mục: DTC + triệu chứng)
+│   ├── section-1.json     #   Chương 1 — Kết Cấu Hộp Số (5 mục)
+│   ├── section-2.json     #   Chương 2 — Quy Trình Tháo Lắp (2 mục: tháo + lắp)
+│   ├── section-3.json     #   Chương 3 — Nguyên Lý Làm Việc (7 mục)
+│   ├── section-4.json     #   Chương 4 — Điều Khiển & Thủy Lực (2 mục)
+│   ├── section-5.json     #   Chương 5 — Chẩn Đoán & Bảo Dưỡng (2 mục)
 │   ├── dtc-data.js        #   18 mã DTC + diagnosisFlow + grouping
-│   └── symptoms-data.js   #   25 triệu chứng + IMG library + 6 nhóm
+│   ├── symptoms-data.js   #   25 triệu chứng + IMG library + 6 nhóm
+│   └── lesson-outcomes.js #   Mục tiêu, quiz, case study, rubric cho từng bài
 │
 ├── styles/                 # 🎨 CSS (tách 3 tầng)
 │   ├── base.css           #   Design tokens, reset, typography
 │   ├── layout.css         #   Header, sidebar, app shell
 │   └── components.css     #   Card, button, table, flowchart, lightbox...
 │
-├── assets/images/          # 🖼️ Hình ảnh kỹ thuật
+├── assets/images/          # 🖼️ Hình ảnh kỹ thuật (~220 ảnh)
 │   ├── hero-u340e.png, logo-bk.png, logo-khoa.png
-│   ├── s1/, s2/, s3/      #   Hình minh họa chương 1, 2, 3
-│   ├── s4/                #   Ảnh tháo lắp thực tế nhóm (160+ ảnh)
-│   ├── dtc/               #   Sơ đồ mạch điện 18 mã DTC
+│   ├── s1/                #   Kết cấu hộp số (24 ảnh)
+│   ├── s2/                #   Điều khiển & thủy lực (27 ảnh)
+│   ├── s3/                #   Nguyên lý làm việc (7 ảnh)
+│   ├── s4/                #   Quy trình tháo lắp — ảnh thực tế nhóm (110 ảnh)
+│   ├── dtc/               #   Sơ đồ mạch điện 18 mã DTC (48 ảnh)
 │   └── symptoms/          #   Hình minh họa bước kiểm tra (7 ảnh)
 │
 └── vendor/                 # 📦 Thư viện bên thứ 3 (offline)
@@ -264,15 +270,16 @@ Project áp dụng pattern **tách lớp 3 tầng** rõ ràng:
 │  app.js  ←  Bootstrap, routes, search index      │
 └─────────────────────────────────────────────────┘
                       ↓
-┌──────────────┬──────────────┬──────────────────┐
-│   core/      │   modules/   │    data/         │
-│ (hạ tầng)    │ (tính năng)  │   (nội dung)     │
-├──────────────┼──────────────┼──────────────────┤
-│ • router.js  │ • home.js    │ • sections.json  │
-│ • store.js   │ • section.js │ • section-N.json │
-│ • renderer.js│ • dtc.js     │ • dtc-data.js    │
-│ • lightbox.js│ • symptoms.js│ • symptoms-data.js│
-└──────────────┴──────────────┴──────────────────┘
+┌──────────────┬──────────────────┬──────────────────────┐
+│   core/      │   modules/       │    data/             │
+│ (hạ tầng)    │ (tính năng)      │   (nội dung)         │
+├──────────────┼──────────────────┼──────────────────────┤
+│ • router.js  │ • home.js        │ • sections.json      │
+│ • store.js   │ • section.js     │ • section-N.json     │
+│ • renderer.js│ • dtc.js         │ • dtc-data.js        │
+│ • lightbox.js│ • symptoms.js    │ • symptoms-data.js   │
+│ • highlight.js│ • lesson-outcomes.js│ • lesson-outcomes.js│
+└──────────────┴──────────────────┴──────────────────────┘
                       ↓
 ┌─────────────────────────────────────────────────┐
 │  styles/  ←  Design System (tokens + layers)    │
@@ -411,7 +418,7 @@ Project này được thực hiện với sự hỗ trợ của **Claude AI** (A
 1. **AI là trợ lý, không phải người làm chính** — mọi quyết định kiến trúc và nội dung kỹ thuật do người làm đồ án duyệt
 2. **Hiểu code AI sinh ra** — không copy mù, phải đọc hiểu và có khả năng sửa đổi
 3. **Kiến thức chuyên ngành là của con người** — AI viết code web, nhưng kiến thức về hộp số U340E đến từ giáo trình và tài liệu kỹ thuật chính thức (Toyota Service Manual)
-4. **Nội dung thực hành là của nhóm** — Chương 4 (tháo lắp) gồm 48 bước với 160+ ảnh **do nhóm tự thực hiện và chụp** trên mô hình thực tế
+4. **Nội dung thực hành là của nhóm** — Chương 2 (tháo lắp) gồm 48 bước với 110 ảnh **do nhóm tự thực hiện và chụp** trên mô hình thực tế
 5. **Database DTC + triệu chứng** — 18 mã DTC và 25 triệu chứng được nhóm trích xuất, dịch và biên tập từ Toyota Service Manual chính thức
 6. **Minh bạch về việc dùng AI** — ghi rõ trong README để đảm bảo trung thực học thuật
 
@@ -422,20 +429,20 @@ Project này được thực hiện với sự hỗ trợ của **Claude AI** (A
 ### Đã hoàn thành (100%)
 
 - ✅ Kiến trúc SPA với router & state management & lightbox
-- ✅ 5 chương nội dung — 17 mục
+- ✅ 5 chương nội dung — 18 mục
 - ✅ 18 mã lỗi DTC từ Toyota Service Manual chính thức
 - ✅ 25 triệu chứng thường gặp với flowchart YES/NO tương tác
 - ✅ Sơ đồ tổng quan kiểu PowerPoint (cây mọc dần) — dùng chung cho DTC & triệu chứng
-- ✅ Sơ đồ tương tác với hotspot (Chương 1-3)
+- ✅ Sơ đồ tương tác với hotspot (Chương 1, 3, 4)
 - ✅ Tìm kiếm toàn cục với hỗ trợ tiếng Việt không dấu (cả nội dung + DTC + triệu chứng)
-- ✅ Layout 2 cột Chương 4 (tài liệu vs ảnh thực tế)
+- ✅ Layout 2 cột Chương 2 (tài liệu vs ảnh thực tế)
 - ✅ Liên kết chéo bài học ↔ DTC (`relatedDTC` ↔ `relatedSections`)
 - ✅ Render công thức LaTeX (KaTeX offline)
 - ✅ Lightbox phóng to ảnh với prev/next navigation
 - ✅ Cross-chapter prev/next navigation (chương cuối tự liên kết sang chương sau)
 - ✅ Nút "Trang Chủ" luôn click được ở mọi tình huống (kể cả deep-link)
 - ✅ Responsive design (desktop/tablet/mobile)
-- ✅ 160+ ảnh thực hành nhóm
+- ✅ 110 ảnh thực hành tháo lắp do nhóm tự chụp
 
 ### Có thể mở rộng (không bắt buộc)
 
