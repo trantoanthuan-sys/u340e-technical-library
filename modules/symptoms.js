@@ -4,8 +4,8 @@
  * Mirror cấu trúc của dtc.js:
  *   1. renderSymptomList — danh mục 25 triệu chứng theo nhóm
  *   2. renderSymptomDetail — trang chi tiết 1 triệu chứng với 2 tab:
- *      - Chẩn đoán tương tác (1 câu hỏi/lần)
- *      - Sơ đồ chẩn đoán (cây YES/NO mọc dần kiểu PowerPoint)
+ *      - Sơ đồ step-by-step (1 câu hỏi/lần)
+ *      - Sơ đồ tổng quan (cây YES/NO mọc dần kiểu PowerPoint)
  *
  * Tái sử dụng toàn bộ CSS classes `.dtc-*` từ mục 5.1.
  */
@@ -261,11 +261,11 @@ export async function renderSymptomDetail(params) {
           <section class="dtc-diagnosis-section">
             <div class="dtc-tabs-nav" role="tablist">
               <button class="dtc-tab-btn is-active" data-tab="interactive" role="tab">
-                ⚡ Chẩn đoán tương tác
+                ⚡ Sơ đồ step-by-step
                 <span class="dtc-tab-beta">Beta</span>
               </button>
               <button class="dtc-tab-btn" data-tab="diagram" role="tab">
-                📋 Sơ đồ chẩn đoán
+                📋 Sơ đồ tổng quan
               </button>
             </div>
 
@@ -333,7 +333,7 @@ function _renderTable(table) {
   `;
 }
 
-// ─── Tree Flow (Tab "Sơ đồ chẩn đoán") ───────────────────────────
+// ─── Tree Flow (Tab "Sơ đồ tổng quan") ───────────────────────────
 
 let _treeState = null;
 

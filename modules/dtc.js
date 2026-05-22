@@ -4,8 +4,8 @@
  * Provides two pages:
  * 1. renderDtcList — danh mục 18 mã DTC theo nhóm
  * 2. renderDtcDetail — trang chi tiết 1 mã với 2 tab:
- *    - Chẩn đoán tương tác (interactive Q&A)
- *    - Sơ đồ chẩn đoán (linear list view)
+ *    - Sơ đồ step-by-step (interactive Q&A)
+ *    - Sơ đồ tổng quan (linear list view)
  */
 
 import { store } from "../core/store.js";
@@ -313,11 +313,11 @@ export async function renderDtcDetail(params) {
           <section class="dtc-diagnosis-section">
             <div class="dtc-tabs-nav" role="tablist">
               <button class="dtc-tab-btn is-active" data-tab="interactive" role="tab">
-                ⚡ Chẩn đoán tương tác
+                ⚡ Sơ đồ step-by-step
                 <span class="dtc-tab-beta">Beta</span>
               </button>
               <button class="dtc-tab-btn" data-tab="diagram" role="tab">
-                📋 Sơ đồ chẩn đoán
+                📋 Sơ đồ tổng quan
               </button>
             </div>
 
@@ -405,7 +405,7 @@ function _renderTable(table) {
   `;
 }
 
-// ─── Tree Flow (Tab "Sơ đồ chẩn đoán") ───────────────────────────
+// ─── Tree Flow (Tab "Sơ đồ tổng quan") ───────────────────────────
 // State machine giống interactive nhưng PUSH node mới xuống dưới
 // thay vì replace. Click lại 1 node ở trên → cắt bỏ tất cả node phía dưới
 // rồi rebuild theo nhánh mới.
