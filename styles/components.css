@@ -4260,3 +4260,337 @@ mark.search-highlight.search-highlight-active {
     min-height: 32px;
   }
 }
+
+/* ═══════════════════════════════════════════════════════════════════
+   LESSON GATE — Pre-test trước khi mở khóa nội dung bài
+   ═══════════════════════════════════════════════════════════════════ */
+
+.lesson-gate-wrapper {
+  margin: 24px 0 48px;
+  max-width: 880px;
+}
+
+/* ─── Banner đầu trang ─── */
+.lesson-gate-banner {
+  display: flex;
+  gap: 20px;
+  padding: 24px 28px;
+  background: linear-gradient(135deg, #fef3c7 0%, #fef9c3 100%);
+  border: 2px solid var(--color-amber-400);
+  border-radius: 12px;
+  margin-bottom: 32px;
+  box-shadow: 0 2px 8px rgba(217, 119, 6, 0.08);
+}
+
+.gate-banner-icon {
+  font-size: 48px;
+  flex-shrink: 0;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.gate-banner-content {
+  flex: 1;
+}
+
+.gate-banner-title {
+  margin: 0 0 8px;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--color-amber-600);
+}
+
+.gate-banner-desc {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--color-slate-700);
+}
+
+.gate-banner-desc strong {
+  color: var(--color-amber-600);
+  font-weight: 700;
+}
+
+/* ─── Pre-test container ─── */
+.lesson-pretest {
+  background: #ffffff;
+  border: 1px solid var(--color-navy-100);
+  border-radius: 12px;
+  padding: 28px;
+  box-shadow: 0 1px 4px rgba(30, 58, 138, 0.05);
+}
+
+.pretest-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid var(--color-navy-050);
+}
+
+.pretest-icon {
+  font-size: 28px;
+}
+
+.pretest-title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-navy-900);
+}
+
+.pretest-intro {
+  margin: 0 0 24px;
+  font-size: 14px;
+  color: var(--color-slate-700);
+  font-style: italic;
+}
+
+/* ─── Question block ─── */
+.pretest-question {
+  margin-bottom: 28px;
+  padding: 20px;
+  background: var(--color-navy-050);
+  border-radius: 10px;
+  border-left: 4px solid var(--color-navy-600);
+}
+
+.pretest-q-header {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.pretest-q-num {
+  font-weight: 700;
+  color: var(--color-navy-700);
+  font-size: 14px;
+}
+
+.pretest-q-total {
+  font-size: 12px;
+  color: var(--color-slate-600);
+}
+
+.pretest-q-text {
+  margin: 0 0 16px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--color-slate-900);
+}
+
+.pretest-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pretest-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: #ffffff;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-size: 14px;
+}
+
+.pretest-option:hover {
+  border-color: var(--color-navy-400);
+  background: var(--color-navy-050);
+}
+
+.pretest-option input[type="radio"] {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  accent-color: var(--color-navy-700);
+  cursor: pointer;
+}
+
+.pretest-option input[type="radio"]:disabled {
+  cursor: default;
+}
+
+.pretest-option:has(input:disabled) {
+  cursor: default;
+}
+
+.pretest-option-text {
+  flex: 1;
+  color: var(--color-slate-800);
+}
+
+.pretest-option-correct {
+  background: #d1fae5 !important;
+  border-color: #10b981 !important;
+}
+
+.pretest-option-wrong {
+  background: #fee2e2 !important;
+  border-color: #ef4444 !important;
+}
+
+.pretest-badge-correct,
+.pretest-badge-wrong {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.pretest-badge-correct {
+  background: #10b981;
+  color: #ffffff;
+}
+
+.pretest-badge-wrong {
+  background: #ef4444;
+  color: #ffffff;
+}
+
+.pretest-explanation {
+  margin-top: 12px;
+  padding: 12px 16px;
+  background: #fef9c3;
+  border-left: 4px solid var(--color-amber-400);
+  border-radius: 6px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--color-slate-800);
+}
+
+.pretest-explanation strong {
+  color: var(--color-amber-600);
+}
+
+/* ─── Submit button ─── */
+.gate-submit {
+  margin-top: 16px;
+  width: 100%;
+  padding: 14px 24px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+/* ─── Score panel ─── */
+.pretest-score {
+  margin-top: 24px;
+  padding: 24px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.pretest-score-passed {
+  background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+  border: 2px solid #10b981;
+}
+
+.pretest-score-failed {
+  background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+  border: 2px solid #ef4444;
+}
+
+.pretest-score-icon {
+  font-size: 48px;
+  flex-shrink: 0;
+}
+
+.pretest-score-main {
+  flex: 1;
+  min-width: 200px;
+}
+
+.pretest-score-num {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--color-slate-900);
+  margin-bottom: 6px;
+}
+
+.pretest-score-msg {
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--color-slate-800);
+}
+
+.gate-unlock,
+.gate-retry {
+  flex-shrink: 0;
+  padding: 12px 22px;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.gate-unlock {
+  background: #10b981;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.gate-unlock:hover {
+  background: #059669;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+/* ─── Bypass footer ─── */
+.gate-bypass-footer {
+  margin-top: 32px;
+  text-align: center;
+}
+
+.gate-bypass-trigger {
+  background: transparent;
+  border: 1px dashed var(--color-slate-400);
+  color: var(--color-slate-600);
+  padding: 8px 16px;
+  font-size: 13px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.gate-bypass-trigger:hover {
+  border-color: var(--color-slate-600);
+  color: var(--color-slate-800);
+  background: var(--color-slate-50, #f8fafc);
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 720px) {
+  .lesson-gate-banner {
+    flex-direction: column;
+    gap: 12px;
+    padding: 20px;
+  }
+  .gate-banner-icon {
+    font-size: 36px;
+  }
+  .gate-banner-title {
+    font-size: 18px;
+  }
+  .lesson-pretest {
+    padding: 20px;
+  }
+  .pretest-question {
+    padding: 16px;
+  }
+  .pretest-score {
+    flex-direction: column;
+    text-align: center;
+  }
+}

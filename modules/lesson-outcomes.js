@@ -13,6 +13,7 @@
  */
 
 import { lessonOutcomes } from "../data/lesson-outcomes.js";
+import { postTest } from "../data/post-test.js";
 import { escapeHtml } from "../core/renderer.js";
 
 // ─── Helper: state per-bai (in-memory only, reset on reload) ─────
@@ -139,15 +140,17 @@ function _renderConclusionBlock(c, customTitle) {
 // ═══════════════════════════════════════════════════════════════
 
 export function renderQuiz(baiId) {
-  const data = lessonOutcomes[baiId];
-  if (!data || !data.quiz) return "";
+  // POST-TEST: dùng bộ câu hỏi riêng từ data/post-test.js (Bloom L3+)
+  // khác với pre-test (gate) dùng lessonOutcomes[baiId].quiz (Bloom L1-2)
+  const quizData = postTest[baiId];
+  if (!quizData || quizData.length === 0) return "";
 
   const state = _quizState.get(baiId) || {
-    answers: new Array(data.quiz.length).fill(null),
+    answers: new Array(quizData.length).fill(null),
     submitted: false,
   };
 
-  const questions = data.quiz
+  const questions = quizData
     .map((q, qi) => {
       const userAnswer = state.answers[qi];
       const isSubmitted = state.submitted;
@@ -196,7 +199,7 @@ export function renderQuiz(baiId) {
       <div class="quiz-question" data-q="${qi}">
         <div class="quiz-question-header">
           <span class="quiz-q-num">Câu ${qi + 1}</span>
-          <span class="quiz-q-total">/ ${data.quiz.length}</span>
+          <span class="quiz-q-total">/ ${quizData.length}</span>
         </div>
         <p class="quiz-q-text">${escapeHtml(q.question)}</p>
         <div class="quiz-options">${options}</div>
@@ -216,10 +219,10 @@ export function renderQuiz(baiId) {
   let scoreHtml = "";
   if (state.submitted) {
     const correct = state.answers.reduce(
-      (sum, a, i) => sum + (a === data.quiz[i].correctIndex ? 1 : 0),
+      (sum, a, i) => sum + (a === quizData[i].correctIndex ? 1 : 0),
       0,
     );
-    const total = data.quiz.length;
+    const total = quizData.length;
     const pct = Math.round((correct / total) * 100);
     const grade = pct >= 80 ? "Tốt" : pct >= 60 ? "Trung bình" : "Cần ôn lại";
     const gradeClass = pct >= 80 ? "good" : pct >= 60 ? "medium" : "poor";
@@ -239,10 +242,10 @@ export function renderQuiz(baiId) {
   return `
     <section class="lesson-quiz" data-bai="${baiId}">
       <div class="lo-header">
-        <span class="lo-icon">❓</span>
-        <h3 class="lo-title">Kiểm tra kiến thức</h3>
+        <span class="lo-icon">📋</span>
+        <h3 class="lo-title">Bài kiểm tra sau khi học (Post-test)</h3>
       </div>
-      <p class="lo-intro">Trả lời ${data.quiz.length} câu trắc nghiệm để kiểm tra mức độ hiểu bài.</p>
+      <p class="lo-intro">Trả lời ${quizData.length} câu hỏi mức độ áp dụng – phân tích để củng cố kiến thức Bài ${baiId}.</p>
       <div class="quiz-questions">${questions}</div>
       ${
         !state.submitted
@@ -590,13 +593,13 @@ function handleChange(e) {
     const baiId = parseInt(e.target.dataset.bai, 10);
     const q = parseInt(e.target.dataset.q, 10);
     const opt = parseInt(e.target.dataset.opt, 10);
-    const data = lessonOutcomes[baiId];
-    if (!data) return;
+    const quizData = postTest[baiId];
+    if (!quizData) return;
 
     let state = _quizState.get(baiId);
     if (!state) {
       state = {
-        answers: new Array(data.quiz.length).fill(null),
+        answers: new Array(quizData.length).fill(null),
         submitted: false,
       };
       _quizState.set(baiId, state);
@@ -619,13 +622,13 @@ function handleChange(e) {
 }
 
 function submitQuiz(baiId) {
-  const data = lessonOutcomes[baiId];
-  if (!data) return;
+  const quizData = postTest[baiId];
+  if (!quizData) return;
 
   let state = _quizState.get(baiId);
   if (!state) {
     state = {
-      answers: new Array(data.quiz.length).fill(null),
+      answers: new Array(quizData.length).fill(null),
       submitted: false,
     };
     _quizState.set(baiId, state);
