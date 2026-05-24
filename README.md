@@ -48,7 +48,9 @@ Trường Đại học Bách Khoa — ĐHQG TP. Hồ Chí Minh
 - 🔎 **Lightbox** — click bất kỳ ảnh kỹ thuật nào để phóng to xem chi tiết, có prev/next
 - 📐 **Render công thức LaTeX** — hiển thị công thức đẹp như sách giáo khoa (KaTeX, offline)
 - 🔗 **Liên kết chéo** — bài học và mã lỗi DTC liên kết hai chiều (`relatedDTC` ↔ `relatedSections`)
-- 🎓 **Hệ thống chuẩn đầu ra bài học** — mỗi bài có khối Mục tiêu, Kết luận (kiến thức + kỹ năng), Trắc nghiệm tương tác, Bài tập tình huống và Rubric chấm sản phẩm
+- 🎓 **Hệ thống chuẩn đầu ra bài học** — mỗi bài có khối Mục tiêu, Kết luận (kiến thức + kỹ năng), Bài tập tình huống và Rubric chấm sản phẩm
+- 🔐 **Pre-test Gate (kiểm soát truy cập theo năng lực)** — sinh viên phải làm quiz đầu vào và đạt ≥ 60% mới mở khoá nội dung lý thuyết của bài. Có cơ chế bypass cho giảng viên qua mật khẩu kỹ thuật.
+- 📋 **Post-test cuối bài** — bộ câu hỏi khác hoàn toàn với pre-test (để tránh thuộc lòng), giúp đánh giá đúng mức độ tiến bộ sau khi học
 - 📷 **Layout 2 cột** (Chương 2) — so sánh trực quan **hình kỹ thuật** từ tài liệu Toyota với **ảnh thực tế** khi nhóm tháo lắp
 - 📱 **Responsive** — tối ưu cho desktop, tablet và mobile
 - ♿ **Accessible** — ARIA labels, phím tắt, keyboard navigation
@@ -209,21 +211,22 @@ U340E Project/
 ├── app.js                  # Bootstrap, router setup, global search index
 ├── README.md
 │
-├── core/                   # 🧩 Hạ tầng dùng chung (5 file)
+├── core/                   # 🧩 Hạ tầng dùng chung (6 file)
 │   ├── router.js          #   Hash-based SPA router
 │   ├── store.js           #   State + data fetching + cache
 │   ├── renderer.js        #   DOM helpers, breadcrumb, sidebar
 │   ├── lightbox.js        #   Image lightbox với event delegation
-│   └── highlight.js       #   Đánh dấu từ khóa từ URL ?highlight=...
+│   ├── highlight.js       #   Đánh dấu từ khóa từ URL ?highlight=...
+│   └── lesson-gate.js     #   ⭐ Pre-test gate — kiểm soát truy cập theo năng lực
 │
 ├── modules/                # 🎨 Các module tính năng (5 file)
 │   ├── home.js            #   Trang chủ với 5 chương
 │   ├── section.js         #   Trang chương + bài học + cross-chapter nav
 │   ├── dtc.js             #   Danh mục + chi tiết DTC + flowchart
 │   ├── symptoms.js        #   Danh mục + chi tiết triệu chứng + flowchart
-│   └── lesson-outcomes.js #   Mục tiêu, kết luận, quiz, case study, rubric
+│   └── lesson-outcomes.js #   Mục tiêu, kết luận, post-test, case study, rubric
 │
-├── data/                   # 📊 Nội dung (JSON + ES module) — 9 file
+├── data/                   # 📊 Nội dung (JSON + ES module) — 10 file
 │   ├── sections.json      #   Metadata 5 chương + sidebar
 │   ├── section-1.json     #   Chương 1 — Kết Cấu Hộp Số (5 mục)
 │   ├── section-2.json     #   Chương 2 — Quy Trình Tháo Lắp (2 mục: tháo + lắp)
@@ -232,7 +235,8 @@ U340E Project/
 │   ├── section-5.json     #   Chương 5 — Chẩn Đoán & Bảo Dưỡng (2 mục)
 │   ├── dtc-data.js        #   18 mã DTC + diagnosisFlow + grouping
 │   ├── symptoms-data.js   #   25 triệu chứng + IMG library + 6 nhóm
-│   └── lesson-outcomes.js #   Mục tiêu, quiz, case study, rubric cho từng bài
+│   ├── lesson-outcomes.js #   Mục tiêu, pre-test, case study, rubric cho từng bài
+│   └── post-test.js       #   ⭐ Bộ câu hỏi sau khi học — 5 câu × 5 bài (Bloom L3+)
 │
 ├── styles/                 # 🎨 CSS (tách 3 tầng)
 │   ├── base.css           #   Design tokens, reset, typography
@@ -279,6 +283,7 @@ Project áp dụng pattern **tách lớp 3 tầng** rõ ràng:
 │ • renderer.js│ • dtc.js         │ • dtc-data.js        │
 │ • lightbox.js│ • symptoms.js    │ • symptoms-data.js   │
 │ • highlight.js│ • lesson-outcomes.js│ • lesson-outcomes.js│
+│ • lesson-gate.js│              │ • post-test.js       │
 └──────────────┴──────────────────┴──────────────────────┘
                       ↓
 ┌─────────────────────────────────────────────────┐
@@ -398,6 +403,47 @@ Toàn bộ nội dung kỹ thuật được lưu trong **JSON files** hoặc **E
 - Visited nodes mờ đi, current node nổi bật
 
 → Dùng được trên cả **desktop và mobile**, hoạt động không cần Internet.
+
+---
+
+## 🔐 Tính năng nổi bật: Pre-test Gate & Post-test
+
+Mỗi bài học (Chương 1 → 5) được bảo vệ bởi một **bài kiểm tra đầu vào** — sinh viên không thể tự do duyệt nội dung lý thuyết cho đến khi chứng minh được mức độ chuẩn bị tối thiểu.
+
+### Luồng hoạt động
+
+```
+User truy cập #/section/N/N.X
+        ↓
+Bypass active? ──YES──→ Render nội dung (chế độ giảng viên)
+        ↓ NO
+Đã pass quiz Bài N? ──YES──→ Render nội dung bài học
+        ↓ NO                              ↓
+🔒 Render gate view              📋 Cuối bài: Post-test
+   (banner + quiz pre-test)        (5 câu khác pre-test)
+        ↓ Nộp bài
+   ≥ 60%? ──YES──→ markLessonPassed() → re-render
+        ↓ NO
+   Hiển thị giải thích, cho làm lại không giới hạn
+```
+
+### Phân biệt Pre-test và Post-test
+
+| Khía cạnh      | Pre-test (gate)                           | Post-test (cuối bài)           |
+| -------------- | ----------------------------------------- | ------------------------------ |
+| **File data**  | `data/lesson-outcomes.js` (trường `quiz`) | `data/post-test.js` (riêng)    |
+| **Mức độ**     | Bloom L1-L2 (nhớ, hiểu)                   | Bloom L3+ (áp dụng, phân tích) |
+| **Vị trí**     | Đầu bài, chặn truy cập                    | Cuối bài, củng cố              |
+| **Ngưỡng đạt** | ≥ 60% để mở khoá                          | Không bắt buộc                 |
+| **Số câu**     | 5-8 câu / bài                             | 5 câu / bài                    |
+| **Mục đích**   | Sàng lọc, đảm bảo SV có chuẩn bị          | Đánh giá tiến bộ sau khi học   |
+
+Hai bộ câu hỏi **khác nhau hoàn toàn** để tránh sinh viên thuộc lòng đáp án giữa hai lần kiểm tra → đo được mức độ tiến bộ thực sự theo mô hình pretest/posttest design.
+
+### Quản lý trạng thái
+
+- **Trạng thái pass của sinh viên** lưu trong `in-memory Set` (không phải localStorage) → F5 hoặc đóng tab → reset, phải làm lại quiz. Đảm bảo tính nghiêm túc và phù hợp khi nhiều nhóm dùng chung thiết bị.
+- **Bypass cho giảng viên** lưu trong `sessionStorage` với mật khẩu kỹ thuật (hằng `BYPASS_PASSWORD` trong `core/lesson-gate.js`) → giữ qua F5 trong cùng phiên, mất khi đóng tab.
 
 ---
 
