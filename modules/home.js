@@ -50,6 +50,10 @@ export async function renderHome() {
 
 function _buildHomeHtml(sections) {
   const cardsHtml = sections.map((s, i) => _buildSectionCard(s, i)).join("");
+  const totalSubsections = sections.reduce(
+    (sum, s) => sum + (s.subsections?.length ?? 0),
+    0,
+  );
 
   return `
     <div class="content-wrapper animate-fade-in">
@@ -119,7 +123,7 @@ function _buildHomeHtml(sections) {
             <div class="home-stat-label">BÀI</div>
           </div>
           <div class="home-stat">
-            <div class="home-stat-num">19</div>
+            <div class="home-stat-num">${totalSubsections}</div>
             <div class="home-stat-label">MỤC HỌC</div>
           </div>
           <div class="home-stat">
