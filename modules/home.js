@@ -12,6 +12,7 @@ import {
   escapeHtml,
   showLoading,
 } from "../core/renderer.js";
+import { dtcData } from "../data/dtc-data.js";
 
 // Accent colors per section (matches sections.json color field)
 const SECTION_COLORS = [
@@ -54,6 +55,7 @@ function _buildHomeHtml(sections) {
     (sum, s) => sum + (s.subsections?.length ?? 0),
     0,
   );
+  const dtcCount = Object.keys(dtcData).length;
 
   return `
     <div class="content-wrapper animate-fade-in">
@@ -127,7 +129,7 @@ function _buildHomeHtml(sections) {
             <div class="home-stat-label">MỤC HỌC</div>
           </div>
           <div class="home-stat">
-            <div class="home-stat-num">18</div>
+            <div class="home-stat-num">${dtcCount}</div>
             <div class="home-stat-label">MÃ DTC</div>
           </div>
           <div class="home-stat">
@@ -184,7 +186,7 @@ function _buildHomeHtml(sections) {
             <div>
               <div class="dtc-banner-title">Tra Cứu Mã Lỗi DTC</div>
               <div class="dtc-banner-sub">
-                12 mã lỗi với quy trình chẩn đoán chi tiết
+                ${dtcCount} mã lỗi với quy trình chẩn đoán chi tiết
               </div>
             </div>
           </div>
