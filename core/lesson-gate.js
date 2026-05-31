@@ -32,7 +32,7 @@ import { lessonOutcomes } from "../data/lesson-outcomes.js";
 
 // ═══ Constants ═══
 const BYPASS_FLAG_KEY = "u340e:gate:bypass-session";
-const BYPASS_PASSWORD = "U340E-Teacher-2026"; // mật khẩu cho giảng viên
+const BYPASS_PASSWORD = "123456"; // mật khẩu cho giảng viên
 const PASS_THRESHOLD = 0.6; // 60%
 
 // ═══ State (in-memory, mất khi F5) ═══
