@@ -22,7 +22,6 @@ import {
 import { renderDtcList } from "./dtc.js";
 import { renderSymptomList } from "./symptoms.js";
 import { renderObjectives, renderLessonOutcomes } from "./lesson-outcomes.js";
-import { isLessonPassed, renderGateView } from "../core/lesson-gate.js";
 
 // ─── Section Overview ────────────────────────────────────────────
 
@@ -59,24 +58,6 @@ export async function renderSection({ id }) {
     // If DTC section, redirect to DTC list
     if (sectionMeta.isDtcSection) {
       window.location.hash = "#/dtc";
-      return;
-    }
-
-    // ⭐ LESSON GATE: nếu chưa pass quiz bài, hiển thị gate view ở trang overview
-    if (!isLessonPassed(sectionId)) {
-      hideLoading();
-      renderPage(`
-        <div class="content-wrapper animate-fade-in">
-          ${backButtonHtml(`#/`, `Trang Chủ`)}
-          <div class="page-title-block">
-            <div class="page-label">
-              <span style="font-family:var(--font-mono)">BÀI ${sectionId}</span>
-            </div>
-            <h1 class="page-title">${escapeHtml(sectionMeta.title)}</h1>
-          </div>
-          ${renderGateView(sectionId)}
-        </div>
-      `);
       return;
     }
 
@@ -211,25 +192,6 @@ export async function renderSubSection({ id, subId }) {
           page.insertAdjacentHTML("beforeend", navHtml);
         }
       }
-      return;
-    }
-
-    // ⭐ LESSON GATE: kiểm tra user đã pass quiz đầu vào của bài này chưa.
-    // Nếu chưa, hiển thị trang gate (quiz lớn) thay cho nội dung gốc.
-    // Áp dụng cho 5 bài lý thuyết (bài 1-5), không áp dụng cho mục DTC/Symptom list ở trên.
-    if (!isLessonPassed(sectionId)) {
-      hideLoading();
-      renderBreadcrumb([
-        { label: "Trang Chủ", href: "#/" },
-        { label: `Bài ${sectionId}`, href: `#/section/${sectionId}` },
-        { label: `${sub.id} — ${sub.title}` },
-      ]);
-      renderPage(`
-        <div class="content-wrapper animate-fade-in">
-          ${backButtonHtml(`#/section/${sectionId}`, `Bài ${sectionId}: ${sectionMeta.title}`)}
-          ${renderGateView(sectionId)}
-        </div>
-      `);
       return;
     }
 
