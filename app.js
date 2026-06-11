@@ -21,6 +21,7 @@ import {
 import { initLightbox } from "./core/lightbox.js";
 import { applyHighlight } from "./core/highlight.js";
 import { initLessonOutcomesEvents } from "./modules/lesson-outcomes.js";
+import { initGateHandlers } from "./core/lesson-gate.js";
 import { renderHome } from "./modules/home.js";
 import { renderSection, renderSubSection } from "./modules/section.js";
 import { renderDtcList, renderDtcDetail } from "./modules/dtc.js";
@@ -108,6 +109,7 @@ async function init() {
   _initSearch();
   _initLightbox();
   initLessonOutcomesEvents();
+  initGateHandlers();
 }
 
 // ─── 3. Sidebar Controls ─────────────────────────────────────────

@@ -187,7 +187,7 @@ export const lessonOutcomes = {
   // ═══════════════════════════════════════════════════════════════
   // BÀI 2: QUY TRÌNH THÁO LẮP
   // ═══════════════════════════════════════════════════════════════
-  2: {
+  4: {
     objectives: [
       "Thực hiện được quy trình tháo hộp số U340E theo đúng 22 bước chuẩn",
       "Thực hiện được quy trình lắp hộp số U340E theo đúng 26 bước chuẩn",
@@ -356,7 +356,7 @@ export const lessonOutcomes = {
   // ═══════════════════════════════════════════════════════════════
   // BÀI 3: NGUYÊN LÝ LÀM VIỆC
   // ═══════════════════════════════════════════════════════════════
-  3: {
+  2: {
     objectives: [
       "Phân tích được đường truyền lực ở từng tay số (D-1, D-2, D-3, D-4 OD, R)",
       "Điền chính xác Bảng trạng thái phần tử ma sát cho 5 tay số",
@@ -542,7 +542,7 @@ export const lessonOutcomes = {
   // ═══════════════════════════════════════════════════════════════
   // BÀI 4: ĐIỀU KHIỂN ĐIỆN TỬ & THỦY LỰC
   // ═══════════════════════════════════════════════════════════════
-  4: {
+  3: {
     objectives: [
       "Phân biệt 5 loại solenoid trên U340E (S1, S2, SLT, SL, SLU) và vai trò từng loại",
       "Đọc được sơ đồ mạch điện điều khiển hộp số (Wiring Diagram)",
@@ -773,107 +773,6 @@ export const lessonOutcomes = {
           "🎓 Chúc mừng — bạn đã hoàn thành toàn bộ chương trình học U340E! Tổng kết: 5 bài học + 18 mã DTC + 25 triệu chứng + 165+ hình minh hoạ.",
       },
     },
-    quiz: [
-      {
-        question: "Khi đọc mã DTC P0710 — nghĩa là?",
-        options: [
-          "Lỗi mạch cảm biến vị trí cần số",
-          "Lỗi mạch cảm biến nhiệt độ dầu hộp số 'A'",
-          "Lỗi solenoid S1",
-          "Lỗi áp suất line",
-        ],
-        correctIndex: 1,
-        explanation:
-          "P0710 = Transmission Fluid Temperature Sensor 'A' Circuit. Lỗi mạch cảm biến nhiệt độ dầu hộp số 'A' (mạch hở hoặc bất thường). Nhóm P07xx là các lỗi cảm biến hardcode.",
-      },
-      {
-        question: "Mã P2714 vs P0744 — khác nhau cơ bản là gì?",
-        options: [
-          "Không khác gì",
-          "P2714 là lỗi performance solenoid, P0744 là lỗi performance TCC",
-          "P2714 cho xe đời cũ, P0744 cho xe đời mới",
-          "Cả 2 đều cho cùng một solenoid",
-        ],
-        correctIndex: 1,
-        explanation:
-          "P2714 = 'Pressure Control Solenoid D Performance' — lỗi hiệu suất van điện từ điều khiển áp suất D (thường là SLT). P0744 = 'Torque Converter Clutch Circuit Intermittent' — lỗi gián đoạn ly hợp khoá biến mô. Khác hoàn toàn về phần tử.",
-      },
-      {
-        question:
-          "Khi xe có triệu chứng 'Giật mạnh khi chuyển từ D vào số' mà KHÔNG có DTC, bước đầu tiên nên làm?",
-        options: [
-          "Tháo và thay valve body ngay",
-          "Đọc DTC một lần nữa với máy có khả năng cao hơn",
-          "Kiểm tra mức dầu ATF + chất lượng dầu (màu, mùi)",
-          "Thay biến mô",
-        ],
-        correctIndex: 2,
-        explanation:
-          "Triệu chứng 'giật khi chuyển số' không có DTC thường do dầu ATF: thiếu (gây trượt và sốc khi đầy áp), bẩn (kẹt valve), hoặc lẫn nước (mất tính nhớt). Luôn kiểm tra dầu là bước đầu tiên — đơn giản, rẻ, hiệu quả 60% trường hợp.",
-      },
-      {
-        question: "Bao lâu cần thay dầu hộp số U340E theo khuyến nghị Toyota?",
-        options: [
-          "Mỗi 10.000 km (như dầu động cơ)",
-          "Mỗi 40.000-60.000 km điều kiện thường, 20.000 km điều kiện khắc nghiệt",
-          "Suốt đời xe, không cần thay",
-          "Chỉ thay khi có lỗi",
-        ],
-        correctIndex: 1,
-        explanation:
-          "Toyota khuyến nghị thay dầu U340E mỗi 40.000-60.000 km cho điều kiện vận hành thường (lái xe trong thành phố, đường tốt). Điều kiện khắc nghiệt (kéo tải, lái đồi núi, kẹt xe nặng, nhiệt độ cao) — thay mỗi 20.000-30.000 km. Quan niệm 'lifetime fluid' của Aisin là MARKETING, không nên tin.",
-      },
-      {
-        question: "Khi xoá mã DTC, lưu ý nào quan trọng nhất?",
-        options: [
-          "Xoá ngay không cần kiểm tra gì",
-          "Phải sửa nguyên nhân TRƯỚC khi xoá, vì xoá xong mã sẽ trở lại",
-          "Xoá xong phải khởi động máy 100 lần",
-          "Xoá 1 mã sẽ xoá tất cả các mã khác",
-        ],
-        correctIndex: 1,
-        explanation:
-          "Quy tắc vàng: SỬA TRƯỚC, XOÁ SAU. Nếu xoá mã mà chưa sửa nguyên nhân, mã sẽ quay lại sau vài lần khởi động xe. Một số mã \"hard code\" cần điều kiện đặc biệt để mới phát hiện lại (drive cycle), nên KTV non kinh nghiệm dễ tưởng 'đã sửa'.",
-      },
-      {
-        question:
-          "Triệu chứng 'lock-up khi tốc độ cao có giật' liên quan đến phần tử nào?",
-        options: [
-          "Solenoid SLU + ly hợp khoá biến mô (TCC)",
-          "Ly hợp C1",
-          "Phanh B3",
-          "Van điều áp chính",
-        ],
-        correctIndex: 0,
-        explanation:
-          "Triệu chứng giật khi lock-up thường liên quan đến: (1) Solenoid SLU bị kẹt hoặc cháy, (2) Ly hợp khoá biến mô (TCC) bị mòn/cháy giấy ma sát, (3) Dầu ATF bẩn không cho phép đóng êm. Cần kiểm tra theo flowchart triệu chứng số 9.",
-      },
-      {
-        question:
-          "Khi 'Reset Memory' sau khi sửa hộp số U340E, bước nào CẦN làm?",
-        options: [
-          "Chỉ cần tắt máy 5 phút",
-          "Tháo cực âm bình ắc-quy 10 phút",
-          "Dùng máy chẩn đoán xoá Initial Memory + Idle Memory + chạy thử drive cycle",
-          "Không cần làm gì",
-        ],
-        correctIndex: 2,
-        explanation:
-          "Sau khi sửa lớn (như thay solenoid, valve body), cần reset memory bằng máy chẩn đoán để ECU 'quên' các giá trị learning cũ + bắt đầu học lại. Sau đó chạy thử (drive cycle) khoảng 30 phút để ECU calibrate lại điểm chuyển số tối ưu cho xe.",
-      },
-      {
-        question: "Trong các loại dầu sau, đâu là chuẩn cho U340E?",
-        options: [
-          "ATF Dexron II",
-          "ATF Type T-IV (T4) hoặc tương đương",
-          "Dầu động cơ 10W-40",
-          "Dầu thuỷ lực công nghiệp",
-        ],
-        correctIndex: 1,
-        explanation:
-          "U340E dùng dầu ATF Toyota Type T-IV (mã hiệu Toyota 08886-81015) hoặc dầu tương đương từ Aisin, Castrol, Mobil, Total. KHÔNG được dùng Dexron II/III (dầu cũ cho hộp số 3-4 cấp đời 80-90s) — sẽ làm hỏng các ma sát chỉ sau vài ngàn km.",
-      },
-    ],
     caseStudy: {
       title: "Quy trình chẩn đoán hoàn chỉnh",
       scenario:
