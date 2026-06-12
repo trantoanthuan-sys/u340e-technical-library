@@ -4589,3 +4589,17 @@ mark.search-highlight.search-highlight-active {
     text-align: center;
   }
 }
+/* ── Quiz image support ─────────────────────────────── */
+.quiz-q-figure {
+  margin: 12px 0 16px;
+  text-align: center;
+}
+.quiz-q-img {
+  max-width: 100%;
+  max-height: 320px;
+  width: auto;
+  border-radius: 8px;
+  border: 1px solid var(--color-border, #e2e8f0);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  object-fit: contain;
+}

@@ -142,13 +142,24 @@ function _renderConclusionBlock(c, customTitle) {
 export function renderQuiz(baiId) {
   // POST-TEST: dùng bộ câu hỏi riêng từ data/post-test.js (Bloom L3+)
   // khác với pre-test (gate) dùng lessonOutcomes[baiId].quiz (Bloom L1-2)
-  const quizData = postTest[baiId];
-  if (!quizData || quizData.length === 0) return "";
+  const fullPool = postTest[baiId];
+  if (!fullPool || fullPool.length === 0) return "";
 
-  const state = _quizState.get(baiId) || {
-    answers: new Array(quizData.length).fill(null),
-    submitted: false,
-  };
+  const QUIZ_SIZE = Math.min(5, fullPool.length);
+
+  let state = _quizState.get(baiId);
+  if (!state) {
+    // Xáo trộn pool và chọn ngẫu nhiên QUIZ_SIZE câu → bộ câu hỏi mới mỗi lần retry
+    const shuffled = [...fullPool].sort(() => Math.random() - 0.5);
+    state = {
+      selectedQuestions: shuffled.slice(0, QUIZ_SIZE),
+      answers: new Array(QUIZ_SIZE).fill(null),
+      submitted: false,
+    };
+    _quizState.set(baiId, state);
+  }
+
+  const quizData = state.selectedQuestions || fullPool.slice(0, QUIZ_SIZE);
 
   const questions = quizData
     .map((q, qi) => {
@@ -202,6 +213,7 @@ export function renderQuiz(baiId) {
           <span class="quiz-q-total">/ ${quizData.length}</span>
         </div>
         <p class="quiz-q-text">${escapeHtml(q.question)}</p>
+        ${q.image ? `<figure class="quiz-q-figure"><img src="${q.image}" alt="Hình minh họa câu hỏi" class="quiz-q-img" loading="lazy"></figure>` : ""}
         <div class="quiz-options">${options}</div>
         ${
           isSubmitted
@@ -593,10 +605,10 @@ function handleChange(e) {
     const baiId = parseInt(e.target.dataset.bai, 10);
     const q = parseInt(e.target.dataset.q, 10);
     const opt = parseInt(e.target.dataset.opt, 10);
-    const quizData = postTest[baiId];
+    let state = _quizState.get(baiId);
+    const quizData = state?.selectedQuestions || postTest[baiId];
     if (!quizData) return;
 
-    let state = _quizState.get(baiId);
     if (!state) {
       state = {
         answers: new Array(quizData.length).fill(null),
@@ -622,10 +634,10 @@ function handleChange(e) {
 }
 
 function submitQuiz(baiId) {
-  const quizData = postTest[baiId];
+  let state = _quizState.get(baiId);
+  const quizData = state?.selectedQuestions || postTest[baiId];
   if (!quizData) return;
 
-  let state = _quizState.get(baiId);
   if (!state) {
     state = {
       answers: new Array(quizData.length).fill(null),

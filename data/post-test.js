@@ -16,59 +16,140 @@ export const postTest = {
   // ═══════════════════════════════════════════════════════════════
   1: [
     {
-      question: "Vỏ hộp số U340E được chia thành mấy khoang chức năng?",
-      options: ["2 khoang", "3 khoang", "4 khoang", "5 khoang"],
-      correctIndex: 1,
-      explanation:
-        "Vỏ hộp số U340E được chia thành 3 khoang chức năng riêng biệt: khoang biến mô – bơm dầu, khoang bộ truyền hành tinh, và khoang cụm điều khiển dầu (Valve Body). Cách chia này giúp dễ tản nhiệt và bảo trì.",
-    },
-    {
-      question: "Biến mô thủy lực của U340E truyền mô-men xoắn bằng phương tiện nào?",
+      question:
+        "Hình ảnh dưới đây mô tả cấu tạo của bộ phận nào trong hộp số U340E?",
+      image: "assets/images/s1/s1-3.png",
       options: [
-        "Cơ khí trực tiếp qua bánh răng",
-        "Dòng dầu ATF tuần hoàn giữa các bánh công tác",
-        "Lực điện từ",
-        "Dây đai truyền động",
+        "Bơm dầu thủy lực",
+        "Biến mô thủy lực (Torque Converter)",
+        "Bộ truyền bánh răng hành tinh",
+        "Cụm điều khiển dầu (Valve Body)",
       ],
       correctIndex: 1,
       explanation:
-        "Biến mô thủy lực truyền mô-men từ động cơ sang hộp số thông qua dòng dầu ATF tuần hoàn giữa bánh bơm (gắn với động cơ) và bánh tuabin (gắn với trục vào hộp số). Stator ở giữa giúp khuếch đại mô-men ở tốc độ thấp.",
+        "Hình 1.3 mô tả cấu tạo biến mô thủy lực gồm 3 phần tử bánh công tác: bánh bơm (pump impeller) nối với trục khuỷu, bánh tuabin (turbine runner) nối với trục vào hộp số, và bánh phản lực (stator) ở giữa.",
     },
     {
-      question: "Bơm dầu thủy lực của U340E sử dụng loại bơm gì?",
+      question:
+        "Hình ảnh dưới đây mô tả loại bơm dầu nào được sử dụng trong U340E?",
+      image: "assets/images/s1/s1-7.png",
       options: [
+        "Bơm cánh gạt (Vane Pump)",
         "Bơm piston hướng trục",
-        "Bơm cánh gạt",
-        "Bơm bánh răng trong (trochoid pump)",
+        "Bơm bánh răng trong (Trochoid Pump)",
         "Bơm ly tâm",
       ],
       correctIndex: 2,
       explanation:
-        "U340E dùng bơm bánh răng trong loại trochoid — gồm rotor trong (bánh răng chủ động) ăn khớp với rotor ngoài có số răng nhiều hơn 1. Loại bơm này nhỏ gọn, độ ồn thấp, hiệu suất cao và phù hợp lưu lượng/áp suất cần thiết cho hộp số tự động.",
+        "Hình 1.7 mô tả bơm bánh răng trong kiểu trochoid — rotor trong ăn khớp lệch tâm với rotor ngoài. Khoảng không gian thay đổi giữa hai rotor tạo ra lực hút và đẩy dầu.",
     },
     {
-      question: "Bơm dầu của U340E được dẫn động trực tiếp từ đâu?",
+      question:
+        "Hình ảnh dưới đây mô tả cấu tạo của bộ phận nào trong hộp số U340E?",
+      image: "assets/images/s1/s1-8.png",
       options: [
-        "Trục cam động cơ",
-        "Trục đầu ra hộp số",
-        "Vỏ biến mô (nối với trục khuỷu động cơ)",
-        "Motor điện riêng",
+        "Biến mô thủy lực",
+        "Ly hợp đa đĩa ướt",
+        "Bộ truyền bánh răng hành tinh (Planetary Gear Set)",
+        "Khớp một chiều (One-way Clutch)",
       ],
       correctIndex: 2,
       explanation:
-        "Bơm dầu U340E được dẫn động trực tiếp từ vỏ biến mô — vốn nối với trục khuỷu động cơ. Vì vậy bơm chỉ hoạt động khi động cơ nổ máy. Đây là lý do xe AT không thể tự nổ bằng cách đẩy/kéo như xe MT.",
+        "Hình 1.8 mô tả bộ truyền bánh răng hành tinh gồm: Sun gear (mặt trời — giữa), Planet gear (hành tinh — xung quanh), Ring gear (bao — vành ngoài) và Carrier (cần dẫn — khung giữ Planet gear).",
     },
     {
-      question: "Mặt trời (Sun gear) trong bộ truyền bánh răng hành tinh là chi tiết nào?",
+      question: "Hình ảnh dưới đây mô tả cấu tạo của bộ phận nào?",
+      image: "assets/images/s1/s1-13.png",
       options: [
-        "Bánh răng ngoài cùng có răng trong",
-        "Bánh răng ở giữa trung tâm",
-        "Khung mang các bánh răng hành tinh",
-        "Khớp một chiều giữ bánh răng",
+        "Phanh dải (Band Brake)",
+        "Ly hợp đa đĩa ướt (Multiple Disc Clutch)",
+        "Khớp một chiều kiểu Sprag",
+        "Bơm dầu thủy lực",
       ],
       correctIndex: 1,
       explanation:
-        "Bộ truyền hành tinh gồm 3 phần tử: Sun gear (mặt trời) ở giữa trung tâm, Ring gear (bao) là bánh răng ngoài cùng có răng trong, và Carrier (cần dẫn) là khung mang 3-4 bánh răng hành tinh ăn khớp giữa Sun và Ring.",
+        "Hình 1.13 mô tả ly hợp đa đĩa ướt — đĩa ma sát (friction disc) xen kẽ đĩa thép (steel disc). Khi pittông thủy lực ép vào, hai loại đĩa kẹp chặt lại, truyền mô-men giữa các phần tử hành tinh.",
+    },
+    {
+      question: "Hình ảnh dưới đây mô tả loại khớp một chiều nào?",
+      image: "assets/images/s1/s1-19.png",
+      options: [
+        "Roller Clutch (khớp con lăn)",
+        "Sprag Clutch (khớp mấu chặn)",
+        "Jaw Clutch (khớp hàm)",
+        "Disc Clutch (khớp đĩa)",
+      ],
+      correctIndex: 1,
+      explanation:
+        "Hình 1.19 mô tả Sprag Clutch — dùng mấu chặn (sprag) hình số 8 đặt nghiêng giữa vòng trong và vòng ngoài. Chiều thuận: mấu khóa cứng; chiều ngược: mấu trượt tự do.",
+    },
+    {
+      question: "Hình ảnh dưới đây mô tả loại khớp một chiều nào?",
+      image: "assets/images/s1/s1-20.png",
+      options: [
+        "Sprag Clutch (khớp mấu chặn)",
+        "Roller Clutch (khớp con lăn)",
+        "Jaw Clutch (khớp hàm)",
+        "Disc Clutch (khớp đĩa)",
+      ],
+      correctIndex: 1,
+      explanation:
+        "Hình 1.20 mô tả Roller Clutch — dùng con lăn (roller) đặt trong rãnh hình nêm. Chiều thuận: con lăn bị kẹt vào rãnh nêm, khóa cứng; chiều ngược: con lăn lăn tự do.",
+    },
+    {
+      question:
+        "Hình ảnh dưới đây cho thấy hai loại đĩa nào dùng trong bộ ly hợp U340E?",
+      image: "assets/images/s1/s1-16.png",
+      options: [
+        "Đĩa ép và đĩa phân phối lực",
+        "Đĩa ma sát và đĩa thép",
+        "Đĩa chủ động và đĩa bị động",
+        "Đĩa điều khiển và đĩa truyền lực",
+      ],
+      correctIndex: 1,
+      explanation:
+        "Hình 1.16 cho thấy đĩa ma sát (friction disc — có lớp ma sát hai mặt) và đĩa thép (steel disc — mặt nhẵn). Hai loại đĩa xen kẽ nhau tạo thành gói ly hợp đa đĩa ướt.",
+    },
+    {
+      question: "Hình ảnh dưới đây mô tả bộ phận nào trong hộp số U340E?",
+      image: "assets/images/s1/s1-17.png",
+      options: [
+        "Ly hợp đa đĩa ướt",
+        "Phanh (Brake) trong hộp số",
+        "Biến mô thủy lực",
+        "Bộ bánh răng hành tinh",
+      ],
+      correctIndex: 1,
+      explanation:
+        "Hình 1.17 mô tả phanh trong hộp số U340E. Cấu tạo tương tự ly hợp đa đĩa nhưng đĩa ngoài được cố định với vỏ hộp số — khi đóng, nó giữ cứng một phần tử hành tinh để tạo tỉ số truyền.",
+    },
+    {
+      question:
+        "Hình ảnh dưới đây cho thấy bố trí tổng thể của các bộ phận nào trong U340E?",
+      image: "assets/images/s1/s1-12.png",
+      options: [
+        "Các cảm biến và van điện từ (solenoid)",
+        "Vị trí các ly hợp (C1–C4) và phanh (B1–B2)",
+        "Bộ truyền bánh răng hành tinh và biến mô",
+        "Hệ thống dầu bôi trơn và làm mát",
+      ],
+      correctIndex: 1,
+      explanation:
+        "Hình 1.12 thể hiện vị trí bố trí của các ly hợp C1, C2, C3, C4 và phanh B1, B2 bên trong hộp số U340E, mỗi bộ phận gắn liền với phần tử hành tinh tương ứng.",
+    },
+    {
+      question:
+        "Hình ảnh dưới đây mô tả sơ đồ chi tiết bộ phận nào trong hộp số?",
+      image: "assets/images/s1/s1-9.png",
+      options: [
+        "Biến mô thủy lực (3 phần tử bánh công tác)",
+        "Bộ bánh răng hành tinh — phân biệt rõ Sun / Planet / Ring / Carrier",
+        "Cụm van điều khiển thủy lực (Valve Body)",
+        "Ly hợp đa đĩa và phanh đĩa",
+      ],
+      correctIndex: 1,
+      explanation:
+        "Hình 1.9 mô tả sơ đồ chi tiết bộ truyền bánh răng hành tinh: Sun gear (mặt trời — trung tâm), Planet gear (hành tinh — ăn khớp giữa), Ring gear (bao — vành ngoài) và Carrier (cần dẫn — khung giữ Planet gear).",
     },
   ],
 
@@ -103,7 +184,8 @@ export const postTest = {
         "Lắp hộp số U340E theo nguyên tắc 'từ trong ra ngoài': bắt đầu với bánh răng bị động và các phanh (B3, B2, B1) ở phần sâu nhất, sau đó đến các bộ truyền hành tinh, ly hợp, cuối cùng là vỏ — cụm điều khiển dầu — lọc nhớt.",
     },
     {
-      question: "Trước khi lắp ráp các chi tiết hộp số, kỹ thuật viên cần bôi gì lên các bề mặt làm việc?",
+      question:
+        "Trước khi lắp ráp các chi tiết hộp số, kỹ thuật viên cần bôi gì lên các bề mặt làm việc?",
       options: [
         "Mỡ chịu nhiệt độ cao",
         "Dầu ATF mới (chính loại dầu sẽ dùng)",
@@ -115,7 +197,8 @@ export const postTest = {
         "Tất cả các bề mặt làm việc và phớt làm kín phải được bôi dầu ATF mới (đúng loại sẽ đổ vào hộp số) trước khi lắp. Điều này tránh ma sát khô khi mới khởi động, đồng thời giúp phớt không bị rách hoặc xoắn khi đẩy biến mô vào vị trí.",
     },
     {
-      question: "Sau khi lắp xong hộp số và đổ dầu, kiểm tra mức dầu ATF đúng phải thực hiện trong điều kiện nào?",
+      question:
+        "Sau khi lắp xong hộp số và đổ dầu, kiểm tra mức dầu ATF đúng phải thực hiện trong điều kiện nào?",
       options: [
         "Xe nguội, động cơ tắt, cần số ở P",
         "Xe ở nhiệt độ làm việc, động cơ chạy ralenti, cần số ở P, đã gạt qua các vị trí số",
@@ -171,7 +254,8 @@ export const postTest = {
         "Số lùi (R) của U340E có tỉ số khoảng 2.343:1, dấu âm (đảo chiều). Tỉ số này nhỏ hơn số 1 vì khi lùi không cần khuếch đại mô-men nhiều như khởi hành tiến, nhưng vẫn cần đủ để leo dốc nhẹ khi lùi.",
     },
     {
-      question: "Khi tay số ở vị trí D (Drive), hộp số U340E tự động chọn số nào để khởi hành?",
+      question:
+        "Khi tay số ở vị trí D (Drive), hộp số U340E tự động chọn số nào để khởi hành?",
       options: [
         "Luôn bắt đầu ở số 4 (OD)",
         "Luôn bắt đầu ở số 1, sau đó tăng dần theo tốc độ",
@@ -189,14 +273,16 @@ export const postTest = {
   // ═══════════════════════════════════════════════════════════════
   4: [
     {
-      question: "Áp suất dầu chính (line pressure) trong U340E thường nằm trong khoảng nào?",
+      question:
+        "Áp suất dầu chính (line pressure) trong U340E thường nằm trong khoảng nào?",
       options: ["1-2 bar", "4-15 bar", "20-30 bar", "50-100 bar"],
       correctIndex: 1,
       explanation:
         "Line pressure của U340E thường nằm trong khoảng 4-15 bar tùy theo tải động cơ và tay số. Áp suất này được tạo bởi bơm dầu và điều chỉnh ổn định bởi van điều áp sơ cấp (Primary Regulator Valve).",
     },
     {
-      question: "Trong U340E, valve body (cụm điều khiển dầu) chứa các loại van nào?",
+      question:
+        "Trong U340E, valve body (cụm điều khiển dầu) chứa các loại van nào?",
       options: [
         "Chỉ van solenoid điện từ",
         "Chỉ van bi cơ khí",
@@ -208,7 +294,8 @@ export const postTest = {
         "Valve Body của U340E chứa cả 2 loại van: (1) van con (spool valve) cơ khí — di chuyển nhờ áp suất dầu cân bằng giữa hai đầu, (2) van solenoid điện từ — đóng/mở bằng tín hiệu điện từ ECU. Hai loại van phối hợp tạo nên hệ thống điều khiển thủy lực-điện tử lai.",
     },
     {
-      question: "ECU động cơ trong U340E nhận tín hiệu vị trí cần số từ cảm biến nào?",
+      question:
+        "ECU động cơ trong U340E nhận tín hiệu vị trí cần số từ cảm biến nào?",
       options: [
         "Cảm biến tốc độ đầu vào",
         "Công tắc vị trí cần số (Park/Neutral Switch hoặc Range Switch)",
@@ -221,18 +308,14 @@ export const postTest = {
     },
     {
       question: "Nhiệt độ làm việc bình thường của dầu ATF trong U340E là?",
-      options: [
-        "40-60°C",
-        "80-95°C",
-        "120-140°C",
-        "150-180°C",
-      ],
+      options: ["40-60°C", "80-95°C", "120-140°C", "150-180°C"],
       correctIndex: 1,
       explanation:
         "Nhiệt độ làm việc bình thường của dầu ATF nằm trong khoảng 80-95°C. Trên 110°C bắt đầu cảnh báo, trên 120°C là nguy hiểm vì dầu sẽ oxy hóa nhanh và xuống cấp. Nhiệt độ này được theo dõi bằng cảm biến TFT (Transmission Fluid Temperature).",
     },
     {
-      question: "Lock-up Clutch (ly hợp khóa biến mô) trong U340E được điều khiển bởi solenoid nào?",
+      question:
+        "Lock-up Clutch (ly hợp khóa biến mô) trong U340E được điều khiển bởi solenoid nào?",
       options: [
         "S1 (Shift Solenoid 1)",
         "S2 (Shift Solenoid 2)",
@@ -274,14 +357,16 @@ export const postTest = {
         "P0720 báo lỗi mạch cảm biến tốc độ đầu ra hộp số (Output Speed Sensor — OSS). Khi mất tín hiệu này, ECU không biết tốc độ xe nên không thể quyết định thời điểm sang số → hộp số sẽ vào fail-safe mode (kẹt số 3).",
     },
     {
-      question: "Khi hộp số U340E vào chế độ fail-safe (limp home), nó thường kẹt ở tay số nào?",
+      question:
+        "Khi hộp số U340E vào chế độ fail-safe (limp home), nó thường kẹt ở tay số nào?",
       options: ["Số 1", "Số 2", "Số 3", "Số 4 (OD)"],
       correctIndex: 2,
       explanation:
         "Khi phát hiện lỗi nghiêm trọng, U340E vào fail-safe mode và kẹt ở số 3. Lý do chọn số 3: tỉ số truyền 1:1 nên xe vẫn chạy được ở mọi tốc độ (~20-100 km/h), đủ an toàn để tài xế lái về garage mà không gây hỏng thêm.",
     },
     {
-      question: "Khi xe có triệu chứng 'không vào được số nào, kẹt ở chế độ N', nguyên nhân có thể là?",
+      question:
+        "Khi xe có triệu chứng 'không vào được số nào, kẹt ở chế độ N', nguyên nhân có thể là?",
       options: [
         "Hết dầu ATF hoặc áp suất line pressure quá thấp",
         "Cảm biến nhiệt độ hỏng",
@@ -293,7 +378,8 @@ export const postTest = {
         "Triệu chứng 'kẹt N' (không truyền lực ở bất kỳ tay số nào) thường do hết dầu ATF, line pressure quá thấp (bơm hỏng/lưới lọc tắc), hoặc van điều áp chính kẹt mở. Bước đầu kiểm tra: mức dầu ATF, sau đó đo áp suất dầu chính bằng đồng hồ.",
     },
     {
-      question: "Loại dầu ATF chính hãng được Toyota khuyến cáo cho hộp số U340E là?",
+      question:
+        "Loại dầu ATF chính hãng được Toyota khuyến cáo cho hộp số U340E là?",
       options: [
         "Toyota ATF Type T-IV (hoặc tương đương WS)",
         "Dầu động cơ 5W-30",
