@@ -4603,3 +4603,155 @@ mark.search-highlight.search-highlight-active {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   object-fit: contain;
 }
+/* ── Quiz image support ─────────────────────────────── */
+.quiz-q-figure {
+  margin: 12px 0 16px;
+  text-align: center;
+}
+.quiz-q-img {
+  max-width: 100%;
+  max-height: 320px;
+  width: auto;
+  border-radius: 8px;
+  border: 1px solid var(--color-border, #e2e8f0);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  object-fit: contain;
+}
+
+/* ── Phần 4.3: Thiết bị, dụng cụ, mô hình hỗ trợ ─────── */
+.equip-section {
+  margin-top: 8px;
+}
+.equip-h4 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-primary, #1d4ed8);
+  margin: 20px 0 8px;
+  padding-bottom: 4px;
+  border-bottom: 2px solid var(--color-border, #e2e8f0);
+}
+.equip-section .step-2col {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.equip-section .step-2col .step-col {
+  flex: 1 1 240px;
+}
+.equip-ul {
+  margin: 8px 0 16px;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.equip-ul li {
+  line-height: 1.6;
+  font-size: 14px;
+  color: #334155;
+}
+@media (max-width: 768px) {
+  .equip-section .step-2col {
+    flex-direction: column;
+  }
+}
+
+/* ── Tip callout: Lưu ý sắp xếp khay (4.3.1) ─────────── */
+.tip-callout {
+  margin: 18px 0;
+  border: 1px solid var(--color-amber-300, #fbbf24);
+  border-radius: var(--radius-lg, 12px);
+  background: linear-gradient(
+    180deg,
+    var(--color-amber-050, #fffbeb) 0%,
+    #ffffff 65%
+  );
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+.tip-callout-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  background: var(--color-amber-100, #fef3c7);
+  border-bottom: 1px solid var(--color-amber-300, #fbbf24);
+}
+.tip-callout-icon {
+  font-size: 20px;
+  line-height: 1;
+}
+.tip-callout-title {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-amber-600, #b45309);
+}
+.tip-callout-body {
+  padding: 16px;
+}
+.tip-callout-figure {
+  margin: 0;
+  max-width: 480px;
+}
+.tip-callout-caption {
+  margin: 10px 0 0;
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--color-slate-600, #475569);
+}
+.tip-compare-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 16px;
+}
+.tip-compare-card {
+  position: relative;
+  border-radius: var(--radius-md, 8px);
+  border: 1px solid var(--color-slate-200, #e2e8f0);
+  background: #ffffff;
+  padding: 10px;
+}
+.tip-compare-card .step-img {
+  margin: 0 0 10px;
+}
+.tip-compare-text {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--color-slate-700, #334155);
+}
+.tip-compare-badge {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: var(--radius-full, 9999px);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #ffffff;
+  box-shadow: var(--shadow-xs);
+}
+.tip-compare--bad {
+  border-color: var(--color-error, #dc2626);
+}
+.tip-compare--bad .tip-compare-badge {
+  background: var(--color-error, #dc2626);
+}
+.tip-compare--info {
+  border-color: var(--color-info, #0284c7);
+}
+.tip-compare--info .tip-compare-badge {
+  background: var(--color-info, #0284c7);
+}
+@media (max-width: 768px) {
+  .tip-compare-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -26,6 +26,9 @@ const _truthState = new Map(); // baiId → 2D array of user answers
 // ═══════════════════════════════════════════════════════════════
 
 export function renderObjectives(baiId) {
+  // Đã tắt: không hiển thị block "Mục tiêu học tập" ở đầu bài (theo yêu cầu)
+  return "";
+
   const data = lessonOutcomes[baiId];
   if (!data || !data.objectives) return "";
 
